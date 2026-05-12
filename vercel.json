@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/projects/moncks-of-dover-street",
+      "destination": "/moncksofdoverstreet",
+      "permanent": true
+    }
+  ]
+}
