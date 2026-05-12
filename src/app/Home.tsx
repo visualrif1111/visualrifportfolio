@@ -180,6 +180,34 @@ export default function Home() {
 
   const [activeSection, setActiveSection] = React.useState('home');
 
+  const timelineRef = React.useRef<HTMLDivElement>(null);
+  const [isDraggingTimeline, setIsDraggingTimeline] = React.useState(false);
+  const [timelineStartX, setTimelineStartX] = React.useState(0);
+  const [timelineScrollLeft, setTimelineScrollLeft] = React.useState(0);
+
+  const handleTimelineMouseDown = (e: React.MouseEvent) => {
+    if (!timelineRef.current) return;
+    setIsDraggingTimeline(true);
+    setTimelineStartX(e.pageX - timelineRef.current.offsetLeft);
+    setTimelineScrollLeft(timelineRef.current.scrollLeft);
+  };
+
+  const handleTimelineMouseLeave = () => {
+    setIsDraggingTimeline(false);
+  };
+
+  const handleTimelineMouseUp = () => {
+    setIsDraggingTimeline(false);
+  };
+
+  const handleTimelineMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingTimeline || !timelineRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - timelineRef.current.offsetLeft;
+    const walk = (x - timelineStartX) * 1.5; 
+    timelineRef.current.scrollLeft = timelineScrollLeft - walk;
+  };
+
   React.useEffect(() => {
     const lenis = new Lenis({
       autoRaf: true,
@@ -332,8 +360,15 @@ export default function Home() {
 
       {/* Timeline */}
       <section className="mb-40 w-full flex flex-col relative pt-32 group/timeline bg-black">
-        <div className="w-full overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing pb-32">
-          <div className="w-max flex relative px-[10vw] min-h-[500px]">
+        <div 
+          ref={timelineRef}
+          onMouseDown={handleTimelineMouseDown}
+          onMouseLeave={handleTimelineMouseLeave}
+          onMouseUp={handleTimelineMouseUp}
+          onMouseMove={handleTimelineMouseMove}
+          className={`w-full overflow-x-auto hide-scrollbar pb-32 ${isDraggingTimeline ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+        >
+          <div className={`w-max flex relative px-[10vw] min-h-[500px] ${isDraggingTimeline ? 'pointer-events-none' : ''}`}>
             {/* The top horizontal line */}
             <div className="absolute top-[28px] left-0 right-0 h-[1px] bg-[#2E3642] group-hover/timeline:bg-[#50C1BA]/50 transition-colors duration-700" />
             

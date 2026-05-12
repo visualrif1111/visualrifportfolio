@@ -7,19 +7,19 @@ import '../styles/fonts.css';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
-import imgMoncksStylingSheetDesktop11 from "../imports/MoncksOfDoverStreet-1/b91a303b82e44b4121ec4b0626f4484f071c09c4.png";
-import imgRectangle27 from "../imports/MoncksOfDoverStreet-1/eb89bf441ca942ecfeb5155de1dcf32bd2934c26.png";
-
-import imgRectangle31 from "../imports/MoncksOfDoverStreet-1/16c4df6c05c51ae80a80656941440025e24b26e5.png";
-
-
-import imgRectangle4 from "../imports/MoncksOfDoverStreet-1/d6dc0169d02bf250d8190d1fed447e89d8d5a544.png";
-
-import imgRectangle24 from "../imports/MoncksOfDoverStreet-1/fdb4f42d3744f127c2eee11d6961cba7701c40f9.png";
-import imgRectangle25 from "../imports/MoncksOfDoverStreet-1/cddeb323f6d225e2939bd463f0afdb425951c23d.png";
-
-import img59 from "../imports/MoncksOfDoverStreet-1/f80f56de89553ff9092250f835fb72a16d7651ec.png";
-import img49 from "../imports/MoncksOfDoverStreet-1/95f40c29a9e1ec3c4eea12fd128014d21b7ed557.png";
+import imgMoncksStylingSheetDesktop11 from "../imports/MoncksOfDoverStreet-1-1/b91a303b82e44b4121ec4b0626f4484f071c09c4.png";
+import imgRectangle27 from "../imports/MoncksOfDoverStreet-1-1/eb89bf441ca942ecfeb5155de1dcf32bd2934c26.png";
+import imgRectangle30 from "../imports/MoncksOfDoverStreet-1-1/5193e76aa2da40140748e76b0bab1534ac9ccf8a.png";
+import imgRectangle31 from "../imports/MoncksOfDoverStreet-1-1/16c4df6c05c51ae80a80656941440025e24b26e5.png";
+import imgRectangle32 from "../imports/MoncksOfDoverStreet-1-1/f7409a73309c21ed7d6e1e140728ae516786fcd5.png";
+import imgRectangle33 from "../imports/MoncksOfDoverStreet-1-1/fbcaa43f2e019966b846322e007d00da2bafec69.png";
+import imgRectangle4 from "../imports/MoncksOfDoverStreet-1-1/d6dc0169d02bf250d8190d1fed447e89d8d5a544.png";
+import imgRectangle23 from "../imports/MoncksOfDoverStreet-1-1/4142daa82b830c04d4aac911aa1294fd073be33a.png";
+import imgRectangle24 from "../imports/MoncksOfDoverStreet-1-1/fdb4f42d3744f127c2eee11d6961cba7701c40f9.png";
+import imgRectangle25 from "../imports/MoncksOfDoverStreet-1-1/cddeb323f6d225e2939bd463f0afdb425951c23d.png";
+import imgRectangle40 from "../imports/MoncksOfDoverStreet-1-1/98ce850bbdf3b4c501620bc7925ccfcc977f9ae2.png";
+import img59 from "../imports/MoncksOfDoverStreet-1-1/f80f56de89553ff9092250f835fb72a16d7651ec.png";
+import img49 from "../imports/MoncksOfDoverStreet-1-1/95f40c29a9e1ec3c4eea12fd128014d21b7ed557.png";
 
 function VisualRifLogo({ className = "" }: { className?: string }) {
   return (
@@ -117,9 +117,9 @@ export default function MoncksOfDoverStreet() {
       {/* Main Content */}
       <div className="relative z-10 w-full md:pl-[280px]">
         {/* Hero Section */}
-        <section className="relative w-full h-[60vh] md:h-screen overflow-hidden">
-          <img src={imgMoncksStylingSheetDesktop11} alt="Moncks of Dover Street Hero" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/60"></div>
+        <section className="relative w-full h-[50vh] overflow-hidden">
+          <img src={imgRectangle4} alt="Moncks of Dover Street Hero" className="absolute inset-0 w-full h-full object-cover object-bottom" />
+          <div className="absolute inset-0 bg-black/50"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0">
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
@@ -179,27 +179,65 @@ export default function MoncksOfDoverStreet() {
               </div>
             </div>
           </div>
-          <div className="lg:col-span-8 flex flex-col gap-12">
-            <div className="w-full">
-              <img src={imgRectangle4} alt="Design Showcase" className="w-full h-auto object-cover rounded-lg" />
+          <div className="lg:col-span-8 flex flex-col gap-6">
+            <div className="w-full relative">
+              <img src={imgRectangle23} alt="Laptop Mockup" className="w-full h-auto object-cover rounded-lg" />
             </div>
-            <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200">
-              <p>The project was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected both the luxury positioning and cultural identity behind Moncks Of Dover Street. Drawing from extensive research into the brand’s heritage, interior design, and audience expectations, I developed a refined creative direction centred around elegant typography, a restrained colour palette, and editorial-inspired layouts that mirrored the atmosphere of the restaurant itself. The visual language was intentionally minimal yet immersive, allowing the imagery, spacing, and typography to communicate sophistication while maintaining clarity and usability. Throughout the project, cross-platform consistency and scalability were key considerations, ensuring the website performed seamlessly across desktop and mobile experiences while supporting future growth. By combining strategic UX/UI principles with a premium visual approach, the final outcome elevated the brand’s digital presence, strengthened its positioning within London’s luxury hospitality market, and created a more engaging experience for users interacting with the brand online.</p>
+            <div className="grid grid-cols-2 gap-6 w-full">
+              <div className="relative">
+                <img src={imgRectangle24} alt="Mobile Mockup" className="w-full h-auto object-cover rounded-lg" />
+              </div>
+              <div className="relative">
+                <img src={imgRectangle25} alt="Desktop Mockup" className="w-full h-auto object-cover rounded-lg" />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Middle Image Gallery */}
-        <section className="w-full py-12 px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-[1920px] mx-auto">
-            <img src={imgRectangle24} alt="Moncks Detail 1" className="w-full h-auto object-cover rounded-lg" />
-            <img src={imgRectangle25} alt="Moncks Detail 2" className="w-full h-auto object-cover rounded-lg" />
+        {/* Project Approach Text */}
+        <section className="max-w-5xl mx-auto px-6 md:px-12 py-8 md:py-16 text-center">
+          <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200">
+            <p>The project was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected both the luxury positioning and cultural identity behind Moncks Of Dover Street. Drawing from extensive research into the brand’s heritage, interior design, and audience expectations, I developed a refined creative direction centred around elegant typography, a restrained colour palette, and editorial-inspired layouts that mirrored the atmosphere of the restaurant itself. The visual language was intentionally minimal yet immersive, allowing the imagery, spacing, and typography to communicate sophistication while maintaining clarity and usability. Throughout the project, cross-platform consistency and scalability were key considerations, ensuring the website performed seamlessly across desktop and mobile experiences while supporting future growth. By combining strategic UX/UI principles with a premium visual approach, the final outcome elevated the brand’s digital presence, strengthened its positioning within London’s luxury hospitality market, and created a more engaging experience for users interacting with the brand online.</p>
           </div>
-          <div className="mt-6 w-full max-w-[1920px] mx-auto">
-             <img src={img49} alt="Moncks Detail 3" className="w-full h-auto object-cover rounded-lg" />
+        </section>
+
+        {/* Styling Sheet */}
+        <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="relative w-full">
+            <img src={imgMoncksStylingSheetDesktop11} alt="Styling Sheet" className="w-full h-auto object-cover rounded-lg bg-white" />
           </div>
-          <div className="mt-6 w-full max-w-[1920px] mx-auto">
-             <img src={img59} alt="Moncks Detail 4" className="w-full h-auto object-cover rounded-lg" />
+          <div className="relative w-full flex justify-center">
+            <div className="relative w-full max-w-xl">
+              <img src={imgRectangle40} alt="Typography & Colors" className="w-full h-auto object-cover rounded-lg" />
+            </div>
+          </div>
+        </section>
+
+        {/* Big Rounded Image */}
+        <section className="w-full px-6 md:px-12 py-8 max-w-[1920px] mx-auto">
+          <div className="relative w-full">
+            <img src={imgRectangle27} alt="Design Element" className="w-full h-auto object-cover rounded-[30px] md:rounded-[76px]" />
+          </div>
+        </section>
+
+        {/* 4 Image Grid */}
+        <section className="w-full px-6 md:px-12 py-8 max-w-[1920px] mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[imgRectangle30, imgRectangle31, imgRectangle32, imgRectangle33].map((img, i) => (
+              <div key={i} className="relative w-full">
+                <img src={img} alt={`Gallery Image ${i + 1}`} className="w-full h-auto object-cover rounded-[30px] md:rounded-[55px]" />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Full Width Images */}
+        <section className="w-full py-16 flex flex-col gap-16 overflow-hidden">
+          <div className="relative w-full px-6 md:px-12 max-w-[1920px] mx-auto">
+            <img src={img49} alt="Sitemap" className="w-full h-auto object-cover rounded-lg bg-white" />
+          </div>
+          <div className="relative w-full max-w-[1920px] mx-auto">
+             <img src={img59} alt="Mobile Screens" className="w-full h-auto object-cover" />
           </div>
         </section>
 
