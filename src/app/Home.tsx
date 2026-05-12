@@ -366,7 +366,7 @@ export default function Home() {
           onMouseLeave={handleTimelineMouseLeave}
           onMouseUp={handleTimelineMouseUp}
           onMouseMove={handleTimelineMouseMove}
-          className={`w-full overflow-x-auto hide-scrollbar pb-32 ${isDraggingTimeline ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+          className={`w-full overflow-x-auto hide-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pb-32 ${isDraggingTimeline ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
         >
           <div className={`w-max flex relative px-[10vw] min-h-[500px] ${isDraggingTimeline ? 'pointer-events-none' : ''}`}>
             {/* The top horizontal line */}
