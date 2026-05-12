@@ -6,8 +6,16 @@ export function CustomCursor() {
   const [hidden, setHidden] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isGrabbing, setIsGrabbing] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Check if the device uses a touch screen / lacks a fine pointer
+    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!hasHover) {
+      setIsTouchDevice(true);
+      return;
+    }
+
     // Hide default cursor globally on mount
     document.body.classList.add('cursor-none');
     
@@ -67,11 +75,13 @@ export function CustomCursor() {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
       document.body.classList.remove('cursor-none');
-      document.head.removeChild(style);
+      if (document.head.contains(style)) {
+        document.head.removeChild(style);
+      }
     };
   }, []);
 
-  if (hidden) return null;
+  if (isTouchDevice || hidden) return null;
 
   return (
     <div
