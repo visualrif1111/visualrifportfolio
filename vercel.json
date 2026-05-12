@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/projects/moncks-of-dover-street",
-      "destination": "/moncksofdoverstreet",
+      "source": "/moncksofdoverstreet",
+      "destination": "/projects/moncks-of-dover-street",
       "permanent": true
     }
   ]
