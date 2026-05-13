@@ -16,6 +16,7 @@ import imgRectangle19 from "figma:asset/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c
 import imgRectangle21 from "figma:asset/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.png";
 import imgRectangle22 from "figma:asset/61ed1cb628286e3a99aaaf636c61867b91992a4b.png";
 import imgContent61 from "figma:asset/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.png";
+import imgScreenshot from "../imports/Screenshot_2026-05-13_at_21.51.35.png";
 
 const timelineData = [
   {
@@ -416,10 +417,7 @@ export default function Home() {
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20 relative z-30">
           <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
-          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-64 md:mb-96" theme="dark" />
-          <div className="pt-20 md:pt-40">
-            <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-10 md:mb-20" theme="light" />
-          </div>
+          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-32 md:mb-48" theme="dark" />
         </section>
 
         {/* Expanding Image Section */}
@@ -430,6 +428,16 @@ export default function Home() {
           >
             <img src={imgContent61} alt="Collage" className="w-full h-full object-cover" />
           </motion.div>
+        </section>
+
+        {/* 3D Design (Completely Separated) */}
+        <section id="3d-design" className="flex flex-col pt-32 md:pt-48 pb-10 md:pb-20 relative z-30">
+          <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-10 md:mb-20" theme="light" />
+          
+          {/* Screenshot below 3D Design */}
+          <div className="w-full flex justify-center mb-10 md:mb-20">
+            <img src={imgScreenshot} alt="3D Design Showcase" className="w-full max-w-5xl rounded-lg border border-gray-800 shadow-2xl" />
+          </div>
         </section>
 
       </div>
