@@ -202,12 +202,12 @@ export default function MoncksOfDoverStreet() {
         </section>
 
         {/* Breakdown Section */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32">
+        <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 w-full relative before:absolute before:inset-0 before:bg-white before:w-[200vw] before:-left-[50vw] before:-z-10 text-black">
           <div className="text-center mb-16">
-            <h2 className="font-['Barlow',sans-serif] font-medium text-[28px] md:text-[33px] tracking-[0.25em] uppercase text-white mb-4">Breakdown</h2>
+            <h2 className="font-['Barlow',sans-serif] font-medium text-[28px] md:text-[33px] tracking-[0.25em] uppercase text-black mb-4">Breakdown</h2>
             <div className="w-[120px] h-[3px] bg-[#50C1BA] mx-auto mb-8"></div>
             
-            <div className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[14px] tracking-[0.25em] uppercase text-gray-400 max-w-2xl mx-auto text-left">
+            <div className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[14px] tracking-[0.25em] uppercase text-gray-800 max-w-2xl mx-auto text-left">
               <p className="mb-4">Breakdown Section</p>
               <p className="mb-2">Goal:</p>
               <ul className="list-disc pl-6 space-y-2">
