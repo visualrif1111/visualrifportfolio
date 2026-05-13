@@ -91,6 +91,7 @@ export function CustomCursor() {
       }}
     >
       <svg className="w-5 h-5 drop-shadow-[0_0_8px_rgba(80,193,186,0.5)]" viewBox="0 0 26.0181 26.018" fill="none">
+        <path d={svgPaths.p15465600} fill="#50C1BA" />
         <path d={svgPaths.p16002240} fill="#50C1BA" />
       </svg>
     </div>
