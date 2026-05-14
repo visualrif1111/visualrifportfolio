@@ -82,7 +82,9 @@ const projects = {
   ],
   design3d: [
     { title: "JMA CUSTOMS", img: imgRectangle21, type: "full", hover: "View Video", videoId: "rhynMLdthSs" },
-    { title: "T H E \u00A0 \u00A0 E P I P H A N I E S", img: imgRectangle22, type: "full", hover: "Coming Soon" },
+  ],
+  epiphanies: [
+    { title: "T H E   E P I P H A N I E S", img: imgRectangle22, type: "full", hover: "Coming Soon" },
   ]
 };
 
@@ -108,6 +110,7 @@ function VisualRifLogo({ className = "" }: { className?: string }) {
 
 const Diamond = ({ className = "" }: { className?: string }) => (
   <svg className={`w-3 h-3 ${className}`} viewBox="0 0 26.0181 26.018" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d={svgPathsFrame27.p15465600} fill="#50C1BA" />
     <path d={svgPathsFrame27.p16002240} fill="#50C1BA" />
   </svg>
 );
@@ -232,7 +235,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
+    <div className="relative bg-black text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
       <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
         <div>
@@ -270,7 +273,7 @@ export default function Home() {
       {/* Hero Background Video */}
       <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
         <iframe
-          src="https://www.youtube.com/embed/JtNM6X84Z0s?autoplay=1&mute=1&loop=1&playlist=JtNM6X84Z0s&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
+          src="https://www.youtube.com/embed/JtNM6X84Z0s?autoplay=1&mute=1&loop=1&playlist=JtNM6X84Z0s&controls=0&showinfo=0&rel=0&playsinline=1"
           className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
           allow="autoplay; encrypted-media"
           style={{ border: 0 }}
@@ -350,7 +353,7 @@ export default function Home() {
       </div>
 
       {/* Timeline */}
-      <section className="mb-40 w-full flex flex-col relative pt-32 group/timeline bg-transparent">
+      <section className="mb-40 w-full flex flex-col relative pt-32 group/timeline bg-black">
         <div 
           ref={timelineRef}
           onMouseDown={handleTimelineMouseDown}
@@ -414,16 +417,15 @@ export default function Home() {
 
       <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-hidden">
         {/* Projects */}
-        <section id="projects" className="flex flex-col pb-10 md:pb-20 relative z-30">
+        <section id="projects" className="flex flex-col pb-40">
           <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
-          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-64 md:mb-96" theme="dark" />
-          <div className="pt-20 md:pt-40">
-            <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-10 md:mb-20" theme="light" />
-          </div>
+          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-32 md:mb-48" theme="dark" />
+          <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-32 md:mb-48" theme="light" />
+          <ProjectCategory title="THE EPIPHANIES" projects={projects.epiphanies} theme="dark" />
         </section>
 
         {/* Expanding Image Section */}
-        <section className="flex justify-center items-center pb-32 md:pb-48 relative h-screen z-20">
+        <section className="flex justify-center items-center pb-40 relative h-screen">
           <motion.div 
             style={{ scale: circleScale }}
             className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20 shadow-2xl"
@@ -481,8 +483,9 @@ export default function Home() {
 
 function ProjectCategory({ title, projects, className = "", theme = "dark" }: { title: string, projects: any[], className?: string, theme?: "dark" | "light" }) {
   const isBrandingLayout = projects.some(p => p.type === 'tall' || p.type === 'quarter');
-  // Always use light text on our dark animated background
-  const titleClass = theme === "light" ? "text-gray-300 opacity-40" : "text-gray-300 opacity-20";
+  const isLight = theme === "light";
+  const bgClass = isLight ? "relative before:absolute before:inset-0 before:w-[200vw] before:-left-[50vw] before:-z-10 before:bg-white pt-16 pb-16" : "";
+  const titleClass = isLight ? "text-gray-900 opacity-10" : "text-gray-300 opacity-20";
 
   if (isBrandingLayout) {
     const full = projects.find(p => p.type === 'full');
@@ -490,7 +493,7 @@ function ProjectCategory({ title, projects, className = "", theme = "dark" }: { 
     const quarters = projects.filter(p => p.type === 'quarter');
     
     return (
-      <div className={className}>
+      <div className={`${className} ${bgClass}`}>
         <h2 className={`text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] mb-12 uppercase text-center ${titleClass}`}>{title}</h2>
         <div className="flex flex-col gap-4">
           <ProjectCard project={full} className="w-full h-[400px] md:h-[600px]" />
@@ -508,7 +511,7 @@ function ProjectCategory({ title, projects, className = "", theme = "dark" }: { 
   }
 
   return (
-    <div className={className}>
+    <div className={`${className} ${bgClass}`}>
       <h2 className={`text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] mb-12 uppercase text-center ${titleClass}`}>{title}</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -562,11 +565,11 @@ function ProjectCard({ project: p, className = "" }: { project: any, className?:
           </div>
         </>
       ) : (
-        <div className="absolute inset-0 z-20 bg-black flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 z-20 bg-black flex items-center justify-center">
           <iframe 
             width="100%" 
             height="100%" 
-            src={`https://www.youtube.com/embed/${p.videoId}?autoplay=1&mute=1&loop=1&playlist=${p.videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1`} 
+            src={`https://www.youtube.com/embed/${p.videoId}?autoplay=1`} 
             title="YouTube video player" 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

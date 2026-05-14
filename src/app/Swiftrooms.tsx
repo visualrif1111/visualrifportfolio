@@ -136,9 +136,7 @@ function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
             modestbranding: 1,
             playsinline: 1,
             rel: 0,
-            showinfo: 0,
-            iv_load_policy: 3,
-            disablekb: 1
+            showinfo: 0
           },
         }}
         onReady={handleReady}
@@ -163,7 +161,7 @@ export default function Swiftrooms() {
   }, []);
 
   return (
-    <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
+    <div className="relative bg-black text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
       <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
         <div>
@@ -204,11 +202,11 @@ export default function Swiftrooms() {
       {/* Main Content */}
       <div className="relative z-10 w-full md:pl-[280px]">
         {/* Hero Section */}
-        <section className="relative w-full h-[15vh] md:h-[20vh] lg:h-[20vh] overflow-hidden bg-transparent">
-          <div className="absolute top-1/2 left-1/2 w-full min-w-[100vw] aspect-video -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.05]">
+        <section className="relative w-full h-[60vh] md:h-auto md:aspect-video overflow-hidden bg-black">
+          <div className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none">
             <iframe 
               className="w-full h-full" 
-              src="https://www.youtube.com/embed/V9vBGXX-GwA?autoplay=1&mute=1&loop=1&playlist=V9vBGXX-GwA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
+              src="https://www.youtube.com/embed/V9vBGXX-GwA?autoplay=1&mute=1&loop=1&playlist=V9vBGXX-GwA&controls=0&modestbranding=1" 
               title="Swiftrooms Hero Video" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -221,7 +219,7 @@ export default function Swiftrooms() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-[50px] md:text-[98px] leading-none font-['Barlow_Semi_Condensed',sans-serif] font-medium tracking-[0.08em] uppercase text-white drop-shadow-lg"
+              className="text-[50px] md:text-[98px] leading-none font-['Barlow_Semi_Condensed',sans-serif] font-medium tracking-[0.08em] uppercase text-white mb-8 drop-shadow-lg"
             >
               SWIFTROOMS
             </motion.h1>
@@ -301,7 +299,7 @@ export default function Swiftrooms() {
         </section>
 
         {/* Project Approach Text & 3 Images */}
-        <section className="w-full flex flex-col lg:flex-row relative bg-transparent">
+        <section className="w-full flex flex-col lg:flex-row relative bg-black">
           
           {/* Left Column */}
           <div className="w-full lg:w-[40%] flex flex-col z-0">
@@ -316,7 +314,7 @@ export default function Swiftrooms() {
             </div>
 
             {/* Mid Journey Showreel Text */}
-            <div className="bg-transparent py-24 px-6 md:px-12 lg:pl-12 xl:pl-24">
+            <div className="bg-black py-24 px-6 md:px-12 lg:pl-12 xl:pl-24">
               <div className="max-w-2xl lg:ml-auto pr-6">
                 <div className="flex justify-between items-start mb-8 gap-4">
                   <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] max-w-sm">Mid Journey Showreel</h2>
@@ -338,10 +336,10 @@ export default function Swiftrooms() {
               <div className="w-full text-left">
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">old landing page (syspee)</p>
               </div>
-              <div className="aspect-video w-full rounded-lg overflow-hidden drop-shadow-2xl bg-black pointer-events-none">
+              <div className="aspect-video w-full rounded-lg overflow-hidden drop-shadow-2xl bg-black">
                 <iframe 
                   className="w-full h-full" 
-                  src="https://www.youtube.com/embed/bxJykP0pURI?autoplay=1&mute=1&loop=1&playlist=bxJykP0pURI&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
+                  src="https://www.youtube.com/embed/bxJykP0pURI?autoplay=1&mute=1&loop=1&playlist=bxJykP0pURI" 
                   title="Old landing page" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -353,10 +351,10 @@ export default function Swiftrooms() {
               <div className="w-full text-left">
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">new landing page (visualrif)</p>
               </div>
-              <div className="aspect-video w-full rounded-lg overflow-hidden bg-black pointer-events-none">
+              <div className="aspect-video w-full rounded-lg overflow-hidden bg-black">
                 <iframe 
                   className="w-full h-full" 
-                  src="https://www.youtube.com/embed/jRnbOu5_xlo?autoplay=1&mute=1&loop=1&playlist=jRnbOu5_xlo&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
+                  src="https://www.youtube.com/embed/jRnbOu5_xlo?autoplay=1&mute=1&loop=1&playlist=jRnbOu5_xlo" 
                   title="New landing page" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -381,7 +379,7 @@ export default function Swiftrooms() {
             <div className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none">
               <iframe 
                 className="w-full h-full" 
-                src="https://www.youtube.com/embed/aP4L7jnKxYA?autoplay=1&mute=1&loop=1&playlist=aP4L7jnKxYA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
+                src="https://www.youtube.com/embed/aP4L7jnKxYA?autoplay=1&mute=1&loop=1&playlist=aP4L7jnKxYA&controls=0&modestbranding=1" 
                 title="Design Element Video" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -409,7 +407,7 @@ export default function Swiftrooms() {
         </section>
 
         {/* Further Developments */}
-        <section className="w-full py-16 bg-transparent flex flex-col items-center">
+        <section className="w-full py-16 bg-black flex flex-col items-center">
             <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12 flex justify-between items-start mb-12">
                <div className="text-left">
                  <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Further Developments</h2>
@@ -427,7 +425,7 @@ export default function Swiftrooms() {
         </section>
 
         {/* Wireframes & Content Request */}
-        <section className="w-full py-24 bg-transparent flex flex-col items-start border-t border-gray-800">
+        <section className="w-full py-24 bg-black flex flex-col items-start border-t border-gray-800">
             <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12 mb-12">
                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] max-w-2xl">SWIFTROOMS Wireframes & Content Request</h2>
             </div>
