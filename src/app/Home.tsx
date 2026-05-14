@@ -20,64 +20,58 @@ import imgContent61 from "figma:asset/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.p
 const timelineData = [
   {
     year: "2013",
-    location: "LONDON",
-    title: "THE WARREN SCHOOL",
-    subtitle: "FOUND MY LOVE FOR GRAPHIC DESIGN",
-    label: "ACCOMPLISHMENTS",
-    desc: "MENTORED BY ART TEACHERS",
-    challenge: "COMING FROM ONE OF THE MOST ECONOMICALLY DEPRIVED AREAS OF LONDON, RESISTING NEGATIVE INFLUENCES"
+    location: "THE WARREN SCHOOL — LONDON",
+    title: "EARLY CREATIVE FOUNDATIONS",
+    subtitle: "First exposure to understanding the career path of Graphic Design. Recognised by Art teacher for my interest in Adobe Suite as I began selling Youtube background in School. Particularly Inspirational Illustrators such as Shepard Fairey, Cris Vector. Contemporary artists like Banksy.",
+    focus: "• Creative software fundamentals; Adobe Illustrator, MAC OS\n• Artist Inspirations & Research\n• Design experimentation",
+    keyLearning: "Developed an early understanding of how design can shape identity, emotion, and communication."
   },
   {
     year: "2014",
-    location: "LONDON",
-    title: "WORK EXPERIENCE",
-    subtitle: "SUMMER HOLIDAYS AT PRINTING.COM",
-    label: "ACCOMPLISHMENTS",
-    desc: "GAINED EARLY INSIGHT INTO DESIGN",
-    challenge: "ADAPTING TO THE DESIGN INDUSTRY'S DEMANDS WHILE MENTALLY PREPARING FOR ITS EXPECTATIONS"
+    location: "WORK EXPERIENCE — LONDON",
+    title: "INTRODUCTION TO PRINT & PRODUCTION",
+    subtitle: "Gained first-hand exposure to professional print workflows and the realities of commercial design production.",
+    focus: "• Print preparation\n• Production workflows\n• Industry processes",
+    keyLearning: "Learned the importance of precision, organisation, and designing with real-world production constraints in mind."
   },
   {
     year: "2016",
-    location: "LONDON",
-    title: "FIRST DESIGN JOB",
-    subtitle: "EAST END PRINTERS",
-    label: "ACCOMPLISHMENTS",
-    desc: "GOT MY FIRST JOB WITHOUT A DEGREE",
-    challenge: "LEARNING HOW TO COMMUNICATE WITH REAL CLIENTS AND DELIVER PROJECTS"
+    location: "EAST END PRINTERS — LONDON",
+    title: "FIRST PROFESSIONAL DESIGN ROLE",
+    subtitle: "Began working within a professional print environment, collaborating on client-facing projects and developing practical production knowledge.",
+    focus: "• Print design\n• Client communication\n• Production-ready artwork",
+    keyLearning: "Built confidence working with real clients, deadlines, revisions, and deliverables within a fast-paced production environment."
   },
   {
     year: "2019",
-    location: "LONDON",
+    location: "VERB BRANDS APPRENTICESHIP — LONDON",
     title: "BREAKING INTO INDUSTRY",
-    subtitle: "APPRENTICE VERB BRANDS",
-    label: "ACCOMPLISHMENTS",
-    desc: "COMPLETED FIRST MAJOR PROJECT EMPLOYED BY MULTIMILLIONAIRE FOR ENTREPRENEURIAL DRIVE",
-    challenge: "COVID-19 HAD A MAJOR IMPACT ON MY CAREER, PROMPTING A MOVE TO SHROPSHIRE FOR A CHANGE OF LIFESTYLE"
+    subtitle: "Transitioned further into digital design, contributing to professional creative projects and gaining experience within a collaborative industry environment.",
+    focus: "• Digital design\n• UX / UI\n• Professional collaboration",
+    keyLearning: "Developed adaptability, creative discipline, and a stronger understanding of commercial design expectations."
   },
   {
     year: "2023",
-    location: "SHREWSBURY",
-    title: "BEGAN FREELANCING",
-    subtitle: "BUILT A BRAND WITHIN GAME DESIGN",
-    label: "ACCOMPLISHMENTS",
-    desc: "BUILT A BRAND RECOGNISED BY ROCKSTAR EMPLOYEES\nWORKED WITH MAJOR GRIME / RAP ARTISTS",
-    challenge: "BUILDING A SUCCESSFUL BRAND THAT PROMOTES A LIFESTYLE I DON'T ADVOCATE YOUNG PEOPLE TO FOLLOW."
+    location: "FREELANCE & COMMUNITY-BASED DESIGN — SHREWSBURY",
+    title: "INDEPENDENT BRAND BUILDING",
+    subtitle: "Built a recognised creative presence within online communities through branding, digital assets, and visual identity work.",
+    focus: "• Brand identity\n• Community-driven design\n• Digital asset creation\n• Creative direction",
+    keyLearning: "Learned how strong visual identity and consistent branding can build engagement, trust, and community recognition."
   },
   {
     year: "2026",
     location: "BRIGHTON & HOVE",
-    title: "CONTINUING FREELANCING",
-    subtitle: "WORKING 1 TO 1 WITH BUSINESSES INDEPENDENTLY",
-    label: "ACCOMPLISHMENTS",
-    desc: "CONFIDENTLY LEADING PROJECTS AND BUILDING SOLUTIONS FOR BUSINESSES",
-    challenge: "BUILDING CONTINGENCY MONEY TO INVEST IN THIS BUSINESS AND CONFIDENTLY ESTABLISHING MYSELF IN BRIGHTON & HOVE"
+    title: "INDEPENDENT DESIGN PRACTICE",
+    subtitle: "Continuing to work independently with businesses and clients across branding, digital design, and creative problem-solving.",
+    focus: "• Branding\n• UX/UI\n• Creative strategy\n• Client collaboration",
+    keyLearning: "Focused on delivering thoughtful, scalable design solutions while continuing to refine creative and strategic thinking."
   }
 ];
 
 const projects = {
   uxui: [
     { title: "MONCKS OF DOVER STREET", img: imgRectangle10, type: "full", hover: "View Project", link: "/projects/moncks-of-dover-street" },
-    { title: "SWIFTROOMS", img: imgRectangle15, type: "half", hover: "Coming Soon" },
+    { title: "SWIFTROOMS", img: imgRectangle15, type: "half", hover: "View Project", link: "/projects/swiftrooms" },
     { title: "THE SUNIL GAVASKAR PROJECT", img: imgRectangle14, type: "half", hover: "Coming Soon" },
   ],
   branding: [
@@ -87,10 +81,8 @@ const projects = {
     { title: "DILCHAD", img: imgRectangle18, type: "quarter", hover: "Coming Soon" },
   ],
   design3d: [
-    { title: "JMA CUSTOMS", img: imgRectangle21, type: "full", hover: "View Video", videoId: "rhynMLdthSs" },
-  ],
-  epiphanies: [
-    { title: "T H E   E P I P H A N I E S", img: imgRectangle22, type: "full", hover: "Coming Soon" },
+    { title: "JMA CUSTOMS", img: imgRectangle21, type: "half", hover: "View Video", videoId: "rhynMLdthSs" },
+    { title: "T H E \u00A0 \u00A0 E P I P H A N I E S", img: imgRectangle22, type: "half", hover: "Coming Soon" },
   ]
 };
 
@@ -116,7 +108,6 @@ function VisualRifLogo({ className = "" }: { className?: string }) {
 
 const Diamond = ({ className = "" }: { className?: string }) => (
   <svg className={`w-3 h-3 ${className}`} viewBox="0 0 26.0181 26.018" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d={svgPathsFrame27.p15465600} fill="#50C1BA" />
     <path d={svgPathsFrame27.p16002240} fill="#50C1BA" />
   </svg>
 );
@@ -241,7 +232,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative bg-black text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
+    <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
       <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
         <div>
@@ -279,7 +270,7 @@ export default function Home() {
       {/* Hero Background Video */}
       <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
         <iframe
-          src="https://www.youtube.com/embed/JtNM6X84Z0s?autoplay=1&mute=1&loop=1&playlist=JtNM6X84Z0s&controls=0&showinfo=0&rel=0&playsinline=1"
+          src="https://www.youtube.com/embed/JtNM6X84Z0s?autoplay=1&mute=1&loop=1&playlist=JtNM6X84Z0s&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
           className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
           allow="autoplay; encrypted-media"
           style={{ border: 0 }}
@@ -313,7 +304,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="text-center mb-8 pt-24 md:pt-32 pb-16 flex flex-col items-center px-4 md:px-0">
+        <section id="about" className="text-center pt-24 md:pt-32 pb-16 flex flex-col items-center px-4 md:px-0">
             <h2 className="text-[6vw] sm:text-[24px] md:text-[31.87px] tracking-[0.5vw] sm:tracking-[4px] md:tracking-[7.96px] font-['Barlow',sans-serif] font-medium mb-8 md:mb-12 uppercase text-white w-full max-w-[800px] break-words">
               Hey, I’m Arif — most people just call me Rif
             </h2>
@@ -322,12 +313,12 @@ export default function Home() {
               <p>I started at Verb Brands in London, later expanding into game design within the GTA community, CURRENTLY now based in Brighton.</p>
             </div>
             <div className="mt-8 mb-8 flex justify-center">
-              <ArifLogo className="w-[78.22px] h-[78.22px]" />
+              <ArifLogo className="w-[78.22px] h-[78.22px] text-white" />
             </div>
         </section>
       </div>
 
-      <div ref={portraitRef} className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-black flex justify-center">
+      <div ref={portraitRef} className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center">
         <motion.img 
           style={{ y: portraitY, x: "7%" }}
           src={imgRectangle38} 
@@ -359,7 +350,7 @@ export default function Home() {
       </div>
 
       {/* Timeline */}
-      <section className="mb-40 w-full flex flex-col relative pt-32 group/timeline bg-black">
+      <section className="mb-40 w-full flex flex-col relative pt-32 group/timeline bg-transparent">
         <div 
           ref={timelineRef}
           onMouseDown={handleTimelineMouseDown}
@@ -368,12 +359,12 @@ export default function Home() {
           onMouseMove={handleTimelineMouseMove}
           className={`w-full overflow-x-auto hide-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pb-32 ${isDraggingTimeline ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
         >
-          <div className={`w-max flex relative px-[10vw] min-h-[500px] ${isDraggingTimeline ? 'pointer-events-none' : ''}`}>
+          <div className={`w-max flex relative px-[10vw] min-h-[700px] ${isDraggingTimeline ? 'pointer-events-none' : ''}`}>
             {/* The top horizontal line */}
             <div className="absolute top-[28px] left-0 right-0 h-[1px] bg-[#2E3642] group-hover/timeline:bg-[#50C1BA]/50 transition-colors duration-700" />
             
             {/* The bottom horizontal line */}
-            <div className="absolute top-[322px] left-0 right-0 h-[1px] bg-[#2E3642] group-hover/timeline:bg-[#50C1BA]/50 transition-colors duration-700" />
+            <div className="absolute top-[482px] left-0 right-0 h-[1px] bg-[#2E3642] group-hover/timeline:bg-[#50C1BA]/50 transition-colors duration-700" />
             
             {timelineData.map((item, i) => (
               <motion.div 
@@ -392,7 +383,7 @@ export default function Home() {
                 </div>
 
                 {/* Body Content (between top and bottom lines) */}
-                <div className="flex flex-col items-center text-center h-[260px] justify-start w-full px-4">
+                <div className="flex flex-col items-center text-center h-[420px] justify-start w-full px-4">
                   <h3 className="font-['Barlow_Semi_Condensed',sans-serif] text-[22px] md:text-[26px] font-semibold text-white tracking-[0.15em] leading-none mb-3 group-hover/item:text-[#50C1BA] transition-colors">{item.year}</h3>
                   <p className="font-['Inter',sans-serif] text-[9px] md:text-[10px] text-gray-400 tracking-[0.2em] uppercase mb-8 leading-none">{item.location}</p>
                   
@@ -400,8 +391,8 @@ export default function Home() {
                   <p className="font-['Rajdhani',sans-serif] text-[10px] md:text-[12px] text-white tracking-[0.15em] uppercase mb-8 leading-tight max-w-[250px]">{item.subtitle}</p>
                   
                   <div className="flex-1 flex flex-col justify-end pb-4">
-                    <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[8px] md:text-[9px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">{item.label}</p>
-                    <p className="font-['Rajdhani',sans-serif] text-[10px] md:text-[11px] text-gray-400 tracking-[0.15em] uppercase max-w-[250px] leading-snug whitespace-pre-wrap group-hover/item:text-gray-300 transition-colors">{item.desc}</p>
+                    <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[8px] md:text-[9px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">FOCUS</p>
+                    <p className="font-['Rajdhani',sans-serif] text-[10px] md:text-[11px] text-gray-400 tracking-[0.15em] uppercase max-w-[250px] leading-snug whitespace-pre-wrap group-hover/item:text-gray-300 transition-colors">{item.focus}</p>
                   </div>
                 </div>
 
@@ -412,8 +403,8 @@ export default function Home() {
 
                 {/* Below Line */}
                 <div className="flex flex-col items-center text-center mt-12 md:mt-16 opacity-70 group-hover/item:opacity-100 transition-opacity duration-300 pt-2 px-4 w-full">
-                  <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[8px] md:text-[9px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">{item.challenge ? "CHALLENGES" : ""}</p>
-                  <p className="font-['Rajdhani',sans-serif] text-[9px] md:text-[10px] text-gray-400 tracking-[0.15em] uppercase max-w-[280px] leading-relaxed group-hover/item:text-gray-300 transition-colors">{item.challenge}</p>
+                  <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[8px] md:text-[9px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">KEY LEARNING</p>
+                  <p className="font-['Rajdhani',sans-serif] text-[9px] md:text-[10px] text-gray-400 tracking-[0.15em] uppercase max-w-[280px] leading-relaxed group-hover/item:text-gray-300 transition-colors">{item.keyLearning}</p>
                 </div>
               </motion.div>
             ))}
@@ -423,21 +414,24 @@ export default function Home() {
 
       <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-hidden">
         {/* Projects */}
-        <section id="projects" className="flex flex-col pb-40">
-          <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-40 md:mb-64" />
-          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-32 md:mb-48" />
-          <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="pt-32 md:pt-64 mb-40 md:mb-64" />
-          <ProjectCategory title="THE EPIPHANIES" projects={projects.epiphanies} />
+        <section id="projects" className="flex flex-col pb-10 md:pb-20">
+          <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
+          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-10 md:mb-20" theme="dark" />
         </section>
 
         {/* Expanding Image Section */}
-        <section className="flex justify-center items-center pb-40 relative h-screen">
+        <section className="flex justify-center items-center pb-32 md:pb-48 relative h-screen">
           <motion.div 
             style={{ scale: circleScale }}
             className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20 shadow-2xl"
           >
             <img src={imgContent61} alt="Collage" className="w-full h-full object-cover" />
           </motion.div>
+        </section>
+
+        {/* 3D Design separated physically below the Expanding Image */}
+        <section className="flex flex-col pb-40">
+          <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-32 md:mb-48" theme="light" />
         </section>
 
       </div>
@@ -487,8 +481,10 @@ export default function Home() {
   );
 }
 
-function ProjectCategory({ title, projects, className = "" }: { title: string, projects: any[], className?: string }) {
+function ProjectCategory({ title, projects, className = "", theme = "dark" }: { title: string, projects: any[], className?: string, theme?: "dark" | "light" }) {
   const isBrandingLayout = projects.some(p => p.type === 'tall' || p.type === 'quarter');
+  // Always use light text on our dark animated background
+  const titleClass = theme === "light" ? "text-gray-300 opacity-40" : "text-gray-300 opacity-20";
 
   if (isBrandingLayout) {
     const full = projects.find(p => p.type === 'full');
@@ -496,8 +492,8 @@ function ProjectCategory({ title, projects, className = "" }: { title: string, p
     const quarters = projects.filter(p => p.type === 'quarter');
     
     return (
-      <div className={`${className}`}>
-        <h2 className="text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] text-gray-300 mb-12 uppercase opacity-20 text-center">{title}</h2>
+      <div className={className}>
+        <h2 className={`text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] mb-12 uppercase text-center ${titleClass}`}>{title}</h2>
         <div className="flex flex-col gap-4">
           <ProjectCard project={full} className="w-full h-[400px] md:h-[600px]" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:h-[600px]">
@@ -514,8 +510,8 @@ function ProjectCategory({ title, projects, className = "" }: { title: string, p
   }
 
   return (
-    <div className={`${className}`}>
-      <h2 className="text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] text-gray-300 mb-12 uppercase opacity-20 text-center">{title}</h2>
+    <div className={className}>
+      <h2 className={`text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] mb-12 uppercase text-center ${titleClass}`}>{title}</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((p, i) => (
@@ -568,11 +564,11 @@ function ProjectCard({ project: p, className = "" }: { project: any, className?:
           </div>
         </>
       ) : (
-        <div className="absolute inset-0 z-20 bg-black flex items-center justify-center">
+        <div className="absolute inset-0 z-20 bg-black flex items-center justify-center pointer-events-none">
           <iframe 
             width="100%" 
             height="100%" 
-            src={`https://www.youtube.com/embed/${p.videoId}?autoplay=1`} 
+            src={`https://www.youtube.com/embed/${p.videoId}?autoplay=1&mute=1&loop=1&playlist=${p.videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1`} 
             title="YouTube video player" 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
