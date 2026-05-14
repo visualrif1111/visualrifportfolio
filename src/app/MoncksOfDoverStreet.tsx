@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Instagram, Linkedin, Phone, ArrowLeft, X } from 'lucide-react';
+import { Instagram, Linkedin, Phone, ArrowLeft } from 'lucide-react';
 import Lenis from 'lenis';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
@@ -21,7 +21,22 @@ import imgRectangle40 from "../imports/MoncksOfDoverStreet-1-1/98ce850bbdf3b4c50
 import img59 from "../imports/MoncksOfDoverStreet-1-1/f80f56de89553ff9092250f835fb72a16d7651ec.png";
 import img49 from "../imports/MoncksOfDoverStreet-1-1/95f40c29a9e1ec3c4eea12fd128014d21b7ed557.png";
 
-import { VisualRifLogo } from "./components/VisualRifLogo";
+function VisualRifLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
+      <path d={svgPaths.p13c84500} fill="#50C1BA" />
+      <path d={svgPaths.p37476b00} fill="white" />
+      <path d={svgPaths.pa013800} fill="white" />
+      <path d={svgPaths.p630c200} fill="white" />
+      <path d={svgPaths.p349de6f0} fill="white" />
+      <path d={svgPaths.p39faef00} fill="white" />
+      <path d={svgPaths.p141d9280} fill="white" />
+      <path d={svgPaths.p4738e00} fill="white" />
+      <path d={svgPaths.pffcfbf0} fill="white" />
+      <path d={svgPaths.p2b767700} fill="white" />
+    </svg>
+  );
+}
 
 function SocialInstagram({ className = "" }: { className?: string }) {
   return (
@@ -63,10 +78,7 @@ export default function MoncksOfDoverStreet() {
   return (
     <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav 
-        className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between"
-        style={{ transform: 'translateZ(0)' }}
-      >
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -94,13 +106,11 @@ export default function MoncksOfDoverStreet() {
 
       {/* Mobile Nav */}
       <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/80 backdrop-blur-sm">
-        <div className="flex items-center gap-4">
-          <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
-            <ArrowLeft size={24} />
-          </button>
-          <div className="cursor-pointer flex items-center" onClick={() => navigate('/')}>
-            <VisualRifLogo className="w-[140px] h-[18px]" />
-          </div>
+        <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
+          <ArrowLeft size={24} />
+        </button>
+        <div className="cursor-pointer" onClick={() => navigate('/')}>
+          <VisualRifLogo className="w-[140px] h-[18px]" />
         </div>
       </nav>
 
@@ -257,49 +267,49 @@ export default function MoncksOfDoverStreet() {
             </div>
           </div>
         </section>
-      </div>
 
-      {/* Footer */}
-      <footer id="contact" className="bg-[#1c1c1e] py-16 px-6 md:px-12 md:pl-[280px]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-          <div>
-            <h3 className="text-xl font-medium tracking-widest text-[#50C1BA] mb-2 uppercase">VISUALRIF</h3>
-            <p className="text-sm tracking-widest uppercase text-gray-400 mb-6 font-medium">Multidisciplinary Designer</p>
-            
-            <div className="flex flex-col gap-3 text-sm tracking-wider text-gray-300 font-['Barlow',sans-serif]">
-              <a href="tel:07598078923" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
-                <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><Phone size={14} className="text-[#50C1BA]" /></div>
-                +44 7598 078923
-              </a>
-              <a href="mailto:hello@visualrif.com" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
-                <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-                hello@visualrif.com
-              </a>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                Brighton & Hove
+        {/* Footer */}
+        <footer className="bg-[#1c1c1e] py-16 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+            <div>
+              <h3 className="text-xl font-medium tracking-widest text-[#50C1BA] mb-2 uppercase">VISUALRIF</h3>
+              <p className="text-sm tracking-widest uppercase text-gray-400 mb-6 font-medium">Multidisciplinary Designer</p>
+              
+              <div className="flex flex-col gap-3 text-sm tracking-wider text-gray-300 font-['Barlow',sans-serif]">
+                <a href="tel:07598078923" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
+                  <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><Phone size={14} className="text-[#50C1BA]" /></div>
+                  +44 7598 078923
+                </a>
+                <a href="mailto:hello@visualrif.com" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
+                  <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+                  hello@visualrif.com
+                </a>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                  Brighton & Hove
+                </div>
               </div>
+            </div>
+            
+            <div className="flex gap-4">
+              <a href="https://www.instagram.com/visualrif" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                <Linkedin size={20} />
+              </a>
             </div>
           </div>
           
-          <div className="flex gap-4">
-            <a href="https://www.instagram.com/visualrif" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
-              <Instagram size={20} />
-            </a>
-            <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
-              <Linkedin size={20} />
-            </a>
+          <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-['Inter',sans-serif]">
+            <p>© 2026 VISUALRIF. All rights reserved.</p>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-white transition-colors">Privacy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms</a>
+            </div>
           </div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-['Inter',sans-serif]">
-          <p>© 2026 VISUALRIF. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 }

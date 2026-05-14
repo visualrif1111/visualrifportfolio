@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import { Instagram, Linkedin, Phone, ArrowLeft, X } from 'lucide-react';
+import { Instagram, Linkedin, Phone, ArrowLeft } from 'lucide-react';
 import Lenis from 'lenis';
 import { useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
-import { BackgroundVideo } from './components/BackgroundVideo';
 import '../styles/fonts.css';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
@@ -43,7 +42,22 @@ import imgImageDesktopMockup from "../imports/Visualrif-1/aca2bf96a01d37bd2387ad
 import imgImageDesignElement from "../imports/Visualrif-1/8d6b9f37409293f48dd5a87217cc54b21bc9c277.png";
 
 
-import { VisualRifLogo } from "./components/VisualRifLogo";
+function VisualRifLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
+      <path d={svgPaths.p13c84500} fill="#50C1BA" />
+      <path d={svgPaths.p37476b00} fill="white" />
+      <path d={svgPaths.pa013800} fill="white" />
+      <path d={svgPaths.p630c200} fill="white" />
+      <path d={svgPaths.p349de6f0} fill="white" />
+      <path d={svgPaths.p39faef00} fill="white" />
+      <path d={svgPaths.p141d9280} fill="white" />
+      <path d={svgPaths.p4738e00} fill="white" />
+      <path d={svgPaths.pffcfbf0} fill="white" />
+      <path d={svgPaths.p2b767700} fill="white" />
+    </svg>
+  );
+}
 
 function SocialInstagram({ className = "" }: { className?: string }) {
   return (
@@ -151,10 +165,7 @@ export default function Swiftrooms() {
   return (
     <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav 
-        className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between"
-        style={{ transform: 'translateZ(0)' }}
-      >
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -182,13 +193,11 @@ export default function Swiftrooms() {
 
       {/* Mobile Nav */}
       <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/80 backdrop-blur-sm">
-        <div className="flex items-center gap-4">
-          <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
-            <ArrowLeft size={24} />
-          </button>
-          <div className="cursor-pointer flex items-center" onClick={() => navigate('/')}>
-            <VisualRifLogo className="w-[140px] h-[18px]" />
-          </div>
+        <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
+          <ArrowLeft size={24} />
+        </button>
+        <div className="cursor-pointer" onClick={() => navigate('/')}>
+          <VisualRifLogo className="w-[140px] h-[18px]" />
         </div>
       </nav>
 
@@ -197,7 +206,14 @@ export default function Swiftrooms() {
         {/* Hero Section */}
         <section className="relative w-full h-[15vh] md:h-[20vh] lg:h-[20vh] overflow-hidden bg-transparent">
           <div className="absolute top-1/2 left-1/2 w-full min-w-[100vw] aspect-video -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.05]">
-            <BackgroundVideo videoId="V9vBGXX-GwA" />
+            <iframe 
+              className="w-full h-full" 
+              src="https://www.youtube.com/embed/V9vBGXX-GwA?autoplay=1&mute=1&loop=1&playlist=V9vBGXX-GwA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
+              title="Swiftrooms Hero Video" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
           </div>
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0 z-10">
@@ -323,7 +339,14 @@ export default function Swiftrooms() {
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">old landing page (syspee)</p>
               </div>
               <div className="aspect-video w-full rounded-lg overflow-hidden drop-shadow-2xl bg-black pointer-events-none">
-                <BackgroundVideo videoId="bxJykP0pURI" />
+                <iframe 
+                  className="w-full h-full" 
+                  src="https://www.youtube.com/embed/bxJykP0pURI?autoplay=1&mute=1&loop=1&playlist=bxJykP0pURI&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
+                  title="Old landing page" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
             <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
@@ -331,7 +354,14 @@ export default function Swiftrooms() {
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">new landing page (visualrif)</p>
               </div>
               <div className="aspect-video w-full rounded-lg overflow-hidden bg-black pointer-events-none">
-                <BackgroundVideo videoId="jRnbOu5_xlo" />
+                <iframe 
+                  className="w-full h-full" 
+                  src="https://www.youtube.com/embed/jRnbOu5_xlo?autoplay=1&mute=1&loop=1&playlist=jRnbOu5_xlo&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
+                  title="New landing page" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
             <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
@@ -349,7 +379,14 @@ export default function Swiftrooms() {
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto">
           <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] h-[60vh] md:h-[1000px] bg-black">
             <div className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none">
-              <BackgroundVideo videoId="aP4L7jnKxYA" />
+              <iframe 
+                className="w-full h-full" 
+                src="https://www.youtube.com/embed/aP4L7jnKxYA?autoplay=1&mute=1&loop=1&playlist=aP4L7jnKxYA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
+                title="Design Element Video" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </section>
@@ -434,49 +471,49 @@ export default function Swiftrooms() {
             </div>
           </div>
         </section>
-      </div>
 
-      {/* Footer */}
-      <footer id="contact" className="bg-[#1c1c1e] py-16 px-6 md:px-12 md:pl-[280px]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-          <div>
-            <h3 className="text-xl font-medium tracking-widest text-[#50C1BA] mb-2 uppercase">VISUALRIF</h3>
-            <p className="text-sm tracking-widest uppercase text-gray-400 mb-6 font-medium">Multidisciplinary Designer</p>
-            
-            <div className="flex flex-col gap-3 text-sm tracking-wider text-gray-300 font-['Barlow',sans-serif]">
-              <a href="tel:07598078923" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
-                <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><Phone size={14} className="text-[#50C1BA]" /></div>
-                +44 7598 078923
-              </a>
-              <a href="mailto:hello@visualrif.com" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
-                <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-                hello@visualrif.com
-              </a>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                Brighton & Hove
+        {/* Footer */}
+        <footer className="bg-[#1c1c1e] py-16 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+            <div>
+              <h3 className="text-xl font-medium tracking-widest text-[#50C1BA] mb-2 uppercase">VISUALRIF</h3>
+              <p className="text-sm tracking-widest uppercase text-gray-400 mb-6 font-medium">Multidisciplinary Designer</p>
+              
+              <div className="flex flex-col gap-3 text-sm tracking-wider text-gray-300 font-['Barlow',sans-serif]">
+                <a href="tel:07598078923" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
+                  <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><Phone size={14} className="text-[#50C1BA]" /></div>
+                  +44 7598 078923
+                </a>
+                <a href="mailto:hello@visualrif.com" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
+                  <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+                  hello@visualrif.com
+                </a>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                  Brighton & Hove
+                </div>
               </div>
+            </div>
+            
+            <div className="flex gap-4">
+              <a href="https://www.instagram.com/visualrif" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                <Linkedin size={20} />
+              </a>
             </div>
           </div>
           
-          <div className="flex gap-4">
-            <a href="https://www.instagram.com/visualrif" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
-              <Instagram size={20} />
-            </a>
-            <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
-              <Linkedin size={20} />
-            </a>
+          <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex justify-between items-center text-xs text-gray-500 font-['Inter',sans-serif]">
+            <p>© 2026 SWIFTROOMS. All rights reserved.</p>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-white transition-colors">Privacy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms</a>
+            </div>
           </div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-['Inter',sans-serif]">
-          <p>© 2026 VISUALRIF. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 }

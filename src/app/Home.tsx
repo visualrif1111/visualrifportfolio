@@ -3,8 +3,6 @@ import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { Instagram, Linkedin, Phone, X } from 'lucide-react';
 import Lenis from 'lenis';
 import { Link, useNavigate } from 'react-router';
-import { HeroBackgroundVideo } from './components/HeroBackgroundVideo';
-import { BackgroundVideo } from './components/BackgroundVideo';
 import '../styles/fonts.css';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
@@ -18,7 +16,6 @@ import imgRectangle19 from "figma:asset/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c
 import imgRectangle21 from "figma:asset/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.png";
 import imgRectangle22 from "figma:asset/61ed1cb628286e3a99aaaf636c61867b91992a4b.png";
 import imgContent61 from "figma:asset/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.png";
-import imgScreenshot from "../imports/Screenshot_2026-05-13_at_21.51.35.png";
 
 const timelineData = [
   {
@@ -92,7 +89,22 @@ const projects = {
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 import svgPathsFrame27 from "../imports/Frame27/svg-sniomcvdel";
 
-import { VisualRifLogo } from "./components/VisualRifLogo";
+function VisualRifLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
+      <path d={svgPaths.p13c84500} fill="#50C1BA" />
+      <path d={svgPaths.p37476b00} fill="white" />
+      <path d={svgPaths.pa013800} fill="white" />
+      <path d={svgPaths.p630c200} fill="white" />
+      <path d={svgPaths.p349de6f0} fill="white" />
+      <path d={svgPaths.p39faef00} fill="white" />
+      <path d={svgPaths.p141d9280} fill="white" />
+      <path d={svgPaths.p4738e00} fill="white" />
+      <path d={svgPaths.pffcfbf0} fill="white" />
+      <path d={svgPaths.p2b767700} fill="white" />
+    </svg>
+  );
+}
 
 const Diamond = ({ className = "" }: { className?: string }) => (
   <svg className={`w-3 h-3 ${className}`} viewBox="0 0 26.0181 26.018" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +269,12 @@ export default function Home() {
 
       {/* Hero Background Video */}
       <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
-        <HeroBackgroundVideo videoId="JtNM6X84Z0s" />
+        <iframe
+          src="https://www.youtube.com/embed/JtNM6X84Z0s?autoplay=1&mute=1&loop=1&playlist=JtNM6X84Z0s&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
+          className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
+          allow="autoplay; encrypted-media"
+          style={{ border: 0 }}
+        />
         <div className="absolute inset-0 bg-black/70"></div>
       </div>
 
@@ -399,7 +416,10 @@ export default function Home() {
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20 relative z-30">
           <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
-          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-32 md:mb-48" theme="dark" />
+          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-64 md:mb-96" theme="dark" />
+          <div className="pt-20 md:pt-40">
+            <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-10 md:mb-20" theme="light" />
+          </div>
         </section>
 
         {/* Expanding Image Section */}
@@ -410,16 +430,6 @@ export default function Home() {
           >
             <img src={imgContent61} alt="Collage" className="w-full h-full object-cover" />
           </motion.div>
-        </section>
-
-        {/* 3D Design (Completely Separated) */}
-        <section id="3d-design" className="flex flex-col pt-32 md:pt-48 pb-10 md:pb-20 relative z-30">
-          <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-10 md:mb-20" theme="light" />
-          
-          {/* Screenshot below 3D Design */}
-          <div className="w-full flex justify-center mb-10 md:mb-20">
-            <img src={imgScreenshot} alt="3D Design Showcase" className="w-full max-w-5xl rounded-lg border border-gray-800 shadow-2xl" />
-          </div>
         </section>
 
       </div>
@@ -553,9 +563,17 @@ function ProjectCard({ project: p, className = "" }: { project: any, className?:
         </>
       ) : (
         <div className="absolute inset-0 z-20 bg-black flex items-center justify-center pointer-events-none">
-          <BackgroundVideo videoId={p.videoId} />
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src={`https://www.youtube.com/embed/${p.videoId}?autoplay=1&mute=1&loop=1&playlist=${p.videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1`} 
+            title="YouTube video player" 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen
+          ></iframe>
           <button 
-            className="absolute top-4 right-4 text-white hover:text-[#50C1BA] transition-colors bg-black/50 p-2 rounded-full z-30 pointer-events-auto"
+            className="absolute top-4 right-4 text-white hover:text-[#50C1BA] transition-colors bg-black/50 p-2 rounded-full z-30"
             onClick={(e) => {
               e.stopPropagation();
               setIsVideoOpen(false);
