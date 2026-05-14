@@ -4,6 +4,7 @@ import { Instagram, Linkedin, Phone, ArrowLeft, X } from 'lucide-react';
 import Lenis from 'lenis';
 import { useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
+import { BackgroundVideo } from './components/BackgroundVideo';
 import '../styles/fonts.css';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
@@ -42,22 +43,7 @@ import imgImageDesktopMockup from "../imports/Visualrif-1/aca2bf96a01d37bd2387ad
 import imgImageDesignElement from "../imports/Visualrif-1/8d6b9f37409293f48dd5a87217cc54b21bc9c277.png";
 
 
-function VisualRifLogo({ className = "" }: { className?: string }) {
-  return (
-    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
-      <path d={svgPaths.p13c84500} fill="#50C1BA" />
-      <path d={svgPaths.p37476b00} fill="white" />
-      <path d={svgPaths.pa013800} fill="white" />
-      <path d={svgPaths.p630c200} fill="white" />
-      <path d={svgPaths.p349de6f0} fill="white" />
-      <path d={svgPaths.p39faef00} fill="white" />
-      <path d={svgPaths.p141d9280} fill="white" />
-      <path d={svgPaths.p4738e00} fill="white" />
-      <path d={svgPaths.pffcfbf0} fill="white" />
-      <path d={svgPaths.p2b767700} fill="white" />
-    </svg>
-  );
-}
+import { VisualRifLogo } from "./components/VisualRifLogo";
 
 function SocialInstagram({ className = "" }: { className?: string }) {
   return (
@@ -165,7 +151,10 @@ export default function Swiftrooms() {
   return (
     <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
+      <nav 
+        className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between"
+        style={{ transform: 'translateZ(0)' }}
+      >
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -193,11 +182,13 @@ export default function Swiftrooms() {
 
       {/* Mobile Nav */}
       <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/80 backdrop-blur-sm">
-        <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
-          <ArrowLeft size={24} />
-        </button>
-        <div className="cursor-pointer" onClick={() => navigate('/')}>
-          <VisualRifLogo className="w-[140px] h-[18px]" />
+        <div className="flex items-center gap-4">
+          <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
+            <ArrowLeft size={24} />
+          </button>
+          <div className="cursor-pointer flex items-center" onClick={() => navigate('/')}>
+            <VisualRifLogo className="w-[140px] h-[18px]" />
+          </div>
         </div>
       </nav>
 
@@ -206,14 +197,7 @@ export default function Swiftrooms() {
         {/* Hero Section */}
         <section className="relative w-full h-[15vh] md:h-[20vh] lg:h-[20vh] overflow-hidden bg-transparent">
           <div className="absolute top-1/2 left-1/2 w-full min-w-[100vw] aspect-video -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.05]">
-            <iframe 
-              className="w-full h-full" 
-              src="https://www.youtube.com/embed/V9vBGXX-GwA?autoplay=1&mute=1&loop=1&playlist=V9vBGXX-GwA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
-              title="Swiftrooms Hero Video" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
-            ></iframe>
+            <BackgroundVideo videoId="V9vBGXX-GwA" />
           </div>
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0 z-10">
@@ -339,14 +323,7 @@ export default function Swiftrooms() {
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">old landing page (syspee)</p>
               </div>
               <div className="aspect-video w-full rounded-lg overflow-hidden drop-shadow-2xl bg-black pointer-events-none">
-                <iframe 
-                  className="w-full h-full" 
-                  src="https://www.youtube.com/embed/bxJykP0pURI?autoplay=1&mute=1&loop=1&playlist=bxJykP0pURI&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
-                  title="Old landing page" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
+                <BackgroundVideo videoId="bxJykP0pURI" />
               </div>
             </div>
             <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
@@ -354,14 +331,7 @@ export default function Swiftrooms() {
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">new landing page (visualrif)</p>
               </div>
               <div className="aspect-video w-full rounded-lg overflow-hidden bg-black pointer-events-none">
-                <iframe 
-                  className="w-full h-full" 
-                  src="https://www.youtube.com/embed/jRnbOu5_xlo?autoplay=1&mute=1&loop=1&playlist=jRnbOu5_xlo&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
-                  title="New landing page" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
+                <BackgroundVideo videoId="jRnbOu5_xlo" />
               </div>
             </div>
             <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
@@ -379,14 +349,7 @@ export default function Swiftrooms() {
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto">
           <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] h-[60vh] md:h-[1000px] bg-black">
             <div className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none">
-              <iframe 
-                className="w-full h-full" 
-                src="https://www.youtube.com/embed/aP4L7jnKxYA?autoplay=1&mute=1&loop=1&playlist=aP4L7jnKxYA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
-                title="Design Element Video" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-              ></iframe>
+              <BackgroundVideo videoId="aP4L7jnKxYA" />
             </div>
           </div>
         </section>

@@ -21,22 +21,7 @@ import imgRectangle40 from "../imports/MoncksOfDoverStreet-1-1/98ce850bbdf3b4c50
 import img59 from "../imports/MoncksOfDoverStreet-1-1/f80f56de89553ff9092250f835fb72a16d7651ec.png";
 import img49 from "../imports/MoncksOfDoverStreet-1-1/95f40c29a9e1ec3c4eea12fd128014d21b7ed557.png";
 
-function VisualRifLogo({ className = "" }: { className?: string }) {
-  return (
-    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
-      <path d={svgPaths.p13c84500} fill="#50C1BA" />
-      <path d={svgPaths.p37476b00} fill="white" />
-      <path d={svgPaths.pa013800} fill="white" />
-      <path d={svgPaths.p630c200} fill="white" />
-      <path d={svgPaths.p349de6f0} fill="white" />
-      <path d={svgPaths.p39faef00} fill="white" />
-      <path d={svgPaths.p141d9280} fill="white" />
-      <path d={svgPaths.p4738e00} fill="white" />
-      <path d={svgPaths.pffcfbf0} fill="white" />
-      <path d={svgPaths.p2b767700} fill="white" />
-    </svg>
-  );
-}
+import { VisualRifLogo } from "./components/VisualRifLogo";
 
 function SocialInstagram({ className = "" }: { className?: string }) {
   return (
@@ -78,7 +63,10 @@ export default function MoncksOfDoverStreet() {
   return (
     <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
+      <nav 
+        className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between"
+        style={{ transform: 'translateZ(0)' }}
+      >
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -106,11 +94,13 @@ export default function MoncksOfDoverStreet() {
 
       {/* Mobile Nav */}
       <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/80 backdrop-blur-sm">
-        <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
-          <ArrowLeft size={24} />
-        </button>
-        <div className="cursor-pointer" onClick={() => navigate('/')}>
-          <VisualRifLogo className="w-[140px] h-[18px]" />
+        <div className="flex items-center gap-4">
+          <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
+            <ArrowLeft size={24} />
+          </button>
+          <div className="cursor-pointer flex items-center" onClick={() => navigate('/')}>
+            <VisualRifLogo className="w-[140px] h-[18px]" />
+          </div>
         </div>
       </nav>
 
