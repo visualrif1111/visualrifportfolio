@@ -3,7 +3,9 @@ import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { Instagram, Linkedin, Phone, X } from 'lucide-react';
 import Lenis from 'lenis';
 import { Link, useNavigate } from 'react-router';
+import YouTube from 'react-youtube';
 import '../styles/fonts.css';
+import { HeroBackgroundVideo } from './components/HeroBackgroundVideo';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
@@ -89,7 +91,7 @@ const projects = {
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 import svgPathsFrame27 from "../imports/Frame27/svg-sniomcvdel";
 
-function VisualRifLogo({ className = "" }: { className?: string }) {
+const VisualRifLogo = React.memo(({ className = "" }: { className?: string }) => {
   return (
     <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
       <path d={svgPaths.p13c84500} fill="#50C1BA" />
@@ -104,54 +106,54 @@ function VisualRifLogo({ className = "" }: { className?: string }) {
       <path d={svgPaths.p2b767700} fill="white" />
     </svg>
   );
-}
+});
 
-const Diamond = ({ className = "" }: { className?: string }) => (
+const Diamond = React.memo(({ className = "" }: { className?: string }) => (
   <svg className={`w-3 h-3 ${className}`} viewBox="0 0 26.0181 26.018" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d={svgPathsFrame27.p16002240} fill="#50C1BA" />
   </svg>
-);
+));
 
-function ArifLogo({ className = "" }: { className?: string }) {
+const ArifLogo = React.memo(({ className = "" }: { className?: string }) => {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 78.2791 78.279">
       <path d={svgPaths.p2e710980} fill="#50C1BA" />
       <path d={svgPaths.p10597380} fill="#50C1BA" />
     </svg>
   );
-}
+});
 
-function ScrollTriangle({ className = "" }: { className?: string }) {
+const ScrollTriangle = React.memo(({ className = "" }: { className?: string }) => {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 22.8536 19.7918">
       <path d={svgPaths.p1ef2d800} fill="currentColor" />
     </svg>
   );
-}
+});
 
-function SocialInstagram({ className = "" }: { className?: string }) {
+const SocialInstagram = React.memo(({ className = "" }: { className?: string }) => {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
       <path d={svgPaths.p386b1640} fill="currentColor" />
     </svg>
   );
-}
+});
 
-function SocialLinkedin({ className = "" }: { className?: string }) {
+const SocialLinkedin = React.memo(({ className = "" }: { className?: string }) => {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
       <path clipRule="evenodd" d={svgPaths.p1a85db80} fill="currentColor" fillRule="evenodd" />
     </svg>
   );
-}
+});
 
-function SocialPhone({ className = "" }: { className?: string }) {
+const SocialPhone = React.memo(({ className = "" }: { className?: string }) => {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 14.1371 14.1373">
       <path d={svgPaths.p35dc3720} fill="currentColor" />
     </svg>
   );
-}
+});
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -204,25 +206,32 @@ export default function Home() {
       autoRaf: true,
     });
 
+    let rafId: number;
     const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        const sections = ['home', 'about', 'projects', 'contact'];
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const { offsetTop, offsetHeight } = element;
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              setActiveSection(section);
+              break;
+            }
           }
         }
-      }
+        rafId = 0;
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);
@@ -319,10 +328,11 @@ export default function Home() {
       </div>
 
       <div ref={portraitRef} className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center">
-        <motion.img 
+        <motion.img
           style={{ y: portraitY, x: "7%" }}
-          src={imgRectangle38} 
-          alt="Arif"
+          src={imgRectangle38}
+          alt="Arif portrait"
+          loading="lazy"
           className="w-full max-w-[1920px] h-[120%] object-contain object-center absolute top-[-10%]"
         />
       </div>
@@ -416,22 +426,18 @@ export default function Home() {
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20">
           <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
-          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-10 md:mb-20" theme="dark" />
+          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-32 md:mb-48" theme="dark" />
+          <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-32 md:mb-48" theme="light" />
         </section>
 
         {/* Expanding Image Section */}
         <section className="flex justify-center items-center pb-32 md:pb-48 relative h-screen">
-          <motion.div 
+          <motion.div
             style={{ scale: circleScale }}
             className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20 shadow-2xl"
           >
             <img src={imgContent61} alt="Collage" className="w-full h-full object-cover" />
           </motion.div>
-        </section>
-
-        {/* 3D Design separated physically below the Expanding Image */}
-        <section className="flex flex-col pb-40">
-          <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-32 md:mb-48" theme="light" />
         </section>
 
       </div>
@@ -526,14 +532,25 @@ function ProjectCategory({ title, projects, className = "", theme = "dark" }: { 
   );
 }
 
-function ProjectCard({ project: p, className = "" }: { project: any, className?: string }) {
+const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, className?: string }) => {
   const [isVideoOpen, setIsVideoOpen] = React.useState(false);
   const navigate = useNavigate();
+
+  const handleVideoReady = React.useCallback((event: any) => {
+    event.target.playVideo();
+    event.target.mute();
+  }, []);
+
+  const handleVideoStateChange = React.useCallback((event: any) => {
+    if (event.data === 0) {
+      event.target.playVideo();
+    }
+  }, []);
 
   if (!p) return null;
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -549,7 +566,7 @@ function ProjectCard({ project: p, className = "" }: { project: any, className?:
     >
       {!isVideoOpen ? (
         <>
-          <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+          <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
           <div className="absolute inset-0 bg-black/50 pointer-events-none" />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center z-10">
             <h3 className="text-2xl tracking-widest font-medium mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">{p.title}</h3>
@@ -565,17 +582,31 @@ function ProjectCard({ project: p, className = "" }: { project: any, className?:
         </>
       ) : (
         <div className="absolute inset-0 z-20 bg-black flex items-center justify-center pointer-events-none">
-          <iframe 
-            width="100%" 
-            height="100%" 
-            src={`https://www.youtube.com/embed/${p.videoId}?autoplay=1&mute=1&loop=1&playlist=${p.videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1`} 
-            title="YouTube video player" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen
-          ></iframe>
-          <button 
-            className="absolute top-4 right-4 text-white hover:text-[#50C1BA] transition-colors bg-black/50 p-2 rounded-full z-30"
+          <YouTube
+            videoId={p.videoId}
+            opts={{
+              height: '100%',
+              width: '100%',
+              playerVars: {
+                autoplay: 1,
+                mute: 1,
+                loop: 1,
+                playlist: p.videoId,
+                controls: 0,
+                modestbranding: 1,
+                rel: 0,
+                iv_load_policy: 3,
+                disablekb: 1,
+                playsinline: 1,
+              },
+            }}
+            onReady={handleVideoReady}
+            onStateChange={handleVideoStateChange}
+            className="w-full h-full"
+            iframeClassName="w-full h-full"
+          />
+          <button
+            className="absolute top-4 right-4 text-white hover:text-[#50C1BA] transition-colors bg-black/50 p-2 rounded-full z-30 pointer-events-auto"
             onClick={(e) => {
               e.stopPropagation();
               setIsVideoOpen(false);
@@ -587,4 +618,4 @@ function ProjectCard({ project: p, className = "" }: { project: any, className?:
       )}
     </motion.div>
   );
-}
+});
