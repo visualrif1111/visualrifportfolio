@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router";
 import { Root } from "./Root";
 import Home from "./Home";
 import MoncksOfDoverStreet from "./MoncksOfDoverStreet";
-import Swiftrooms from "./Swiftrooms";
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +10,6 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: "projects/moncks-of-dover-street", Component: MoncksOfDoverStreet },
-      { path: "projects/swiftrooms", Component: Swiftrooms },
     ],
   },
 ]);
