@@ -5,6 +5,7 @@ import Lenis from 'lenis';
 import { useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
+import { Footer } from './components/Footer';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -85,6 +86,22 @@ function SocialPhone({ className = "" }: { className?: string }) {
 
 function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
   const [player, setPlayer] = useState<any>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   const handleReady = (event: any) => {
     setPlayer(event.target);
@@ -116,35 +133,72 @@ function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
 
   return (
     <div 
+      ref={ref}
       className="relative w-full h-full cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
       <div className="absolute inset-0 z-10 cursor-pointer"></div>
-      <YouTube
-        videoId={videoId}
-        opts={{
-          height: '100%',
-          width: '100%',
-          playerVars: {
-            autoplay: 1,
-            mute: 1,
-            loop: 1,
-            playlist: videoId,
-            controls: 0,
-            modestbranding: 1,
-            playsinline: 1,
-            rel: 0,
-            showinfo: 0,
-            iv_load_policy: 3,
-            disablekb: 1
-          },
-        }}
-        onReady={handleReady}
-        className="w-full h-full scale-[1.05] pointer-events-none"
-        iframeClassName="w-full h-full"
-      />
+      {isIntersecting && (
+        <YouTube
+          videoId={videoId}
+          opts={{
+            height: '100%',
+            width: '100%',
+            playerVars: {
+              autoplay: 1,
+              mute: 1,
+              loop: 1,
+              playlist: videoId,
+              controls: 0,
+              modestbranding: 1,
+              playsinline: 1,
+              rel: 0,
+              showinfo: 0,
+              iv_load_policy: 3,
+              disablekb: 1
+            },
+          }}
+          onReady={handleReady}
+          className="w-full h-full scale-[1.05] pointer-events-none"
+          iframeClassName="w-full h-full pointer-events-none"
+        />
+      )}
+    </div>
+  );
+}
+
+function LazyIframe({ src, title, className }: { src: string, title: string, className?: string }) {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className={`w-full h-full ${className || ''}`}>
+      {isIntersecting && (
+        <iframe
+          className="w-full h-full"
+          src={src}
+          title={title}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      )}
     </div>
   );
 }
@@ -157,7 +211,17 @@ export default function Swiftrooms() {
       autoRaf: true,
     });
 
+    let resizeTimer: NodeJS.Timeout;
+    const resizeObserver = new ResizeObserver(() => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        lenis.resize();
+      }, 150);
+    });
+    resizeObserver.observe(document.body);
+
     return () => {
+      resizeObserver.disconnect();
       lenis.destroy();
     };
   }, []);
@@ -284,14 +348,14 @@ export default function Swiftrooms() {
           </div>
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="w-full relative">
-              <img src={imgImageLaptopMockup} alt="Laptop Mockup" className="w-full h-auto object-cover rounded-lg" />
+              <img src={imgImageLaptopMockup} alt="Laptop Mockup" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px]" />
             </div>
             <div className="grid grid-cols-2 gap-6 w-full">
               <div className="relative">
-                <img src={imgImageMobileMockup} alt="Mobile Mockup" className="w-full h-auto object-cover rounded-lg" />
+                <img src={imgImageMobileMockup} alt="Mobile Mockup" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[200px] md:min-h-[400px]" />
               </div>
               <div className="relative">
-                <img src={imgImageDesktopMockup} alt="Desktop Mockup" className="w-full h-auto object-cover rounded-lg" />
+                <img src={imgImageDesktopMockup} alt="Desktop Mockup" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[200px] md:min-h-[400px]" />
               </div>
             </div>
             <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mt-4 text-center lg:text-left">
@@ -339,14 +403,10 @@ export default function Swiftrooms() {
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">old landing page (syspee)</p>
               </div>
               <div className="aspect-video w-full rounded-lg overflow-hidden drop-shadow-2xl bg-black pointer-events-none">
-                <iframe 
-                  className="w-full h-full" 
+                <LazyIframe 
                   src="https://www.youtube.com/embed/bxJykP0pURI?autoplay=1&mute=1&loop=1&playlist=bxJykP0pURI&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
                   title="Old landing page" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
+                />
               </div>
             </div>
             <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
@@ -354,14 +414,10 @@ export default function Swiftrooms() {
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">new landing page (visualrif)</p>
               </div>
               <div className="aspect-video w-full rounded-lg overflow-hidden bg-black pointer-events-none">
-                <iframe 
-                  className="w-full h-full" 
+                <LazyIframe 
                   src="https://www.youtube.com/embed/jRnbOu5_xlo?autoplay=1&mute=1&loop=1&playlist=jRnbOu5_xlo&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
                   title="New landing page" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
+                />
               </div>
             </div>
             <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
@@ -379,14 +435,10 @@ export default function Swiftrooms() {
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto">
           <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] h-[60vh] md:h-[1000px] bg-black">
             <div className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none">
-              <iframe 
-                className="w-full h-full" 
+              <LazyIframe 
                 src="https://www.youtube.com/embed/aP4L7jnKxYA?autoplay=1&mute=1&loop=1&playlist=aP4L7jnKxYA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
                 title="Design Element Video" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-              ></iframe>
+              />
             </div>
           </div>
         </section>
@@ -402,7 +454,7 @@ export default function Swiftrooms() {
                  imgScene8A2, imgScene8B2, imgScene92, imgScene9A2, img202503191215262
                ].map((img, idx) => (
                  <div key={idx} className="relative aspect-square">
-                   <img src={img} alt={`Storyboard Scene ${idx}`} className="w-full h-full object-cover" />
+                   <img src={img} alt={`Storyboard Scene ${idx}`} loading="lazy" className="w-full h-full object-cover" />
                  </div>
                ))}
              </div>
@@ -433,10 +485,10 @@ export default function Swiftrooms() {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-[1920px] mx-auto px-6 md:px-12 w-full">
               <div className="relative w-full">
-                <img src={imgImage3} alt="Sitemap" className="w-full h-auto object-contain bg-white rounded-lg p-4" />
+                <img src={imgImage3} alt="Sitemap" loading="lazy" className="w-full h-auto object-contain bg-white rounded-lg p-4 min-h-[300px] md:min-h-[500px]" />
               </div>
               <div className="relative w-full">
-                <img src={importedImage3} alt="Wireframes and Content Request" className="w-full h-auto object-cover rounded-lg" />
+                <img src={importedImage3} alt="Wireframes and Content Request" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px]" />
               </div>
             </div>
         </section>
@@ -473,46 +525,7 @@ export default function Swiftrooms() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-[#1c1c1e] py-16 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-            <div>
-              <h3 className="text-xl font-medium tracking-widest text-[#50C1BA] mb-2 uppercase">VISUALRIF</h3>
-              <p className="text-sm tracking-widest uppercase text-gray-400 mb-6 font-medium">Multidisciplinary Designer</p>
-              
-              <div className="flex flex-col gap-3 text-sm tracking-wider text-gray-300 font-['Barlow',sans-serif]">
-                <a href="tel:07598078923" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
-                  <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><Phone size={14} className="text-[#50C1BA]" /></div>
-                  +44 7598 078923
-                </a>
-                <a href="mailto:hello@visualrif.com" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
-                  <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-                  hello@visualrif.com
-                </a>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                  Brighton & Hove
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex gap-4">
-              <a href="https://www.instagram.com/visualrif" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
-          
-          <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex justify-between items-center text-xs text-gray-500 font-['Inter',sans-serif]">
-            <p>© 2026 SWIFTROOMS. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-            </div>
-          </div>
-        </footer>
+        <Footer className="md:pl-[280px]" />
       </div>
     </div>
   );

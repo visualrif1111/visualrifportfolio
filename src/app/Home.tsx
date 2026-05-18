@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { HeroBackgroundVideo } from './components/HeroBackgroundVideo';
+import { Footer } from './components/Footer';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
@@ -20,22 +21,6 @@ import imgRectangle22 from "figma:asset/61ed1cb628286e3a99aaaf636c61867b91992a4b
 import imgContent61 from "figma:asset/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.png";
 
 const timelineData = [
-  {
-    year: "2013",
-    location: "THE WARREN SCHOOL — LONDON",
-    title: "EARLY CREATIVE FOUNDATIONS",
-    subtitle: "First exposure to understanding the career path of Graphic Design. Recognised by Art teacher for my interest in Adobe Suite as I began selling Youtube background in School. Particularly Inspirational Illustrators such as Shepard Fairey, Cris Vector. Contemporary artists like Banksy.",
-    focus: "• Creative software fundamentals; Adobe Illustrator, MAC OS\n• Artist Inspirations & Research\n• Design experimentation",
-    keyLearning: "Developed an early understanding of how design can shape identity, emotion, and communication."
-  },
-  {
-    year: "2014",
-    location: "WORK EXPERIENCE — LONDON",
-    title: "INTRODUCTION TO PRINT & PRODUCTION",
-    subtitle: "Gained first-hand exposure to professional print workflows and the realities of commercial design production.",
-    focus: "• Print preparation\n• Production workflows\n• Industry processes",
-    keyLearning: "Learned the importance of precision, organisation, and designing with real-world production constraints in mind."
-  },
   {
     year: "2016",
     location: "EAST END PRINTERS — LONDON",
@@ -57,7 +42,7 @@ const timelineData = [
     location: "FREELANCE & COMMUNITY-BASED DESIGN — SHREWSBURY",
     title: "INDEPENDENT BRAND BUILDING",
     subtitle: "Built a recognised creative presence within online communities through branding, digital assets, and visual identity work.",
-    focus: "• Brand identity\n• Community-driven design\n• Digital asset creation\n• Creative direction",
+    focus: "• Brand identity\n• Community-driven design\n��� Digital asset creation\n• Creative direction",
     keyLearning: "Learned how strong visual identity and consistent branding can build engagement, trust, and community recognition."
   },
   {
@@ -206,6 +191,15 @@ export default function Home() {
       autoRaf: true,
     });
 
+    let resizeTimer: NodeJS.Timeout;
+    const resizeObserver = new ResizeObserver(() => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        lenis.resize();
+      }, 150);
+    });
+    resizeObserver.observe(document.body);
+
     let rafId: number;
     const handleScroll = () => {
       if (rafId) return;
@@ -230,6 +224,7 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener('scroll', handleScroll);
       if (rafId) cancelAnimationFrame(rafId);
       lenis.destroy();
@@ -280,14 +275,14 @@ export default function Home() {
       <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
         <iframe
           src="https://www.youtube.com/embed/_4cuwDSUX4Y?autoplay=1&mute=1&loop=1&playlist=_4cuwDSUX4Y&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
-          className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           allow="autoplay; encrypted-media"
           style={{ border: 0 }}
         />
         <div className="absolute inset-0 bg-black/70"></div>
       </div>
 
-      <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-hidden">
+      <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
         {/* Hero Section */}
         <section id="home" className="h-[calc(100vh-6rem)] md:h-screen flex flex-col items-center justify-between relative w-full pt-16 md:pt-32 pb-8 md:pb-12">
           {/* Centered Content */}
@@ -337,7 +332,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-hidden">
+      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
         <div className="h-16 md:h-24"></div>
 
         {/* Marquee */}
@@ -369,12 +364,12 @@ export default function Home() {
           onMouseMove={handleTimelineMouseMove}
           className={`w-full overflow-x-auto hide-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pb-32 ${isDraggingTimeline ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
         >
-          <div className={`w-max flex relative px-[10vw] min-h-[700px] ${isDraggingTimeline ? 'pointer-events-none' : ''}`}>
+          <div className={`min-w-full w-max flex justify-center relative px-[5vw] md:px-[10vw] min-h-[700px] ${isDraggingTimeline ? 'pointer-events-none' : ''}`}>
             {/* The top horizontal line */}
             <div className="absolute top-[28px] left-0 right-0 h-[1px] bg-[#2E3642] group-hover/timeline:bg-[#50C1BA]/50 transition-colors duration-700" />
             
             {/* The bottom horizontal line */}
-            <div className="absolute top-[482px] left-0 right-0 h-[1px] bg-[#2E3642] group-hover/timeline:bg-[#50C1BA]/50 transition-colors duration-700" />
+            <div className="absolute top-[530px] left-0 right-0 h-[1px] bg-[#2E3642] group-hover/timeline:bg-[#50C1BA]/50 transition-colors duration-700" />
             
             {timelineData.map((item, i) => (
               <motion.div 
@@ -387,13 +382,13 @@ export default function Home() {
               >
                 {/* Node Top (Diamond overlaps the top horizontal line) */}
                 <div className="h-[56px] flex items-center justify-center relative z-10 w-full mb-6">
-                  <div className="w-10 h-10 md:w-[46px] md:h-[46px] flex items-center justify-center bg-black transition-transform duration-300 group-hover/item:scale-110">
+                  <div className="w-10 h-10 md:w-[46px] md:h-[46px] flex items-center justify-center transition-transform duration-300 group-hover/item:scale-110">
                     <ArifLogo className="w-full h-full" />
                   </div>
                 </div>
 
                 {/* Body Content (between top and bottom lines) */}
-                <div className="flex flex-col items-center text-center h-[420px] justify-start w-full px-4">
+                <div className="flex flex-col items-center text-center h-[450px] justify-start w-full px-4">
                   <h3 className="font-['Barlow_Semi_Condensed',sans-serif] text-[22px] md:text-[26px] font-semibold text-white tracking-[0.15em] leading-none mb-3 group-hover/item:text-[#50C1BA] transition-colors">{item.year}</h3>
                   <p className="font-['Inter',sans-serif] text-[9px] md:text-[10px] text-gray-400 tracking-[0.2em] uppercase mb-8 leading-none">{item.location}</p>
                   
@@ -401,8 +396,8 @@ export default function Home() {
                   <p className="font-['Rajdhani',sans-serif] text-[10px] md:text-[12px] text-white tracking-[0.15em] uppercase mb-8 leading-tight max-w-[250px]">{item.subtitle}</p>
                   
                   <div className="flex-1 flex flex-col justify-end pb-4">
-                    <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[8px] md:text-[9px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">FOCUS</p>
-                    <p className="font-['Rajdhani',sans-serif] text-[10px] md:text-[11px] text-gray-400 tracking-[0.15em] uppercase max-w-[250px] leading-snug whitespace-pre-wrap group-hover/item:text-gray-300 transition-colors">{item.focus}</p>
+                    <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[10px] md:text-[11px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">FOCUS</p>
+                    <p className="font-['Rajdhani',sans-serif] text-[12px] md:text-[13px] text-gray-400 tracking-[0.15em] uppercase max-w-[250px] leading-snug whitespace-pre-wrap group-hover/item:text-gray-300 transition-colors">{item.focus}</p>
                   </div>
                 </div>
 
@@ -412,9 +407,9 @@ export default function Home() {
                 </div>
 
                 {/* Below Line */}
-                <div className="flex flex-col items-center text-center mt-12 md:mt-16 opacity-70 group-hover/item:opacity-100 transition-opacity duration-300 pt-2 px-4 w-full">
-                  <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[8px] md:text-[9px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">KEY LEARNING</p>
-                  <p className="font-['Rajdhani',sans-serif] text-[9px] md:text-[10px] text-gray-400 tracking-[0.15em] uppercase max-w-[280px] leading-relaxed group-hover/item:text-gray-300 transition-colors">{item.keyLearning}</p>
+                <div className="flex flex-col items-center text-center mt-12 md:mt-24 opacity-70 group-hover/item:opacity-100 transition-opacity duration-300 pt-2 px-4 w-full">
+                  <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[10px] md:text-[11px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">KEY LEARNING</p>
+                  <p className="font-['Rajdhani',sans-serif] text-[11px] md:text-[12px] text-gray-400 tracking-[0.15em] uppercase max-w-[280px] leading-relaxed group-hover/item:text-gray-300 transition-colors">{item.keyLearning}</p>
                 </div>
               </motion.div>
             ))}
@@ -422,7 +417,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-hidden">
+      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20">
           <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
@@ -442,47 +437,7 @@ export default function Home() {
 
       </div>
 
-      {/* Footer */}
-      <footer id="contact" className="bg-[#1c1c1e] py-16 px-6 md:px-12 md:pl-[280px]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-          <div>
-            <h3 className="text-xl font-medium tracking-widest text-[#50C1BA] mb-2 uppercase">VISUALRIF</h3>
-            <p className="text-sm tracking-widest uppercase text-gray-400 mb-6 font-medium">Multidisciplinary Designer</p>
-            
-            <div className="flex flex-col gap-3 text-sm tracking-wider text-gray-300 font-['Barlow',sans-serif]">
-              <a href="tel:07598078923" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
-                <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><Phone size={14} className="text-[#50C1BA]" /></div>
-                +44 7598 078923
-              </a>
-              <a href="mailto:hello@visualrif.com" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
-                <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-                hello@visualrif.com
-              </a>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                Brighton & Hove
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex gap-4">
-            <a href="https://www.instagram.com/visualrif" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
-              <Instagram size={20} />
-            </a>
-            <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
-              <Linkedin size={20} />
-            </a>
-          </div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-['Inter',sans-serif]">
-          <p>© 2026 VISUALRIF. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer className="md:pl-[280px]" />
     </div>
   );
 }
@@ -603,7 +558,7 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
             onReady={handleVideoReady}
             onStateChange={handleVideoStateChange}
             className="w-full h-full"
-            iframeClassName="w-full h-full"
+            iframeClassName="w-full h-full pointer-events-none"
           />
           <button
             className="absolute top-4 right-4 text-white hover:text-[#50C1BA] transition-colors bg-black/50 p-2 rounded-full z-30 pointer-events-auto"
