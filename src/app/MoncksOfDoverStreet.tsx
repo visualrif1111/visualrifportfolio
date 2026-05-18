@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Instagram, Linkedin, Phone, ArrowLeft } from 'lucide-react';
-import Lenis from 'lenis';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
@@ -66,26 +65,10 @@ function SocialPhone({ className = "" }: { className?: string }) {
 export default function MoncksOfDoverStreet() {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const lenis = new Lenis({
-      autoRaf: true,
-    });
-
-    const resizeObserver = new ResizeObserver(() => {
-      lenis.resize();
-    });
-    resizeObserver.observe(document.body);
-
-    return () => {
-      resizeObserver.disconnect();
-      lenis.destroy();
-    };
-  }, []);
-
   return (
     <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -112,7 +95,7 @@ export default function MoncksOfDoverStreet() {
       </nav>
 
       {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/80 backdrop-blur-sm">
+      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
         <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
           <ArrowLeft size={24} />
         </button>
@@ -188,14 +171,14 @@ export default function MoncksOfDoverStreet() {
           </div>
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="w-full relative">
-              <img src={imgRectangle23} alt="Laptop Mockup" className="w-full h-auto object-cover rounded-lg" />
+              <img src={imgRectangle23} alt="Laptop Mockup" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover rounded-lg" />
             </div>
             <div className="grid grid-cols-2 gap-6 w-full">
               <div className="relative">
-                <img src={imgRectangle24} alt="Mobile Mockup" className="w-full h-auto object-cover rounded-lg" />
+                <img src={imgRectangle24} alt="Mobile Mockup" loading="lazy" className="w-full h-auto min-h-[200px] md:min-h-[400px] object-cover rounded-lg" />
               </div>
               <div className="relative">
-                <img src={imgRectangle25} alt="Desktop Mockup" className="w-full h-auto object-cover rounded-lg" />
+                <img src={imgRectangle25} alt="Desktop Mockup" loading="lazy" className="w-full h-auto min-h-[200px] md:min-h-[400px] object-cover rounded-lg" />
               </div>
             </div>
           </div>
@@ -211,11 +194,11 @@ export default function MoncksOfDoverStreet() {
         {/* Styling Sheet */}
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative w-full">
-            <img src={imgMoncksStylingSheetDesktop11} alt="Styling Sheet" className="w-full h-auto object-cover rounded-lg bg-white" />
+            <img src={imgMoncksStylingSheetDesktop11} alt="Styling Sheet" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover rounded-lg bg-white" />
           </div>
           <div className="relative w-full flex justify-center">
             <div className="relative w-full max-w-xl">
-              <img src={imgRectangle40} alt="Typography & Colors" className="w-full h-auto object-cover rounded-lg" />
+              <img src={imgRectangle40} alt="Typography & Colors" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover rounded-lg" />
             </div>
           </div>
         </section>
@@ -223,7 +206,7 @@ export default function MoncksOfDoverStreet() {
         {/* Big Rounded Image */}
         <section className="w-full px-6 md:px-12 py-8 max-w-[1920px] mx-auto">
           <div className="relative w-full">
-            <img src={imgRectangle27} alt="Design Element" className="w-full h-auto object-cover rounded-[30px] md:rounded-[76px]" />
+            <img src={imgRectangle27} alt="Design Element" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover rounded-[30px] md:rounded-[76px]" />
           </div>
         </section>
 
@@ -232,7 +215,7 @@ export default function MoncksOfDoverStreet() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[imgRectangle30, imgRectangle31, imgRectangle32, imgRectangle33].map((img, i) => (
               <div key={i} className="relative w-full">
-                <img src={img} alt={`Gallery Image ${i + 1}`} className="w-full h-auto object-cover rounded-[30px] md:rounded-[55px]" />
+                <img src={img} alt={`Gallery Image ${i + 1}`} loading="lazy" className="w-full h-auto object-cover rounded-[30px] md:rounded-[55px] min-h-[250px] md:min-h-[400px]" />
               </div>
             ))}
           </div>

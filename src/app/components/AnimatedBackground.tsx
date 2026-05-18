@@ -96,7 +96,7 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
 
       {/* Interactive Mouse Spotlight - Subtly illuminates the lines underneath */}
       <motion.div
-        className="absolute top-0 left-0 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full pointer-events-none mix-blend-screen blur-[100px] will-change-transform"
+        className="absolute top-0 left-0 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full pointer-events-none mix-blend-screen will-change-transform"
         style={{
           x: smoothPxX,
           y: smoothPxY,

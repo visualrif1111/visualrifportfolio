@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Instagram, Linkedin, Phone, ArrowLeft } from 'lucide-react';
-import Lenis from 'lenis';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
@@ -80,26 +79,10 @@ function SocialPhone({ className = "" }: { className?: string }) {
 export default function SunilGavaskar() {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const lenis = new Lenis({
-      autoRaf: true,
-    });
-
-    const resizeObserver = new ResizeObserver(() => {
-      lenis.resize();
-    });
-    resizeObserver.observe(document.body);
-
-    return () => {
-      resizeObserver.disconnect();
-      lenis.destroy();
-    };
-  }, []);
-
   return (
-    <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black overflow-hidden">
+    <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -126,7 +109,7 @@ export default function SunilGavaskar() {
       </nav>
 
       {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/80 backdrop-blur-sm">
+      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
         <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
           <ArrowLeft size={24} />
         </button>
@@ -205,23 +188,23 @@ export default function SunilGavaskar() {
           
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="w-full relative">
-              <img src={imgRectangle43} alt="Laptop Preview" className="w-full h-auto object-cover rounded-lg" />
+              <img src={imgRectangle43} alt="Laptop Preview" loading="lazy" className="w-full h-auto object-cover rounded-lg" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
               <div className="relative">
-                <img src={imgRectangle46} alt="Desktop Preview" className="w-full h-auto object-cover rounded-lg" />
+                <img src={imgRectangle46} alt="Desktop Preview" loading="lazy" className="w-full h-auto object-cover rounded-lg" />
               </div>
               <div className="relative flex items-center justify-center bg-[#011615] rounded-lg p-6 overflow-hidden min-h-[300px]">
                 <div className="flex items-start justify-center gap-1.5 md:gap-2 h-[200px] md:h-[240px] relative z-10 w-full overflow-hidden">
-                  <img src={imgSg22HomepageV07202204134} className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 1" />
-                  <img src={img2SunilGavaskarTheEmblems3} className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 2" />
-                  <img src={imgSunilGavaskarTheMoments3} className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 3" />
-                  <img src={imgSunilGavaskarHallOfFame3} className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 4" />
+                  <img src={imgSg22HomepageV07202204134} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 1" />
+                  <img src={img2SunilGavaskarTheEmblems3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 2" />
+                  <img src={imgSunilGavaskarTheMoments3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 3" />
+                  <img src={imgSunilGavaskarHallOfFame3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 4" />
                   <div className="h-full flex flex-col justify-start">
-                    <img src={imgSunilGavaskarTheHallOfFameV23} className="h-[25%] w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 5" />
+                    <img src={imgSunilGavaskarTheHallOfFameV23} loading="lazy" className="h-[25%] w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 5" />
                   </div>
                 </div>
-                <img src={imgEllipse5} className="absolute bottom-4 right-4 w-20 md:w-24 h-auto drop-shadow-[0_10px_30px_rgba(210,176,99,0.3)] z-20" alt="Gold Seal" />
+                <img src={imgEllipse5} loading="lazy" className="absolute bottom-4 right-4 w-20 md:w-24 h-auto drop-shadow-[0_10px_30px_rgba(210,176,99,0.3)] z-20" alt="Gold Seal" />
               </div>
             </div>
           </div>

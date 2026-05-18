@@ -1,9 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Instagram, Linkedin, Phone, ArrowLeft } from 'lucide-react';
-import Lenis from 'lenis';
 import { useNavigate } from 'react-router';
-import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
 
@@ -94,22 +92,6 @@ function SocialPhone({ className = "" }: { className?: string }) {
 export default function DiversionAudio() {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const lenis = new Lenis({
-      autoRaf: true,
-    });
-
-    const resizeObserver = new ResizeObserver(() => {
-      lenis.resize();
-    });
-    resizeObserver.observe(document.body);
-
-    return () => {
-      resizeObserver.disconnect();
-      lenis.destroy();
-    };
-  }, []);
-
   const inspirationLogos = [
     imgQ9WBmv, imgWmSe6X, imgGLl5Y0, imgPAw4Ua,
     imgShxZJi, img86AdbQ, imgKSp8PB, imgUnts7W,
@@ -118,9 +100,9 @@ export default function DiversionAudio() {
   ];
 
   return (
-    <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black overflow-x-hidden">
+    <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -147,7 +129,7 @@ export default function DiversionAudio() {
       </nav>
 
       {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/80 backdrop-blur-sm">
+      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
         <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
           <ArrowLeft size={24} />
         </button>
@@ -161,27 +143,13 @@ export default function DiversionAudio() {
         {/* Hero Section */}
         <section className="relative w-full h-[50vh] md:h-[60vh]">
           <div className="absolute inset-0 md:-left-[280px] md:w-[calc(100%+280px)] w-full h-[50vh] md:h-[60vh] overflow-hidden pointer-events-none z-0">
-            <YouTube
-              videoId="_4cuwDSUX4Y"
-              opts={{
-                width: '100%',
-                height: '100%',
-                playerVars: {
-                  autoplay: 1,
-                  controls: 0,
-                  rel: 0,
-                  showinfo: 0,
-                  mute: 1,
-                  loop: 1,
-                  playlist: '_4cuwDSUX4Y', // Required for looping
-                  modestbranding: 1,
-                  playsinline: 1,
-                  disablekb: 1,
-                },
-              }}
-              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[50vh] md:min-h-[60vh] min-w-[88.88vh] md:min-w-[106.66vh] -translate-x-1/2 -translate-y-1/2"
-              iframeClassName="w-full h-full pointer-events-none"
-            />
+            <iframe
+              src="https://www.youtube.com/embed/qOugLMycEe0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=qOugLMycEe0"
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[50vh] md:min-h-[60vh] min-w-[88.88vh] md:min-w-[106.66vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            ></iframe>
             <div className="absolute inset-0 bg-black/40 z-10"></div>
           </div>
           
@@ -234,16 +202,16 @@ export default function DiversionAudio() {
             <div className="lg:col-span-7">
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-[4/5] drop-shadow-xl">
-                  <img src={imgRectangle51} alt="Event Context 1" className="w-full h-full object-cover rounded-[16px]" />
+                  <img src={imgRectangle51} alt="Event Context 1" loading="lazy" className="w-full h-full object-cover rounded-[16px] min-h-[300px]" />
                 </div>
                 <div className="aspect-[4/5] drop-shadow-xl">
-                  <img src={imgRectangle76} alt="Event Context 2" className="w-full h-full object-cover rounded-[16px]" />
+                  <img src={imgRectangle76} alt="Event Context 2" loading="lazy" className="w-full h-full object-cover rounded-[16px] min-h-[300px]" />
                 </div>
                 <div className="rounded-[16px] overflow-hidden drop-shadow-xl aspect-[16/9]">
-                  <img src={imgRectangle77} alt="Logo Black Background" className="w-full h-full object-cover" />
+                  <img src={imgRectangle77} alt="Logo Black Background" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
                 </div>
                 <div className="rounded-[16px] overflow-hidden drop-shadow-xl aspect-[16/9]">
-                  <img src={imgRectangle78} alt="Logo Yellow Background" className="w-full h-full object-cover" />
+                  <img src={imgRectangle78} alt="Logo Yellow Background" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
                 </div>
               </div>
             </div>
@@ -268,7 +236,7 @@ export default function DiversionAudio() {
               </div>
             </div>
             <div className="lg:col-span-7 flex flex-col">
-              <img src={imgRectangle80} alt="Man in Orange Shirt" className="w-full h-full min-h-[500px] object-cover rounded-[16px] drop-shadow-xl" />
+              <img src={imgRectangle80} alt="Man in Orange Shirt" loading="lazy" className="w-full h-full min-h-[500px] object-cover rounded-[16px] drop-shadow-xl" />
             </div>
           </div>
         </section>
@@ -286,7 +254,7 @@ export default function DiversionAudio() {
         <section className="w-full max-w-[1920px] mx-auto px-6 md:px-12 py-16 flex flex-col gap-12 items-center">
           <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] tracking-[0.25em] uppercase text-[#50C1BA] w-full text-center">Research</h2>
           <div className="w-full max-w-7xl mx-auto overflow-hidden">
-            <img src={imgRectangle93} alt="Research Mindmap" className="w-full h-auto object-contain invert mix-blend-screen opacity-90" />
+            <img src={imgRectangle93} alt="Research Mindmap" loading="lazy" className="w-full h-auto object-contain invert mix-blend-screen opacity-90 min-h-[300px]" />
           </div>
         </section>
 
@@ -298,12 +266,12 @@ export default function DiversionAudio() {
           <div className="w-full bg-white rounded-[24px] p-8 md:p-16 shadow-2xl flex flex-col justify-center items-center gap-10 md:gap-16 max-w-4xl mx-auto">
             <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-10 w-full px-2">
               {inspirationLogos.slice(0, 5).map((logo, i) => (
-                <img key={i} src={logo} alt={`Inspiration logo ${i+1}`} className="h-16 md:h-24 w-auto object-contain mix-blend-multiply" />
+                <img key={i} src={logo} alt={`Inspiration logo ${i+1}`} loading="lazy" className="h-16 md:h-24 w-auto object-contain mix-blend-multiply" />
               ))}
             </div>
             <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-8 w-full px-2">
               {inspirationLogos.slice(5).map((logo, i) => (
-                <img key={i+5} src={logo} alt={`Inspiration logo ${i+6}`} className="h-8 md:h-12 w-auto object-contain mix-blend-multiply" />
+                <img key={i+5} src={logo} alt={`Inspiration logo ${i+6}`} loading="lazy" className="h-8 md:h-12 w-auto object-contain mix-blend-multiply" />
               ))}
             </div>
           </div>
@@ -312,7 +280,7 @@ export default function DiversionAudio() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
             {[imgRectangle27, imgRectangle28, imgRectangle29].map((img, i) => (
               <div key={i} className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-                <img src={img} alt={`Inspiration Shape ${i+1}`} className="w-full h-full object-cover" />
+                <img src={img} alt={`Inspiration Shape ${i+1}`} loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
               </div>
             ))}
           </div>
@@ -325,25 +293,25 @@ export default function DiversionAudio() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
             {/* Row 1 */}
             <div className="rounded-[24px] overflow-hidden aspect-square flex items-center justify-center p-4 md:p-8">
-              <img src={imgRectangle57} alt="Experimentation Path" className="w-[90%] h-auto object-contain opacity-80" />
+              <img src={imgRectangle57} alt="Experimentation Path" loading="lazy" className="w-[90%] h-auto object-contain opacity-80 min-h-[200px]" />
             </div>
             <div className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-              <img src={imgRectangle58} alt="Experimentation Cross" className="w-full h-full object-cover" />
+              <img src={imgRectangle58} alt="Experimentation Cross" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
             </div>
             <div className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-              <img src={imgRectangle59} alt="Experimentation Complex" className="w-full h-full object-cover" />
+              <img src={imgRectangle59} alt="Experimentation Complex" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
             </div>
 
             {/* Row 2 */}
             <div className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-              <img src={imgRectangle60} alt="Experimentation Final White" className="w-full h-full object-cover" />
+              <img src={imgRectangle60} alt="Experimentation Final White" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
             </div>
             <div className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-              <img src={imgRectangle61} alt="Experimentation Final Yellow" className="w-full h-full object-cover" />
+              <img src={imgRectangle61} alt="Experimentation Final Yellow" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
             </div>
             <div className="flex items-start justify-center md:justify-start aspect-square pt-4">
               <div className="w-[65%] h-[65%] rounded-[24px] overflow-hidden shadow-xl">
-                <img src={imgRectangle62} alt="Experimentation Small Black" className="w-full h-full object-cover" />
+                <img src={imgRectangle62} alt="Experimentation Small Black" loading="lazy" className="w-full h-full object-cover min-h-[150px]" />
               </div>
             </div>
           </div>
@@ -355,10 +323,10 @@ export default function DiversionAudio() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full max-w-4xl mx-auto">
             <div className="rounded-[16px] overflow-hidden shadow-2xl">
-              <img src={imgRectangle67} alt="Final Yellow Logo" className="w-full h-auto object-cover" />
+              <img src={imgRectangle67} alt="Final Yellow Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px]" />
             </div>
             <div className="rounded-[16px] overflow-hidden shadow-2xl">
-              <img src={imgRectangle66} alt="Final Black Logo" className="w-full h-auto object-cover" />
+              <img src={imgRectangle66} alt="Final Black Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px]" />
             </div>
           </div>
         </section>
@@ -378,18 +346,29 @@ export default function DiversionAudio() {
           </div>
         </section>
 
+        {/* Video Showcase */}
+        <section className="w-full max-w-5xl mx-auto px-6 md:px-12 py-8 md:py-16">
+          <div className="video-wrapper aspect-video drop-shadow-2xl bg-black/50 border border-gray-800">
+            <iframe
+              src="https://www.youtube.com/embed/qOugLMycEe0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=qOugLMycEe0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </section>
+
         {/* Gallery Grids */}
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto flex flex-col gap-8 md:gap-16">
           {/* Main Hero Shot */}
           <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-            <img src={imgRectangle34} alt="Event Hero 1" className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700" />
+            <img src={imgRectangle34} alt="Event Hero 1" loading="lazy" className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700 min-h-[400px] md:min-h-[600px]" />
           </div>
 
           {/* Grid of smaller photos */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[imgRectangle52, imgRectangle53, imgRectangle54, imgRectangle55].map((img, i) => (
               <div key={i} className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg">
-                <img src={img} className="w-full aspect-square object-cover hover:scale-[1.03] transition-transform duration-500" alt={`Grid item ${i+1}`} />
+                <img src={img} loading="lazy" className="w-full aspect-square object-cover hover:scale-[1.03] transition-transform duration-500 min-h-[150px] md:min-h-[250px]" alt={`Grid item ${i+1}`} />
               </div>
             ))}
           </div>

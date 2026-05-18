@@ -1,7 +1,6 @@
 import React from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { motion } from 'motion/react';
 import { Instagram, Linkedin, Phone, X } from 'lucide-react';
-import Lenis from 'lenis';
 import { Link, useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
@@ -141,21 +140,6 @@ const SocialPhone = React.memo(({ className = "" }: { className?: string }) => {
 });
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
-  const smoothProgress = useSpring(scrollYProgress, { damping: 20, stiffness: 100 });
-  const heroY = useTransform(smoothProgress, [0, 0.2], [0, 50]);
-  const heroScale = useTransform(smoothProgress, [0, 0.2], [1, 1.05]);
-  
-  const circleScale = useTransform(scrollYProgress, [0.8, 1], [0.8, 1.5]);
-
-  const portraitRef = React.useRef<HTMLDivElement>(null);
-  const { scrollYProgress: portraitProgress } = useScroll({
-    target: portraitRef,
-    offset: ["start end", "end start"]
-  });
-  const smoothPortraitProgress = useSpring(portraitProgress, { damping: 20, stiffness: 100 });
-  const portraitY = useTransform(smoothPortraitProgress, [0, 1], ["-5%", "5%"]);
-
   const [activeSection, setActiveSection] = React.useState('home');
 
   const timelineRef = React.useRef<HTMLDivElement>(null);
@@ -187,47 +171,22 @@ export default function Home() {
   };
 
   React.useEffect(() => {
-    const lenis = new Lenis({
-      autoRaf: true,
-    });
-
-    let resizeTimer: NodeJS.Timeout;
-    const resizeObserver = new ResizeObserver(() => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        lenis.resize();
-      }, 150);
-    });
-    resizeObserver.observe(document.body);
-
-    let rafId: number;
-    const handleScroll = () => {
-      if (rafId) return;
-      rafId = requestAnimationFrame(() => {
-        const sections = ['home', 'about', 'projects', 'contact'];
-        const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-        for (const section of sections) {
-          const element = document.getElementById(section);
-          if (element) {
-            const { offsetTop, offsetHeight } = element;
-            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-              setActiveSection(section);
-              break;
-            }
-          }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
         }
-        rafId = 0;
       });
-    };
+    }, { rootMargin: '-50% 0px -50% 0px' });
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    const sections = ['home', 'about', 'projects', 'contact'];
+    sections.forEach(section => {
+      const element = document.getElementById(section);
+      if (element) observer.observe(element);
+    });
+
     return () => {
-      resizeObserver.disconnect();
-      window.removeEventListener('scroll', handleScroll);
-      if (rafId) cancelAnimationFrame(rafId);
-      lenis.destroy();
+      observer.disconnect();
     };
   }, []);
 
@@ -238,7 +197,7 @@ export default function Home() {
   return (
     <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => scrollTo('home')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -264,7 +223,7 @@ export default function Home() {
       </nav>
 
       {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/80 backdrop-blur-sm">
+      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
         <div className="cursor-pointer" onClick={() => scrollTo('home')}>
           <VisualRifLogo className="w-[140px] h-[18px]" />
         </div>
@@ -284,7 +243,7 @@ export default function Home() {
 
       <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
         {/* Hero Section */}
-        <section id="home" className="h-[calc(100vh-6rem)] md:h-screen flex flex-col items-center justify-between relative w-full pt-16 md:pt-32 pb-8 md:pb-12">
+        <section id="home" className="min-h-[calc(100vh-6rem)] md:min-h-screen flex flex-col items-center justify-between relative w-full pt-16 md:pt-32 pb-8 md:pb-12">
           {/* Centered Content */}
           <div className="flex-1 flex flex-col items-center justify-center text-center max-w-4xl w-full px-4 sm:px-4 mt-8 md:mt-0">
             <h1 className="text-[10vw] sm:text-[48px] md:text-[65.28px] leading-[1.1] md:leading-tight font-medium tracking-[0.4vw] sm:tracking-[2.5px] md:tracking-[5.22px] font-['Barlow_Semi_Condensed',sans-serif] uppercase text-white mb-6 md:mb-12 w-full flex flex-col items-center justify-center text-center">
@@ -322,9 +281,8 @@ export default function Home() {
         </section>
       </div>
 
-      <div ref={portraitRef} className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center">
-        <motion.img
-          style={{ y: portraitY, x: "7%" }}
+      <div className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center">
+        <img
           src={imgRectangle38}
           alt="Arif portrait"
           loading="lazy"
@@ -340,7 +298,7 @@ export default function Home() {
           <motion.div 
             animate={{ x: [0, -1000] }} 
             transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-            className="flex items-center gap-8 text-2xl tracking-widest font-medium text-gray-500 uppercase"
+            className="flex items-center gap-8 text-2xl tracking-widest font-medium text-gray-500 uppercase will-change-transform"
           >
             {[...Array(6)].map((_, i) => (
               <React.Fragment key={i}>
@@ -378,7 +336,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative w-[320px] md:w-[400px] flex flex-col items-center shrink-0 group/item"
+                className="relative w-[320px] md:w-[400px] flex flex-col items-center shrink-0 group/item will-change-transform"
               >
                 {/* Node Top (Diamond overlaps the top horizontal line) */}
                 <div className="h-[56px] flex items-center justify-center relative z-10 w-full mb-6">
@@ -426,10 +384,13 @@ export default function Home() {
         </section>
 
         {/* Expanding Image Section */}
-        <section className="flex justify-center items-center pb-32 md:pb-48 relative h-screen">
+        <section className="flex justify-center items-center pb-32 md:pb-48 relative min-h-screen">
           <motion.div
-            style={{ scale: circleScale }}
-            className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20 shadow-2xl"
+            initial={{ scale: 0.8 }}
+            whileInView={{ scale: 1.2 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20 will-change-transform"
           >
             <img src={imgContent61} alt="Collage" className="w-full h-full object-cover" />
           </motion.div>
@@ -510,7 +471,7 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`group relative overflow-hidden bg-gray-900 ${!isVideoOpen && (p.videoId || p.link) ? 'cursor-pointer' : ''} ${className}`}
+      className={`group relative overflow-hidden bg-gray-900 will-change-transform ${!isVideoOpen && (p.videoId || p.link) ? 'cursor-pointer' : ''} ${className}`}
       onClick={() => {
         if (p.link) {
           navigate(p.link);

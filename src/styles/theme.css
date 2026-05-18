@@ -182,4 +182,92 @@
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
   }
+
+  html,
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100%;
+    scroll-behavior: auto;
+  }
+
+  body {
+    position: relative;
+  }
+
+  main,
+  .page,
+  .project-page,
+  .project-content,
+  .case-study,
+  .gallery,
+  section {
+    overflow: visible;
+    height: auto;
+  }
+
+  .fullscreen-section,
+  .hero-section {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .background,
+  .background-pattern,
+  .decorative-layer,
+  .noise-layer,
+  .overlay {
+    pointer-events: none;
+  }
+
+  .sidebar,
+  .fixed-sidebar,
+  .left-nav {
+    pointer-events: none;
+  }
+
+  .sidebar a,
+  .fixed-sidebar a,
+  .left-nav a,
+  .sidebar button,
+  .fixed-sidebar button,
+  .left-nav button,
+  .sidebar li,
+  .sidebar .cursor-pointer {
+    pointer-events: auto;
+  }
+
+  .animated,
+  .parallax,
+  .sticky-section {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  .heavy-blur,
+  .backdrop-blur {
+    backdrop-filter: none;
+    filter: none;
+  }
+}
+
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border: 0;
 }

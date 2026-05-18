@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Instagram, Linkedin, Phone, ArrowLeft } from 'lucide-react';
-import Lenis from 'lenis';
 import { useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
@@ -206,30 +205,10 @@ function LazyIframe({ src, title, className }: { src: string, title: string, cla
 export default function Swiftrooms() {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const lenis = new Lenis({
-      autoRaf: true,
-    });
-
-    let resizeTimer: NodeJS.Timeout;
-    const resizeObserver = new ResizeObserver(() => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        lenis.resize();
-      }, 150);
-    });
-    resizeObserver.observe(document.body);
-
-    return () => {
-      resizeObserver.disconnect();
-      lenis.destroy();
-    };
-  }, []);
-
   return (
     <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between">
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -256,7 +235,7 @@ export default function Swiftrooms() {
       </nav>
 
       {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/80 backdrop-blur-sm">
+      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
         <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/')}>
           <ArrowLeft size={24} />
         </button>
@@ -433,7 +412,7 @@ export default function Swiftrooms() {
 
         {/* Design Element */}
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto">
-          <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] h-[60vh] md:h-[1000px] bg-black">
+          <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] min-h-[60vh] md:min-h-[1000px] bg-black">
             <div className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none">
               <LazyIframe 
                 src="https://www.youtube.com/embed/aP4L7jnKxYA?autoplay=1&mute=1&loop=1&playlist=aP4L7jnKxYA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" 
