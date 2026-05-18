@@ -74,10 +74,10 @@ const projects = {
   uxui: [
     { title: "MONCKS OF DOVER STREET", img: imgRectangle10, type: "full", hover: "View Project", link: "/projects/moncks-of-dover-street" },
     { title: "SWIFTROOMS", img: imgRectangle15, type: "half", hover: "View Project", link: "/projects/swiftrooms" },
-    { title: "THE SUNIL GAVASKAR PROJECT", img: imgRectangle14, type: "half", hover: "Coming Soon" },
+    { title: "THE SUNIL GAVASKAR PROJECT", img: imgRectangle14, type: "half", hover: "View Project", link: "/projects/sunil-gavaskar" },
   ],
   branding: [
-    { title: "DIVERSION AUDIO", img: imgRectangle16, type: "full", hover: "Coming Soon" },
+    { title: "DIVERSION AUDIO", img: imgRectangle16, type: "full", hover: "View Project", link: "/projects/diversion-audio" },
     { title: "TREND", img: imgRectangle19, type: "tall", hover: "Coming Soon" },
     { title: "THE HAIRY BASTARD", img: imgRectangle17, type: "quarter", hover: "Coming Soon" },
     { title: "DILCHAD", img: imgRectangle18, type: "quarter", hover: "Coming Soon" },
@@ -279,7 +279,7 @@ export default function Home() {
       {/* Hero Background Video */}
       <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
         <iframe
-          src="https://www.youtube.com/embed/JtNM6X84Z0s?autoplay=1&mute=1&loop=1&playlist=JtNM6X84Z0s&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
+          src="https://www.youtube.com/embed/_4cuwDSUX4Y?autoplay=1&mute=1&loop=1&playlist=_4cuwDSUX4Y&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
           className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
           allow="autoplay; encrypted-media"
           style={{ border: 0 }}
