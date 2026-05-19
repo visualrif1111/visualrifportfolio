@@ -6,9 +6,10 @@ import { ScrollIndicator } from '../icons/Logo';
 
 interface HeroContentProps {
   onScrollDown: () => void;
+  videoId?: string;
 }
 
-export const HeroContent = React.memo(({ onScrollDown }: HeroContentProps) => {
+export const HeroContent = React.memo(({ onScrollDown, videoId = "_4cuwDSUX4Y" }: HeroContentProps) => {
   return (
     <section 
       id="home" 
@@ -32,18 +33,33 @@ export const HeroContent = React.memo(({ onScrollDown }: HeroContentProps) => {
           </span>
         </motion.h1>
         
-        {/* Subtitle */}
+        {/* Subtitle with Video Text Effect */}
         <motion.div 
-          className="font-rajdhani font-semibold text-white uppercase text-center w-full px-2"
+          className="font-rajdhani font-semibold uppercase text-center w-full px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
-          <p className="text-[3.5vw] sm:text-sm md:text-xl tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5px] leading-relaxed mb-1 md:mb-0">
+          <p className="text-white text-[3.5vw] sm:text-sm md:text-xl tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5px] leading-relaxed mb-1 md:mb-0">
             experience specialising in end-to-end design solutions
           </p>
           <p className="text-[3.5vw] sm:text-sm md:text-xl tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5px] leading-relaxed">
-            across UX/UI, Web Design
+            <span className="text-white">across </span>
+            {/* Video-filled text for UX/UI, Web Design */}
+            <span className="relative inline-block">
+              <span 
+                className="relative z-10 bg-clip-text text-transparent font-bold"
+                style={{
+                  backgroundImage: `url(https://img.youtube.com/vi/${videoId}/maxresdefault.jpg)`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                UX/UI, Web Design
+              </span>
+            </span>
           </p>
         </motion.div>
       </div>

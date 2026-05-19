@@ -36,7 +36,7 @@ export const Hero = React.memo(({ activeSection = 'home', onSectionChange }: Her
       
       {/* Hero Content */}
       <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
-        <HeroContent onScrollDown={handleScrollDown} />
+        <HeroContent onScrollDown={handleScrollDown} videoId={videoId} />
       </div>
     </>
   );
