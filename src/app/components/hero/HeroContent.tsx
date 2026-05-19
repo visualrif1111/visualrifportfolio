@@ -6,10 +6,9 @@ import { ScrollIndicator } from '../icons/Logo';
 
 interface HeroContentProps {
   onScrollDown: () => void;
-  videoId?: string;
 }
 
-export const HeroContent = React.memo(({ onScrollDown, videoId = "_4cuwDSUX4Y" }: HeroContentProps) => {
+export const HeroContent = React.memo(({ onScrollDown }: HeroContentProps) => {
   return (
     <section 
       id="home" 
@@ -33,48 +32,18 @@ export const HeroContent = React.memo(({ onScrollDown, videoId = "_4cuwDSUX4Y" }
           </span>
         </motion.h1>
         
-        {/* Subtitle with Video Text Effect */}
+        {/* Subtitle */}
         <motion.div 
-          className="font-rajdhani font-semibold uppercase text-center w-full px-2"
+          className="font-rajdhani font-semibold text-white uppercase text-center w-full px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
-          <p className="text-white text-[3.5vw] sm:text-sm md:text-xl tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5px] leading-relaxed mb-1 md:mb-0">
+          <p className="text-[3.5vw] sm:text-sm md:text-xl tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5px] leading-relaxed mb-1 md:mb-0">
             experience specialising in end-to-end design solutions
           </p>
-          <p className="text-[3.5vw] sm:text-sm md:text-xl tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5px] leading-relaxed flex items-center justify-center flex-wrap gap-x-1">
-            <span className="text-white">across </span>
-            {/* Video-filled text for UX/UI, Web Design */}
-            <span className="relative inline-block">
-              {/* Video background clipped to text */}
-              <span className="relative">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{
-                    clipPath: 'inset(0)',
-                  }}
-                >
-                  <source src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1`} type="video/mp4" />
-                </video>
-                <span 
-                  className="relative z-10 font-bold"
-                  style={{
-                    background: `url(https://img.youtube.com/vi/${videoId}/maxresdefault.jpg) center/cover`,
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    color: 'transparent',
-                  }}
-                >
-                  UX/UI, Web Design
-                </span>
-              </span>
-            </span>
+          <p className="text-[3.5vw] sm:text-sm md:text-xl tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5px] leading-relaxed">
+            across UX/UI, Web Design
           </p>
         </motion.div>
       </div>
