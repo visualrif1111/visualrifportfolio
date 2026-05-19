@@ -13,7 +13,7 @@ export const HeroBackground = React.memo(({
 }: HeroBackgroundProps) => {
   return (
     <div 
-      className="absolute inset-0 z-0 overflow-hidden"
+      className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden"
       aria-hidden="true"
     >
       {/* YouTube Background Video */}

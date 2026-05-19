@@ -132,7 +132,7 @@ export default function Home() {
       <Hero activeSection={activeSection} onSectionChange={setActiveSection} />
 
       {/* About Section */}
-      <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
+      <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden bg-black">
         <section id="about" className="text-center pt-24 md:pt-32 pb-16 flex flex-col items-center px-4 md:px-0">
             <h2 className="text-[6vw] sm:text-[24px] md:text-[31.87px] tracking-[0.5vw] sm:tracking-[4px] md:tracking-[7.96px] font-['Barlow',sans-serif] font-medium mb-8 md:mb-12 uppercase text-white w-full max-w-[800px] break-words">
               Hey, I’m Arif — most people just call me Rif
@@ -156,7 +156,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
+      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden bg-black">
         <div className="h-16 md:h-24"></div>
 
         {/* Marquee */}
@@ -179,7 +179,7 @@ export default function Home() {
       </div>
 
       {/* Timeline */}
-      <section className="mb-40 w-full flex flex-col relative pt-32 group/timeline bg-transparent">
+      <section className="mb-40 w-full flex flex-col relative pt-32 group/timeline bg-black">
         <div 
           ref={timelineRef}
           onMouseDown={handleTimelineMouseDown}
@@ -241,7 +241,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
+      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden bg-black">
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20">
           <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
