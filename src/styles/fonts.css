@@ -1,1 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* Font family utility classes */
+.font-barlow {
+  font-family: 'Barlow', sans-serif;
+}
+
+.font-barlow-semi-condensed {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.font-rajdhani {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
