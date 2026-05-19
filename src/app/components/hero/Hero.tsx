@@ -11,8 +11,6 @@ interface HeroProps {
 }
 
 export const Hero = React.memo(({ activeSection = 'home', onSectionChange }: HeroProps) => {
-  const videoId = "_4cuwDSUX4Y";
-  
   const scrollTo = useCallback((id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -32,11 +30,11 @@ export const Hero = React.memo(({ activeSection = 'home', onSectionChange }: Her
       <MobileNavigation onNavigate={scrollTo} />
       
       {/* Background Video */}
-      <HeroBackground videoId={videoId} overlayOpacity={70} />
+      <HeroBackground videoId="_4cuwDSUX4Y" overlayOpacity={70} />
       
       {/* Hero Content */}
       <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
-        <HeroContent onScrollDown={handleScrollDown} videoId={videoId} />
+        <HeroContent onScrollDown={handleScrollDown} />
       </div>
     </>
   );
