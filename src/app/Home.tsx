@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Instagram, Linkedin, Phone, X } from 'lucide-react';
-import { Link, useNavigate } from 'react-router';
+import { X } from 'lucide-react';
+import { useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
-import { HeroBackgroundVideo } from './components/HeroBackgroundVideo';
+import { HeroSection } from './components/HeroSection';
 import { Footer } from './components/Footer';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
@@ -72,25 +72,7 @@ const projects = {
   ]
 };
 
-import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 import svgPathsFrame27 from "../imports/Frame27/svg-sniomcvdel";
-
-const VisualRifLogo = React.memo(({ className = "" }: { className?: string }) => {
-  return (
-    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
-      <path d={svgPaths.p13c84500} fill="#50C1BA" />
-      <path d={svgPaths.p37476b00} fill="white" />
-      <path d={svgPaths.pa013800} fill="white" />
-      <path d={svgPaths.p630c200} fill="white" />
-      <path d={svgPaths.p349de6f0} fill="white" />
-      <path d={svgPaths.p39faef00} fill="white" />
-      <path d={svgPaths.p141d9280} fill="white" />
-      <path d={svgPaths.p4738e00} fill="white" />
-      <path d={svgPaths.pffcfbf0} fill="white" />
-      <path d={svgPaths.p2b767700} fill="white" />
-    </svg>
-  );
-});
 
 const Diamond = React.memo(({ className = "" }: { className?: string }) => (
   <svg className={`w-3 h-3 ${className}`} viewBox="0 0 26.0181 26.018" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,43 +80,17 @@ const Diamond = React.memo(({ className = "" }: { className?: string }) => (
   </svg>
 ));
 
+// SVG paths for the ArifLogo
+const ARIF_LOGO_PATHS = {
+  outer: "M51.7704 12.6222H51.662L39.8442 0.70424L39.1395 0L38.2722 0.866757L28.677 10.4553L6.28834 32.7743L0 39.0583C1.46367 40.7918 3.19838 42.4169 4.82468 44.0421C4.98731 44.2046 5.14994 44.3671 5.31257 44.5297C11.4383 50.8136 17.6724 57.0435 23.9065 63.2191C26.8339 66.1444 29.7612 69.1239 32.6885 72.0492C34.7485 74.1619 36.7543 76.1663 38.7601 78.279H42.7174V54.5515H62.9376L64.0761 53.4139L73.2375 44.1504L78.279 39.1124L51.8246 12.6763L51.7704 12.6222ZM68.3586 41.496L60.4982 49.4593H38.0553L37.8385 49.676V69.9907L31.9838 64.14L17.835 50.0552L10.1372 42.3628L6.72202 39.0041L38.9769 6.82571L42.5005 10.2927L63.6966 31.4741L71.0149 38.7874L68.3044 41.5502L68.3586 41.496Z",
+  inner: "M38.9767 22.9148L22.9848 38.8956L27.6469 43.6086L39.302 31.9616L42.663 35.4828L27.5384 50.4885L16.046 39.0581L38.9767 16.1432L61.7991 39.0581L58.5465 42.471L38.9767 22.9148Z"
+};
+
 const ArifLogo = React.memo(({ className = "" }: { className?: string }) => {
   return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 78.2791 78.279">
-      <path d={svgPaths.p2e710980} fill="#50C1BA" />
-      <path d={svgPaths.p10597380} fill="#50C1BA" />
-    </svg>
-  );
-});
-
-const ScrollTriangle = React.memo(({ className = "" }: { className?: string }) => {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 22.8536 19.7918">
-      <path d={svgPaths.p1ef2d800} fill="currentColor" />
-    </svg>
-  );
-});
-
-const SocialInstagram = React.memo(({ className = "" }: { className?: string }) => {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path d={svgPaths.p386b1640} fill="currentColor" />
-    </svg>
-  );
-});
-
-const SocialLinkedin = React.memo(({ className = "" }: { className?: string }) => {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path clipRule="evenodd" d={svgPaths.p1a85db80} fill="currentColor" fillRule="evenodd" />
-    </svg>
-  );
-});
-
-const SocialPhone = React.memo(({ className = "" }: { className?: string }) => {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 14.1371 14.1373">
-      <path d={svgPaths.p35dc3720} fill="currentColor" />
+    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 78.2791 78.279" aria-hidden="true">
+      <path d={ARIF_LOGO_PATHS.outer} fill="#50C1BA" />
+      <path d={ARIF_LOGO_PATHS.inner} fill="#50C1BA" />
     </svg>
   );
 });
@@ -196,77 +152,14 @@ export default function Home() {
 
   return (
     <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
-      {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
-        <div>
-          <div className="mb-12 cursor-pointer" onClick={() => scrollTo('home')}>
-            <VisualRifLogo className="w-[180px] h-[24px]" />
-          </div>
-          <div className="relative pl-6">
-            <div className="absolute left-[3px] top-2 bottom-[-400px] w-[1px] bg-white opacity-20"></div>
-            <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white"></div>
-            <ul className="flex flex-col gap-8 text-[18px] tracking-[0.25em] text-gray-300 font-['Rajdhani',sans-serif] font-medium uppercase relative z-10 whitespace-nowrap">
-              <li className={`hover:text-white transition-colors cursor-pointer ${activeSection === 'home' ? 'text-white' : ''}`} onClick={() => scrollTo('home')}>HOME</li>
-              <li className={`hover:text-white transition-colors cursor-pointer ${activeSection === 'about' ? 'text-white' : ''}`} onClick={() => scrollTo('about')}>ABOUT ME</li>
-              <li className={`hover:text-white transition-colors cursor-pointer ${activeSection === 'projects' ? 'text-white' : ''}`} onClick={() => scrollTo('projects')}>ALL PROJECTS</li>
-              <li className={`hover:text-white transition-colors cursor-pointer ${activeSection === 'contact' ? 'text-white' : ''}`} onClick={() => scrollTo('contact')}>CONTACT US</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-5 pl-4 relative">
-          <div className="absolute left-[0.5px] bottom-1/2 translate-y-1/2 w-[6px] h-[6px] rounded-full bg-white"></div>
-          <a href="https://www.instagram.com/visualrif/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialInstagram className="w-[15px] h-[15px]" /></a>
-          <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialLinkedin className="w-[15px] h-[15px]" /></a>
-          <a href="tel:07598078923" className="text-white hover:text-[#50C1BA] transition-colors"><SocialPhone className="w-[14px] h-[14px]" /></a>
-        </div>
-      </nav>
-
-      {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
-        <div className="cursor-pointer" onClick={() => scrollTo('home')}>
-          <VisualRifLogo className="w-[140px] h-[18px]" />
-        </div>
-        <button className="text-[#50C1BA] font-['Rajdhani',sans-serif] font-medium text-sm tracking-widest uppercase" onClick={() => scrollTo('contact')}>CONTACT US</button>
-      </nav>
-
-      {/* Hero Background Video */}
-      <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
-        <iframe
-          src="https://www.youtube.com/embed/_4cuwDSUX4Y?autoplay=1&mute=1&loop=1&playlist=_4cuwDSUX4Y&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
-          className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          allow="autoplay; encrypted-media"
-          style={{ border: 0 }}
-        />
-        <div className="absolute inset-0 bg-black/70"></div>
-      </div>
+      {/* Hero Section with Navigation and Background Video */}
+      <HeroSection 
+        videoId="_4cuwDSUX4Y"
+        onNavigate={scrollTo}
+        activeSection={activeSection}
+      />
 
       <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
-        {/* Hero Section */}
-        <section id="home" className="min-h-[calc(100vh-6rem)] md:min-h-screen flex flex-col items-center justify-between relative w-full pt-16 md:pt-32 pb-8 md:pb-12">
-          {/* Centered Content */}
-          <div className="flex-1 flex flex-col items-center justify-center text-center max-w-4xl w-full px-4 sm:px-4 mt-8 md:mt-0">
-            <h1 className="text-[10vw] sm:text-[48px] md:text-[65.28px] leading-[1.1] md:leading-tight font-medium tracking-[0.4vw] sm:tracking-[2.5px] md:tracking-[5.22px] font-['Barlow_Semi_Condensed',sans-serif] uppercase text-white mb-6 md:mb-12 w-full flex flex-col items-center justify-center text-center">
-              <span>Multidisciplinary</span>
-              <span>Designer</span>
-            </h1>
-            <div className="font-['Rajdhani',sans-serif] font-semibold text-[3.5vw] sm:text-sm md:text-[21.66px] tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5.41px] text-white uppercase leading-relaxed md:leading-normal text-center w-full px-2">
-              <p className="mb-1 md:mb-0">experience specialising in end-to-end design solutions</p>
-              <p>across UX/UI and 3D design</p>
-            </div>
-          </div>
-          
-          {/* Bottom Scroll Down */}
-          <div className="flex justify-center w-full">
-            <button onClick={() => scrollTo('about')} className="group flex flex-col items-center gap-6 cursor-pointer">
-              <span className="font-['Rajdhani',sans-serif] font-semibold text-[16px] md:text-[21.66px] tracking-[5.41px] uppercase text-white transition-opacity hover:opacity-80">SCROLL DOWN</span>
-              <div className="w-[26px] h-[26px] flex items-center justify-center rotate-180 group-hover:-translate-y-2 transition-transform duration-300">
-                <ScrollTriangle className="w-[22.85px] h-[19.79px]" />
-              </div>
-            </button>
-          </div>
-        </section>
-
         <section id="about" className="text-center pt-24 md:pt-32 pb-16 flex flex-col items-center px-4 md:px-0">
             <h2 className="text-[6vw] sm:text-[24px] md:text-[31.87px] tracking-[0.5vw] sm:tracking-[4px] md:tracking-[7.96px] font-['Barlow',sans-serif] font-medium mb-8 md:mb-12 uppercase text-white w-full max-w-[800px] break-words">
               Hey, I’m Arif — most people just call me Rif
