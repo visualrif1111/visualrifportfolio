@@ -114,7 +114,16 @@ export default function MoncksOfDoverStreet() {
       <div className="relative z-10 w-full md:pl-[280px]">
         {/* Hero Section */}
         <section className="relative w-full h-[50vh] overflow-hidden">
-          <OptimizedImage src={imgRectangle4} alt="Moncks of Dover Street Hero" priority={true} className="absolute inset-0 w-full h-full object-cover object-bottom" containerClassName="absolute inset-0" />
+          <div className="absolute inset-0 w-full h-full">
+            <OptimizedImage 
+              src={imgRectangle4} 
+              alt="Moncks of Dover Street Hero" 
+              priority={true} 
+              className="w-full h-full object-cover object-bottom" 
+              containerClassName="w-full h-full"
+              placeholderColor="rgba(0, 0, 0, 0.8)"
+            />
+          </div>
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0">
             <motion.h1 
