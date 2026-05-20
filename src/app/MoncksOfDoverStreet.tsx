@@ -286,7 +286,7 @@ export default function MoncksOfDoverStreet() {
 
         {/* Next Project */}
         <NextProject 
-          currentSlug="/moncks-of-dover-street" 
+          currentSlug="/projects/moncks-of-dover-street" 
           nextProjectImage={imgNextProjectPreview} 
         />
 

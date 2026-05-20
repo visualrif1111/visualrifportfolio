@@ -14,25 +14,25 @@ export interface ProjectInfo {
 // Project order: Moncks -> Sunil Gavaskar -> Swiftrooms -> Diversion Audio -> (loop back to Moncks)
 export const projectOrder: ProjectInfo[] = [
   {
-    slug: '/moncks-of-dover-street',
+    slug: '/projects/moncks-of-dover-street',
     title: 'Moncks Of Dover Street',
     description: 'Luxury hospitality website for a premium Mayfair brasserie',
     previewImage: '' // Will be set dynamically
   },
   {
-    slug: '/sunil-gavaskar',
+    slug: '/projects/sunil-gavaskar',
     title: 'Always First - Sunil Gavaskar',
     description: 'Web3 and NFT platform for legendary cricketer',
     previewImage: ''
   },
   {
-    slug: '/swiftrooms',
+    slug: '/projects/swiftrooms',
     title: 'Swiftrooms',
     description: 'High-converting landing page for home improvements',
     previewImage: ''
   },
   {
-    slug: '/diversion-audio',
+    slug: '/projects/diversion-audio',
     title: 'Diversion Audio',
     description: 'Brand identity for underground Drum & Bass collective',
     previewImage: ''

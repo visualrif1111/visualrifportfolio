@@ -526,7 +526,7 @@ export default function Swiftrooms() {
 
         {/* Next Project */}
         <NextProject 
-          currentSlug="/swiftrooms" 
+          currentSlug="/projects/swiftrooms" 
           nextProjectImage={imgNextProjectPreview} 
         />
 

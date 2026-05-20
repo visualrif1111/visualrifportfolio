@@ -327,7 +327,7 @@ export default function SunilGavaskar() {
 
         {/* Next Project */}
         <NextProject 
-          currentSlug="/sunil-gavaskar" 
+          currentSlug="/projects/sunil-gavaskar" 
           nextProjectImage={imgNextProjectPreview} 
         />
 

@@ -397,7 +397,7 @@ export default function DiversionAudio() {
 
         {/* Next Project */}
         <NextProject 
-          currentSlug="/diversion-audio" 
+          currentSlug="/projects/diversion-audio" 
           nextProjectImage={imgNextProjectPreview} 
         />
 
