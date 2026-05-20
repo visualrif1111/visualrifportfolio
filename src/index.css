@@ -31,12 +31,6 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
-
-  /* Custom font families */
-  --font-barlow: 'Barlow', sans-serif;
-  --font-barlow-condensed: 'Barlow Semi Condensed', 'Barlow', sans-serif;
-  --font-rajdhani: 'Rajdhani', sans-serif;
-  --font-inter: 'Inter', sans-serif;
 }
 
 @layer utilities {
@@ -46,28 +40,5 @@
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
-  
-  /* Scrollbar hide utility */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  /* Font family utilities */
-  .font-barlow {
-    font-family: var(--font-barlow);
-  }
-  .font-barlow-condensed {
-    font-family: var(--font-barlow-condensed);
-  }
-  .font-rajdhani {
-    font-family: var(--font-rajdhani);
-  }
-  .font-inter {
-    font-family: var(--font-inter);
   }
 }
