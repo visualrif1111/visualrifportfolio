@@ -88,7 +88,7 @@ interface PortraitSectionProps {
 
 const PortraitSection = React.memo(function PortraitSection({ imageSrc }: PortraitSectionProps) {
   return (
-    <div className="w-full bg-transparent -mt-1 overflow-hidden">
+    <div className="w-full -mt-1 overflow-hidden">
       <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8">
         <motion.div 
           className="relative w-full h-[70vh] md:h-[90vh] overflow-hidden"
@@ -109,7 +109,7 @@ const PortraitSection = React.memo(function PortraitSection({ imageSrc }: Portra
               alt="Arif portrait"
               priority={true}
               className="w-full h-full object-contain object-center"
-              containerClassName="w-full h-full"
+              containerClassName="w-full h-full bg-transparent"
             />
           </motion.div>
         </motion.div>
