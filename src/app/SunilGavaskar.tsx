@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
 import { OptimizedImage } from './components/OptimizedImage';
+import { NextProject } from './components/NextProject';
+import { ResponsiveContent } from './components/ResponsiveText';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -35,6 +37,9 @@ import imgSunilGavaskarTheMoments3 from "../imports/SunilGavaskarProject/adde1db
 import imgSunilGavaskarHallOfFame3 from "../imports/SunilGavaskarProject/24aca0cf507397aef5fa516ca8741c97da3eaf46.png";
 import imgSunilGavaskarTheHallOfFameV23 from "../imports/SunilGavaskarProject/130fafa6183f9cf9541eeb73e44ef4db8e3e037b.png";
 import imgEllipse5 from "../imports/SunilGavaskarProject/57e05b02450362c31cdcf56162a165d964882973.png";
+
+// Next project preview image (Swiftrooms)
+import imgNextProjectPreview from "../imports/Visualrif-1/4e3ab4c3d653794d535a17543585de77fd8a6835.png";
 
 function VisualRifLogo({ className = "" }: { className?: string }) {
   return (
@@ -165,10 +170,41 @@ export default function SunilGavaskar() {
           <div className="lg:col-span-4 flex flex-col gap-12 md:gap-16">
             <div>
               <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Overview</h2>
-              <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>As a Freelance Digital Designer at Velvet Badger, I worked on Always First – a Web3 and NFT project for legendary cricketer Sunil Gavaskar. I designed the website and social media campaign for the NFT launch and virtual gallery experience.</p>
+                }
+              >
                 <p>As a Freelance Digital Designer at Velvet Badger, I worked on Always First – Sunil Gavaskar, a Web3 and NFT project created for legendary cricketer Sunil Gavaskar. This project marked a key moment in my career, shaping my interest in digital assets and immersive experiences.</p>
-                <p>The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar’s achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
-              </div>
+                <p>The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar&apos;s achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
+              </ResponsiveContent>
+            </div>
+            <div>
+              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Challenge</h2>
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>The main challenge was translating a complex Web3 concept into a clear, engaging user experience within a short timeframe, while keeping website design, NFT storytelling, and social assets cohesive.</p>
+                }
+              >
+                <p>One of the main challenges was translating a complex Web3 and NFT concept into a clear and engaging user experience within a short production timeframe.</p>
+                <p>The project included multiple moving parts — including website design, NFT storytelling, and social media assets — all of which needed to feel cohesive under one visual direction.</p>
+                <p>To approach this, I began with research and mind mapping to better understand the Web3 space, audience, and visual identity before moving into a rapid design sprint process.</p>
+              </ResponsiveContent>
+            </div>
+            <div>
+              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Solution</h2>
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>The final solution unified website, NFT experience, and social content into one cohesive platform with contemporary Web3-inspired design that balanced innovation with accessibility.</p>
+                }
+              >
+                <p>The final solution was a cohesive digital campaign that combined the website, NFT experience, and social media content into a unified platform. The website acted as a central hub for the project, while the social media campaign helped build awareness and engagement around the launch.</p>
+                <p>Using a clean visual hierarchy and contemporary Web3-inspired design, the final experience balanced innovation with accessibility, creating an engaging platform for both existing fans and audiences new to NFTs.</p>
+              </ResponsiveContent>
+            </div>
             </div>
             <div>
               <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Challenge</h2>
@@ -304,6 +340,12 @@ export default function SunilGavaskar() {
             </div>
           </div>
         </section>
+
+        {/* Next Project */}
+        <NextProject 
+          currentSlug="/sunil-gavaskar" 
+          nextProjectImage={imgNextProjectPreview} 
+        />
 
         {/* Footer */}
         <Footer className="md:pl-[280px]" />

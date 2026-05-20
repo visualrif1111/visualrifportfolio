@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
 import { OptimizedImage } from './components/OptimizedImage';
+import { NextProject } from './components/NextProject';
+import { ResponsiveContent } from './components/ResponsiveText';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -48,6 +50,9 @@ import imgRectangle76 from "../imports/DiversionAudio-4/af601e4409469c0bbed2c6de
 import imgRectangle77 from "../imports/DiversionAudio-4/86f2cf48fb33633411a17f7dcc39d77b1b3dbe21.png";
 import imgRectangle78 from "../imports/DiversionAudio-4/0b18d56a64a0c0bbce5021e1d603399db10c5aaa.png";
 import imgRectangle80 from "../imports/DiversionAudio-4/2279679ffd7397c799a28fac535f100bec52299d.png";
+
+// Next project preview image (Moncks Of Dover Street - loops back)
+import imgNextProjectPreview from "../imports/MoncksOfDoverStreet-1-1/d6dc0169d02bf250d8190d1fed447e89d8d5a544.png";
 
 function VisualRifLogo({ className = "" }: { className?: string }) {
   return (
@@ -195,10 +200,16 @@ export default function DiversionAudio() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             <div className="lg:col-span-5">
               <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Overview</h2>
-              <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>Diversion Audio is a London-based Drum &amp; Bass collective. I created the initial visual identity, developing the logo direction and foundational branding. The identity was later featured at Boomtown Fair and Volks Nightclub.</p>
+                }
+              >
                 <p>Diversion Audio is a London-based Drum &amp; Bass collective focused on underground electronic music and live events. I was tasked with creating the initial visual identity for the brand, developing the early logo direction and foundational branding across digital and promotional platforms.</p>
-                <p>This project marked my first introduction to working within the electronic music industry �� a space I’m personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding, while the collective has continued to grow successfully within the UK music scene.</p>
-              </div>
+                <p>This project marked my first introduction to working within the electronic music industry — a space I&apos;m personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding, while the collective has continued to grow successfully within the UK music scene.</p>
+              </ResponsiveContent>
+            </div>
             </div>
             <div className="lg:col-span-7">
               <div className="grid grid-cols-2 gap-4">
@@ -223,17 +234,27 @@ export default function DiversionAudio() {
             <div className="lg:col-span-5 flex flex-col gap-16">
               <div>
                 <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Challenge</h2>
-                <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                <ResponsiveContent
+                  className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                  mobileContent={
+                    <p>Defining brand development for a grassroots collective required a strategic approach to establish a scalable identity that could evolve with future growth.</p>
+                  }
+                >
                   <p>One of the main challenges with this project was defining the level of brand development required during the early stages of the collective. A strong focus was placed on creating a comprehensive visual identity system that extended beyond just logo design, ensuring the brand had a scalable foundation for long-term growth.</p>
                   <p>As a grassroots movement, the initial requirements were relatively minimal. However, a more strategic approach was introduced to help establish a stronger and more consistent identity that could evolve across future events, campaigns, and audience growth within the electronic music scene.</p>
-                </div>
+                </ResponsiveContent>
               </div>
               <div>
                 <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Solution</h2>
-                <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                <ResponsiveContent
+                  className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                  mobileContent={
+                    <p>Through an iterative process, I refined complex concepts into a bold, adaptable logo that works across digital platforms, event branding, and merchandise.</p>
+                  }
+                >
                   <p>The final solution came through an iterative design process that began with exploring more complex visual concepts before gradually refining the identity into a simpler and more effective outcome. Exploring complexity early on allowed stronger creative ideas and visual directions to emerge, which could then be stripped back to their most recognisable form.</p>
                   <p>Simplicity became a key part of the final logo design, resulting in a bold and adaptable identity that worked effectively across digital platforms, event branding, merchandise, and promotional material while remaining instantly recognisable within the electronic music scene.</p>
-                </div>
+                </ResponsiveContent>
               </div>
             </div>
             <div className="lg:col-span-7 flex flex-col">
@@ -374,6 +395,12 @@ export default function DiversionAudio() {
             ))}
           </div>
         </section>
+
+        {/* Next Project */}
+        <NextProject 
+          currentSlug="/diversion-audio" 
+          nextProjectImage={imgNextProjectPreview} 
+        />
 
         {/* Footer */}
         <Footer className="md:pl-[280px]" />

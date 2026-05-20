@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
 import { OptimizedImage } from './components/OptimizedImage';
+import { NextProject } from './components/NextProject';
+import { ResponsiveContent } from './components/ResponsiveText';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -21,6 +23,9 @@ import imgRectangle25 from "../imports/MoncksOfDoverStreet-1-1/cddeb323f6d225e29
 import imgRectangle40 from "../imports/MoncksOfDoverStreet-1-1/98ce850bbdf3b4c501620bc7925ccfcc977f9ae2.png";
 import img59 from "../imports/MoncksOfDoverStreet-1-1/f80f56de89553ff9092250f835fb72a16d7651ec.png";
 import img49 from "../imports/MoncksOfDoverStreet-1-1/95f40c29a9e1ec3c4eea12fd128014d21b7ed557.png";
+
+// Next project preview image (Sunil Gavaskar)
+import imgNextProjectPreview from "../imports/SunilGavaskarProject/d4f7e5a4528724ff4db2037ab375356efa732c07.png";
 
 function VisualRifLogo({ className = "" }: { className?: string }) {
   return (
@@ -150,10 +155,41 @@ export default function MoncksOfDoverStreet() {
           <div className="lg:col-span-4 flex flex-col gap-12 md:gap-16">
             <div>
               <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Overview</h2>
-              <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>As a Digital Designer at Verb Brands, I designed a luxury hospitality website for Moncks Of Dover Street, a premium Mayfair brasserie. The project delivered a refined 15-page brochure website reflecting the restaurant&apos;s heritage and premium identity.</p>
+                }
+              >
                 <p>As a Digital Designer at Verb Brands, I was tasked with designing a luxury hospitality website for Moncks Of Dover Street, a premium brasserie located in Mayfair, London. This project marked a pivotal moment in my career, allowing me to establish myself within the luxury digital design space.</p>
-                <p>The objective was to create a refined 15-page brochure website that reflected the restaurant’s premium identity, heritage, and interior experience, while also functioning seamlessly for a B2C audience through features such as reservation integrations. The project was delivered within a one-month timeframe with a £12,000 production budget.</p>
-              </div>
+                <p>The objective was to create a refined 15-page brochure website that reflected the restaurant&apos;s premium identity, heritage, and interior experience, while also functioning seamlessly for a B2C audience through features such as reservation integrations. The project was delivered within a one-month timeframe with a £12,000 production budget.</p>
+              </ResponsiveContent>
+            </div>
+            <div>
+              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Challenge</h2>
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>Creating a digital identity for a new brand with a strong name required extensive research into its cultural influences and heritage tied to Christopher Monck and Dover Street&apos;s luxury associations.</p>
+                }
+              >
+                <p>Before beginning the design phase, I conducted extensive research using the sitemap, functional specifications, brand guidelines, and interior design references provided. This allowed me to build a strategic understanding of the brand&apos;s visual language, cultural influences, and audience expectations.</p>
+                <p>One of the main challenges was creating a digital identity for a relatively new brand with a strong and recognisable name. I explored influences tied to both Christopher Monck and Dover Street&apos;s association with luxury fashion, art, and culture in London, using these references to shape the overall creative direction.</p>
+              </ResponsiveContent>
+            </div>
+            <div>
+              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Solution</h2>
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>Combined strategic research with refined UX/UI thinking to create an immersive digital experience that translated the restaurant&apos;s atmosphere into a premium online journey.</p>
+                }
+              >
+                <p>My approach combined strategic research with refined UX/UI thinking to create a digital experience that felt both immersive and functional. By merging the sitemap and functional requirements with the brand research, I designed a website that balanced elegant visuals with intuitive usability.</p>
+                <p>Through considered layouts, typography, and imagery, the final experience translated the atmosphere of the restaurant into a premium online journey that encouraged users to engage with the brand and visit the establishment.</p>
+              </ResponsiveContent>
+            </div>
+          </div>
             </div>
             <div>
               <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Challenge</h2>
@@ -187,9 +223,14 @@ export default function MoncksOfDoverStreet() {
 
         {/* Project Approach Text */}
         <section className="max-w-5xl mx-auto px-6 md:px-12 py-8 md:py-16 text-center">
-          <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200">
-            <p>The project was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected both the luxury positioning and cultural identity behind Moncks Of Dover Street. Drawing from extensive research into the brand’s heritage, interior design, and audience expectations, I developed a refined creative direction centred around elegant typography, a restrained colour palette, and editorial-inspired layouts that mirrored the atmosphere of the restaurant itself. The visual language was intentionally minimal yet immersive, allowing the imagery, spacing, and typography to communicate sophistication while maintaining clarity and usability. Throughout the project, cross-platform consistency and scalability were key considerations, ensuring the website performed seamlessly across desktop and mobile experiences while supporting future growth. By combining strategic UX/UI principles with a premium visual approach, the final outcome elevated the brand’s digital presence, strengthened its positioning within London’s luxury hospitality market, and created a more engaging experience for users interacting with the brand online.</p>
-          </div>
+          <ResponsiveContent
+            className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200"
+            mobileContent={
+              <p>The project focused on strategic thinking to reflect both the luxury positioning and cultural identity of the brand. Using elegant typography, a restrained colour palette, and editorial layouts, I created an immersive digital experience that strengthened the brand&apos;s position in London&apos;s luxury hospitality market.</p>
+            }
+          >
+            <p>The project was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected both the luxury positioning and cultural identity behind Moncks Of Dover Street. Drawing from extensive research into the brand&apos;s heritage, interior design, and audience expectations, I developed a refined creative direction centred around elegant typography, a restrained colour palette, and editorial-inspired layouts that mirrored the atmosphere of the restaurant itself. The visual language was intentionally minimal yet immersive, allowing the imagery, spacing, and typography to communicate sophistication while maintaining clarity and usability. Throughout the project, cross-platform consistency and scalability were key considerations, ensuring the website performed seamlessly across desktop and mobile experiences while supporting future growth. By combining strategic UX/UI principles with a premium visual approach, the final outcome elevated the brand&apos;s digital presence, strengthened its positioning within London&apos;s luxury hospitality market, and created a more engaging experience for users interacting with the brand online.</p>
+          </ResponsiveContent>
         </section>
 
         {/* Styling Sheet */}
@@ -258,6 +299,12 @@ export default function MoncksOfDoverStreet() {
             </div>
           </div>
         </section>
+
+        {/* Next Project */}
+        <NextProject 
+          currentSlug="/moncks-of-dover-street" 
+          nextProjectImage={imgNextProjectPreview} 
+        />
 
         {/* Footer */}
         <Footer className="md:pl-[280px]" />

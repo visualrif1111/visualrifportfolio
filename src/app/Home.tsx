@@ -196,16 +196,32 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
             containerClassName="w-full h-full absolute inset-0"
           />
           <div className="absolute inset-0 bg-black/50 pointer-events-none" />
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center z-10">
+          
+          {/* Desktop: Hover overlay */}
+          <div className="hidden md:flex absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex-col items-center justify-center z-10">
             <h3 className="text-2xl tracking-widest font-medium mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">{p.title}</h3>
             <Diamond className="mb-4" />
             <button className="border border-white px-6 py-2 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
               {p.hover}
             </button>
           </div>
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
+          
+          {/* Desktop: Default state */}
+          <div className="hidden md:flex absolute inset-0 flex-col items-center justify-center pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
             <h3 className="text-2xl tracking-widest font-medium mb-4 drop-shadow-lg text-center px-4">{p.title}</h3>
             <Diamond className="drop-shadow-lg" />
+          </div>
+          
+          {/* Mobile: Always visible with CTA */}
+          <div className="md:hidden absolute inset-0 flex flex-col items-center justify-end pb-8 pointer-events-none z-10">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <h3 className="text-xl tracking-widest font-medium mb-3 drop-shadow-lg text-center px-4 relative z-10">{p.title}</h3>
+            <Diamond className="mb-3 relative z-10" />
+            {(p.link || p.videoId) && (
+              <span className="relative z-10 bg-[#50C1BA] text-black px-5 py-2 text-xs tracking-widest uppercase font-medium pointer-events-auto">
+                {p.hover}
+              </span>
+            )}
           </div>
         </>
       ) : (

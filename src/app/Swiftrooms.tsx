@@ -6,6 +6,8 @@ import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
 import { OptimizedImage } from './components/OptimizedImage';
+import { NextProject } from './components/NextProject';
+import { ResponsiveContent } from './components/ResponsiveText';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -41,6 +43,9 @@ import imgImageMobileMockup from "../imports/Visualrif-1/2abb1b520770ba4aafb04a4
 import importedImage3 from "../imports/image-3.png";
 import imgImageDesktopMockup from "../imports/Visualrif-1/aca2bf96a01d37bd2387add99b2478911f4430b4.png";
 import imgImageDesignElement from "../imports/Visualrif-1/8d6b9f37409293f48dd5a87217cc54b21bc9c277.png";
+
+// Next project preview image (Diversion Audio)
+import imgNextProjectPreview from "../imports/DiversionAudio-4/19c5a640c9e29697cb9cbc71687502f5fbe08a50.png";
 
 
 function VisualRifLogo({ className = "" }: { className?: string }) {
@@ -299,10 +304,47 @@ export default function Swiftrooms() {
           <div className="lg:col-span-4 flex flex-col gap-12 md:gap-16">
             <div>
               <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Overview</h2>
-              <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                <p>Design and deliver a high-converting landing page for <a href="https://swiftrooms.ae" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Swiftrooms.ae</a>, a Dubai-based home improvement and architectural glazing company. The project focused on improving the company’s digital presence, supporting paid advertising campaigns, and increasing lead generation.</p>
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>Designed a high-converting landing page for <a href="https://swiftrooms.ae" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Swiftrooms.ae</a>, a Dubai-based home improvement company. The project focused on improving digital presence and supporting Google Ads campaigns for lead generation.</p>
+                }
+              >
+                <p>Design and deliver a high-converting landing page for <a href="https://swiftrooms.ae" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Swiftrooms.ae</a>, a Dubai-based home improvement and architectural glazing company. The project focused on improving the company&apos;s digital presence, supporting paid advertising campaigns, and increasing lead generation.</p>
                 <p>The target audience primarily focused on B2C homeowners, while also allowing opportunities for B2B enquiries. The outcome was a professional, conversion-driven landing page that continues to support ongoing Google Ads campaigns and lead generation.</p>
+              </ResponsiveContent>
+            </div>
+            <div>
+              <div className="flex justify-between items-start mb-6">
+                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Challenge</h2>
+                <div className="w-8 h-8 rotate-45 border border-[#50C1BA] flex items-center justify-center mt-2 flex-shrink-0">
+                  <div className="w-3 h-3 bg-[#50C1BA]"></div>
+                </div>
               </div>
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>Stepped into an incomplete project requiring ownership of design direction. Key issues included responsiveness, functionality, and achieving a 1:1 design-to-development translation.</p>
+                }
+              >
+                <p>The project required stepping into an active workflow midway through development and taking ownership of the landing page&apos;s design direction and delivery. Key issues quickly became apparent within Syspree design-to-development process, particularly around responsiveness, functionality, and overall execution. An additional challenge was ensuring the final developed build accurately matched the approved design, maintaining a consistent 1:1 translation from design to development.</p>
+                <p>Despite months of development, the landing page remained incomplete, lacked mobile optimisation, and failed to provide a polished user experience suitable for paid advertising traffic. These issues risked reducing conversions, weakening brand credibility, and affecting lead generation performance.</p>
+                <p>The challenge was to resolve these usability and delivery issues while aligning the landing page with business goals and audience expectations.</p>
+              </ResponsiveContent>
+            </div>
+            <div>
+              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Solution</h2>
+              <ResponsiveContent
+                className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4"
+                mobileContent={
+                  <p>Utilised <a href="https://www.figma.com/make" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Figma Make</a> to combine traditional design with AI-assisted tools, resulting in a fully functioning prototype demonstrating accurate design-to-development translation.</p>
+                }
+              >
+                <p>Following discussions with one of the directors, there was a request to explore how AI could support and improve the workflow.</p>
+                <p>Combining traditional design methods with AI-assisted tools, I utilised <a href="https://www.figma.com/make" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Figma Make</a> to help resolve development inconsistencies and demonstrate a more accurate 1:1 translation from design to development.</p>
+                <p>The AI prototype resulted in a fully functioning web page with usable code, providing a clear proof of concept for how the final project should be executed and delivered.</p>
+              </ResponsiveContent>
+            </div>
             </div>
             <div>
               <div className="flex justify-between items-start mb-6">
@@ -503,6 +545,12 @@ export default function Swiftrooms() {
             </div>
           </div>
         </section>
+
+        {/* Next Project */}
+        <NextProject 
+          currentSlug="/swiftrooms" 
+          nextProjectImage={imgNextProjectPreview} 
+        />
 
         {/* Footer */}
         <Footer className="md:pl-[280px]" />
