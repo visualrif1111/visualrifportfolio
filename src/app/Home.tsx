@@ -7,6 +7,7 @@ import '../styles/fonts.css';
 import { HeroSection } from './components/HeroSection';
 import { Footer } from './components/Footer';
 import { OptimizedImage } from './components/OptimizedImage';
+import { AboutSection, Diamond } from './components/AboutSection';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
@@ -19,41 +20,6 @@ import imgRectangle19 from "figma:asset/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c
 import imgRectangle21 from "figma:asset/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.png";
 import imgRectangle22 from "figma:asset/61ed1cb628286e3a99aaaf636c61867b91992a4b.png";
 import imgContent61 from "figma:asset/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.png";
-
-const timelineData = [
-  {
-    year: "2016",
-    location: "EAST END PRINTERS — LONDON",
-    title: "FIRST PROFESSIONAL DESIGN ROLE",
-    subtitle: "Began working within a professional print environment, collaborating on client-facing projects and developing practical production knowledge.",
-    focus: "• Print design\n• Client communication\n• Production-ready artwork",
-    keyLearning: "Built confidence working with real clients, deadlines, revisions, and deliverables within a fast-paced production environment."
-  },
-  {
-    year: "2019",
-    location: "VERB BRANDS APPRENTICESHIP — LONDON",
-    title: "BREAKING INTO INDUSTRY",
-    subtitle: "Transitioned further into digital design, contributing to professional creative projects and gaining experience within a collaborative industry environment.",
-    focus: "• Digital design\n• UX / UI\n• Professional collaboration",
-    keyLearning: "Developed adaptability, creative discipline, and a stronger understanding of commercial design expectations."
-  },
-  {
-    year: "2023",
-    location: "FREELANCE & COMMUNITY-BASED DESIGN — SHREWSBURY",
-    title: "INDEPENDENT BRAND BUILDING",
-    subtitle: "Built a recognised creative presence within online communities through branding, digital assets, and visual identity work.",
-    focus: "• Brand identity\n• Community-driven design\n��� Digital asset creation\n• Creative direction",
-    keyLearning: "Learned how strong visual identity and consistent branding can build engagement, trust, and community recognition."
-  },
-  {
-    year: "2026",
-    location: "BRIGHTON & HOVE",
-    title: "INDEPENDENT DESIGN PRACTICE",
-    subtitle: "Continuing to work independently with businesses and clients across branding, digital design, and creative problem-solving.",
-    focus: "• Branding\n• UX/UI\n• Creative strategy\n• Client collaboration",
-    keyLearning: "Focused on delivering thoughtful, scalable design solutions while continuing to refine creative and strategic thinking."
-  }
-];
 
 const projects = {
   uxui: [
@@ -73,59 +39,8 @@ const projects = {
   ]
 };
 
-import svgPathsFrame27 from "../imports/Frame27/svg-sniomcvdel";
-
-const Diamond = React.memo(({ className = "" }: { className?: string }) => (
-  <svg className={`w-3 h-3 ${className}`} viewBox="0 0 26.0181 26.018" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d={svgPathsFrame27.p16002240} fill="#50C1BA" />
-  </svg>
-));
-
-// SVG paths for the ArifLogo
-const ARIF_LOGO_PATHS = {
-  outer: "M51.7704 12.6222H51.662L39.8442 0.70424L39.1395 0L38.2722 0.866757L28.677 10.4553L6.28834 32.7743L0 39.0583C1.46367 40.7918 3.19838 42.4169 4.82468 44.0421C4.98731 44.2046 5.14994 44.3671 5.31257 44.5297C11.4383 50.8136 17.6724 57.0435 23.9065 63.2191C26.8339 66.1444 29.7612 69.1239 32.6885 72.0492C34.7485 74.1619 36.7543 76.1663 38.7601 78.279H42.7174V54.5515H62.9376L64.0761 53.4139L73.2375 44.1504L78.279 39.1124L51.8246 12.6763L51.7704 12.6222ZM68.3586 41.496L60.4982 49.4593H38.0553L37.8385 49.676V69.9907L31.9838 64.14L17.835 50.0552L10.1372 42.3628L6.72202 39.0041L38.9769 6.82571L42.5005 10.2927L63.6966 31.4741L71.0149 38.7874L68.3044 41.5502L68.3586 41.496Z",
-  inner: "M38.9767 22.9148L22.9848 38.8956L27.6469 43.6086L39.302 31.9616L42.663 35.4828L27.5384 50.4885L16.046 39.0581L38.9767 16.1432L61.7991 39.0581L58.5465 42.471L38.9767 22.9148Z"
-};
-
-const ArifLogo = React.memo(({ className = "" }: { className?: string }) => {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 78.2791 78.279" aria-hidden="true">
-      <path d={ARIF_LOGO_PATHS.outer} fill="#50C1BA" />
-      <path d={ARIF_LOGO_PATHS.inner} fill="#50C1BA" />
-    </svg>
-  );
-});
-
 export default function Home() {
   const [activeSection, setActiveSection] = React.useState('home');
-
-  const timelineRef = React.useRef<HTMLDivElement>(null);
-  const [isDraggingTimeline, setIsDraggingTimeline] = React.useState(false);
-  const [timelineStartX, setTimelineStartX] = React.useState(0);
-  const [timelineScrollLeft, setTimelineScrollLeft] = React.useState(0);
-
-  const handleTimelineMouseDown = (e: React.MouseEvent) => {
-    if (!timelineRef.current) return;
-    setIsDraggingTimeline(true);
-    setTimelineStartX(e.pageX - timelineRef.current.offsetLeft);
-    setTimelineScrollLeft(timelineRef.current.scrollLeft);
-  };
-
-  const handleTimelineMouseLeave = () => {
-    setIsDraggingTimeline(false);
-  };
-
-  const handleTimelineMouseUp = () => {
-    setIsDraggingTimeline(false);
-  };
-
-  const handleTimelineMouseMove = (e: React.MouseEvent) => {
-    if (!isDraggingTimeline || !timelineRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - timelineRef.current.offsetLeft;
-    const walk = (x - timelineStartX) * 1.5; 
-    timelineRef.current.scrollLeft = timelineScrollLeft - walk;
-  };
 
   React.useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -133,6 +48,68 @@ export default function Home() {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
         }
+      });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+
+    const sections = ['home', 'about', 'projects', 'contact'];
+    sections.forEach(section => {
+      const element = document.getElementById(section);
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
+      {/* Hero Section with Navigation and Background Video */}
+      <HeroSection 
+        videoId="_4cuwDSUX4Y"
+        onNavigate={scrollTo}
+        activeSection={activeSection}
+      />
+
+      {/* About Section */}
+      <AboutSection portraitImageSrc={imgRectangle38} />
+
+      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
+        {/* Projects */}
+        <section id="projects" className="flex flex-col pb-10 md:pb-20">
+          <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
+          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-32 md:mb-48" theme="dark" />
+          <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-32 md:mb-48" theme="light" />
+        </section>
+
+        {/* Expanding Image Section */}
+        <section className="flex justify-center items-center pb-32 md:pb-48 relative min-h-screen">
+          <motion.div
+            initial={{ scale: 0.8 }}
+            whileInView={{ scale: 1.2 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20 will-change-transform"
+          >
+            <OptimizedImage 
+              src={imgContent61} 
+              alt="Collage" 
+              className="w-full h-full object-cover" 
+              containerClassName="w-full h-full"
+            />
+          </motion.div>
+        </section>
+
+      </div>
+
+      <Footer className="md:pl-[280px]" />
+    </div>
+  );
+}
       });
     }, { rootMargin: '-50% 0px -50% 0px' });
 
