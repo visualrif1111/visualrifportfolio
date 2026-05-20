@@ -93,7 +93,7 @@ const PortraitSection = React.memo(function PortraitSection({ imageSrc }: Portra
         src={imageSrc}
         alt="Arif portrait"
         priority={true}
-        className="w-full max-w-[1920px] h-[120%] object-contain object-center absolute top-[-10%]"
+        className="w-full h-[120%] object-cover object-center absolute top-[-10%]"
         containerClassName="w-full h-full"
       />
     </div>
