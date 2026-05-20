@@ -88,7 +88,7 @@ interface PortraitSectionProps {
 
 const PortraitSection = React.memo(function PortraitSection({ imageSrc }: PortraitSectionProps) {
   return (
-    <div className="w-full bg-black flex items-center justify-center -mt-1">
+    <div className="w-full bg-transparent flex items-center justify-center -mt-1">
       <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8">
         <div className="relative w-full aspect-[16/9] overflow-hidden">
           <OptimizedImage
