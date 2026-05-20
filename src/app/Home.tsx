@@ -8,6 +8,7 @@ import { HeroSection } from './components/HeroSection';
 import { Footer } from './components/Footer';
 import { OptimizedImage } from './components/OptimizedImage';
 import { AboutSection, Diamond } from './components/AboutSection';
+import { usePerformanceContext, useAdaptiveMotion } from './context/PerformanceContext';
 
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
 import imgRectangle16 from "figma:asset/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.png";
@@ -86,27 +87,52 @@ export default function Home() {
         </section>
 
         {/* Expanding Image Section */}
-        <section className="flex justify-center items-center pb-32 md:pb-48 relative min-h-screen">
-          <motion.div
-            initial={{ scale: 0.8 }}
-            whileInView={{ scale: 1.2 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20 will-change-transform"
-          >
-            <OptimizedImage 
-              src={imgContent61} 
-              alt="Collage" 
-              className="w-full h-full object-cover" 
-              containerClassName="w-full h-full"
-            />
-          </motion.div>
-        </section>
+        <ExpandingImageSection imageSrc={imgContent61} />
 
       </div>
 
       <Footer className="md:pl-[280px]" />
     </div>
+  );
+}
+
+// Adaptive expanding image component
+function ExpandingImageSection({ imageSrc }: { imageSrc: string }) {
+  const { isLowEnd, config } = usePerformanceContext();
+  
+  if (isLowEnd) {
+    // Static version for low-end devices
+    return (
+      <section className="flex justify-center items-center pb-32 md:pb-48 relative min-h-screen">
+        <div className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20">
+          <OptimizedImage 
+            src={imageSrc} 
+            alt="Collage" 
+            className="w-full h-full object-cover" 
+            containerClassName="w-full h-full"
+          />
+        </div>
+      </section>
+    );
+  }
+  
+  return (
+    <section className="flex justify-center items-center pb-32 md:pb-48 relative min-h-screen">
+      <motion.div
+        initial={{ scale: 0.8 }}
+        whileInView={{ scale: 1.2 }}
+        transition={{ duration: config.animationDuration * 2, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20 will-change-transform"
+      >
+        <OptimizedImage 
+          src={imageSrc} 
+          alt="Collage" 
+          className="w-full h-full object-cover" 
+          containerClassName="w-full h-full"
+        />
+      </motion.div>
+    </section>
   );
 }
 
@@ -158,6 +184,7 @@ function ProjectCategory({ title, projects, className = "", theme = "dark" }: { 
 const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, className?: string }) => {
   const [isVideoOpen, setIsVideoOpen] = React.useState(false);
   const navigate = useNavigate();
+  const { isLowEnd, config } = usePerformanceContext();
 
   const handleVideoReady = React.useCallback((event: any) => {
     event.target.playVideo();
@@ -172,12 +199,87 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
 
   if (!p) return null;
 
+  // Low-end: Static card without animations
+  if (isLowEnd) {
+    return (
+      <div
+        className={`group relative overflow-hidden bg-gray-900 ${(p.videoId || p.link) ? 'cursor-pointer' : ''} ${className}`}
+        onClick={() => {
+          if (p.link) {
+            navigate(p.link);
+          } else if (p.videoId && !isVideoOpen) {
+            setIsVideoOpen(true);
+          }
+        }}
+      >
+        {!isVideoOpen ? (
+          <>
+            <OptimizedImage 
+              src={p.img} 
+              alt={p.title} 
+              className="w-full h-full object-cover" 
+              containerClassName="w-full h-full absolute inset-0"
+            />
+            <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+            
+            {/* Static overlay */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+              <h3 className="text-2xl tracking-widest font-medium mb-4 text-center px-4">{p.title}</h3>
+              <Diamond className="mb-4" />
+              {(p.link || p.videoId) && (
+                <button className="border border-white px-6 py-2 text-xs tracking-widest uppercase">
+                  {p.hover}
+                </button>
+              )}
+            </div>
+          </>
+        ) : (
+          <div className="absolute inset-0 z-20 bg-black flex items-center justify-center pointer-events-none">
+            <YouTube
+              videoId={p.videoId}
+              opts={{
+                height: '100%',
+                width: '100%',
+                playerVars: {
+                  autoplay: 1,
+                  mute: 1,
+                  loop: 1,
+                  playlist: p.videoId,
+                  controls: 0,
+                  modestbranding: 1,
+                  rel: 0,
+                  iv_load_policy: 3,
+                  disablekb: 1,
+                  playsinline: 1,
+                },
+              }}
+              onReady={handleVideoReady}
+              onStateChange={handleVideoStateChange}
+              className="w-full h-full"
+              iframeClassName="w-full h-full pointer-events-none"
+            />
+            <button
+              className="absolute top-4 right-4 text-white bg-black/50 p-2 rounded-full z-30 pointer-events-auto"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsVideoOpen(false);
+              }}
+            >
+              <X size={20} />
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // High/Medium: Full animated card
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: config.animationDuration, ease: "easeOut" }}
       className={`group relative overflow-hidden bg-gray-900 will-change-transform ${!isVideoOpen && (p.videoId || p.link) ? 'cursor-pointer' : ''} ${className}`}
       onClick={() => {
         if (p.link) {
@@ -192,31 +294,31 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
           <OptimizedImage 
             src={p.img} 
             alt={p.title} 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+            className={`w-full h-full object-cover ${config.enableHoverEffects ? 'group-hover:scale-105 transition-transform duration-700 ease-out' : ''}`}
             containerClassName="w-full h-full absolute inset-0"
           />
           <div className="absolute inset-0 bg-black/50 pointer-events-none" />
           
           {/* Desktop: Hover overlay */}
-          <div className="hidden md:flex absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex-col items-center justify-center z-10">
-            <h3 className="text-2xl tracking-widest font-medium mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">{p.title}</h3>
+          <div className={`hidden md:flex absolute inset-0 bg-black/60 opacity-0 ${config.enableHoverEffects ? 'group-hover:opacity-100 transition-opacity duration-500' : ''} flex-col items-center justify-center z-10`}>
+            <h3 className={`text-2xl tracking-widest font-medium mb-4 ${config.enableHoverEffects ? 'translate-y-4 group-hover:translate-y-0 transition-transform duration-500' : ''} text-center px-4`}>{p.title}</h3>
             <Diamond className="mb-4" />
-            <button className="border border-white px-6 py-2 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+            <button className={`border border-white px-6 py-2 text-xs tracking-widest uppercase ${config.enableHoverEffects ? 'hover:bg-white hover:text-black transition-colors translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75' : ''}`}>
               {p.hover}
             </button>
           </div>
           
           {/* Desktop: Default state */}
-          <div className="hidden md:flex absolute inset-0 flex-col items-center justify-center pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-            <h3 className="text-2xl tracking-widest font-medium mb-4 drop-shadow-lg text-center px-4">{p.title}</h3>
-            <Diamond className="drop-shadow-lg" />
+          <div className={`hidden md:flex absolute inset-0 flex-col items-center justify-center pointer-events-none ${config.enableHoverEffects ? 'transition-opacity duration-500 group-hover:opacity-0' : ''}`}>
+            <h3 className={`text-2xl tracking-widest font-medium mb-4 ${config.enableShadows ? 'drop-shadow-lg' : ''} text-center px-4`}>{p.title}</h3>
+            <Diamond className={config.enableShadows ? 'drop-shadow-lg' : ''} />
           </div>
           
           {/* Mobile: Always visible with CTA */}
           <div className="md:hidden absolute inset-0 flex flex-col items-center justify-end pb-8 pointer-events-none z-10">
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <h3 className="text-xl tracking-widest font-medium mb-3 drop-shadow-lg text-center px-4 relative z-10">{p.title}</h3>
-            <Diamond className="mb-3 relative z-10" />
+            <h3 className={`text-xl tracking-widest font-medium mb-3 ${config.enableShadows ? 'drop-shadow-lg' : ''} text-center px-4 relative z-10`}>{p.title}</h3>
+            <Diamond className={`mb-3 relative z-10 ${config.enableShadows ? '' : ''}`} />
             {(p.link || p.videoId) && (
               <span className="relative z-10 bg-[#50C1BA] text-black px-5 py-2 text-xs tracking-widest uppercase font-medium pointer-events-auto">
                 {p.hover}
@@ -250,7 +352,7 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
             iframeClassName="w-full h-full pointer-events-none"
           />
           <button
-            className="absolute top-4 right-4 text-white hover:text-[#50C1BA] transition-colors bg-black/50 p-2 rounded-full z-30 pointer-events-auto"
+            className={`absolute top-4 right-4 text-white ${config.enableHoverEffects ? 'hover:text-[#50C1BA] transition-colors' : ''} bg-black/50 p-2 rounded-full z-30 pointer-events-auto`}
             onClick={(e) => {
               e.stopPropagation();
               setIsVideoOpen(false);

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import svgPaths from "../../imports/Asset61-1/svg-b0s0st4ztg";
+import { usePerformanceContext } from '../context/PerformanceContext';
 
 export function CustomCursor() {
+  const { config, isLowEnd } = usePerformanceContext();
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [hidden, setHidden] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -9,6 +11,11 @@ export function CustomCursor() {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Disable custom cursor on low-end devices or if feature is disabled
+    if (isLowEnd || !config.enableCustomCursor) {
+      return;
+    }
+    
     // Check if the device uses a touch screen / lacks a fine pointer
     const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (!hasHover) {
@@ -86,9 +93,10 @@ export function CustomCursor() {
       }
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [isLowEnd, config.enableCustomCursor]);
 
-  if (isTouchDevice || hidden) return null;
+  // Don't render on low-end devices, touch devices, or when hidden
+  if (isLowEnd || !config.enableCustomCursor || isTouchDevice || hidden) return null;
 
   return (
     <div

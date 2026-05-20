@@ -1,22 +1,36 @@
 import React, { useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import imgRectangle1 from "figma:asset/8e7771964c5c3a7ec1502b7371fd0054f51617eb.png";
+import { usePerformanceContext } from '../context/PerformanceContext';
 
 export const AnimatedBackground = React.memo(function AnimatedBackground() {
+  const { config, isLowEnd, profile } = usePerformanceContext();
+  
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
   const mousePxX = useMotionValue(typeof window !== 'undefined' ? window.innerWidth / 2 : 500);
   const mousePxY = useMotionValue(typeof window !== 'undefined' ? window.innerHeight / 2 : 500);
 
-  const springConfig = { damping: 30, stiffness: 50, mass: 1 };
+  // Use faster spring for high-end, disable for low-end
+  const springConfig = isLowEnd 
+    ? { damping: 50, stiffness: 100, mass: 0.5 } // Faster, simpler spring
+    : { damping: 30, stiffness: 50, mass: 1 };
+    
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  const smoothPxX = useSpring(mousePxX, { damping: 40, stiffness: 60, mass: 0.5 });
-  const smoothPxY = useSpring(mousePxY, { damping: 40, stiffness: 60, mass: 0.5 });
+  const smoothPxX = useSpring(mousePxX, isLowEnd 
+    ? { damping: 60, stiffness: 100, mass: 0.3 }
+    : { damping: 40, stiffness: 60, mass: 0.5 });
+  const smoothPxY = useSpring(mousePxY, isLowEnd
+    ? { damping: 60, stiffness: 100, mass: 0.3 }
+    : { damping: 40, stiffness: 60, mass: 0.5 });
 
   useEffect(() => {
+    // Skip mouse tracking for low-end devices
+    if (!config.enableMouseTracking) return;
+    
     let rafId: number;
     let lastX = 0;
     let lastY = 0;
@@ -47,17 +61,40 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
       window.removeEventListener("mousemove", handleMouseMove);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [mouseX, mouseY, mousePxX, mousePxY]);
+  }, [mouseX, mouseY, mousePxX, mousePxY, config.enableMouseTracking]);
 
-  const x1 = useTransform(smoothX, [-1, 1], ["-3%", "3%"]);
-  const y1 = useTransform(smoothY, [-1, 1], ["-3%", "3%"]);
+  // Parallax transforms (reduced for low-end)
+  const parallaxMultiplier = isLowEnd ? 0.5 : 1;
+  const x1 = useTransform(smoothX, [-1, 1], [`${-3 * parallaxMultiplier}%`, `${3 * parallaxMultiplier}%`]);
+  const y1 = useTransform(smoothY, [-1, 1], [`${-3 * parallaxMultiplier}%`, `${3 * parallaxMultiplier}%`]);
 
-  const x2 = useTransform(smoothX, [-1, 1], ["5%", "-5%"]);
-  const y2 = useTransform(smoothY, [-1, 1], ["5%", "-5%"]);
+  const x2 = useTransform(smoothX, [-1, 1], [`${5 * parallaxMultiplier}%`, `${-5 * parallaxMultiplier}%`]);
+  const y2 = useTransform(smoothY, [-1, 1], [`${5 * parallaxMultiplier}%`, `${-5 * parallaxMultiplier}%`]);
 
-  const x3 = useTransform(smoothX, [-1, 1], ["-8%", "8%"]);
-  const y3 = useTransform(smoothY, [-1, 1], ["8%", "-8%"]);
+  const x3 = useTransform(smoothX, [-1, 1], [`${-8 * parallaxMultiplier}%`, `${8 * parallaxMultiplier}%`]);
+  const y3 = useTransform(smoothY, [-1, 1], [`${8 * parallaxMultiplier}%`, `${-8 * parallaxMultiplier}%`]);
 
+  // Low-end mode: Show static simplified background
+  if (isLowEnd || !config.enableBackgroundAnimation) {
+    return (
+      <div className="fixed inset-0 z-[-1] bg-[#020404] overflow-hidden pointer-events-none">
+        {/* Single static layer */}
+        <div className="absolute w-full h-full bg-black">
+          <img 
+            src={imgRectangle1} 
+            alt="" 
+            className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5] opacity-60" 
+            loading="eager" 
+          />
+          <div className="absolute inset-0 w-full h-full bg-[#50C1BA] mix-blend-multiply pointer-events-none opacity-80" />
+        </div>
+        {/* Simple vignette */}
+        <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,transparent_20%,black_150%)] opacity-70 pointer-events-none" />
+      </div>
+    );
+  }
+
+  // Medium/High-end mode: Full animated background
   return (
     <div className="fixed inset-0 z-[-1] bg-[#020404] overflow-hidden pointer-events-none">
 
@@ -65,7 +102,7 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
       <motion.div
         className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-80 will-change-transform"
         style={{ x: x1, y: y1 }}
-        animate={{ rotate: [-0.5, 0.5, -0.5], scale: [1.02, 1.05, 1.02] }}
+        animate={config.enableInfiniteAnimations ? { rotate: [-0.5, 0.5, -0.5], scale: [1.02, 1.05, 1.02] } : {}}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       >
         <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
@@ -76,35 +113,39 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
       <motion.div
         className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-40 will-change-transform"
         style={{ x: x2, y: y2 }}
-        animate={{ rotate: [1, -1, 1], scale: [1.05, 1.1, 1.05] }}
+        animate={config.enableInfiniteAnimations ? { rotate: [1, -1, 1], scale: [1.05, 1.1, 1.05] } : {}}
         transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
       >
         <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
         <div className="absolute inset-0 w-full h-full bg-[#2D8C87] mix-blend-multiply pointer-events-none" />
       </motion.div>
 
-      {/* Layer 3: High speed, low opacity wave */}
-      <motion.div
-        className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-20 will-change-transform"
-        style={{ x: x3, y: y3 }}
-        animate={{ rotate: [-1.5, 1.5, -1.5], scale: [1.1, 1.15, 1.1] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      >
-        <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
-        <div className="absolute inset-0 w-full h-full bg-[#7CF1EA] mix-blend-multiply pointer-events-none" />
-      </motion.div>
+      {/* Layer 3: High speed, low opacity wave (only on high-end) */}
+      {profile.tier === 'high' && (
+        <motion.div
+          className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-20 will-change-transform"
+          style={{ x: x3, y: y3 }}
+          animate={{ rotate: [-1.5, 1.5, -1.5], scale: [1.1, 1.15, 1.1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        >
+          <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
+          <div className="absolute inset-0 w-full h-full bg-[#7CF1EA] mix-blend-multiply pointer-events-none" />
+        </motion.div>
+      )}
 
       {/* Interactive Mouse Spotlight - Subtly illuminates the lines underneath */}
-      <motion.div
-        className="absolute top-0 left-0 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full pointer-events-none mix-blend-screen will-change-transform"
-        style={{
-          x: smoothPxX,
-          y: smoothPxY,
-          translateX: "-50%",
-          translateY: "-50%",
-          background: "radial-gradient(circle, rgba(80,193,186,0.15) 0%, transparent 65%)"
-        }}
-      />
+      {config.enableMouseTracking && (
+        <motion.div
+          className="absolute top-0 left-0 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full pointer-events-none mix-blend-screen will-change-transform"
+          style={{
+            x: smoothPxX,
+            y: smoothPxY,
+            translateX: "-50%",
+            translateY: "-50%",
+            background: "radial-gradient(circle, rgba(80,193,186,0.15) 0%, transparent 65%)"
+          }}
+        />
+      )}
 
       {/* Vignette - softened to prevent black void edges */}
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,transparent_20%,black_150%)] opacity-70 pointer-events-none" />

@@ -1,16 +1,48 @@
 "use client";
 
 import React from "react";
+import { usePerformanceContext } from '../context/PerformanceContext';
 
 interface HeroBackgroundVideoProps {
   videoId?: string;
   overlayOpacity?: number;
+  fallbackImage?: string;
 }
 
 export const HeroBackgroundVideo = React.memo(function HeroBackgroundVideo({
   videoId = "_4cuwDSUX4Y",
   overlayOpacity = 70,
+  fallbackImage,
 }: HeroBackgroundVideoProps) {
+  const { config, isLowEnd } = usePerformanceContext();
+
+  // Low-end mode: Show static fallback or just overlay
+  if (isLowEnd || !config.enableVideoAutoplay) {
+    return (
+      <div
+        className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
+        aria-hidden="true"
+      >
+        {fallbackImage ? (
+          <img 
+            src={fallbackImage} 
+            alt="" 
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+          />
+        ) : (
+          <div className="absolute inset-0 w-full h-full bg-[#020404]" />
+        )}
+        {/* Dark overlay for contrast */}
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity / 100})` }}
+        />
+      </div>
+    );
+  }
+
+  // High/Medium: Full video background
   return (
     <div
       className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
