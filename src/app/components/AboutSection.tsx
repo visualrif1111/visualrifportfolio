@@ -108,8 +108,9 @@ const PortraitSection = React.memo(function PortraitSection({ imageSrc }: Portra
               src={imageSrc}
               alt="Arif portrait"
               priority={true}
+              placeholderColor="transparent"
               className="w-full h-full object-contain object-center"
-              containerClassName="w-full h-full bg-transparent"
+              containerClassName="w-full h-full"
             />
           </motion.div>
         </motion.div>
