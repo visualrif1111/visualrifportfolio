@@ -90,7 +90,7 @@ const PortraitSection = React.memo(function PortraitSection({ imageSrc }: Portra
   return (
     <div className="w-full bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex items-center justify-center -mt-1">
       <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8">
-        <div className="relative w-full aspect-[16/9] border-4 border-gray-900 overflow-hidden">
+        <div className="relative w-full aspect-[16/9] overflow-hidden">
           <OptimizedImage
             src={imageSrc}
             alt="Arif portrait"
