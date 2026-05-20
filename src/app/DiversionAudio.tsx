@@ -4,6 +4,7 @@ import { Instagram, Linkedin, Phone, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
+import { OptimizedImage } from './components/OptimizedImage';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 

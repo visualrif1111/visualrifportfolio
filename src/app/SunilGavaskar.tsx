@@ -4,6 +4,7 @@ import { Instagram, Linkedin, Phone, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
+import { OptimizedImage } from './components/OptimizedImage';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -122,7 +123,7 @@ export default function SunilGavaskar() {
       <div className="relative z-10 w-full md:pl-[280px]">
         {/* Hero Section */}
         <section className="relative w-full h-[25vh] md:h-[40vh] overflow-hidden">
-          <img src={imgRectangle51} alt="Always First Sunil Gavaskar Hero" className="absolute inset-0 w-full h-full object-cover object-center" />
+          <OptimizedImage src={imgRectangle51} alt="Always First Sunil Gavaskar Hero" priority={true} className="absolute inset-0 w-full h-full object-cover object-center" containerClassName="absolute inset-0" />
           <div className="absolute inset-0 bg-black/40"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0">
             <motion.h1 
@@ -188,11 +189,11 @@ export default function SunilGavaskar() {
           
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="w-full relative">
-              <img src={imgRectangle43} alt="Laptop Preview" loading="lazy" className="w-full h-auto object-cover rounded-lg" />
+              <OptimizedImage src={imgRectangle43} alt="Laptop Preview" className="w-full h-auto object-cover rounded-lg" containerClassName="w-full" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
               <div className="relative">
-                <img src={imgRectangle46} alt="Desktop Preview" loading="lazy" className="w-full h-auto object-cover rounded-lg" />
+                <OptimizedImage src={imgRectangle46} alt="Desktop Preview" className="w-full h-auto object-cover rounded-lg" containerClassName="w-full" />
               </div>
               <div className="relative flex items-center justify-center bg-[#011615] rounded-lg p-6 overflow-hidden min-h-[300px]">
                 <div className="flex items-start justify-center gap-1.5 md:gap-2 h-[200px] md:h-[240px] relative z-10 w-full overflow-hidden">

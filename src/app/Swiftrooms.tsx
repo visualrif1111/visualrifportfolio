@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
+import { OptimizedImage } from './components/OptimizedImage';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -327,14 +328,14 @@ export default function Swiftrooms() {
           </div>
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="w-full relative">
-              <img src={imgImageLaptopMockup} alt="Laptop Mockup" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px]" />
+              <OptimizedImage src={imgImageLaptopMockup} alt="Laptop Mockup" priority={true} className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px]" containerClassName="w-full" />
             </div>
             <div className="grid grid-cols-2 gap-6 w-full">
               <div className="relative">
-                <img src={imgImageMobileMockup} alt="Mobile Mockup" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[200px] md:min-h-[400px]" />
+                <OptimizedImage src={imgImageMobileMockup} alt="Mobile Mockup" className="w-full h-auto object-cover rounded-lg min-h-[200px] md:min-h-[400px]" containerClassName="w-full h-full" />
               </div>
               <div className="relative">
-                <img src={imgImageDesktopMockup} alt="Desktop Mockup" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[200px] md:min-h-[400px]" />
+                <OptimizedImage src={imgImageDesktopMockup} alt="Desktop Mockup" className="w-full h-auto object-cover rounded-lg min-h-[200px] md:min-h-[400px]" containerClassName="w-full h-full" />
               </div>
             </div>
             <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mt-4 text-center lg:text-left">

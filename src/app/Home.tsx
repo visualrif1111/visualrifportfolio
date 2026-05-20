@@ -6,6 +6,7 @@ import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { HeroSection } from './components/HeroSection';
 import { Footer } from './components/Footer';
+import { OptimizedImage } from './components/OptimizedImage';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
@@ -165,7 +166,7 @@ export default function Home() {
               Hey, I’m Arif — most people just call me Rif
             </h2>
             <div className="font-['Rajdhani',sans-serif] font-semibold text-[3.5vw] sm:text-[16px] md:text-[19.79px] tracking-[0.5vw] sm:tracking-[3px] md:tracking-[4.94px] text-white uppercase leading-relaxed md:leading-normal text-center mb-16 w-full max-w-[646px]">
-              <p className="mb-4 md:mb-0">I’ve worked freelance and in agencies across digital, 3D, and branding.</p>
+              <p className="mb-4 md:mb-0">I���ve worked freelance and in agencies across digital, 3D, and branding.</p>
               <p>I started at Verb Brands in London, later expanding into game design within the GTA community, CURRENTLY now based in Brighton.</p>
             </div>
             <div className="mt-8 mb-8 flex justify-center">
@@ -175,11 +176,12 @@ export default function Home() {
       </div>
 
       <div className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center">
-        <img
+        <OptimizedImage
           src={imgRectangle38}
           alt="Arif portrait"
-          loading="lazy"
+          priority={true}
           className="w-full max-w-[1920px] h-[120%] object-contain object-center absolute top-[-10%]"
+          containerClassName="w-full h-full"
         />
       </div>
 
@@ -285,7 +287,12 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="w-[300px] h-[300px] md:w-[800px] md:h-[800px] rounded-full overflow-hidden border border-gray-800 relative z-20 will-change-transform"
           >
-            <img src={imgContent61} alt="Collage" className="w-full h-full object-cover" />
+            <OptimizedImage 
+              src={imgContent61} 
+              alt="Collage" 
+              className="w-full h-full object-cover" 
+              containerClassName="w-full h-full"
+            />
           </motion.div>
         </section>
 
@@ -375,7 +382,12 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
     >
       {!isVideoOpen ? (
         <>
-          <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+          <OptimizedImage 
+            src={p.img} 
+            alt={p.title} 
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+            containerClassName="w-full h-full absolute inset-0"
+          />
           <div className="absolute inset-0 bg-black/50 pointer-events-none" />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center z-10">
             <h3 className="text-2xl tracking-widest font-medium mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">{p.title}</h3>
