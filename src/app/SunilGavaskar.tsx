@@ -128,7 +128,16 @@ export default function SunilGavaskar() {
       <div className="relative z-10 w-full md:pl-[280px]">
         {/* Hero Section */}
         <section className="relative w-full h-[25vh] md:h-[40vh] overflow-hidden">
-          <OptimizedImage src={imgRectangle51} alt="Always First Sunil Gavaskar Hero" priority={true} className="absolute inset-0 w-full h-full object-cover object-center" containerClassName="absolute inset-0" />
+          <div className="absolute inset-0 w-full h-full">
+            <OptimizedImage 
+              src={imgRectangle51} 
+              alt="Always First Sunil Gavaskar Hero" 
+              priority={true} 
+              className="w-full h-full object-cover object-center" 
+              containerClassName="w-full h-full"
+              placeholderColor="rgba(0, 0, 0, 0.8)"
+            />
+          </div>
           <div className="absolute inset-0 bg-black/40"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0">
             <motion.h1 
