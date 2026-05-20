@@ -210,7 +210,6 @@ export default function DiversionAudio() {
                 <p>This project marked my first introduction to working within the electronic music industry — a space I&apos;m personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding, while the collective has continued to grow successfully within the UK music scene.</p>
               </ResponsiveContent>
             </div>
-            </div>
             <div className="lg:col-span-7">
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-[4/5] drop-shadow-xl">

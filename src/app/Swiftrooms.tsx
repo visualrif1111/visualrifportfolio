@@ -345,28 +345,6 @@ export default function Swiftrooms() {
                 <p>The AI prototype resulted in a fully functioning web page with usable code, providing a clear proof of concept for how the final project should be executed and delivered.</p>
               </ResponsiveContent>
             </div>
-            </div>
-            <div>
-              <div className="flex justify-between items-start mb-6">
-                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Challenge</h2>
-                <div className="w-8 h-8 rotate-45 border border-[#50C1BA] flex items-center justify-center mt-2 flex-shrink-0">
-                  <div className="w-3 h-3 bg-[#50C1BA]"></div>
-                </div>
-              </div>
-              <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                <p>The project required stepping into an active workflow midway through development and taking ownership of the landing page’s design direction and delivery. Key issues quickly became apparent within Syspree design-to-development process, particularly around responsiveness, functionality, and overall execution. An additional challenge was ensuring the final developed build accurately matched the approved design, maintaining a consistent 1:1 translation from design to development.</p>
-                <p>Despite months of development, the landing page remained incomplete, lacked mobile optimisation, and failed to provide a polished user experience suitable for paid advertising traffic. These issues risked reducing conversions, weakening brand credibility, and affecting lead generation performance.</p>
-                <p>The challenge was to resolve these usability and delivery issues while aligning the landing page with business goals and audience expectations.</p>
-              </div>
-            </div>
-            <div>
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Solution</h2>
-              <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                <p>Following discussions with one of the directors, there was a request to explore how AI could support and improve the workflow.</p>
-                <p>Combining traditional design methods with AI-assisted tools, I utilised <a href="https://www.figma.com/make" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Figma Make</a> to help resolve development inconsistencies and demonstrate a more accurate 1:1 translation from design to development.</p>
-                <p>The AI prototype resulted in a fully functioning web page with usable code, providing a clear proof of concept for how the final project should be executed and delivered.</p>
-              </div>
-            </div>
           </div>
           <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="w-full relative">
