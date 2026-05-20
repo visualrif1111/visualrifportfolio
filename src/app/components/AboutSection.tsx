@@ -88,14 +88,16 @@ interface PortraitSectionProps {
 
 const PortraitSection = React.memo(function PortraitSection({ imageSrc }: PortraitSectionProps) {
   return (
-    <div className="w-screen h-[60vh] md:h-[927px] relative overflow-hidden">
-      <OptimizedImage
-        src={imageSrc}
-        alt="Arif portrait"
-        priority={true}
-        className="w-full h-full object-cover object-top"
-        containerClassName="w-full h-full"
-      />
+    <div className="w-full min-h-[60vh] md:min-h-[927px] relative bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex items-center justify-center py-8 md:py-16">
+      <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12">
+        <OptimizedImage
+          src={imageSrc}
+          alt="Arif portrait"
+          priority={true}
+          className="w-full h-auto object-contain"
+          containerClassName="w-full"
+        />
+      </div>
     </div>
   );
 });
