@@ -88,8 +88,8 @@ interface PortraitSectionProps {
 
 const PortraitSection = React.memo(function PortraitSection({ imageSrc }: PortraitSectionProps) {
   return (
-    <div className="w-full min-h-[60vh] md:min-h-[927px] relative bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex items-center justify-center py-8 md:py-16">
-      <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12">
+    <div className="w-full relative bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex items-center justify-center -mt-1">
+      <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8">
         <OptimizedImage
           src={imageSrc}
           alt="Arif portrait"
