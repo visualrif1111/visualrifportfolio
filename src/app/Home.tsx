@@ -9,7 +9,6 @@ import { Footer } from './components/Footer';
 import { OptimizedImage } from './components/OptimizedImage';
 import { AboutSection, Diamond } from './components/AboutSection';
 
-import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
 import imgRectangle16 from "figma:asset/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.png";
 import imgRectangle15 from "../imports/image-1.png";
@@ -76,7 +75,7 @@ export default function Home() {
       />
 
       {/* About Section */}
-      <AboutSection portraitImageSrc={imgRectangle38} />
+      <AboutSection portraitImageSrc="/images/arif-portrait.png" />
 
       <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
         {/* Projects */}
