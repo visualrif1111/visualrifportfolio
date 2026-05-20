@@ -434,7 +434,7 @@ export default function Swiftrooms() {
                  imgScene8A2, imgScene8B2, imgScene92, imgScene9A2, img202503191215262
                ].map((img, idx) => (
                  <div key={idx} className="relative aspect-square">
-                   <img src={img} alt={`Storyboard Scene ${idx}`} loading="lazy" className="w-full h-full object-cover" />
+                   <OptimizedImage src={img} alt={`Storyboard Scene ${idx}`} className="w-full h-full object-cover" containerClassName="w-full h-full" />
                  </div>
                ))}
              </div>
@@ -465,10 +465,10 @@ export default function Swiftrooms() {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-[1920px] mx-auto px-6 md:px-12 w-full">
               <div className="relative w-full">
-                <img src={imgImage3} alt="Sitemap" loading="lazy" className="w-full h-auto object-contain bg-white rounded-lg p-4 min-h-[300px] md:min-h-[500px]" />
+                <OptimizedImage src={imgImage3} alt="Sitemap" className="w-full h-auto object-contain bg-white rounded-lg p-4 min-h-[300px] md:min-h-[500px]" containerClassName="w-full" />
               </div>
               <div className="relative w-full">
-                <img src={importedImage3} alt="Wireframes and Content Request" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px]" />
+                <OptimizedImage src={importedImage3} alt="Wireframes and Content Request" className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px]" containerClassName="w-full" />
               </div>
             </div>
         </section>

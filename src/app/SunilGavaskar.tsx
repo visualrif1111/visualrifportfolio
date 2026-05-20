@@ -197,15 +197,15 @@ export default function SunilGavaskar() {
               </div>
               <div className="relative flex items-center justify-center bg-[#011615] rounded-lg p-6 overflow-hidden min-h-[300px]">
                 <div className="flex items-start justify-center gap-1.5 md:gap-2 h-[200px] md:h-[240px] relative z-10 w-full overflow-hidden">
-                  <img src={imgSg22HomepageV07202204134} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 1" />
-                  <img src={img2SunilGavaskarTheEmblems3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 2" />
-                  <img src={imgSunilGavaskarTheMoments3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 3" />
-                  <img src={imgSunilGavaskarHallOfFame3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 4" />
+                  <OptimizedImage src={imgSg22HomepageV07202204134} className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" containerClassName="h-full" alt="Slice 1" />
+                  <OptimizedImage src={img2SunilGavaskarTheEmblems3} className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" containerClassName="h-full" alt="Slice 2" />
+                  <OptimizedImage src={imgSunilGavaskarTheMoments3} className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" containerClassName="h-full" alt="Slice 3" />
+                  <OptimizedImage src={imgSunilGavaskarHallOfFame3} className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" containerClassName="h-full" alt="Slice 4" />
                   <div className="h-full flex flex-col justify-start">
-                    <img src={imgSunilGavaskarTheHallOfFameV23} loading="lazy" className="h-[25%] w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 5" />
+                    <OptimizedImage src={imgSunilGavaskarTheHallOfFameV23} className="h-[25%] w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" containerClassName="h-[25%]" alt="Slice 5" />
                   </div>
                 </div>
-                <img src={imgEllipse5} loading="lazy" className="absolute bottom-4 right-4 w-20 md:w-24 h-auto drop-shadow-[0_10px_30px_rgba(210,176,99,0.3)] z-20" alt="Gold Seal" />
+                <OptimizedImage src={imgEllipse5} className="absolute bottom-4 right-4 w-20 md:w-24 h-auto drop-shadow-[0_10px_30px_rgba(210,176,99,0.3)] z-20" containerClassName="absolute bottom-4 right-4 w-20 md:w-24" alt="Gold Seal" />
               </div>
             </div>
           </div>
@@ -225,7 +225,7 @@ export default function SunilGavaskar() {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 w-full">
             {/* Left tall panel: wireframe */}
             <div className="w-full lg:w-1/4 hidden md:flex justify-center lg:justify-start items-start">
-              <img src={imgNftieSunilGavaskarMindmap2} alt="Wireframe" className="w-full max-w-[300px] h-auto object-contain rounded-2xl bg-[#0a0a0a] p-4 drop-shadow-2xl" />
+              <OptimizedImage src={imgNftieSunilGavaskarMindmap2} alt="Wireframe" className="w-full max-w-[300px] h-auto object-contain rounded-2xl bg-[#0a0a0a] p-4 drop-shadow-2xl" containerClassName="w-full max-w-[300px]" />
             </div>
             
             {/* Right block */}
@@ -233,19 +233,19 @@ export default function SunilGavaskar() {
               {/* Top block */}
               <div className="w-full bg-[#011615] rounded-[24px] py-16 px-8 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden shadow-2xl">
                 <div className="w-full md:w-[40%] flex justify-center gap-4 relative z-10 opacity-80 mix-blend-screen">
-                  <img src={imgImg01632} className="w-[45%] h-auto rounded" alt="Sketch Process 1" />
-                  <img src={imgImg01642} className="w-[45%] h-auto rounded mt-8" alt="Sketch Process 2" />
+                  <OptimizedImage src={imgImg01632} className="w-[45%] h-auto rounded" containerClassName="w-[45%]" alt="Sketch Process 1" />
+                  <OptimizedImage src={imgImg01642} className="w-[45%] h-auto rounded mt-8" containerClassName="w-[45%]" alt="Sketch Process 2" />
                 </div>
                 <div className="w-full md:w-[60%] flex justify-center z-10">
-                  <img src={imgNftieSunilGavaskarMindmapV11} alt="Mindmap" className="w-full h-auto object-cover rounded-xl" />
+                  <OptimizedImage src={imgNftieSunilGavaskarMindmapV11} alt="Mindmap" className="w-full h-auto object-cover rounded-xl" containerClassName="w-full" />
                 </div>
               </div>
 
               {/* Bottom block: Sketch Squares */}
               <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mt-4">
-                <img src={imgRectangle27} className="w-full aspect-square object-cover rounded-[24px] shadow-xl hover:scale-[1.02] transition-transform duration-500" alt="Wireframe 1" />
-                <img src={imgRectangle28} className="w-full aspect-square object-cover rounded-[24px] shadow-xl hover:scale-[1.02] transition-transform duration-500" alt="Wireframe 2" />
-                <img src={imgRectangle29} className="w-full aspect-square object-cover rounded-[24px] shadow-xl hover:scale-[1.02] transition-transform duration-500" alt="Wireframe 3" />
+                <OptimizedImage src={imgRectangle27} className="w-full aspect-square object-cover rounded-[24px] shadow-xl hover:scale-[1.02] transition-transform duration-500" containerClassName="w-full aspect-square" alt="Wireframe 1" />
+                <OptimizedImage src={imgRectangle28} className="w-full aspect-square object-cover rounded-[24px] shadow-xl hover:scale-[1.02] transition-transform duration-500" containerClassName="w-full aspect-square" alt="Wireframe 2" />
+                <OptimizedImage src={imgRectangle29} className="w-full aspect-square object-cover rounded-[24px] shadow-xl hover:scale-[1.02] transition-transform duration-500" containerClassName="w-full aspect-square" alt="Wireframe 3" />
               </div>
             </div>
           </div>
@@ -269,28 +269,28 @@ export default function SunilGavaskar() {
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto flex flex-col gap-8 md:gap-16">
           {/* Banner 1 */}
           <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-            <img src={imgRectangle34} alt="Banner 1" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+            <OptimizedImage src={imgRectangle34} alt="Banner 1" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" containerClassName="w-full" />
           </div>
 
           {/* Grid 1 (Monochrome Photos) */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[imgRectangle52, imgRectangle53, imgRectangle54, imgRectangle55].map((img, i) => (
               <div key={i} className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg">
-                <img src={img} className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-500" alt={`Grid item ${i+1}`} />
+                <OptimizedImage src={img} className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-500" containerClassName="w-full aspect-square" alt={`Grid item ${i+1}`} />
               </div>
             ))}
           </div>
 
           {/* Banner 2 */}
           <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-            <img src={imgRectangle37} alt="Banner 2" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+            <OptimizedImage src={imgRectangle37} alt="Banner 2" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" containerClassName="w-full" />
           </div>
 
           {/* Grid 2 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[imgRectangle30, imgRectangle31, imgRectangle32, imgRectangle33].map((img, i) => (
               <div key={i} className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg bg-[#111]">
-                <img src={img} className="w-full aspect-square object-contain hover:scale-105 transition-transform duration-500" alt={`Grid 2 item ${i+1}`} />
+                <OptimizedImage src={img} className="w-full aspect-square object-contain hover:scale-105 transition-transform duration-500" containerClassName="w-full aspect-square" alt={`Grid 2 item ${i+1}`} />
               </div>
             ))}
           </div>
@@ -300,7 +300,7 @@ export default function SunilGavaskar() {
         <section className="w-full py-16 md:py-24">
           <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12">
             <div className="w-full relative rounded-lg overflow-hidden h-[300px] md:h-[500px]">
-               <img src={imgSg22HeroImageV01202204141} alt="Final Hero Image" className="w-full h-full object-cover" />
+               <OptimizedImage src={imgSg22HeroImageV01202204141} alt="Final Hero Image" className="w-full h-full object-cover" containerClassName="w-full h-full" />
             </div>
           </div>
         </section>

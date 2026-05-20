@@ -197,22 +197,22 @@ export default function DiversionAudio() {
               <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Overview</h2>
               <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                 <p>Diversion Audio is a London-based Drum &amp; Bass collective focused on underground electronic music and live events. I was tasked with creating the initial visual identity for the brand, developing the early logo direction and foundational branding across digital and promotional platforms.</p>
-                <p>This project marked my first introduction to working within the electronic music industry — a space I’m personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding, while the collective has continued to grow successfully within the UK music scene.</p>
+                <p>This project marked my first introduction to working within the electronic music industry �� a space I’m personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding, while the collective has continued to grow successfully within the UK music scene.</p>
               </div>
             </div>
             <div className="lg:col-span-7">
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-[4/5] drop-shadow-xl">
-                  <img src={imgRectangle51} alt="Event Context 1" loading="lazy" className="w-full h-full object-cover rounded-[16px] min-h-[300px]" />
+                  <OptimizedImage src={imgRectangle51} alt="Event Context 1" priority={true} className="w-full h-full object-cover rounded-[16px] min-h-[300px]" containerClassName="w-full h-full" />
                 </div>
                 <div className="aspect-[4/5] drop-shadow-xl">
-                  <img src={imgRectangle76} alt="Event Context 2" loading="lazy" className="w-full h-full object-cover rounded-[16px] min-h-[300px]" />
+                  <OptimizedImage src={imgRectangle76} alt="Event Context 2" className="w-full h-full object-cover rounded-[16px] min-h-[300px]" containerClassName="w-full h-full" />
                 </div>
                 <div className="rounded-[16px] overflow-hidden drop-shadow-xl aspect-[16/9]">
-                  <img src={imgRectangle77} alt="Logo Black Background" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
+                  <OptimizedImage src={imgRectangle77} alt="Logo Black Background" className="w-full h-full object-cover min-h-[200px]" containerClassName="w-full h-full" />
                 </div>
                 <div className="rounded-[16px] overflow-hidden drop-shadow-xl aspect-[16/9]">
-                  <img src={imgRectangle78} alt="Logo Yellow Background" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
+                  <OptimizedImage src={imgRectangle78} alt="Logo Yellow Background" className="w-full h-full object-cover min-h-[200px]" containerClassName="w-full h-full" />
                 </div>
               </div>
             </div>
@@ -237,7 +237,7 @@ export default function DiversionAudio() {
               </div>
             </div>
             <div className="lg:col-span-7 flex flex-col">
-              <img src={imgRectangle80} alt="Man in Orange Shirt" loading="lazy" className="w-full h-full min-h-[500px] object-cover rounded-[16px] drop-shadow-xl" />
+              <OptimizedImage src={imgRectangle80} alt="Man in Orange Shirt" className="w-full h-full min-h-[500px] object-cover rounded-[16px] drop-shadow-xl" containerClassName="w-full h-full" />
             </div>
           </div>
         </section>
@@ -255,7 +255,7 @@ export default function DiversionAudio() {
         <section className="w-full max-w-[1920px] mx-auto px-6 md:px-12 py-16 flex flex-col gap-12 items-center">
           <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] tracking-[0.25em] uppercase text-[#50C1BA] w-full text-center">Research</h2>
           <div className="w-full max-w-7xl mx-auto overflow-hidden">
-            <img src={imgRectangle93} alt="Research Mindmap" loading="lazy" className="w-full h-auto object-contain invert mix-blend-screen opacity-90 min-h-[300px]" />
+            <OptimizedImage src={imgRectangle93} alt="Research Mindmap" className="w-full h-auto object-contain invert mix-blend-screen opacity-90 min-h-[300px]" containerClassName="w-full" />
           </div>
         </section>
 
@@ -267,12 +267,12 @@ export default function DiversionAudio() {
           <div className="w-full bg-white rounded-[24px] p-8 md:p-16 shadow-2xl flex flex-col justify-center items-center gap-10 md:gap-16 max-w-4xl mx-auto">
             <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-10 w-full px-2">
               {inspirationLogos.slice(0, 5).map((logo, i) => (
-                <img key={i} src={logo} alt={`Inspiration logo ${i+1}`} loading="lazy" className="h-16 md:h-24 w-auto object-contain mix-blend-multiply" />
+                <OptimizedImage key={i} src={logo} alt={`Inspiration logo ${i+1}`} className="h-16 md:h-24 w-auto object-contain mix-blend-multiply" containerClassName="h-16 md:h-24" />
               ))}
             </div>
             <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-8 w-full px-2">
               {inspirationLogos.slice(5).map((logo, i) => (
-                <img key={i+5} src={logo} alt={`Inspiration logo ${i+6}`} loading="lazy" className="h-8 md:h-12 w-auto object-contain mix-blend-multiply" />
+                <OptimizedImage key={i+5} src={logo} alt={`Inspiration logo ${i+6}`} className="h-8 md:h-12 w-auto object-contain mix-blend-multiply" containerClassName="h-8 md:h-12" />
               ))}
             </div>
           </div>
@@ -280,8 +280,8 @@ export default function DiversionAudio() {
           {/* 3 big shapes */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
             {[imgRectangle27, imgRectangle28, imgRectangle29].map((img, i) => (
-              <div key={i} className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-                <img src={img} alt={`Inspiration Shape ${i+1}`} loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
+              <div key={i} className="rounded-[24px] overflow-hidden drop-shadow-xl">
+                <OptimizedImage src={img} alt={`Shape ${i+1}`} className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-500" containerClassName="w-full aspect-square" />
               </div>
             ))}
           </div>
@@ -294,25 +294,25 @@ export default function DiversionAudio() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
             {/* Row 1 */}
             <div className="rounded-[24px] overflow-hidden aspect-square flex items-center justify-center p-4 md:p-8">
-              <img src={imgRectangle57} alt="Experimentation Path" loading="lazy" className="w-[90%] h-auto object-contain opacity-80 min-h-[200px]" />
+              <OptimizedImage src={imgRectangle57} alt="Experimentation Path" className="w-[90%] h-auto object-contain opacity-80 min-h-[200px]" containerClassName="w-[90%] h-auto" />
             </div>
             <div className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-              <img src={imgRectangle58} alt="Experimentation Cross" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
+              <OptimizedImage src={imgRectangle58} alt="Experimentation Cross" className="w-full h-full object-cover min-h-[200px]" containerClassName="w-full h-full" />
             </div>
             <div className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-              <img src={imgRectangle59} alt="Experimentation Complex" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
+              <OptimizedImage src={imgRectangle59} alt="Experimentation Complex" className="w-full h-full object-cover min-h-[200px]" containerClassName="w-full h-full" />
             </div>
 
             {/* Row 2 */}
             <div className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-              <img src={imgRectangle60} alt="Experimentation Final White" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
+              <OptimizedImage src={imgRectangle60} alt="Experimentation Final White" className="w-full h-full object-cover min-h-[200px]" containerClassName="w-full h-full" />
             </div>
             <div className="rounded-[24px] overflow-hidden aspect-square shadow-xl">
-              <img src={imgRectangle61} alt="Experimentation Final Yellow" loading="lazy" className="w-full h-full object-cover min-h-[200px]" />
+              <OptimizedImage src={imgRectangle61} alt="Experimentation Final Yellow" className="w-full h-full object-cover min-h-[200px]" containerClassName="w-full h-full" />
             </div>
             <div className="flex items-start justify-center md:justify-start aspect-square pt-4">
               <div className="w-[65%] h-[65%] rounded-[24px] overflow-hidden shadow-xl">
-                <img src={imgRectangle62} alt="Experimentation Small Black" loading="lazy" className="w-full h-full object-cover min-h-[150px]" />
+                <OptimizedImage src={imgRectangle62} alt="Experimentation Small Black" className="w-full h-full object-cover min-h-[150px]" containerClassName="w-full h-full" />
               </div>
             </div>
           </div>
@@ -324,10 +324,10 @@ export default function DiversionAudio() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full max-w-4xl mx-auto">
             <div className="rounded-[16px] overflow-hidden shadow-2xl">
-              <img src={imgRectangle67} alt="Final Yellow Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px]" />
+              <OptimizedImage src={imgRectangle67} alt="Final Yellow Logo" className="w-full h-auto object-cover min-h-[300px]" containerClassName="w-full" />
             </div>
             <div className="rounded-[16px] overflow-hidden shadow-2xl">
-              <img src={imgRectangle66} alt="Final Black Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px]" />
+              <OptimizedImage src={imgRectangle66} alt="Final Black Logo" className="w-full h-auto object-cover min-h-[300px]" containerClassName="w-full" />
             </div>
           </div>
         </section>
@@ -362,14 +362,14 @@ export default function DiversionAudio() {
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto flex flex-col gap-8 md:gap-16">
           {/* Main Hero Shot */}
           <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-            <img src={imgRectangle34} alt="Event Hero 1" loading="lazy" className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700 min-h-[400px] md:min-h-[600px]" />
+            <OptimizedImage src={imgRectangle34} alt="Event Hero 1" className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700 min-h-[400px] md:min-h-[600px]" containerClassName="w-full" />
           </div>
 
           {/* Grid of smaller photos */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[imgRectangle52, imgRectangle53, imgRectangle54, imgRectangle55].map((img, i) => (
               <div key={i} className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg">
-                <img src={img} loading="lazy" className="w-full aspect-square object-cover hover:scale-[1.03] transition-transform duration-500 min-h-[150px] md:min-h-[250px]" alt={`Grid item ${i+1}`} />
+                <OptimizedImage src={img} className="w-full aspect-square object-cover hover:scale-[1.03] transition-transform duration-500 min-h-[150px] md:min-h-[250px]" containerClassName="w-full aspect-square" alt={`Grid item ${i+1}`} />
               </div>
             ))}
           </div>
