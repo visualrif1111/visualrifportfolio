@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Instagram, Linkedin, Phone, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
@@ -145,8 +145,8 @@ export default function DiversionAudio() {
           <div className="absolute inset-0 md:-left-[280px] md:w-[calc(100%+280px)] w-full h-[50vh] md:h-[60vh] overflow-hidden pointer-events-none z-0">
             <iframe
               src="https://www.youtube.com/embed/qOugLMycEe0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=qOugLMycEe0"
-              frameBorder="0"
               allow="autoplay; encrypted-media"
+              style={{ border: 0 }}
               allowFullScreen
               className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[50vh] md:min-h-[60vh] min-w-[88.88vh] md:min-w-[106.66vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
             ></iframe>

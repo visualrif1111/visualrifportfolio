@@ -50,8 +50,6 @@ export function CustomCursor() {
                           target.classList.contains('cursor-pointer') ||
                           window.getComputedStyle(target).cursor === 'pointer';
 
-      const isGrab = target.closest('.cursor-grab') || target.closest('.cursor-grabbing');
-
       setIsHovering(!!isClickable);
     };
 

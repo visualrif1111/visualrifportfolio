@@ -1,4 +1,4 @@
-import { Outlet, ScrollRestoration, useLocation } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { AnimatedBackground } from "./components/AnimatedBackground";
 import { CookieBanner } from "./components/CookieBanner";
 import React, { useEffect } from 'react';

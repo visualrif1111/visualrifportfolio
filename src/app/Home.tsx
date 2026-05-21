@@ -1,10 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Instagram, Linkedin, Phone, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
-import { HeroBackgroundVideo } from './components/HeroBackgroundVideo';
 import { Footer } from './components/Footer';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
