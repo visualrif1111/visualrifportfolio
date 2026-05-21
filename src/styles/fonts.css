@@ -1,1 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap');
+/* 
+ * Font loading is handled via preload in index.html for better performance
+ * This file provides fallback font stacks and loading optimization
+ */
+
+/* Font display swap is set in the Google Fonts URL to prevent FOIT */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600&family=Barlow:wght@400;500;600&family=Lato:wght@300;400&display=swap');
+
+/* Font fallback stacks to minimize layout shift */
+.font-barlow {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-barlow-condensed {
+  font-family: 'Barlow Semi Condensed', 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-lato {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
