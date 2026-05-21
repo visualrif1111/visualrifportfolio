@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
+import { NextProject } from './components/NextProject';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -374,6 +375,7 @@ export default function DiversionAudio() {
           </div>
         </section>
 
+        <NextProject title="Moncks of Dover Street" to="/projects/moncks-of-dover-street" />
         {/* Footer */}
         <Footer className="md:pl-[280px]" />
       </div>

@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
+import { NextProject } from './components/NextProject';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -258,6 +259,7 @@ export default function MoncksOfDoverStreet() {
           </div>
         </section>
 
+        <NextProject title="The Sunil Gavaskar Project" to="/projects/sunil-gavaskar" />
         {/* Footer */}
         <Footer className="md:pl-[280px]" />
       </div>

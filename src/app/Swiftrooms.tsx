@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
+import { NextProject } from './components/NextProject';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -503,6 +504,7 @@ export default function Swiftrooms() {
           </div>
         </section>
 
+        <NextProject title="Diversion Audio" to="/projects/diversion-audio" />
         {/* Footer */}
         <Footer className="md:pl-[280px]" />
       </div>

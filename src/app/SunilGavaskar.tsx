@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
+import { NextProject } from './components/NextProject';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -304,6 +305,7 @@ export default function SunilGavaskar() {
           </div>
         </section>
 
+        <NextProject title="Swiftrooms" to="/projects/swiftrooms" />
         {/* Footer */}
         <Footer className="md:pl-[280px]" />
       </div>
