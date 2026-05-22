@@ -10,10 +10,10 @@ export function Footer({ className = "" }: FooterProps) {
     <footer id="contact" className={`bg-[#1c1c1e] py-16 px-6 md:px-12 ${className}`}>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
         <div>
-          <h3 className="text-xl font-medium tracking-widest text-[#50C1BA] mb-2 uppercase">VISUALRIF</h3>
-          <p className="text-sm tracking-widest uppercase text-gray-400 mb-6 font-medium">Multidisciplinary Designer</p>
-          
-          <div className="flex flex-col gap-3 text-sm tracking-wider text-gray-300 font-['Barlow',sans-serif]">
+          <h3 className="font-['Rajdhani',sans-serif] font-bold text-xl tracking-widest text-[#50C1BA] mb-2 uppercase">VISUALRIF</h3>
+          <p className="font-['Rajdhani',sans-serif] font-semibold text-sm tracking-widest uppercase text-gray-400 mb-6">Multidisciplinary Designer</p>
+
+          <div className="flex flex-col gap-3 text-sm tracking-wider text-gray-300 font-['Rajdhani',sans-serif] font-medium">
             <a href="tel:07598078923" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
               <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center"><Phone size={14} className="text-[#50C1BA]" /></div>
               +44 7598 078923
