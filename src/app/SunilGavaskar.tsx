@@ -186,7 +186,7 @@ export default function SunilGavaskar() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>As a Freelance Digital Designer at Velvet Badger, I worked on Always First – Sunil Gavaskar, a Web3 and NFT project created for legendary cricketer Sunil Gavaskar. This project marked a key moment in my career, shaping my interest in digital assets and immersive experiences.</p>
-                  <p>The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar's achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
+                  <p className="hidden md:block">The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar's achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
                 </div>
               </FadeIn>
             </div>
@@ -197,8 +197,8 @@ export default function SunilGavaskar() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>One of the main challenges was translating a complex Web3 and NFT concept into a clear and engaging user experience within a short production timeframe.</p>
-                  <p>The project included multiple moving parts — including website design, NFT storytelling, and social media assets — all of which needed to feel cohesive under one visual direction.</p>
-                  <p>To approach this, I began with research and mind mapping to better understand the Web3 space, audience, and visual identity before moving into a rapid design sprint process.</p>
+                  <p className="hidden md:block">The project included multiple moving parts — including website design, NFT storytelling, and social media assets — all of which needed to feel cohesive under one visual direction.</p>
+                  <p className="hidden md:block">To approach this, I began with research and mind mapping to better understand the Web3 space, audience, and visual identity before moving into a rapid design sprint process.</p>
                 </div>
               </FadeIn>
             </div>
@@ -209,7 +209,7 @@ export default function SunilGavaskar() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>The final solution was a cohesive digital campaign that combined the website, NFT experience, and social media content into a unified platform. The website acted as a central hub for the project, while the social media campaign helped build awareness and engagement around the launch.</p>
-                  <p>Using a clean visual hierarchy and contemporary Web3-inspired design, the final experience balanced innovation with accessibility, creating an engaging platform for both existing fans and audiences new to NFTs.</p>
+                  <p className="hidden md:block">Using a clean visual hierarchy and contemporary Web3-inspired design, the final experience balanced innovation with accessibility, creating an engaging platform for both existing fans and audiences new to NFTs.</p>
                 </div>
               </FadeIn>
             </div>
@@ -243,9 +243,10 @@ export default function SunilGavaskar() {
         <section className="max-w-5xl mx-auto px-6 md:px-12 py-4 md:py-8 text-center">
           <FadeIn>
             <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200 space-y-6">
-              <p>The project was approached with a strong focus on creating an accessible and engaging Web3 experience that reflected both the legacy of Sunil Gavaskar and the innovative direction of the Always First NFT campaign. Drawing from research into digital collectibles, audience behaviour, and the wider visual identity of the project, I developed a modern creative direction centred around immersive layouts, bold typography, and contemporary Web3-inspired visuals.</p>
-              <p>The visual language was designed to balance innovation with accessibility, allowing users unfamiliar with NFTs to navigate the platform with clarity while still creating an engaging and premium digital experience. Alongside the website, supporting social media assets were designed to maintain a cohesive brand presence across all touchpoints and help drive awareness around the launch of the collection.</p>
-              <p>Throughout the project, consistency, scalability, and responsive design were key considerations, ensuring the experience translated effectively across desktop, mobile, and social platforms. By combining strategic UX/UI thinking with immersive digital storytelling, the final outcome strengthened the campaign's online presence and created a cohesive platform for fans to engage with the NFT collection and virtual gallery experience.</p>
+              <p className="md:hidden">A modern, accessible Web3 experience centred around immersive layouts, bold typography, and digital storytelling — balancing innovation with clarity for both existing fans and audiences new to NFTs.</p>
+              <p className="hidden md:block">The project was approached with a strong focus on creating an accessible and engaging Web3 experience that reflected both the legacy of Sunil Gavaskar and the innovative direction of the Always First NFT campaign. Drawing from research into digital collectibles, audience behaviour, and the wider visual identity of the project, I developed a modern creative direction centred around immersive layouts, bold typography, and contemporary Web3-inspired visuals.</p>
+              <p className="hidden md:block">The visual language was designed to balance innovation with accessibility, allowing users unfamiliar with NFTs to navigate the platform with clarity while still creating an engaging and premium digital experience. Alongside the website, supporting social media assets were designed to maintain a cohesive brand presence across all touchpoints and help drive awareness around the launch of the collection.</p>
+              <p className="hidden md:block">Throughout the project, consistency, scalability, and responsive design were key considerations, ensuring the experience translated effectively across desktop, mobile, and social platforms. By combining strategic UX/UI thinking with immersive digital storytelling, the final outcome strengthened the campaign's online presence and created a cohesive platform for fans to engage with the NFT collection and virtual gallery experience.</p>
             </div>
           </FadeIn>
         </section>
@@ -308,7 +309,7 @@ export default function SunilGavaskar() {
           </div>
           <FadeIn className="lg:col-span-8">
             <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[18px] leading-[1.8] tracking-[0.05em] text-gray-300 space-y-6">
-              <p>Coming into the project with a fresh perspective on the Web3 and NFT space, I began by researching the industry and creating a structured mind map to break down the visual identity, audience, and wider campaign direction. This was followed by early wireframes and layout exploration to define the user journey and overall structure of the website experience.</p>
+              <p className="hidden md:block">Coming into the project with a fresh perspective on the Web3 and NFT space, I began by researching the industry and creating a structured mind map to break down the visual identity, audience, and wider campaign direction. This was followed by early wireframes and layout exploration to define the user journey and overall structure of the website experience.</p>
               <p>Working within a tight two-week timeframe, I moved into a rapid design sprint focused on delivering a cohesive digital experience across the website and supporting social media campaign, successfully unifying multiple parts of the project under one creative direction.</p>
             </div>
           </FadeIn>

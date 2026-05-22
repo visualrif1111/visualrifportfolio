@@ -172,7 +172,7 @@ export default function MoncksOfDoverStreet() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>As a Digital Designer at Verb Brands, I was tasked with designing a luxury hospitality website for Moncks Of Dover Street, a premium brasserie located in Mayfair, London. This project marked a pivotal moment in my career, allowing me to establish myself within the luxury digital design space.</p>
-                  <p>The objective was to create a refined 15-page brochure website that reflected the restaurant's premium identity, heritage, and interior experience, while also functioning seamlessly for a B2C audience through features such as reservation integrations. The project was delivered within a one-month timeframe with a £12,000 production budget.</p>
+                  <p className="hidden md:block">The objective was to create a refined 15-page brochure website that reflected the restaurant's premium identity, heritage, and interior experience, while also functioning seamlessly for a B2C audience through features such as reservation integrations. The project was delivered within a one-month timeframe with a £12,000 production budget.</p>
                 </div>
               </FadeIn>
             </div>
@@ -183,7 +183,7 @@ export default function MoncksOfDoverStreet() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>Before beginning the design phase, I conducted extensive research using the sitemap, functional specifications, brand guidelines, and interior design references provided. This allowed me to build a strategic understanding of the brand's visual language, cultural influences, and audience expectations.</p>
-                  <p>One of the main challenges was creating a digital identity for a relatively new brand with a strong and recognisable name. I explored influences tied to both Christopher Monck and Dover Street's association with luxury fashion, art, and culture in London, using these references to shape the overall creative direction.</p>
+                  <p className="hidden md:block">One of the main challenges was creating a digital identity for a relatively new brand with a strong and recognisable name. I explored influences tied to both Christopher Monck and Dover Street's association with luxury fashion, art, and culture in London, using these references to shape the overall creative direction.</p>
                 </div>
               </FadeIn>
             </div>
@@ -194,7 +194,7 @@ export default function MoncksOfDoverStreet() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>My approach combined strategic research with refined UX/UI thinking to create a digital experience that felt both immersive and functional. By merging the sitemap and functional requirements with the brand research, I designed a website that balanced elegant visuals with intuitive usability.</p>
-                  <p>Through considered layouts, typography, and imagery, the final experience translated the atmosphere of the restaurant into a premium online journey that encouraged users to engage with the brand and visit the establishment.</p>
+                  <p className="hidden md:block">Through considered layouts, typography, and imagery, the final experience translated the atmosphere of the restaurant into a premium online journey that encouraged users to engage with the brand and visit the establishment.</p>
                 </div>
               </FadeIn>
             </div>
@@ -218,7 +218,8 @@ export default function MoncksOfDoverStreet() {
         <section className="max-w-5xl mx-auto px-6 md:px-12 py-8 md:py-16 text-center">
           <FadeIn>
             <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200">
-              <p>The project was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected both the luxury positioning and cultural identity behind Moncks Of Dover Street. Drawing from extensive research into the brand's heritage, interior design, and audience expectations, I developed a refined creative direction centred around elegant typography, a restrained colour palette, and editorial-inspired layouts that mirrored the atmosphere of the restaurant itself. The visual language was intentionally minimal yet immersive, allowing the imagery, spacing, and typography to communicate sophistication while maintaining clarity and usability. Throughout the project, cross-platform consistency and scalability were key considerations, ensuring the website performed seamlessly across desktop and mobile experiences while supporting future growth. By combining strategic UX/UI principles with a premium visual approach, the final outcome elevated the brand's digital presence, strengthened its positioning within London's luxury hospitality market, and created a more engaging experience for users interacting with the brand online.</p>
+              <p className="md:hidden">A premium digital experience built around elegant typography, editorial layouts, and a restrained colour palette — translating the atmosphere of Moncks Of Dover Street into a refined online presence that elevated the brand within London's luxury hospitality market.</p>
+              <p className="hidden md:block">The project was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected both the luxury positioning and cultural identity behind Moncks Of Dover Street. Drawing from extensive research into the brand's heritage, interior design, and audience expectations, I developed a refined creative direction centred around elegant typography, a restrained colour palette, and editorial-inspired layouts that mirrored the atmosphere of the restaurant itself. The visual language was intentionally minimal yet immersive, allowing the imagery, spacing, and typography to communicate sophistication while maintaining clarity and usability. Throughout the project, cross-platform consistency and scalability were key considerations, ensuring the website performed seamlessly across desktop and mobile experiences while supporting future growth. By combining strategic UX/UI principles with a premium visual approach, the final outcome elevated the brand's digital presence, strengthened its positioning within London's luxury hospitality market, and created a more engaging experience for users interacting with the brand online.</p>
             </div>
           </FadeIn>
         </section>
@@ -287,7 +288,7 @@ export default function MoncksOfDoverStreet() {
             </div>
             <FadeIn className="lg:col-span-8">
               <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[22px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-8">
-                <p>Throughout the project, I was responsible for contributing to both the strategic and creative execution of the digital experience. My role included supporting the creative direction of the website, developing the UX/UI design system, and translating the brand's luxury positioning into a refined and immersive online experience. I worked closely with senior creatives and developers to ensure the final outcome remained visually consistent, technically functional, and aligned with the overall brand vision.</p>
+                <p className="hidden md:block">Throughout the project, I was responsible for contributing to both the strategic and creative execution of the digital experience. My role included supporting the creative direction of the website, developing the UX/UI design system, and translating the brand's luxury positioning into a refined and immersive online experience. I worked closely with senior creatives and developers to ensure the final outcome remained visually consistent, technically functional, and aligned with the overall brand vision.</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Creative Direction Support</li>
                   <li>UX/UI Design</li>

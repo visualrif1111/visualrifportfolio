@@ -207,7 +207,7 @@ export default function DiversionAudio() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>Diversion Audio is a London-based Drum &amp; Bass collective focused on underground electronic music and live events. I was tasked with creating the initial visual identity for the brand, developing the early logo direction and foundational branding across digital and promotional platforms.</p>
-                  <p>This project marked my first introduction to working within the electronic music industry — a space I'm personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding, while the collective has continued to grow successfully within the UK music scene.</p>
+                  <p className="hidden md:block">This project marked my first introduction to working within the electronic music industry — a space I'm personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding, while the collective has continued to grow successfully within the UK music scene.</p>
                 </div>
               </FadeIn>
             </div>
@@ -239,7 +239,7 @@ export default function DiversionAudio() {
                 <FadeIn>
                   <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                     <p>One of the main challenges with this project was defining the level of brand development required during the early stages of the collective. A strong focus was placed on creating a comprehensive visual identity system that extended beyond just logo design, ensuring the brand had a scalable foundation for long-term growth.</p>
-                    <p>As a grassroots movement, the initial requirements were relatively minimal. However, a more strategic approach was introduced to help establish a stronger and more consistent identity that could evolve across future events, campaigns, and audience growth within the electronic music scene.</p>
+                    <p className="hidden md:block">As a grassroots movement, the initial requirements were relatively minimal. However, a more strategic approach was introduced to help establish a stronger and more consistent identity that could evolve across future events, campaigns, and audience growth within the electronic music scene.</p>
                   </div>
                 </FadeIn>
               </div>
@@ -250,7 +250,7 @@ export default function DiversionAudio() {
                 <FadeIn>
                   <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                     <p>The final solution came through an iterative design process that began with exploring more complex visual concepts before gradually refining the identity into a simpler and more effective outcome. Exploring complexity early on allowed stronger creative ideas and visual directions to emerge, which could then be stripped back to their most recognisable form.</p>
-                    <p>Simplicity became a key part of the final logo design, resulting in a bold and adaptable identity that worked effectively across digital platforms, event branding, merchandise, and promotional material while remaining instantly recognisable within the electronic music scene.</p>
+                    <p className="hidden md:block">Simplicity became a key part of the final logo design, resulting in a bold and adaptable identity that worked effectively across digital platforms, event branding, merchandise, and promotional material while remaining instantly recognisable within the electronic music scene.</p>
                   </div>
                 </FadeIn>
               </div>
@@ -265,9 +265,10 @@ export default function DiversionAudio() {
         <section className="max-w-5xl mx-auto px-6 md:px-12 py-8 md:py-16 text-center">
           <FadeIn>
             <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200 space-y-8">
-              <p>The project was approached with a strong focus on creating a scalable and recognisable visual identity that reflected the energy and culture of London's underground Drum &amp; Bass scene. Drawing from research into electronic music branding, live event culture, and audience behaviour, the creative direction centred around bold minimalism, strong typography, and a clean visual system designed to work across digital, social, and live event environments.</p>
-              <p>The visual language was developed through an iterative design process that initially explored more complex concepts before refining the identity into a simpler and more impactful solution. Simplicity became a key part of the final outcome, resulting in a logo that felt adaptable, memorable, and effective across event promotion, merchandise, and online platforms.</p>
-              <p>Throughout the project, scalability and long-term brand growth were important considerations despite the collective's grassroots beginnings. By establishing a stronger branding foundation beyond just the logo itself, the final outcome helped position Diversion Audio with a more cohesive and professional visual presence within the UK electronic music scene, supporting its continued growth across events and festival appearances including Boomtown Fair.</p>
+              <p className="md:hidden">Bold minimalism, strong typography, and a scalable visual system — built to work across events, merchandise, and digital platforms, positioning Diversion Audio for long-term growth within the UK music scene.</p>
+              <p className="hidden md:block">The project was approached with a strong focus on creating a scalable and recognisable visual identity that reflected the energy and culture of London's underground Drum &amp; Bass scene. Drawing from research into electronic music branding, live event culture, and audience behaviour, the creative direction centred around bold minimalism, strong typography, and a clean visual system designed to work across digital, social, and live event environments.</p>
+              <p className="hidden md:block">The visual language was developed through an iterative design process that initially explored more complex concepts before refining the identity into a simpler and more impactful solution. Simplicity became a key part of the final outcome, resulting in a logo that felt adaptable, memorable, and effective across event promotion, merchandise, and online platforms.</p>
+              <p className="hidden md:block">Throughout the project, scalability and long-term brand growth were important considerations despite the collective's grassroots beginnings. By establishing a stronger branding foundation beyond just the logo itself, the final outcome helped position Diversion Audio with a more cohesive and professional visual presence within the UK electronic music scene, supporting its continued growth across events and festival appearances including Boomtown Fair.</p>
             </div>
           </FadeIn>
         </section>
@@ -401,7 +402,7 @@ export default function DiversionAudio() {
             <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[18px] leading-[1.8] tracking-[0.05em] text-gray-300 space-y-6">
               <p>The concept behind the Diversion Audio logo was built around the idea of redirecting people back towards music, culture, and connection. This is reflected through the manipulated typography, where the chevron-inspired forms visually guide the eye back towards the word "Diversion", symbolising movement, energy, and redirection within the music scene.</p>
               <p>The identity was designed to feel bold, immersive, and rooted within underground Drum &amp; Bass culture, while remaining simple and adaptable across event branding, merchandise, and digital platforms.</p>
-              <p>The logo later took on a deeper personal meaning during Boomtown Fair 2025. After being separated from a friend across different campsites for several days, a moment while walking through the festival unexpectedly brought the project back into focus. Seeing the Diversion placard in the distance became a reminder of the original purpose behind the logo — the idea of diverting back towards the music, the people, and the experiences that connect communities together.</p>
+              <p className="hidden md:block">The logo later took on a deeper personal meaning during Boomtown Fair 2025. After being separated from a friend across different campsites for several days, a moment while walking through the festival unexpectedly brought the project back into focus. Seeing the Diversion placard in the distance became a reminder of the original purpose behind the logo — the idea of diverting back towards the music, the people, and the experiences that connect communities together.</p>
             </div>
           </FadeIn>
         </section>

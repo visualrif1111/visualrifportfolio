@@ -298,7 +298,7 @@ export default function Swiftrooms() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>Design and deliver a high-converting landing page for <a href="https://swiftrooms.ae" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Swiftrooms.ae</a>, a Dubai-based home improvement and architectural glazing company. The project focused on improving the company's digital presence, supporting paid advertising campaigns, and increasing lead generation.</p>
-                  <p>The target audience primarily focused on B2C homeowners, while also allowing opportunities for B2B enquiries. The outcome was a professional, conversion-driven landing page that continues to support ongoing Google Ads campaigns and lead generation.</p>
+                  <p className="hidden md:block">The target audience primarily focused on B2C homeowners, while also allowing opportunities for B2B enquiries. The outcome was a professional, conversion-driven landing page that continues to support ongoing Google Ads campaigns and lead generation.</p>
                 </div>
               </FadeIn>
             </div>
@@ -313,9 +313,9 @@ export default function Swiftrooms() {
               </div>
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                  <p>The project required stepping into an active workflow midway through development and taking ownership of the landing page's design direction and delivery. Key issues quickly became apparent within Syspree design-to-development process, particularly around responsiveness, functionality, and overall execution. An additional challenge was ensuring the final developed build accurately matched the approved design, maintaining a consistent 1:1 translation from design to development.</p>
-                  <p>Despite months of development, the landing page remained incomplete, lacked mobile optimisation, and failed to provide a polished user experience suitable for paid advertising traffic. These issues risked reducing conversions, weakening brand credibility, and affecting lead generation performance.</p>
-                  <p>The challenge was to resolve these usability and delivery issues while aligning the landing page with business goals and audience expectations.</p>
+                  <p>The project required stepping into an active workflow midway through development and taking ownership of the landing page's design direction and delivery. Key issues quickly became apparent within Syspree design-to-development process, particularly around responsiveness, functionality, and overall execution.</p>
+                  <p className="hidden md:block">Despite months of development, the landing page remained incomplete, lacked mobile optimisation, and failed to provide a polished user experience suitable for paid advertising traffic. These issues risked reducing conversions, weakening brand credibility, and affecting lead generation performance.</p>
+                  <p className="hidden md:block">The challenge was to resolve these usability and delivery issues while aligning the landing page with business goals and audience expectations.</p>
                 </div>
               </FadeIn>
             </div>
@@ -325,8 +325,8 @@ export default function Swiftrooms() {
               </RevealText>
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                  <p>Following discussions with one of the directors, there was a request to explore how AI could support and improve the workflow.</p>
-                  <p>Combining traditional design methods with AI-assisted tools, I utilised <a href="https://www.figma.com/make" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Figma Make</a> to help resolve development inconsistencies and demonstrate a more accurate 1:1 translation from design to development.</p>
+                  <p className="hidden md:block">Following discussions with one of the directors, there was a request to explore how AI could support and improve the workflow.</p>
+                  <p className="hidden md:block">Combining traditional design methods with AI-assisted tools, I utilised <a href="https://www.figma.com/make" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Figma Make</a> to help resolve development inconsistencies and demonstrate a more accurate 1:1 translation from design to development.</p>
                   <p>The AI prototype resulted in a fully functioning web page with usable code, providing a clear proof of concept for how the final project should be executed and delivered.</p>
                 </div>
               </FadeIn>
@@ -358,10 +358,11 @@ export default function Swiftrooms() {
             {/* White Box */}
             <div className="bg-white text-black py-24 px-6 md:px-12 lg:pl-12 xl:pl-24 relative min-h-[600px] flex items-center lg:rounded-br-[76px] z-10">
               <FadeIn className="font-['Lato',sans-serif] font-light text-[15px] md:text-[17px] leading-[2.1] tracking-[0.05em] space-y-6 max-w-2xl lg:ml-auto pr-6">
-                <p>The Swiftrooms landing page was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected the brand's innovative and premium positioning. Using AI-driven workflows such as Figma Make, the project explored how intelligent design tools could accelerate ideation while maintaining a polished and intentional user experience.</p>
-                <p>Drawing from research into modern home improvement websites and contemporary digital experiences, the creative direction focused on delivering a sleek, immersive, and visually engaging interface. Clean typography, structured layouts, and cinematic visual storytelling created a balance between functionality and atmosphere, while motion-led interactions added depth and engagement throughout the experience.</p>
-                <p>A key aspect of the project involved experimenting with AI through Midjourney and motion graphics.</p>
-                <p>Using authentic photography captured by the Swiftrooms team, I transformed still imagery into storyboard-driven moving visuals that created an immersive brand journey. The final outcome elevated Swiftrooms' digital presence while delivering a modern and commercially refined landing page experience.</p>
+                <p className="md:hidden">AI-driven design workflows, cinematic visual storytelling, and conversion-focused UX — delivering a sleek, immersive landing page experience that elevated Swiftrooms' digital presence.</p>
+                <p className="hidden md:block">The Swiftrooms landing page was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected the brand's innovative and premium positioning. Using AI-driven workflows such as Figma Make, the project explored how intelligent design tools could accelerate ideation while maintaining a polished and intentional user experience.</p>
+                <p className="hidden md:block">Drawing from research into modern home improvement websites and contemporary digital experiences, the creative direction focused on delivering a sleek, immersive, and visually engaging interface. Clean typography, structured layouts, and cinematic visual storytelling created a balance between functionality and atmosphere, while motion-led interactions added depth and engagement throughout the experience.</p>
+                <p className="hidden md:block">A key aspect of the project involved experimenting with AI through Midjourney and motion graphics.</p>
+                <p className="hidden md:block">Using authentic photography captured by the Swiftrooms team, I transformed still imagery into storyboard-driven moving visuals that created an immersive brand journey. The final outcome elevated Swiftrooms' digital presence while delivering a modern and commercially refined landing page experience.</p>
               </FadeIn>
             </div>
 
@@ -379,7 +380,7 @@ export default function Swiftrooms() {
                 <FadeIn>
                   <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[17px] leading-[2.1] tracking-[0.05em] text-gray-300 space-y-6">
                     <p>Since I used AI tools such as Figma Make to create a functioning landing page, I wanted to further explore the use of AI through Midjourney. My goal was to visually break down the Swiftrooms journey using a series of photographic stills. These stills were then developed into a precise storyboard, transforming each image into moving visuals that emulate the feel of videography and motion graphics.</p>
-                    <p>The result was an immersive video experience that showcases the Swiftrooms journey to the user in a more engaging and dynamic way. All photographs used throughout the project are authentic images captured by the Swiftrooms team.</p>
+                    <p className="hidden md:block">The result was an immersive video experience that showcases the Swiftrooms journey to the user in a more engaging and dynamic way. All photographs used throughout the project are authentic images captured by the Swiftrooms team.</p>
                   </div>
                 </FadeIn>
               </div>
@@ -506,7 +507,7 @@ export default function Swiftrooms() {
             </div>
             <FadeIn className="lg:col-span-8">
               <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[22px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-8">
-                <p>Throughout the project, I was responsible for leading both the strategic and creative execution of the Swiftrooms landing page experience. My role included taking ownership of the website's design direction, improving the UX/UI experience, and ensuring the final product aligned with the company's premium positioning and lead generation goals. I collaborated closely with developers and stakeholders to resolve functionality and responsiveness issues while exploring AI-assisted workflows to improve the overall design-to-development process and achieve a more accurate final build.</p>
+                <p className="hidden md:block">Throughout the project, I was responsible for leading both the strategic and creative execution of the Swiftrooms landing page experience. My role included taking ownership of the website's design direction, improving the UX/UI experience, and ensuring the final product aligned with the company's premium positioning and lead generation goals. I collaborated closely with developers and stakeholders to resolve functionality and responsiveness issues while exploring AI-assisted workflows to improve the overall design-to-development process and achieve a more accurate final build.</p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-300">
                   <li>Creative Direction</li>
                   <li>UX/UI Design</li>
