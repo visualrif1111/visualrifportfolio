@@ -6,13 +6,21 @@ import React, { useEffect, useRef } from 'react';
 import { AnimatePresence, motion, useAnimate } from 'motion/react';
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-  }, [pathname]);
+
+    if (!hash) return;
+
+    const id = hash.slice(1);
+    const timer = setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'instant' });
+    }, 1150);
+    return () => clearTimeout(timer);
+  }, [pathname, hash]);
 
   return null;
 }
