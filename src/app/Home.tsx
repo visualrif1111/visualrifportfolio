@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
+import { RevealText } from './components/motion/RevealText';
+import { FadeIn } from './components/motion/FadeIn';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
@@ -205,10 +207,23 @@ export default function Home() {
             <div className="absolute left-[3px] top-2 bottom-[-400px] w-[1px] bg-white opacity-20"></div>
             <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white"></div>
             <ul className="flex flex-col gap-8 text-[18px] tracking-[0.25em] text-gray-300 font-['Rajdhani',sans-serif] font-medium uppercase relative z-10 whitespace-nowrap">
-              <li className={`hover:text-white transition-colors cursor-pointer ${activeSection === 'home' ? 'text-white' : ''}`} onClick={() => scrollTo('home')}>HOME</li>
-              <li className={`hover:text-white transition-colors cursor-pointer ${activeSection === 'about' ? 'text-white' : ''}`} onClick={() => scrollTo('about')}>ABOUT ME</li>
-              <li className={`hover:text-white transition-colors cursor-pointer ${activeSection === 'projects' ? 'text-white' : ''}`} onClick={() => scrollTo('projects')}>ALL PROJECTS</li>
-              <li className={`hover:text-white transition-colors cursor-pointer ${activeSection === 'contact' ? 'text-white' : ''}`} onClick={() => scrollTo('contact')}>CONTACT US</li>
+              {([
+                { id: 'home', label: 'HOME' },
+                { id: 'about', label: 'ABOUT ME' },
+                { id: 'projects', label: 'ALL PROJECTS' },
+                { id: 'contact', label: 'CONTACT US' },
+              ] as const).map(({ id, label }) => (
+                <li key={id} className="relative cursor-pointer hover:text-white transition-colors" onClick={() => scrollTo(id)}>
+                  {activeSection === id && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute -left-6 top-1/2 -translate-y-1/2 w-3 h-[1px] bg-[#50C1BA]"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className={activeSection === id ? 'text-white' : 'text-gray-400'}>{label}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -246,37 +261,79 @@ export default function Home() {
           {/* Centered Content */}
           <div className="flex-1 flex flex-col items-center justify-center text-center max-w-4xl w-full px-4 sm:px-4 mt-8 md:mt-0">
             <h1 className="text-[10vw] sm:text-[48px] md:text-[65.28px] leading-[1.1] md:leading-tight font-medium tracking-[0.4vw] sm:tracking-[2.5px] md:tracking-[5.22px] font-['Barlow_Semi_Condensed',sans-serif] uppercase text-white mb-6 md:mb-12 w-full flex flex-col items-center justify-center text-center">
-              <span>Multidisciplinary</span>
-              <span>Designer</span>
+              <div className="overflow-hidden">
+                <motion.span
+                  className="block"
+                  initial={{ y: '110%', opacity: 0 }}
+                  animate={{ y: '0%', opacity: 1 }}
+                  transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  Multidisciplinary
+                </motion.span>
+              </div>
+              <div className="overflow-hidden">
+                <motion.span
+                  className="block"
+                  initial={{ y: '110%', opacity: 0 }}
+                  animate={{ y: '0%', opacity: 1 }}
+                  transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  Designer
+                </motion.span>
+              </div>
             </h1>
             <div className="font-['Rajdhani',sans-serif] font-semibold text-[3.5vw] sm:text-sm md:text-[21.66px] tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5.41px] text-white uppercase leading-relaxed md:leading-normal text-center w-full px-2">
-              <p className="mb-1 md:mb-0">experience specialising in end-to-end design solutions</p>
-              <p>across UX/UI and 3D design</p>
+              <motion.p
+                className="mb-1 md:mb-0"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.75, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                experience specialising in end-to-end design solutions
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                across UX/UI and 3D design
+              </motion.p>
             </div>
           </div>
-          
+
           {/* Bottom Scroll Down */}
-          <div className="flex justify-center w-full">
+          <motion.div
+            className="flex justify-center w-full"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
             <button onClick={() => scrollTo('about')} className="group flex flex-col items-center gap-6 cursor-pointer">
               <span className="font-['Rajdhani',sans-serif] font-semibold text-[16px] md:text-[21.66px] tracking-[5.41px] uppercase text-white transition-opacity hover:opacity-80">SCROLL DOWN</span>
               <div className="w-[26px] h-[26px] flex items-center justify-center rotate-180 group-hover:-translate-y-2 transition-transform duration-300">
                 <ScrollTriangle className="w-[22.85px] h-[19.79px]" />
               </div>
             </button>
-          </div>
+          </motion.div>
         </section>
 
         <section id="about" className="text-center pt-24 md:pt-32 pb-16 flex flex-col items-center px-4 md:px-0">
-            <h2 className="text-[6vw] sm:text-[24px] md:text-[31.87px] tracking-[0.5vw] sm:tracking-[4px] md:tracking-[7.96px] font-['Barlow',sans-serif] font-medium mb-8 md:mb-12 uppercase text-white w-full max-w-[800px] break-words">
-              Hey, I’m Arif — most people just call me Rif
-            </h2>
-            <div className="font-['Rajdhani',sans-serif] font-semibold text-[3.5vw] sm:text-[16px] md:text-[19.79px] tracking-[0.5vw] sm:tracking-[3px] md:tracking-[4.94px] text-white uppercase leading-relaxed md:leading-normal text-center mb-16 w-full max-w-[646px]">
-              <p className="mb-4 md:mb-0">I’ve worked freelance and in agencies across digital, 3D, and branding.</p>
-              <p>I started at Verb Brands in London, later expanding into game design within the GTA community, CURRENTLY now based in Brighton.</p>
+            <RevealText className="w-full max-w-[800px] mb-8 md:mb-12">
+              <h2 className="text-[6vw] sm:text-[24px] md:text-[31.87px] tracking-[0.5vw] sm:tracking-[4px] md:tracking-[7.96px] font-[‘Barlow’,sans-serif] font-medium uppercase text-white break-words">
+                Hey, I’m Arif — most people just call me Rif
+              </h2>
+            </RevealText>
+            <div className="font-[‘Rajdhani’,sans-serif] font-semibold text-[3.5vw] sm:text-[16px] md:text-[19.79px] tracking-[0.5vw] sm:tracking-[3px] md:tracking-[4.94px] text-white uppercase leading-relaxed md:leading-normal text-center mb-16 w-full max-w-[646px]">
+              <FadeIn delay={0.1}>
+                <p className="mb-4 md:mb-0">I’ve worked freelance and in agencies across digital, 3D, and branding.</p>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <p>I started at Verb Brands in London, later expanding into game design within the GTA community, CURRENTLY now based in Brighton.</p>
+              </FadeIn>
             </div>
-            <div className="mt-8 mb-8 flex justify-center">
+            <FadeIn delay={0.1} className="mt-8 mb-8 flex justify-center">
               <ArifLogo className="w-[78.22px] h-[78.22px] text-white" />
-            </div>
+            </FadeIn>
         </section>
       </div>
 
@@ -294,12 +351,12 @@ export default function Home() {
 
         {/* Marquee */}
         <div className="py-12 border-t border-b border-gray-800 flex items-center overflow-hidden whitespace-nowrap mb-32">
-          <motion.div 
-            animate={{ x: [0, -1000] }} 
-            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
             className="flex items-center gap-8 text-2xl tracking-widest font-medium text-gray-500 uppercase will-change-transform"
           >
-            {[...Array(6)].map((_, i) => (
+            {[...Array(12)].map((_, i) => (
               <React.Fragment key={i}>
                 <span>MULTIDISCIPLINARY</span>
                 <Diamond />
@@ -481,7 +538,14 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
     >
       {!isVideoOpen ? (
         <>
-          <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+          <motion.img
+            src={p.img}
+            alt={p.title}
+            loading="lazy"
+            className="w-full h-full object-cover"
+            whileHover={{ scale: 1.06 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+          />
           <div className="absolute inset-0 bg-black/50 pointer-events-none" />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center z-10">
             <h3 className="text-2xl tracking-widest font-medium mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">{p.title}</h3>
