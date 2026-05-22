@@ -224,7 +224,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative bg-transparent text-white min-h-screen font-['Barlow_Semi_Condensed',sans-serif] selection:bg-[#50C1BA] selection:text-black">
+    <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
       <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
         <div>
@@ -347,11 +347,11 @@ export default function Home() {
 
         <section id="about" className="text-center pt-24 md:pt-32 pb-16 flex flex-col items-center px-4 md:px-0">
             <RevealText className="w-full max-w-[800px] mb-8 md:mb-12">
-              <h2 className="text-[7vw] sm:text-[28px] md:text-[40px] tracking-[0.2vw] sm:tracking-[3px] md:tracking-[6px] leading-[1.15] font-[‘Rajdhani’,sans-serif] font-bold uppercase text-white">
+              <h2 className="text-[7vw] sm:text-[28px] md:text-[40px] tracking-[0.2vw] sm:tracking-[3px] md:tracking-[6px] leading-[1.15] font-rajdhani font-bold uppercase text-white">
                 Hey, I’m Arif — most people just call me Rif
               </h2>
             </RevealText>
-            <div className="font-[‘Rajdhani’,sans-serif] font-semibold text-[3.2vw] sm:text-[14px] md:text-[17px] tracking-[0.3vw] sm:tracking-[2px] md:tracking-[4px] text-white uppercase leading-[1.75] text-center mb-16 w-full max-w-[680px]">
+            <div className="font-rajdhani font-semibold text-[3.2vw] sm:text-[14px] md:text-[17px] tracking-[0.3vw] sm:tracking-[2px] md:tracking-[4px] text-white uppercase leading-[1.75] text-center mb-16 w-full max-w-[680px]">
               <FadeIn delay={0.1}>
                 <p className="mb-4 md:mb-0">I’ve worked freelance and in agencies across digital, 3D, and branding.</p>
               </FadeIn>
@@ -382,7 +382,7 @@ export default function Home() {
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
             transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-            className="flex items-center gap-8 text-2xl tracking-widest font-medium text-gray-500 uppercase will-change-transform"
+            className="flex items-center gap-8 font-['Barlow_Semi_Condensed',sans-serif] font-medium text-2xl tracking-widest text-gray-500 uppercase will-change-transform"
           >
             {[...Array(12)].map((_, i) => (
               <React.Fragment key={i}>
@@ -434,12 +434,12 @@ export default function Home() {
                   <h3 className="font-['Barlow_Semi_Condensed',sans-serif] text-[22px] md:text-[26px] font-semibold text-white tracking-[0.15em] leading-none mb-3 group-hover/item:text-[#50C1BA] transition-colors">{item.year}</h3>
                   <p className="font-['Inter',sans-serif] text-[9px] md:text-[10px] text-gray-400 tracking-[0.2em] uppercase mb-8 leading-none">{item.location}</p>
                   
-                  <p className="font-['Rajdhani',sans-serif] text-[13px] md:text-[15px] text-white tracking-[0.15em] uppercase leading-tight mb-2">{item.title}</p>
-                  <p className="font-['Rajdhani',sans-serif] text-[10px] md:text-[12px] text-white tracking-[0.15em] uppercase mb-8 leading-tight max-w-[250px]">{item.subtitle}</p>
+                  <p className="font-['Rajdhani',sans-serif] font-medium text-[13px] md:text-[15px] text-white tracking-[0.15em] uppercase leading-tight mb-2">{item.title}</p>
+                  <p className="font-['Rajdhani',sans-serif] font-medium text-[10px] md:text-[12px] text-white tracking-[0.15em] uppercase mb-8 leading-tight max-w-[250px]">{item.subtitle}</p>
                   
                   <div className="flex-1 flex flex-col justify-end pb-4">
                     <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[10px] md:text-[11px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">FOCUS</p>
-                    <p className="font-['Rajdhani',sans-serif] text-[12px] md:text-[13px] text-gray-400 tracking-[0.15em] uppercase max-w-[250px] leading-snug whitespace-pre-wrap group-hover/item:text-gray-300 transition-colors">{item.focus}</p>
+                    <p className="font-['Rajdhani',sans-serif] font-medium text-[12px] md:text-[13px] text-gray-400 tracking-[0.15em] uppercase max-w-[250px] leading-snug whitespace-pre-wrap group-hover/item:text-gray-300 transition-colors">{item.focus}</p>
                   </div>
                 </div>
 
@@ -451,7 +451,7 @@ export default function Home() {
                 {/* Below Line */}
                 <div className="flex flex-col items-center text-center mt-12 md:mt-24 opacity-70 group-hover/item:opacity-100 transition-opacity duration-300 pt-2 px-4 w-full">
                   <p className="font-['Barlow_Semi_Condensed',sans-serif] text-[10px] md:text-[11px] text-gray-500 tracking-[0.2em] uppercase mb-3 leading-none">KEY LEARNING</p>
-                  <p className="font-['Rajdhani',sans-serif] text-[11px] md:text-[12px] text-gray-400 tracking-[0.15em] uppercase max-w-[280px] leading-relaxed group-hover/item:text-gray-300 transition-colors">{item.keyLearning}</p>
+                  <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[12px] text-gray-400 tracking-[0.15em] uppercase max-w-[280px] leading-relaxed group-hover/item:text-gray-300 transition-colors">{item.keyLearning}</p>
                 </div>
               </motion.div>
             ))}
@@ -602,9 +602,9 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
           />
           <div className="absolute inset-0 bg-black/50 pointer-events-none" />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center z-10">
-            <h3 className="text-2xl tracking-widest font-medium mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">{p.title}</h3>
+            <h3 className="font-['Barlow_Semi_Condensed',sans-serif] font-medium text-2xl tracking-widest mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">{p.title}</h3>
             <Diamond className="mb-4" />
-            <button className="border border-white px-6 py-2 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+            <button className="font-['Rajdhani',sans-serif] font-medium border border-white px-6 py-2 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
               {p.hover}
             </button>
           </div>

@@ -79,6 +79,9 @@
 }
 
 @theme inline {
+  --font-rajdhani: 'Rajdhani', 'Arial Narrow', Arial, sans-serif;
+  --font-bsc: 'Barlow Semi Condensed', 'Arial Narrow', Arial, sans-serif;
+  --font-barlow: 'Barlow', 'Arial Narrow', Arial, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

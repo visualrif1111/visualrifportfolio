@@ -124,9 +124,10 @@ export default function SunilGavaskar() {
       {/* Main Content */}
       <div className="relative z-10 w-full md:pl-[280px]">
         {/* Hero Section */}
-        <section className="relative w-full h-[45vh] md:h-[70vh] overflow-hidden">
+        <section className="relative w-full h-[45vh] md:h-[70vh] overflow-hidden bg-black">
           <img src={imgRectangle51} alt="Always First Sunil Gavaskar Hero" className="absolute inset-0 w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-y-0 right-0 w-[25%] bg-gradient-to-l from-black to-transparent pointer-events-none" />
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0">
             <h1 className="text-[36px] md:text-[80px] lg:text-[98px] leading-none font-['Barlow_Semi_Condensed',sans-serif] font-medium tracking-[0.08em] uppercase text-white drop-shadow-lg">
               <span className="block overflow-hidden">
