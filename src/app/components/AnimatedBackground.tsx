@@ -108,6 +108,16 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
 
       {/* Vignette - softened to prevent black void edges */}
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,transparent_20%,black_150%)] opacity-70 pointer-events-none" />
+
+      {/* Film grain — static tactile depth */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.035] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '256px 256px',
+        }}
+      />
     </div>
   );
 });

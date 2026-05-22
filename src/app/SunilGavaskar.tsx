@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
 import { NextProject } from './components/NextProject';
+import { RevealText } from './components/motion/RevealText';
+import { FadeIn } from './components/motion/FadeIn';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 
@@ -122,41 +124,55 @@ export default function SunilGavaskar() {
       {/* Main Content */}
       <div className="relative z-10 w-full md:pl-[280px]">
         {/* Hero Section */}
-        <section className="relative w-full h-[25vh] md:h-[40vh] overflow-hidden">
+        <section className="relative w-full h-[45vh] md:h-[70vh] overflow-hidden">
           <img src={imgRectangle51} alt="Always First Sunil Gavaskar Hero" className="absolute inset-0 w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-black/40"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0">
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-[36px] md:text-[80px] lg:text-[98px] leading-none font-['Barlow_Semi_Condensed',sans-serif] font-medium tracking-[0.08em] uppercase text-white drop-shadow-lg"
-            >
-              Always First<br />
-              <span className="text-[18px] md:text-[32px] font-['Barlow',sans-serif] tracking-[0.25em]">Sunil Gavaskar</span>
-            </motion.h1>
+            <h1 className="text-[36px] md:text-[80px] lg:text-[98px] leading-none font-['Barlow_Semi_Condensed',sans-serif] font-medium tracking-[0.08em] uppercase text-white drop-shadow-lg">
+              <span className="block overflow-hidden">
+                <motion.span
+                  className="block"
+                  initial={{ y: '110%' }}
+                  animate={{ y: '0%' }}
+                  transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  Always First
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span
+                  className="block text-[18px] md:text-[32px] font-['Barlow',sans-serif] tracking-[0.25em]"
+                  initial={{ y: '110%' }}
+                  animate={{ y: '0%' }}
+                  transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  Sunil Gavaskar
+                </motion.span>
+              </span>
+            </h1>
           </div>
         </section>
 
         {/* Project Meta Info */}
         <section className="border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-2 md:flex md:flex-wrap gap-8 md:gap-24 uppercase font-['Barlow',sans-serif] font-medium tracking-[0.25em] text-sm md:text-[26px]">
-            <div>
-              <p className="text-gray-500 mb-2 text-xs md:text-sm tracking-[0.25em]">YEAR</p>
-              <p>2022</p>
-            </div>
-            <div>
-              <p className="text-gray-500 mb-2 text-xs md:text-sm tracking-[0.25em]">LOCATION</p>
-              <p>LONDON</p>
-            </div>
-            <div>
-              <p className="text-gray-500 mb-2 text-xs md:text-sm tracking-[0.25em]">ROLE</p>
-              <p className="leading-snug">UX / UI DESIGN<br/>DIGITAL DESIGN</p>
-            </div>
-            <div>
-              <p className="text-gray-500 mb-2 text-xs md:text-sm tracking-[0.25em]">INDUSTRY</p>
-              <p className="leading-snug">WEB3 / NFT /<br/>DIGITAL COLLECTIBLES</p>
-            </div>
+            {[
+              { label: 'YEAR', value: '2022' },
+              { label: 'LOCATION', value: 'LONDON' },
+              { label: 'ROLE', value: <span className="leading-snug">UX / UI DESIGN<br/>DIGITAL DESIGN</span> },
+              { label: 'INDUSTRY', value: <span className="leading-snug">WEB3 / NFT /<br/>DIGITAL COLLECTIBLES</span> },
+            ].map(({ label, value }, i) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <p className="text-gray-500 mb-2 text-xs md:text-sm tracking-[0.25em]">{label}</p>
+                <p>{value}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 
@@ -164,36 +180,48 @@ export default function SunilGavaskar() {
         <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-12 md:pb-16 grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-4 flex flex-col gap-12 md:gap-16">
             <div>
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Overview</h2>
-              <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                <p>As a Freelance Digital Designer at Velvet Badger, I worked on Always First – Sunil Gavaskar, a Web3 and NFT project created for legendary cricketer Sunil Gavaskar. This project marked a key moment in my career, shaping my interest in digital assets and immersive experiences.</p>
-                <p>The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar’s achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
-              </div>
+              <RevealText className="mb-6">
+                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Overview</h2>
+              </RevealText>
+              <FadeIn>
+                <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                  <p>As a Freelance Digital Designer at Velvet Badger, I worked on Always First – Sunil Gavaskar, a Web3 and NFT project created for legendary cricketer Sunil Gavaskar. This project marked a key moment in my career, shaping my interest in digital assets and immersive experiences.</p>
+                  <p>The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar's achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
+                </div>
+              </FadeIn>
             </div>
             <div>
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Challenge</h2>
-              <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                <p>One of the main challenges was translating a complex Web3 and NFT concept into a clear and engaging user experience within a short production timeframe.</p>
-                <p>The project included multiple moving parts — including website design, NFT storytelling, and social media assets — all of which needed to feel cohesive under one visual direction.</p>
-                <p>To approach this, I began with research and mind mapping to better understand the Web3 space, audience, and visual identity before moving into a rapid design sprint process.</p>
-              </div>
+              <RevealText className="mb-6">
+                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Challenge</h2>
+              </RevealText>
+              <FadeIn>
+                <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                  <p>One of the main challenges was translating a complex Web3 and NFT concept into a clear and engaging user experience within a short production timeframe.</p>
+                  <p>The project included multiple moving parts — including website design, NFT storytelling, and social media assets — all of which needed to feel cohesive under one visual direction.</p>
+                  <p>To approach this, I began with research and mind mapping to better understand the Web3 space, audience, and visual identity before moving into a rapid design sprint process.</p>
+                </div>
+              </FadeIn>
             </div>
             <div>
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] mb-6">Solution</h2>
-              <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                <p>The final solution was a cohesive digital campaign that combined the website, NFT experience, and social media content into a unified platform. The website acted as a central hub for the project, while the social media campaign helped build awareness and engagement around the launch.</p>
-                <p>Using a clean visual hierarchy and contemporary Web3-inspired design, the final experience balanced innovation with accessibility, creating an engaging platform for both existing fans and audiences new to NFTs.</p>
-              </div>
+              <RevealText className="mb-6">
+                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Solution</h2>
+              </RevealText>
+              <FadeIn>
+                <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                  <p>The final solution was a cohesive digital campaign that combined the website, NFT experience, and social media content into a unified platform. The website acted as a central hub for the project, while the social media campaign helped build awareness and engagement around the launch.</p>
+                  <p>Using a clean visual hierarchy and contemporary Web3-inspired design, the final experience balanced innovation with accessibility, creating an engaging platform for both existing fans and audiences new to NFTs.</p>
+                </div>
+              </FadeIn>
             </div>
           </div>
-          
-          <div className="lg:col-span-8 flex flex-col gap-6">
-            <div className="w-full relative">
-              <img src={imgRectangle43} alt="Laptop Preview" loading="lazy" className="w-full h-auto object-cover rounded-lg" />
+
+          <div className="lg:col-span-8 flex flex-col gap-6" data-cursor="view">
+            <div className="w-full relative overflow-hidden rounded-lg">
+              <motion.img src={imgRectangle43} alt="Laptop Preview" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-              <div className="relative">
-                <img src={imgRectangle46} alt="Desktop Preview" loading="lazy" className="w-full h-auto object-cover rounded-lg" />
+              <div className="relative overflow-hidden rounded-lg">
+                <motion.img src={imgRectangle46} alt="Desktop Preview" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
               <div className="relative flex items-center justify-center bg-[#011615] rounded-lg p-6 overflow-hidden min-h-[300px]">
                 <div className="flex items-start justify-center gap-1.5 md:gap-2 h-[200px] md:h-[240px] relative z-10 w-full overflow-hidden">
@@ -213,11 +241,13 @@ export default function SunilGavaskar() {
 
         {/* Project Approach Text */}
         <section className="max-w-5xl mx-auto px-6 md:px-12 py-4 md:py-8 text-center">
-          <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200 space-y-6">
-            <p>The project was approached with a strong focus on creating an accessible and engaging Web3 experience that reflected both the legacy of Sunil Gavaskar and the innovative direction of the Always First NFT campaign. Drawing from research into digital collectibles, audience behaviour, and the wider visual identity of the project, I developed a modern creative direction centred around immersive layouts, bold typography, and contemporary Web3-inspired visuals.</p>
-            <p>The visual language was designed to balance innovation with accessibility, allowing users unfamiliar with NFTs to navigate the platform with clarity while still creating an engaging and premium digital experience. Alongside the website, supporting social media assets were designed to maintain a cohesive brand presence across all touchpoints and help drive awareness around the launch of the collection.</p>
-            <p>Throughout the project, consistency, scalability, and responsive design were key considerations, ensuring the experience translated effectively across desktop, mobile, and social platforms. By combining strategic UX/UI thinking with immersive digital storytelling, the final outcome strengthened the campaign’s online presence and created a cohesive platform for fans to engage with the NFT collection and virtual gallery experience.</p>
-          </div>
+          <FadeIn>
+            <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200 space-y-6">
+              <p>The project was approached with a strong focus on creating an accessible and engaging Web3 experience that reflected both the legacy of Sunil Gavaskar and the innovative direction of the Always First NFT campaign. Drawing from research into digital collectibles, audience behaviour, and the wider visual identity of the project, I developed a modern creative direction centred around immersive layouts, bold typography, and contemporary Web3-inspired visuals.</p>
+              <p>The visual language was designed to balance innovation with accessibility, allowing users unfamiliar with NFTs to navigate the platform with clarity while still creating an engaging and premium digital experience. Alongside the website, supporting social media assets were designed to maintain a cohesive brand presence across all touchpoints and help drive awareness around the launch of the collection.</p>
+              <p>Throughout the project, consistency, scalability, and responsive design were key considerations, ensuring the experience translated effectively across desktop, mobile, and social platforms. By combining strategic UX/UI thinking with immersive digital storytelling, the final outcome strengthened the campaign's online presence and created a cohesive platform for fans to engage with the NFT collection and virtual gallery experience.</p>
+            </div>
+          </FadeIn>
         </section>
 
         {/* Elaborate Mindmap & Sketches Section */}
@@ -227,7 +257,7 @@ export default function SunilGavaskar() {
             <div className="w-full lg:w-1/4 hidden md:flex justify-center lg:justify-start items-start">
               <img src={imgNftieSunilGavaskarMindmap2} alt="Wireframe" className="w-full max-w-[300px] h-auto object-contain rounded-2xl bg-[#0a0a0a] p-4 drop-shadow-2xl" />
             </div>
-            
+
             {/* Right block */}
             <div className="w-full lg:w-3/4 flex flex-col gap-8">
               {/* Top block */}
@@ -242,10 +272,25 @@ export default function SunilGavaskar() {
               </div>
 
               {/* Bottom block: Sketch Squares */}
-              <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mt-4">
-                <img src={imgRectangle27} className="w-full aspect-square object-cover rounded-[24px] shadow-xl hover:scale-[1.02] transition-transform duration-500" alt="Wireframe 1" />
-                <img src={imgRectangle28} className="w-full aspect-square object-cover rounded-[24px] shadow-xl hover:scale-[1.02] transition-transform duration-500" alt="Wireframe 2" />
-                <img src={imgRectangle29} className="w-full aspect-square object-cover rounded-[24px] shadow-xl hover:scale-[1.02] transition-transform duration-500" alt="Wireframe 3" />
+              <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mt-4" data-cursor="view">
+                {[imgRectangle27, imgRectangle28, imgRectangle29].map((img, i) => (
+                  <motion.div
+                    key={i}
+                    className="overflow-hidden rounded-[24px] shadow-xl"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.12 }}
+                  >
+                    <motion.img
+                      src={img}
+                      className="w-full aspect-square object-cover"
+                      alt={`Wireframe ${i + 1}`}
+                      whileHover={{ scale: 1.04 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                    />
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
@@ -254,44 +299,86 @@ export default function SunilGavaskar() {
         {/* Breakdown Section */}
         <section className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-4 lg:text-right pt-2 lg:pr-8 lg:border-r border-[#d2b063]">
-            <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[24px] tracking-[0.25em] uppercase text-white mb-6 lg:mb-0">
-              Breakdown
-            </h2>
+            <RevealText className="mb-6 lg:mb-0">
+              <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[24px] tracking-[0.25em] uppercase text-white">
+                Breakdown
+              </h2>
+            </RevealText>
             <div className="h-[2px] w-12 bg-[#d2b063] lg:hidden mb-6"></div>
           </div>
-          <div className="lg:col-span-8 font-['Lato',sans-serif] font-light text-[16px] md:text-[18px] leading-[1.8] tracking-[0.05em] text-gray-300 space-y-6">
-            <p>Coming into the project with a fresh perspective on the Web3 and NFT space, I began by researching the industry and creating a structured mind map to break down the visual identity, audience, and wider campaign direction. This was followed by early wireframes and layout exploration to define the user journey and overall structure of the website experience.</p>
-            <p>Working within a tight two-week timeframe, I moved into a rapid design sprint focused on delivering a cohesive digital experience across the website and supporting social media campaign, successfully unifying multiple parts of the project under one creative direction.</p>
-          </div>
+          <FadeIn className="lg:col-span-8">
+            <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[18px] leading-[1.8] tracking-[0.05em] text-gray-300 space-y-6">
+              <p>Coming into the project with a fresh perspective on the Web3 and NFT space, I began by researching the industry and creating a structured mind map to break down the visual identity, audience, and wider campaign direction. This was followed by early wireframes and layout exploration to define the user journey and overall structure of the website experience.</p>
+              <p>Working within a tight two-week timeframe, I moved into a rapid design sprint focused on delivering a cohesive digital experience across the website and supporting social media campaign, successfully unifying multiple parts of the project under one creative direction.</p>
+            </div>
+          </FadeIn>
         </section>
 
         {/* Gallery Banners & Grids */}
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto flex flex-col gap-8 md:gap-16">
           {/* Banner 1 */}
           <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-            <img src={imgRectangle34} alt="Banner 1" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+            <motion.img
+              src={imgRectangle34}
+              alt="Banner 1"
+              className="w-full h-auto object-cover"
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            />
           </div>
 
-          {/* Grid 1 (Monochrome Photos) */}
+          {/* Grid 1 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[imgRectangle52, imgRectangle53, imgRectangle54, imgRectangle55].map((img, i) => (
-              <div key={i} className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg">
-                <img src={img} className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-500" alt={`Grid item ${i+1}`} />
-              </div>
+              <motion.div
+                key={i}
+                className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <motion.img
+                  src={img}
+                  className="w-full aspect-square object-cover"
+                  alt={`Grid item ${i+1}`}
+                  whileHover={{ scale: 1.04 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                />
+              </motion.div>
             ))}
           </div>
 
           {/* Banner 2 */}
           <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-            <img src={imgRectangle37} alt="Banner 2" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+            <motion.img
+              src={imgRectangle37}
+              alt="Banner 2"
+              className="w-full h-auto object-cover"
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            />
           </div>
 
           {/* Grid 2 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[imgRectangle30, imgRectangle31, imgRectangle32, imgRectangle33].map((img, i) => (
-              <div key={i} className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg bg-[#111]">
-                <img src={img} className="w-full aspect-square object-contain hover:scale-105 transition-transform duration-500" alt={`Grid 2 item ${i+1}`} />
-              </div>
+              <motion.div
+                key={i}
+                className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg bg-[#111]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <motion.img
+                  src={img}
+                  className="w-full aspect-square object-contain"
+                  alt={`Grid 2 item ${i+1}`}
+                  whileHover={{ scale: 1.04 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                />
+              </motion.div>
             ))}
           </div>
         </section>
@@ -300,7 +387,7 @@ export default function SunilGavaskar() {
         <section className="w-full py-16 md:py-24">
           <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12">
             <div className="w-full relative rounded-lg overflow-hidden h-[300px] md:h-[500px]">
-               <img src={imgSg22HeroImageV01202204141} alt="Final Hero Image" className="w-full h-full object-cover" />
+              <img src={imgSg22HeroImageV01202204141} alt="Final Hero Image" className="w-full h-full object-cover" />
             </div>
           </div>
         </section>

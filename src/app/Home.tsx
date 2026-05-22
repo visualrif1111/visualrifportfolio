@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'motion/react';
 import { X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
@@ -142,6 +142,16 @@ const SocialPhone = React.memo(({ className = "" }: { className?: string }) => {
 
 export default function Home() {
   const [activeSection, setActiveSection] = React.useState('home');
+  const reduce = useReducedMotion();
+
+  const heroMouseX = useMotionValue(0.5);
+  const heroMouseY = useMotionValue(0.5);
+  const springHeroX = useSpring(heroMouseX, { stiffness: 50, damping: 22 });
+  const springHeroY = useSpring(heroMouseY, { stiffness: 50, damping: 22 });
+  const h1X = useTransform(springHeroX, [0, 1], [-6, 6]);
+  const h1Y = useTransform(springHeroY, [0, 1], [-3, 3]);
+  const subtitleX = useTransform(springHeroX, [0, 1], [5, -5]);
+  const subtitleY = useTransform(springHeroY, [0, 1], [2, -2]);
 
   const timelineRef = React.useRef<HTMLDivElement>(null);
   const [isDraggingTimeline, setIsDraggingTimeline] = React.useState(false);
@@ -190,6 +200,24 @@ export default function Home() {
       observer.disconnect();
     };
   }, []);
+
+  React.useEffect(() => {
+    if (reduce) return;
+    let rafId = 0;
+    const handleMove = (e: MouseEvent) => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        heroMouseX.set(e.clientX / window.innerWidth);
+        heroMouseY.set(e.clientY / window.innerHeight);
+        rafId = 0;
+      });
+    };
+    window.addEventListener('mousemove', handleMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [reduce, heroMouseX, heroMouseY]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -255,12 +283,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/70"></div>
       </div>
 
-      <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
+      <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
         {/* Hero Section */}
         <section id="home" className="min-h-[calc(100vh-6rem)] md:min-h-screen flex flex-col items-center justify-between relative w-full pt-16 md:pt-32 pb-8 md:pb-12">
           {/* Centered Content */}
           <div className="flex-1 flex flex-col items-center justify-center text-center max-w-4xl w-full px-4 sm:px-4 mt-8 md:mt-0">
-            <h1 className="text-[10vw] sm:text-[48px] md:text-[65.28px] leading-[1.1] md:leading-tight font-medium tracking-[0.4vw] sm:tracking-[2.5px] md:tracking-[5.22px] font-['Barlow_Semi_Condensed',sans-serif] uppercase text-white mb-6 md:mb-12 w-full flex flex-col items-center justify-center text-center">
+            <motion.h1 style={reduce ? {} : { x: h1X, y: h1Y }} className="text-[10vw] sm:text-[48px] md:text-[65.28px] leading-[1.1] md:leading-tight font-medium tracking-[0.4vw] sm:tracking-[2.5px] md:tracking-[5.22px] font-['Barlow_Semi_Condensed',sans-serif] uppercase text-white mb-6 md:mb-12 w-full flex flex-col items-center justify-center text-center">
               <div className="overflow-hidden">
                 <motion.span
                   className="block"
@@ -281,8 +309,8 @@ export default function Home() {
                   Designer
                 </motion.span>
               </div>
-            </h1>
-            <div className="font-['Rajdhani',sans-serif] font-semibold text-[3.5vw] sm:text-sm md:text-[21.66px] tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5.41px] text-white uppercase leading-relaxed md:leading-normal text-center w-full px-2">
+            </motion.h1>
+            <motion.div style={reduce ? {} : { x: subtitleX, y: subtitleY }} className="font-['Rajdhani',sans-serif] font-semibold text-[3.5vw] sm:text-sm md:text-[21.66px] tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5.41px] text-white uppercase leading-relaxed md:leading-normal text-center w-full px-2">
               <motion.p
                 className="mb-1 md:mb-0"
                 initial={{ opacity: 0, y: 12 }}
@@ -298,7 +326,7 @@ export default function Home() {
               >
                 across UX/UI and 3D design
               </motion.p>
-            </div>
+            </motion.div>
           </div>
 
           {/* Bottom Scroll Down */}
@@ -346,7 +374,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
+      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
         <div className="h-16 md:h-24"></div>
 
         {/* Marquee */}
@@ -431,7 +459,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-hidden">
+      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20">
           <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
@@ -507,6 +535,25 @@ function ProjectCategory({ title, projects, className = "", theme = "dark" }: { 
 const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, className?: string }) => {
   const [isVideoOpen, setIsVideoOpen] = React.useState(false);
   const navigate = useNavigate();
+  const reduce = useReducedMotion();
+  const rotX = useMotionValue(0);
+  const rotY = useMotionValue(0);
+  const springRotX = useSpring(rotX, { stiffness: 200, damping: 25 });
+  const springRotY = useSpring(rotY, { stiffness: 200, damping: 25 });
+
+  const handleTiltMove = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (reduce) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    rotX.set(-y * 8);
+    rotY.set(x * 8);
+  }, [reduce, rotX, rotY]);
+
+  const handleTiltLeave = React.useCallback(() => {
+    rotX.set(0);
+    rotY.set(0);
+  }, [rotX, rotY]);
 
   const handleVideoReady = React.useCallback((event: any) => {
     event.target.playVideo();
@@ -523,11 +570,18 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`group relative overflow-hidden bg-gray-900 will-change-transform ${!isVideoOpen && (p.videoId || p.link) ? 'cursor-pointer' : ''} ${className}`}
+      initial={{ clipPath: reduce ? 'inset(0 0 0% 0)' : 'inset(0 0 100% 0)' }}
+      whileInView={{ clipPath: 'inset(0 0 0% 0)' }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
+      style={{ perspective: '1200px' }}
+      className={`relative ${className}`}
+    >
+    <motion.div
+      style={reduce ? {} : { rotateX: springRotX, rotateY: springRotY }}
+      className={`group relative overflow-hidden bg-gray-900 w-full h-full ${!isVideoOpen && (p.videoId || p.link) ? 'cursor-pointer' : ''}`}
+      onMouseMove={handleTiltMove}
+      onMouseLeave={handleTiltLeave}
       onClick={() => {
         if (p.link) {
           navigate(p.link);
@@ -595,6 +649,7 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
           </button>
         </div>
       )}
+    </motion.div>
     </motion.div>
   );
 });

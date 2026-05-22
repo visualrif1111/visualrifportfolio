@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from "react-router";
 import { AnimatedBackground } from "./components/AnimatedBackground";
 import { CookieBanner } from "./components/CookieBanner";
-import React, { useEffect } from 'react';
-import Lenis from 'lenis';
-import { AnimatePresence, motion } from 'motion/react';
+import { ScrollProgress } from "./components/ScrollProgress";
+import React, { useEffect, useRef } from 'react';
+import { AnimatePresence, motion, useAnimate } from 'motion/react';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -19,26 +19,45 @@ function ScrollToTop() {
 
 export function Root() {
   const location = useLocation();
+  const [wipeScope, animateWipe] = useAnimate();
+  const isFirstNav = useRef(true);
 
   useEffect(() => {
-    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
-    let rafId: number;
-    const raf = (time: number) => { lenis.raf(time); rafId = requestAnimationFrame(raf); };
-    rafId = requestAnimationFrame(raf);
-    return () => { cancelAnimationFrame(rafId); lenis.destroy(); };
-  }, []);
+    if (isFirstNav.current) {
+      isFirstNav.current = false;
+      return;
+    }
+    animateWipe(wipeScope.current, { y: ['101%', '0%', '0%', '-101%'] }, {
+      duration: 1.1,
+      times: [0, 0.4, 0.6, 1],
+      ease: [[0.76, 0, 0.24, 1], 'linear', [0.76, 0, 0.24, 1]],
+    });
+  }, [location.pathname]);
 
   return (
     <>
       <ScrollToTop />
+      <ScrollProgress />
       <AnimatedBackground />
+
+      {/* Cinematic teal wipe panel — slides up on route change */}
+      <div
+        ref={wipeScope}
+        className="fixed inset-0 z-[500] bg-[#50C1BA] pointer-events-none"
+        style={{ transform: 'translateY(101%)' }}
+      />
+
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={location.pathname}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          variants={{
+            initial: { opacity: 0 },
+            animate: { opacity: 1, transition: { duration: 0.5, delay: 0.62 } },
+            exit: { opacity: 0, transition: { duration: 0.18 } },
+          }}
+          initial="initial"
+          animate="animate"
+          exit="exit"
         >
           <Outlet />
         </motion.div>

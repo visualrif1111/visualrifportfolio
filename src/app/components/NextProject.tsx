@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useRef, useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useReducedMotion } from 'motion/react';
 import { useNavigate } from 'react-router';
 
 interface NextProjectProps {
@@ -9,9 +9,48 @@ interface NextProjectProps {
 
 export function NextProject({ title, to }: NextProjectProps) {
   const navigate = useNavigate();
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const magnetX = useMotionValue(0);
+  const magnetY = useMotionValue(0);
+  const springX = useSpring(magnetX, { stiffness: 150, damping: 22 });
+  const springY = useSpring(magnetY, { stiffness: 150, damping: 22 });
+
+  useEffect(() => {
+    if (reduce) return;
+    let rafId = 0;
+    const handleMove = (e: MouseEvent) => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        if (!sectionRef.current) { rafId = 0; return; }
+        const rect = sectionRef.current.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const maxDist = 380;
+        if (dist < maxDist) {
+          const strength = (1 - dist / maxDist);
+          magnetX.set(dx * strength * 0.055);
+          magnetY.set(dy * strength * 0.055);
+        } else {
+          magnetX.set(0);
+          magnetY.set(0);
+        }
+        rafId = 0;
+      });
+    };
+    window.addEventListener('mousemove', handleMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [reduce, magnetX, magnetY]);
 
   return (
     <motion.section
+      ref={sectionRef}
       className="relative w-full border-t border-gray-800 px-6 md:px-12 py-24 md:py-40 cursor-pointer overflow-hidden"
       onClick={() => navigate(to)}
       initial="rest"
@@ -44,8 +83,7 @@ export function NextProject({ title, to }: NextProjectProps) {
         <div className="flex items-center justify-between gap-6">
           <motion.h2
             className="font-['Barlow_Semi_Condensed',sans-serif] font-medium text-[9vw] sm:text-[7vw] md:text-[5.5vw] leading-none tracking-[0.02em] uppercase text-white"
-            variants={{ rest: { y: 0 }, hover: { y: -8 } }}
-            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{ x: springX, y: springY }}
           >
             {title}
           </motion.h2>
