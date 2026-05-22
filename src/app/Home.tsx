@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'motion/react';
 import { X } from 'lucide-react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate, useLocation } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
@@ -143,6 +143,7 @@ const SocialPhone = React.memo(({ className = "" }: { className?: string }) => {
 export default function Home() {
   const [activeSection, setActiveSection] = React.useState('home');
   const reduce = useReducedMotion();
+  const location = useLocation();
 
   const heroMouseX = useMotionValue(0.5);
   const heroMouseY = useMotionValue(0.5);
@@ -199,6 +200,20 @@ export default function Home() {
     return () => {
       observer.disconnect();
     };
+  }, []);
+
+  React.useEffect(() => {
+    if (!location.state?.restoreHomeScroll) return;
+    const saved = sessionStorage.getItem('homeScrollY');
+    const target = saved ? parseInt(saved, 10) : null;
+    const timer = setTimeout(() => {
+      if (target !== null) {
+        window.scrollTo({ top: target, behavior: 'instant' });
+      } else {
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'instant' });
+      }
+    }, 1150);
+    return () => clearTimeout(timer);
   }, []);
 
   React.useEffect(() => {
@@ -584,6 +599,7 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
       onMouseLeave={handleTiltLeave}
       onClick={() => {
         if (p.link) {
+          sessionStorage.setItem('homeScrollY', String(window.scrollY));
           navigate(p.link);
         } else if (p.videoId && !isVideoOpen) {
           setIsVideoOpen(true);

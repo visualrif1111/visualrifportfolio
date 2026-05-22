@@ -6,9 +6,11 @@ import React, { useEffect, useRef } from 'react';
 import { AnimatePresence, motion, useAnimate } from 'motion/react';
 
 function ScrollToTop() {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, state } = useLocation();
 
   useEffect(() => {
+    if ((state as any)?.restoreHomeScroll) return;
+
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
