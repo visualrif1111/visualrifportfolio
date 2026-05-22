@@ -126,6 +126,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Barlow Semi Condensed', 'Arial Narrow', Arial, sans-serif;
   }
 
   html {
