@@ -347,16 +347,16 @@ export default function Home() {
 
         <section id="about" className="text-center pt-24 md:pt-32 pb-16 flex flex-col items-center px-4 md:px-0">
             <RevealText className="w-full max-w-[800px] mb-8 md:mb-12">
-              <h2 className="text-[6vw] sm:text-[24px] md:text-[31.87px] tracking-[0.5vw] sm:tracking-[4px] md:tracking-[7.96px] font-[‘Barlow’,sans-serif] font-medium uppercase text-white break-words">
+              <h2 className="text-[7vw] sm:text-[28px] md:text-[40px] tracking-[0.2vw] sm:tracking-[3px] md:tracking-[6px] leading-[1.15] font-[‘Rajdhani’,sans-serif] font-bold uppercase text-white">
                 Hey, I’m Arif — most people just call me Rif
               </h2>
             </RevealText>
-            <div className="font-[‘Rajdhani’,sans-serif] font-semibold text-[3.5vw] sm:text-[16px] md:text-[19.79px] tracking-[0.5vw] sm:tracking-[3px] md:tracking-[4.94px] text-white uppercase leading-relaxed md:leading-normal text-center mb-16 w-full max-w-[646px]">
+            <div className="font-[‘Rajdhani’,sans-serif] font-semibold text-[3.2vw] sm:text-[14px] md:text-[17px] tracking-[0.3vw] sm:tracking-[2px] md:tracking-[4px] text-white uppercase leading-[1.75] text-center mb-16 w-full max-w-[680px]">
               <FadeIn delay={0.1}>
                 <p className="mb-4 md:mb-0">I’ve worked freelance and in agencies across digital, 3D, and branding.</p>
               </FadeIn>
               <FadeIn delay={0.2}>
-                <p>I started at Verb Brands in London, later expanding into game design within the GTA community, CURRENTLY now based in Brighton.</p>
+                <p>I started at Verb Brands in London, later expanding into game design within the GTA community, currently now based in Brighton.</p>
               </FadeIn>
             </div>
             <FadeIn delay={0.1} className="mt-8 mb-8 flex justify-center">
