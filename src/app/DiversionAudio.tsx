@@ -357,12 +357,10 @@ export default function DiversionAudio() {
               <motion.img src={imgRectangle61} alt="Experimentation Final Yellow" loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
             <motion.div
-              className="flex items-start justify-center md:justify-start aspect-square pt-4"
+              className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <div className="w-[65%] h-[65%] rounded-[24px] overflow-hidden shadow-xl">
-                <motion.img src={imgRectangle62} alt="Experimentation Small Black" loading="lazy" className="w-full h-full object-cover min-h-[150px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-              </div>
+              <motion.img src={imgRectangle62} alt="Experimentation Small Black" loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
           </div>
         </section>
