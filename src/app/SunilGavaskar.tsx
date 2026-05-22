@@ -27,7 +27,6 @@ import imgRectangle29 from "../imports/SunilGavaskarProject/20d0406d44179ab36af7
 import imgRectangle34 from "../imports/SunilGavaskarProject/86dbe258e95ec0068d975db9bb72abb48a59d3e8.png";
 import imgRectangle37 from "../imports/SunilGavaskarProject/89e893b7f970f98aac87684633f015dfd0e7628d.png";
 import imgRectangle51 from "../imports/SunilGavaskarProject/d4f7e5a4528724ff4db2037ab375356efa732c07.png";
-import imgSg22HeroImageV01202204141 from "../imports/SunilGavaskarProject/replace1.jpg";
 import imgImg01632 from "../imports/SunilGavaskarProject/64562e22fd549861351b28aadd9a6454b2cc55e9.png";
 import imgImg01642 from "../imports/SunilGavaskarProject/b4e9d1362190c004d0a5eadf9236c61881b2bb95.png";
 import imgNftieSunilGavaskarMindmap2 from "../imports/SunilGavaskarProject/9f847f2c74c776c680bb990082dd98688f494e30.png";
@@ -384,14 +383,6 @@ export default function SunilGavaskar() {
           </div>
         </section>
 
-        {/* Extra Bottom Hero */}
-        <section className="w-full py-16 md:py-24">
-          <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12">
-            <div className="w-full relative rounded-lg overflow-hidden h-[300px] md:h-[500px]">
-              <img src={imgSg22HeroImageV01202204141} alt="Final Hero Image" className="w-full h-full object-cover" />
-            </div>
-          </div>
-        </section>
 
         <NextProject title="Swiftrooms" to="/projects/swiftrooms" />
         {/* Footer */}
