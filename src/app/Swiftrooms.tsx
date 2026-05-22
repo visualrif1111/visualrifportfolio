@@ -10,6 +10,7 @@ import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
+import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
 
 import imgRectangle43 from "../imports/Visualrif-1/a645a819abc40e638a7992e97fea53af676407ec.png";
 import imgRectangle44 from "../imports/Visualrif-1/c9b2e3a432bca3cba9190717df00cde00ecf4202.png";
@@ -44,6 +45,33 @@ import importedImage3 from "../imports/image-3.png";
 import imgImageDesktopMockup from "../imports/Visualrif-1/aca2bf96a01d37bd2387add99b2478911f4430b4.png";
 import imgImageDesignElement from "../imports/Visualrif-1/8d6b9f37409293f48dd5a87217cc54b21bc9c277.png";
 
+const SWIFTROOMS_GALLERY: GalleryImage[] = [
+  { src: imgImageLaptopMockup, alt: 'Laptop Mockup' },
+  { src: imgImageMobileMockup, alt: 'Mobile Mockup' },
+  { src: imgImageDesktopMockup, alt: 'Desktop Mockup' },
+  { src: imgImage3, alt: 'Sitemap' },
+  { src: importedImage3, alt: 'Wireframes and Content Request' },
+  { src: imgScene12, alt: 'Storyboard Scene 1' },
+  { src: imgScene1A3, alt: 'Storyboard Scene 2' },
+  { src: imgScene2A3, alt: 'Storyboard Scene 3' },
+  { src: imgScene3A2, alt: 'Storyboard Scene 4' },
+  { src: imgScene32, alt: 'Storyboard Scene 5' },
+  { src: imgScene24, alt: 'Storyboard Scene 6' },
+  { src: imgScene42, alt: 'Storyboard Scene 7' },
+  { src: imgScene4A2, alt: 'Storyboard Scene 8' },
+  { src: imgScene4B2, alt: 'Storyboard Scene 9' },
+  { src: imgScene13, alt: 'Storyboard Scene 10' },
+  { src: imgScene1B2, alt: 'Storyboard Scene 11' },
+  { src: imgScene1A4, alt: 'Storyboard Scene 12' },
+  { src: imgScene25, alt: 'Storyboard Scene 13' },
+  { src: imgScene25, alt: 'Storyboard Scene 14' },
+  { src: imgScene2A4, alt: 'Storyboard Scene 15' },
+  { src: imgScene8A2, alt: 'Storyboard Scene 16' },
+  { src: imgScene8B2, alt: 'Storyboard Scene 17' },
+  { src: imgScene92, alt: 'Storyboard Scene 18' },
+  { src: imgScene9A2, alt: 'Storyboard Scene 19' },
+  { src: img202503191215262, alt: 'Storyboard Scene 20' },
+];
 
 function VisualRifLogo({ className = "" }: { className?: string }) {
   return (
@@ -194,6 +222,9 @@ function LazyIframe({ src, title, className }: { src: string, title: string, cla
 
 export default function Swiftrooms() {
   const navigate = useNavigate();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const openAt = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
 
   return (
     <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
@@ -334,14 +365,14 @@ export default function Swiftrooms() {
           </div>
           <div className="lg:col-span-8 flex flex-col gap-6" data-cursor="view">
             <div className="w-full relative overflow-hidden rounded-lg">
-              <motion.img src={imgImageLaptopMockup} alt="Laptop Mockup" loading="lazy" className="w-full h-auto object-cover min-h-[300px] md:min-h-[500px]" whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgImageLaptopMockup} alt="Laptop Mockup" loading="lazy" className="w-full h-auto object-cover min-h-[300px] md:min-h-[500px] cursor-pointer" onClick={() => openAt(0)} whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
             <div className="grid grid-cols-2 gap-6 w-full">
               <div className="relative overflow-hidden rounded-lg">
-                <motion.img src={imgImageMobileMockup} alt="Mobile Mockup" loading="lazy" className="w-full h-auto object-cover min-h-[200px] md:min-h-[400px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+                <motion.img src={imgImageMobileMockup} alt="Mobile Mockup" loading="lazy" className="w-full h-auto object-cover min-h-[200px] md:min-h-[400px] cursor-pointer" onClick={() => openAt(1)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
               <div className="relative overflow-hidden rounded-lg">
-                <motion.img src={imgImageDesktopMockup} alt="Desktop Mockup" loading="lazy" className="w-full h-auto object-cover min-h-[200px] md:min-h-[400px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+                <motion.img src={imgImageDesktopMockup} alt="Desktop Mockup" loading="lazy" className="w-full h-auto object-cover min-h-[200px] md:min-h-[400px] cursor-pointer" onClick={() => openAt(2)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
             </div>
             <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mt-4 text-center lg:text-left">
@@ -451,7 +482,8 @@ export default function Swiftrooms() {
                   src={img}
                   alt={`Storyboard Scene ${idx}`}
                   loading="lazy"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => openAt(5 + idx)}
                   whileHover={{ scale: 1.08 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 28 }}
                 />
@@ -489,10 +521,10 @@ export default function Swiftrooms() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-[1920px] mx-auto px-6 md:px-12 w-full">
             <FadeIn className="relative w-full">
-              <img src={imgImage3} alt="Sitemap" loading="lazy" className="w-full h-auto object-contain bg-white rounded-lg p-4 min-h-[300px] md:min-h-[500px]" />
+              <img src={imgImage3} alt="Sitemap" loading="lazy" className="w-full h-auto object-contain bg-white rounded-lg p-4 min-h-[300px] md:min-h-[500px] cursor-pointer" onClick={() => openAt(3)} />
             </FadeIn>
             <FadeIn delay={0.1} className="relative w-full">
-              <img src={importedImage3} alt="Wireframes and Content Request" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px]" />
+              <img src={importedImage3} alt="Wireframes and Content Request" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px] cursor-pointer" onClick={() => openAt(4)} />
             </FadeIn>
           </div>
         </section>
@@ -532,9 +564,15 @@ export default function Swiftrooms() {
         </section>
 
         <NextProject title="Diversion Audio" to="/projects/diversion-audio" />
-        {/* Footer */}
         <Footer className="md:pl-[280px]" />
       </div>
+
+      <GalleryLightbox
+        images={SWIFTROOMS_GALLERY}
+        startIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
     </div>
   );
 }

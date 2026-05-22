@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
@@ -36,6 +36,35 @@ import imgSunilGavaskarTheMoments3 from "../imports/SunilGavaskarProject/adde1db
 import imgSunilGavaskarHallOfFame3 from "../imports/SunilGavaskarProject/24aca0cf507397aef5fa516ca8741c97da3eaf46.png";
 import imgSunilGavaskarTheHallOfFameV23 from "../imports/SunilGavaskarProject/130fafa6183f9cf9541eeb73e44ef4db8e3e037b.png";
 import imgEllipse5 from "../imports/SunilGavaskarProject/57e05b02450362c31cdcf56162a165d964882973.png";
+
+import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
+
+const SUNIL_GALLERY: GalleryImage[] = [
+  { src: imgRectangle43, alt: 'Laptop Preview' },
+  { src: imgRectangle46, alt: 'Desktop Preview' },
+  { src: imgSg22HomepageV07202204134, alt: 'Website Slice 1' },
+  { src: img2SunilGavaskarTheEmblems3, alt: 'Website Slice 2' },
+  { src: imgSunilGavaskarTheMoments3, alt: 'Website Slice 3' },
+  { src: imgSunilGavaskarHallOfFame3, alt: 'Website Slice 4' },
+  { src: imgSunilGavaskarTheHallOfFameV23, alt: 'Website Slice 5' },
+  { src: imgNftieSunilGavaskarMindmap2, alt: 'Wireframe' },
+  { src: imgImg01632, alt: 'Sketch Process 1' },
+  { src: imgImg01642, alt: 'Sketch Process 2' },
+  { src: imgNftieSunilGavaskarMindmapV11, alt: 'Mindmap' },
+  { src: imgRectangle27, alt: 'Wireframe 1' },
+  { src: imgRectangle28, alt: 'Wireframe 2' },
+  { src: imgRectangle29, alt: 'Wireframe 3' },
+  { src: imgRectangle34, alt: 'Banner 1' },
+  { src: imgRectangle52, alt: 'Social Media 1' },
+  { src: imgRectangle53, alt: 'Social Media 2' },
+  { src: imgRectangle54, alt: 'Social Media 3' },
+  { src: imgRectangle55, alt: 'Social Media 4' },
+  { src: imgRectangle37, alt: 'Banner 2' },
+  { src: imgRectangle30, alt: 'NFT Collectible 1' },
+  { src: imgRectangle31, alt: 'NFT Collectible 2' },
+  { src: imgRectangle32, alt: 'NFT Collectible 3' },
+  { src: imgRectangle33, alt: 'NFT Collectible 4' },
+];
 
 function VisualRifLogo({ className = "" }: { className?: string }) {
   return (
@@ -80,6 +109,9 @@ function SocialPhone({ className = "" }: { className?: string }) {
 
 export default function SunilGavaskar() {
   const navigate = useNavigate();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const openAt = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
 
   return (
     <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
@@ -217,20 +249,20 @@ export default function SunilGavaskar() {
 
           <div className="lg:col-span-8 flex flex-col gap-6" data-cursor="view">
             <div className="w-full relative overflow-hidden rounded-lg">
-              <motion.img src={imgRectangle43} alt="Laptop Preview" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgRectangle43} alt="Laptop Preview" loading="lazy" className="w-full h-auto object-cover cursor-pointer" onClick={() => openAt(0)} whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
               <div className="relative overflow-hidden rounded-lg">
-                <motion.img src={imgRectangle46} alt="Desktop Preview" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+                <motion.img src={imgRectangle46} alt="Desktop Preview" loading="lazy" className="w-full h-auto object-cover cursor-pointer" onClick={() => openAt(1)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
               <div className="relative flex items-center justify-center bg-[#011615] rounded-lg p-6 overflow-hidden min-h-[300px]">
                 <div className="flex items-start justify-center gap-1.5 md:gap-2 h-[200px] md:h-[240px] relative z-10 w-full overflow-hidden">
-                  <img src={imgSg22HomepageV07202204134} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 1" />
-                  <img src={img2SunilGavaskarTheEmblems3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 2" />
-                  <img src={imgSunilGavaskarTheMoments3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 3" />
-                  <img src={imgSunilGavaskarHallOfFame3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 4" />
+                  <img src={imgSg22HomepageV07202204134} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 1" onClick={() => openAt(2)} />
+                  <img src={img2SunilGavaskarTheEmblems3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 2" onClick={() => openAt(3)} />
+                  <img src={imgSunilGavaskarTheMoments3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 3" onClick={() => openAt(4)} />
+                  <img src={imgSunilGavaskarHallOfFame3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 4" onClick={() => openAt(5)} />
                   <div className="h-full flex flex-col justify-start">
-                    <img src={imgSunilGavaskarTheHallOfFameV23} loading="lazy" className="h-[25%] w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300" alt="Slice 5" />
+                    <img src={imgSunilGavaskarTheHallOfFameV23} loading="lazy" className="h-[25%] w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 5" onClick={() => openAt(6)} />
                   </div>
                 </div>
                 <img src={imgEllipse5} loading="lazy" className="absolute bottom-4 right-4 w-20 md:w-24 h-auto drop-shadow-[0_10px_30px_rgba(210,176,99,0.3)] z-20" alt="Gold Seal" />
@@ -256,7 +288,7 @@ export default function SunilGavaskar() {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 w-full">
             {/* Left tall panel: wireframe */}
             <div className="w-full lg:w-1/4 hidden md:flex justify-center lg:justify-start items-start">
-              <img src={imgNftieSunilGavaskarMindmap2} alt="Wireframe" className="w-full max-w-[300px] h-auto object-contain rounded-2xl bg-[#0a0a0a] p-4 drop-shadow-2xl" />
+              <img src={imgNftieSunilGavaskarMindmap2} alt="Wireframe" className="w-full max-w-[300px] h-auto object-contain rounded-2xl bg-[#0a0a0a] p-4 drop-shadow-2xl cursor-pointer" onClick={() => openAt(7)} />
             </div>
 
             {/* Right block */}
@@ -264,11 +296,11 @@ export default function SunilGavaskar() {
               {/* Top block */}
               <div className="w-full bg-[#011615] rounded-[24px] py-16 px-8 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden shadow-2xl">
                 <div className="w-full md:w-[40%] flex justify-center gap-4 relative z-10 opacity-80 mix-blend-screen">
-                  <img src={imgImg01632} className="w-[45%] h-auto rounded" alt="Sketch Process 1" />
-                  <img src={imgImg01642} className="w-[45%] h-auto rounded mt-8" alt="Sketch Process 2" />
+                  <img src={imgImg01632} className="w-[45%] h-auto rounded cursor-pointer" alt="Sketch Process 1" onClick={() => openAt(8)} />
+                  <img src={imgImg01642} className="w-[45%] h-auto rounded mt-8 cursor-pointer" alt="Sketch Process 2" onClick={() => openAt(9)} />
                 </div>
                 <div className="w-full md:w-[60%] flex justify-center z-10">
-                  <img src={imgNftieSunilGavaskarMindmapV11} alt="Mindmap" className="w-full h-auto object-cover rounded-xl" />
+                  <img src={imgNftieSunilGavaskarMindmapV11} alt="Mindmap" className="w-full h-auto object-cover rounded-xl cursor-pointer" onClick={() => openAt(10)} />
                 </div>
               </div>
 
@@ -285,8 +317,9 @@ export default function SunilGavaskar() {
                   >
                     <motion.img
                       src={img}
-                      className="w-full aspect-square object-cover"
+                      className="w-full aspect-square object-cover cursor-pointer"
                       alt={`Wireframe ${i + 1}`}
+                      onClick={() => openAt(11 + i)}
                       whileHover={{ scale: 1.04 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                     />
@@ -322,7 +355,8 @@ export default function SunilGavaskar() {
             <motion.img
               src={imgRectangle34}
               alt="Banner 1"
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover cursor-pointer"
+              onClick={() => openAt(14)}
               whileHover={{ scale: 1.03 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             />
@@ -341,8 +375,9 @@ export default function SunilGavaskar() {
               >
                 <motion.img
                   src={img}
-                  className="w-full aspect-square object-cover"
+                  className="w-full aspect-square object-cover cursor-pointer"
                   alt={`Grid item ${i+1}`}
+                  onClick={() => openAt(15 + i)}
                   whileHover={{ scale: 1.04 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 />
@@ -355,7 +390,8 @@ export default function SunilGavaskar() {
             <motion.img
               src={imgRectangle37}
               alt="Banner 2"
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover cursor-pointer"
+              onClick={() => openAt(19)}
               whileHover={{ scale: 1.03 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             />
@@ -374,8 +410,9 @@ export default function SunilGavaskar() {
               >
                 <motion.img
                   src={img}
-                  className="w-full aspect-square object-contain"
+                  className="w-full aspect-square object-contain cursor-pointer"
                   alt={`Grid 2 item ${i+1}`}
+                  onClick={() => openAt(20 + i)}
                   whileHover={{ scale: 1.04 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 />
@@ -386,9 +423,15 @@ export default function SunilGavaskar() {
 
 
         <NextProject title="Swiftrooms" to="/projects/swiftrooms" />
-        {/* Footer */}
         <Footer className="md:pl-[280px]" />
       </div>
+
+      <GalleryLightbox
+        images={SUNIL_GALLERY}
+        startIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
@@ -51,6 +51,32 @@ import imgRectangle77 from "../imports/DiversionAudio-4/86f2cf48fb33633411a17f7d
 import imgRectangle78 from "../imports/DiversionAudio-4/0b18d56a64a0c0bbce5021e1d603399db10c5aaa.png";
 import imgRectangle80 from "../imports/DiversionAudio-4/2279679ffd7397c799a28fac535f100bec52299d.png";
 
+import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
+
+const DIVERSION_GALLERY: GalleryImage[] = [
+  { src: imgRectangle51, alt: 'Event Context 1' },
+  { src: imgRectangle76, alt: 'Event Context 2' },
+  { src: imgRectangle77, alt: 'Logo Black Background' },
+  { src: imgRectangle78, alt: 'Logo Yellow Background' },
+  { src: imgRectangle80, alt: 'Man in Orange Shirt' },
+  { src: imgRectangle27, alt: 'Inspiration Shape 1' },
+  { src: imgRectangle28, alt: 'Inspiration Shape 2' },
+  { src: imgRectangle29, alt: 'Inspiration Shape 3' },
+  { src: imgRectangle57, alt: 'Experimentation Path' },
+  { src: imgRectangle58, alt: 'Experimentation Cross' },
+  { src: imgRectangle59, alt: 'Experimentation Complex' },
+  { src: imgRectangle60, alt: 'Experimentation Final White' },
+  { src: imgRectangle61, alt: 'Experimentation Final Yellow' },
+  { src: imgRectangle62, alt: 'Experimentation Small Black' },
+  { src: imgRectangle67, alt: 'Final Yellow Logo' },
+  { src: imgRectangle66, alt: 'Final Black Logo' },
+  { src: imgRectangle34, alt: 'Event Hero' },
+  { src: imgRectangle52, alt: 'Event Photo 1' },
+  { src: imgRectangle53, alt: 'Event Photo 2' },
+  { src: imgRectangle54, alt: 'Event Photo 3' },
+  { src: imgRectangle55, alt: 'Event Photo 4' },
+];
+
 function VisualRifLogo({ className = "" }: { className?: string }) {
   return (
     <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
@@ -94,6 +120,9 @@ function SocialPhone({ className = "" }: { className?: string }) {
 
 export default function DiversionAudio() {
   const navigate = useNavigate();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const openAt = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
 
   const inspirationLogos = [
     imgQ9WBmv, imgWmSe6X, imgGLl5Y0, imgPAw4Ua,
@@ -214,16 +243,16 @@ export default function DiversionAudio() {
             <div className="lg:col-span-7">
               <div className="grid grid-cols-2 gap-4" data-cursor="view">
                 <div className="aspect-[4/5] drop-shadow-xl overflow-hidden rounded-[16px]">
-                  <motion.img src={imgRectangle51} alt="Event Context 1" loading="lazy" className="w-full h-full object-cover min-h-[300px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+                  <motion.img src={imgRectangle51} alt="Event Context 1" loading="lazy" className="w-full h-full object-cover min-h-[300px] cursor-pointer" onClick={() => openAt(0)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
                 </div>
                 <div className="aspect-[4/5] drop-shadow-xl overflow-hidden rounded-[16px]">
-                  <motion.img src={imgRectangle76} alt="Event Context 2" loading="lazy" className="w-full h-full object-cover min-h-[300px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+                  <motion.img src={imgRectangle76} alt="Event Context 2" loading="lazy" className="w-full h-full object-cover min-h-[300px] cursor-pointer" onClick={() => openAt(1)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
                 </div>
                 <div className="rounded-[16px] overflow-hidden drop-shadow-xl aspect-[16/9]">
-                  <motion.img src={imgRectangle77} alt="Logo Black Background" loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+                  <motion.img src={imgRectangle77} alt="Logo Black Background" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(2)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
                 </div>
                 <div className="rounded-[16px] overflow-hidden drop-shadow-xl aspect-[16/9]">
-                  <motion.img src={imgRectangle78} alt="Logo Yellow Background" loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+                  <motion.img src={imgRectangle78} alt="Logo Yellow Background" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(3)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
                 </div>
               </div>
             </div>
@@ -256,7 +285,7 @@ export default function DiversionAudio() {
               </div>
             </div>
             <div className="lg:col-span-7 flex flex-col overflow-hidden rounded-[16px]" data-cursor="view">
-              <motion.img src={imgRectangle80} alt="Man in Orange Shirt" loading="lazy" className="w-full h-full min-h-[500px] object-cover drop-shadow-xl" whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgRectangle80} alt="Man in Orange Shirt" loading="lazy" className="w-full h-full min-h-[500px] object-cover drop-shadow-xl cursor-pointer" onClick={() => openAt(4)} whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
           </div>
         </section>
@@ -314,7 +343,7 @@ export default function DiversionAudio() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
               >
-                <motion.img src={img} alt={`Inspiration Shape ${i+1}`} loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+                <motion.img src={img} alt={`Inspiration Shape ${i+1}`} loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(5 + i)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </motion.div>
             ))}
           </div>
@@ -331,37 +360,37 @@ export default function DiversionAudio() {
               className="rounded-[24px] overflow-hidden aspect-square flex items-center justify-center p-4 md:p-8"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0 }}
             >
-              <img src={imgRectangle57} alt="Experimentation Path" loading="lazy" className="w-[90%] h-auto object-contain opacity-80 min-h-[200px]" />
+              <img src={imgRectangle57} alt="Experimentation Path" loading="lazy" className="w-[90%] h-auto object-contain opacity-80 min-h-[200px] cursor-pointer" onClick={() => openAt(8)} />
             </motion.div>
             <motion.div
               className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <motion.img src={imgRectangle58} alt="Experimentation Cross" loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgRectangle58} alt="Experimentation Cross" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(9)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
             <motion.div
               className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <motion.img src={imgRectangle59} alt="Experimentation Complex" loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgRectangle59} alt="Experimentation Complex" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(10)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
             <motion.div
               className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <motion.img src={imgRectangle60} alt="Experimentation Final White" loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgRectangle60} alt="Experimentation Final White" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(11)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
             <motion.div
               className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <motion.img src={imgRectangle61} alt="Experimentation Final Yellow" loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgRectangle61} alt="Experimentation Final Yellow" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(12)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
             <motion.div
               className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <motion.img src={imgRectangle62} alt="Experimentation Small Black" loading="lazy" className="w-full h-full object-cover min-h-[200px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgRectangle62} alt="Experimentation Small Black" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(13)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
           </div>
         </section>
@@ -377,13 +406,13 @@ export default function DiversionAudio() {
               className="rounded-[16px] overflow-hidden shadow-2xl"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0 }}
             >
-              <motion.img src={imgRectangle67} alt="Final Yellow Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgRectangle67} alt="Final Yellow Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px] cursor-pointer" onClick={() => openAt(14)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
             <motion.div
               className="rounded-[16px] overflow-hidden shadow-2xl"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.12 }}
             >
-              <motion.img src={imgRectangle66} alt="Final Black Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px]" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              <motion.img src={imgRectangle66} alt="Final Black Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px] cursor-pointer" onClick={() => openAt(15)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
           </div>
         </section>
@@ -427,7 +456,8 @@ export default function DiversionAudio() {
               src={imgRectangle34}
               alt="Event Hero 1"
               loading="lazy"
-              className="w-full h-auto object-cover min-h-[400px] md:min-h-[600px]"
+              className="w-full h-auto object-cover min-h-[400px] md:min-h-[600px] cursor-pointer"
+              onClick={() => openAt(16)}
               whileHover={{ scale: 1.03 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             />
@@ -447,8 +477,9 @@ export default function DiversionAudio() {
                 <motion.img
                   src={img}
                   loading="lazy"
-                  className="w-full aspect-square object-cover min-h-[150px] md:min-h-[250px]"
+                  className="w-full aspect-square object-cover min-h-[150px] md:min-h-[250px] cursor-pointer"
                   alt={`Grid item ${i+1}`}
+                  onClick={() => openAt(17 + i)}
                   whileHover={{ scale: 1.04 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 />
@@ -458,9 +489,15 @@ export default function DiversionAudio() {
         </section>
 
         <NextProject title="Moncks of Dover Street" to="/projects/moncks-of-dover-street" />
-        {/* Footer */}
         <Footer className="md:pl-[280px]" />
       </div>
+
+      <GalleryLightbox
+        images={DIVERSION_GALLERY}
+        startIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
     </div>
   );
 }

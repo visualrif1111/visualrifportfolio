@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
@@ -65,8 +66,26 @@ function SocialPhone({ className = "" }: { className?: string }) {
   );
 }
 
+const MONCKS_GALLERY: GalleryImage[] = [
+  { src: imgRectangle23, alt: 'Laptop Mockup' },
+  { src: imgRectangle24, alt: 'Mobile Mockup' },
+  { src: imgRectangle25, alt: 'Desktop Mockup' },
+  { src: imgMoncksStylingSheetDesktop11, alt: 'Styling Sheet' },
+  { src: imgRectangle40, alt: 'Typography & Colors' },
+  { src: imgRectangle27, alt: 'Design Element' },
+  { src: imgRectangle30, alt: 'Gallery 1' },
+  { src: imgRectangle31, alt: 'Gallery 2' },
+  { src: imgRectangle32, alt: 'Gallery 3' },
+  { src: imgRectangle33, alt: 'Gallery 4' },
+  { src: img49, alt: 'Sitemap' },
+  { src: img59, alt: 'Mobile Screens' },
+];
+
 export default function MoncksOfDoverStreet() {
   const navigate = useNavigate();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const openAt = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
 
   return (
     <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
@@ -200,14 +219,14 @@ export default function MoncksOfDoverStreet() {
             </div>
           </div>
           <div className="lg:col-span-8 flex flex-col gap-6" data-cursor="view">
-            <div className="w-full relative overflow-hidden rounded-lg">
+            <div className="w-full relative overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(0)}>
               <motion.img src={imgRectangle23} alt="Laptop Mockup" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover" whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
             <div className="grid grid-cols-2 gap-6 w-full">
-              <div className="relative overflow-hidden rounded-lg">
+              <div className="relative overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(1)}>
                 <motion.img src={imgRectangle24} alt="Mobile Mockup" loading="lazy" className="w-full h-auto min-h-[200px] md:min-h-[400px] object-cover" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
-              <div className="relative overflow-hidden rounded-lg">
+              <div className="relative overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(2)}>
                 <motion.img src={imgRectangle25} alt="Desktop Mockup" loading="lazy" className="w-full h-auto min-h-[200px] md:min-h-[400px] object-cover" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
             </div>
@@ -227,10 +246,10 @@ export default function MoncksOfDoverStreet() {
         {/* Styling Sheet */}
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <FadeIn className="relative w-full">
-            <img src={imgMoncksStylingSheetDesktop11} alt="Styling Sheet" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover rounded-lg bg-white" />
+            <img src={imgMoncksStylingSheetDesktop11} alt="Styling Sheet" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover rounded-lg bg-white cursor-pointer" onClick={() => openAt(3)} />
           </FadeIn>
           <FadeIn delay={0.1} className="relative w-full flex justify-center">
-            <div className="relative w-full max-w-xl overflow-hidden rounded-lg" data-cursor="view">
+            <div className="relative w-full max-w-xl overflow-hidden rounded-lg cursor-pointer" data-cursor="view" onClick={() => openAt(4)}>
               <motion.img src={imgRectangle40} alt="Typography &amp; Colors" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover" whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
           </FadeIn>
@@ -238,7 +257,7 @@ export default function MoncksOfDoverStreet() {
 
         {/* Big Rounded Image */}
         <section className="w-full px-6 md:px-12 py-8 max-w-[1920px] mx-auto">
-          <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px]" data-cursor="view">
+          <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] cursor-pointer" data-cursor="view" onClick={() => openAt(5)}>
             <motion.img src={imgRectangle27} alt="Design Element" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover" whileHover={{ scale: 1.02 }} transition={{ type: 'spring', stiffness: 200, damping: 30 }} />
           </div>
         </section>
@@ -249,7 +268,8 @@ export default function MoncksOfDoverStreet() {
             {[imgRectangle30, imgRectangle31, imgRectangle32, imgRectangle33].map((img, i) => (
               <motion.div
                 key={i}
-                className="relative w-full overflow-hidden rounded-[30px] md:rounded-[55px]"
+                className="relative w-full overflow-hidden rounded-[30px] md:rounded-[55px] cursor-pointer"
+                onClick={() => openAt(6 + i)}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -271,9 +291,9 @@ export default function MoncksOfDoverStreet() {
         {/* Full Width Images */}
         <section className="w-full py-16 flex flex-col gap-16 overflow-hidden">
           <FadeIn className="relative w-full px-6 md:px-12 max-w-[1920px] mx-auto">
-            <img src={img49} alt="Sitemap" className="w-full h-auto object-cover rounded-lg bg-white" />
+            <img src={img49} alt="Sitemap" className="w-full h-auto object-cover rounded-lg bg-white cursor-pointer" onClick={() => openAt(10)} />
           </FadeIn>
-          <div className="relative w-full max-w-[1920px] mx-auto">
+          <div className="relative w-full max-w-[1920px] mx-auto cursor-pointer" onClick={() => openAt(11)}>
             <img src={img59} alt="Mobile Screens" className="w-full h-auto object-cover" />
           </div>
         </section>
@@ -307,9 +327,15 @@ export default function MoncksOfDoverStreet() {
         </section>
 
         <NextProject title="The Sunil Gavaskar Project" to="/projects/sunil-gavaskar" />
-        {/* Footer */}
         <Footer className="md:pl-[280px]" />
       </div>
+
+      <GalleryLightbox
+        images={MONCKS_GALLERY}
+        startIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
     </div>
   );
 }
