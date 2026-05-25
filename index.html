@@ -5,6 +5,9 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="theme-color" content="#020404" />
+      <!-- Must run synchronously before any deferred/module scripts so the browser
+           reads 'manual' before it ever applies its saved scroll position. -->
+      <script>history.scrollRestoration = 'manual';</script>
       <title>VISUALRIF — Multidisciplinary Designer</title>
       <meta name="description" content="VISUALRIF — Portfolio of Arif Tariq, a multidisciplinary designer specialising in UX/UI, branding, and 3D design. Based in Brighton & Hove." />
       <meta property="og:title" content="VISUALRIF — Multidisciplinary Designer" />

@@ -203,30 +203,21 @@ export default function Home() {
   }, []);
 
   React.useEffect(() => {
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const restoreMobile = location.state?.restoreMobileHomeScroll;
+    const restoreDesktop = location.state?.restoreHomeScroll;
 
-    if (isMobile && location.state?.restoreMobileHomeScroll) {
-      const saved = sessionStorage.getItem('visualrif:lastMobileHomeScrollY');
-      const target = saved ? parseInt(saved, 10) : null;
-      const timer = setTimeout(() => {
-        if (target !== null) {
-          window.scrollTo({ top: target, behavior: 'instant' });
-        } else {
-          document.getElementById('projects')?.scrollIntoView({ behavior: 'instant' });
-        }
-      }, 1150);
-      return () => clearTimeout(timer);
+    if (!restoreMobile && !restoreDesktop) {
+      sessionStorage.removeItem('homeScrollY');
+      sessionStorage.removeItem('visualrif:lastMobileHomeScrollY');
+      return;
     }
 
-    if (!location.state?.restoreHomeScroll) return;
-    const saved = sessionStorage.getItem('homeScrollY');
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const key = (restoreMobile && isMobile) ? 'visualrif:lastMobileHomeScrollY' : 'homeScrollY';
+    const saved = sessionStorage.getItem(key);
     const target = saved ? parseInt(saved, 10) : null;
     const timer = setTimeout(() => {
-      if (target !== null) {
-        window.scrollTo({ top: target, behavior: 'instant' });
-      } else {
-        document.getElementById('projects')?.scrollIntoView({ behavior: 'instant' });
-      }
+      window.scrollTo({ top: target ?? 0, behavior: 'instant' });
     }, 1150);
     return () => clearTimeout(timer);
   }, []);

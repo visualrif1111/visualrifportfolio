@@ -9,6 +9,23 @@ function ScrollToTop() {
   const { pathname, hash, state } = useLocation();
 
   useEffect(() => {
+    // pageshow fires for both normal loads (persisted=false) and BFCache
+    // restores (persisted=true). We use it as a last-resort catch for browser
+    // scroll restoration that can fire AFTER React effects settle (Chrome
+    // defers it until layout is stable, which on image-heavy pages is after
+    // the load event — too late for our normal scrollTo(0,0) effect).
+    const handlePageShow = (e: PageTransitionEvent) => {
+      // If the URL has a hash the hash-scroll timer owns the final position.
+      if (window.location.hash) return;
+      const usr = (window.history.state as any)?.usr;
+      if (usr?.restoreHomeScroll || usr?.restoreMobileHomeScroll) return;
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('pageshow', handlePageShow);
+    return () => window.removeEventListener('pageshow', handlePageShow);
+  }, []);
+
+  useEffect(() => {
     if ((state as any)?.restoreHomeScroll || (state as any)?.restoreMobileHomeScroll) return;
 
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -20,7 +37,7 @@ function ScrollToTop() {
       document.getElementById(id)?.scrollIntoView({ behavior: 'instant' });
     }, 1150);
     return () => clearTimeout(timer);
-  }, [pathname, hash]);
+  }, [pathname, hash, state]);
 
   return null;
 }

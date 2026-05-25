@@ -92,7 +92,7 @@ export default function MoncksOfDoverStreet() {
       {/* Navigation */}
       <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
         <div>
-          <div className="mb-12 cursor-pointer" onClick={() => navigate({ pathname: '/', hash: '#projects' })}>
+          <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
           </div>
           <div className="relative pl-6">
@@ -121,7 +121,7 @@ export default function MoncksOfDoverStreet() {
         <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}>
           <ArrowLeft size={24} />
         </button>
-        <div className="cursor-pointer" onClick={() => navigate({ pathname: '/', hash: '#projects' })}>
+        <div className="cursor-pointer" onClick={() => navigate('/')}>
           <VisualRifLogo className="w-[140px] h-[18px]" />
         </div>
       </nav>
