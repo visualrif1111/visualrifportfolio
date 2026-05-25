@@ -296,13 +296,19 @@ export default function Home() {
       {/* Hero Background Video */}
       <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
         <iframe
-          src="https://www.youtube.com/embed/_4cuwDSUX4Y?autoplay=1&mute=1&loop=1&playlist=_4cuwDSUX4Y&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
+          src="https://www.youtube.com/embed/_4cuwDSUX4Y?autoplay=1&mute=1&loop=1&playlist=_4cuwDSUX4Y&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1&fs=0&cc_load_policy=0"
           className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-          allowFullScreen
+          allow="autoplay; encrypted-media"
           style={{ border: 0 }}
         />
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-black/70" />
+        {/* Touch shield — iOS Safari ignores pointer-events:none on iframes, so
+            any tap on the hero area could surface YouTube's player UI. A child
+            element with pointer-events:auto receives touches even inside a
+            pointer-events:none parent, intercepting all taps before they reach
+            the iframe. Sits below the z-10 hero content so hero interactions
+            are completely unaffected. */}
+        <div className="absolute inset-0 z-[1] pointer-events-auto" />
       </div>
 
       <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
