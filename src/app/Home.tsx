@@ -648,10 +648,33 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
           </div>
 
           {p.link && (
-            <div className="md:hidden absolute bottom-5 left-0 right-0 flex justify-center z-10 pointer-events-none">
-              <span className="font-['Rajdhani',sans-serif] font-semibold text-[11px] tracking-[0.35em] uppercase text-white border border-[#50C1BA]/60 px-6 py-2.5">
+            <div className="md:hidden absolute bottom-5 left-0 right-0 flex justify-center z-10">
+              <motion.div
+                className="font-['Rajdhani',sans-serif] font-semibold text-[11px] tracking-[0.35em] uppercase border select-none px-6 py-3 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#50C1BA]"
+                style={{
+                  borderColor: 'rgba(80,193,186,0.45)',
+                  color: 'rgba(255,255,255,0.9)',
+                  backgroundColor: 'transparent',
+                }}
+                whileHover={{
+                  borderColor: 'rgba(80,193,186,1)',
+                  color: 'rgb(80,193,186)',
+                  backgroundColor: 'rgba(80,193,186,0.07)',
+                  scale: 1.03,
+                  boxShadow: '0 0 18px rgba(80,193,186,0.22)',
+                }}
+                whileTap={{
+                  scale: 0.95,
+                  borderColor: 'rgba(80,193,186,0.9)',
+                  color: 'rgb(80,193,186)',
+                  backgroundColor: 'rgba(80,193,186,0.14)',
+                  boxShadow: '0 0 10px rgba(80,193,186,0.18)',
+                }}
+                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                tabIndex={-1}
+              >
                 VIEW PROJECT
-              </span>
+              </motion.div>
             </div>
           )}
         </>
