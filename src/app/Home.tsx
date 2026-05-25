@@ -638,9 +638,11 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center z-10">
             <h3 className="font-['Barlow_Semi_Condensed',sans-serif] font-medium text-2xl tracking-widest mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">{p.title}</h3>
             <Diamond className="mb-4" />
-            <button className="font-['Rajdhani',sans-serif] font-medium border border-white px-6 py-2 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-              {p.hover}
-            </button>
+            {!p.link && (
+              <button className="font-['Rajdhani',sans-serif] font-medium border border-white px-6 py-2 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                {p.hover}
+              </button>
+            )}
           </div>
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
             <h3 className="text-2xl tracking-widest font-medium mb-4 drop-shadow-lg text-center px-4">{p.title}</h3>
@@ -648,32 +650,35 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
           </div>
 
           {p.link && (
-            <div className="md:hidden absolute bottom-5 left-0 right-0 flex justify-center z-10 px-6">
-              <motion.div
-                className="w-full max-w-[260px] font-['Rajdhani',sans-serif] font-bold text-[12px] tracking-[0.35em] uppercase select-none text-center px-8 py-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#50C1BA]"
-                style={{
-                  backgroundColor: 'rgb(80,193,186)',
-                  color: 'rgb(8,26,26)',
-                  boxShadow: '0 4px 20px rgba(80,193,186,0.4)',
-                }}
-                whileHover={{
-                  backgroundColor: 'rgb(96,208,201)',
-                  scale: 1.03,
-                  y: -1,
-                  boxShadow: '0 8px 28px rgba(80,193,186,0.55)',
-                }}
-                whileTap={{
-                  scale: 0.96,
-                  y: 1,
-                  backgroundColor: 'rgb(62,175,169)',
-                  boxShadow: '0 2px 10px rgba(80,193,186,0.3)',
-                }}
-                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                tabIndex={-1}
-              >
-                VIEW PROJECT
-              </motion.div>
-            </div>
+            <>
+              <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/75 to-transparent pointer-events-none z-[15]" />
+              <div className="absolute bottom-5 left-0 right-0 flex justify-center z-20 px-6">
+                <motion.div
+                  className="w-full max-w-[260px] font-['Rajdhani',sans-serif] font-bold text-[12px] tracking-[0.35em] uppercase select-none text-center px-8 py-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#50C1BA]"
+                  style={{
+                    backgroundColor: 'rgb(80,193,186)',
+                    color: 'rgb(8,26,26)',
+                    boxShadow: '0 4px 20px rgba(80,193,186,0.4)',
+                  }}
+                  whileHover={{
+                    backgroundColor: 'rgb(96,208,201)',
+                    scale: 1.03,
+                    y: -1,
+                    boxShadow: '0 8px 28px rgba(80,193,186,0.55)',
+                  }}
+                  whileTap={{
+                    scale: 0.96,
+                    y: 1,
+                    backgroundColor: 'rgb(62,175,169)',
+                    boxShadow: '0 2px 10px rgba(80,193,186,0.3)',
+                  }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  tabIndex={-1}
+                >
+                  VIEW PROJECT
+                </motion.div>
+              </div>
+            </>
           )}
         </>
       ) : (
