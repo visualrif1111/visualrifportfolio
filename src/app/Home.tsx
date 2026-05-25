@@ -42,7 +42,7 @@ const timelineData = [
     location: "FREELANCE & COMMUNITY-BASED DESIGN — SHREWSBURY",
     title: "INDEPENDENT BRAND BUILDING",
     subtitle: "Built a recognised creative presence within online communities through branding, digital assets, and visual identity work.",
-    focus: "• Brand identity\n• Community-driven design\n��� Digital asset creation\n• Creative direction",
+    focus: "• Brand identity\n• Community-driven design\n• Digital asset creation\n• Creative direction",
     keyLearning: "Learned how strong visual identity and consistent branding can build engagement, trust, and community recognition."
   },
   {

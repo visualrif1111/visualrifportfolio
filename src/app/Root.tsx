@@ -12,8 +12,6 @@ function ScrollToTop() {
     if ((state as any)?.restoreHomeScroll || (state as any)?.restoreMobileHomeScroll) return;
 
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
 
     if (!hash) return;
 
