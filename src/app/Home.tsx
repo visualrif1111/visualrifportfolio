@@ -203,6 +203,21 @@ export default function Home() {
   }, []);
 
   React.useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    if (isMobile && location.state?.restoreMobileHomeScroll) {
+      const saved = sessionStorage.getItem('visualrif:lastMobileHomeScrollY');
+      const target = saved ? parseInt(saved, 10) : null;
+      const timer = setTimeout(() => {
+        if (target !== null) {
+          window.scrollTo({ top: target, behavior: 'instant' });
+        } else {
+          document.getElementById('projects')?.scrollIntoView({ behavior: 'instant' });
+        }
+      }, 1150);
+      return () => clearTimeout(timer);
+    }
+
     if (!location.state?.restoreHomeScroll) return;
     const saved = sessionStorage.getItem('homeScrollY');
     const target = saved ? parseInt(saved, 10) : null;
@@ -600,6 +615,9 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
       onClick={() => {
         if (p.link) {
           sessionStorage.setItem('homeScrollY', String(window.scrollY));
+          if (window.matchMedia('(max-width: 768px)').matches) {
+            sessionStorage.setItem('visualrif:lastMobileHomeScrollY', String(window.scrollY));
+          }
           navigate(p.link);
         } else if (p.videoId && !isVideoOpen) {
           setIsVideoOpen(true);

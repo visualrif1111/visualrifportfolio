@@ -238,7 +238,7 @@ export default function Swiftrooms() {
             <div className="absolute left-[3px] top-2 bottom-[-400px] w-[1px] bg-white opacity-20"></div>
             <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white"></div>
             <ul className="flex flex-col gap-8 text-[18px] tracking-[0.25em] text-gray-300 font-['Rajdhani',sans-serif] font-medium uppercase relative z-10 whitespace-nowrap">
-              <li className="hover:text-white transition-colors cursor-pointer" onClick={() => navigate('/', { state: { restoreHomeScroll: true } })}>
+              <li className="hover:text-white transition-colors cursor-pointer" onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}>
                 <span className="flex items-center gap-2">
                   <ArrowLeft size={16} /> BACK TO HOME
                 </span>
@@ -257,7 +257,7 @@ export default function Swiftrooms() {
 
       {/* Mobile Nav */}
       <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
-        <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/', { state: { restoreHomeScroll: true } })}>
+        <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}>
           <ArrowLeft size={24} />
         </button>
         <div className="cursor-pointer" onClick={() => navigate({ pathname: '/', hash: '#projects' })}>
