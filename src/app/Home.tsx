@@ -636,7 +636,7 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
           />
           <div className="absolute inset-0 bg-black/50 pointer-events-none" />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center z-10">
-            <h3 className="font-['Barlow_Semi_Condensed',sans-serif] font-medium text-2xl tracking-widest mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">{p.title}</h3>
+            <h3 className={`font-['Barlow_Semi_Condensed',sans-serif] font-medium text-2xl tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4 ${p.link ? 'mb-2' : 'mb-4'}`}>{p.title}</h3>
             <Diamond className="mb-4" />
             {!p.link && (
               <button className="font-['Rajdhani',sans-serif] font-medium border border-white px-6 py-2 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
@@ -644,8 +644,8 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
               </button>
             )}
           </div>
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-500 group-hover:opacity-0">
-            <h3 className="text-2xl tracking-widest font-medium mb-4 drop-shadow-lg text-center px-4">{p.title}</h3>
+          <div className={`absolute inset-0 flex flex-col items-center pointer-events-none transition-opacity duration-500 group-hover:opacity-0 ${p.link ? 'justify-end pb-[70px]' : 'justify-center'}`}>
+            <h3 className={`text-2xl tracking-widest font-medium drop-shadow-lg text-center px-4 ${p.link ? 'mb-3' : 'mb-4'}`}>{p.title}</h3>
             <Diamond className="drop-shadow-lg" />
           </div>
 
