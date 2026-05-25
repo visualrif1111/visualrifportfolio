@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm build *)",
+      "WebFetch(domain:place-ebony-00043454.figma.site)"
+    ]
+  }
+}
