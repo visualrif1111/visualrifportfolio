@@ -646,6 +646,14 @@ const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, 
             <h3 className="text-2xl tracking-widest font-medium mb-4 drop-shadow-lg text-center px-4">{p.title}</h3>
             <Diamond className="drop-shadow-lg" />
           </div>
+
+          {p.link && (
+            <div className="md:hidden absolute bottom-5 left-0 right-0 flex justify-center z-10 pointer-events-none">
+              <span className="font-['Rajdhani',sans-serif] font-semibold text-[11px] tracking-[0.35em] uppercase text-white border border-[#50C1BA]/60 px-6 py-2.5">
+                VIEW PROJECT
+              </span>
+            </div>
+          )}
         </>
       ) : (
         <div className="absolute inset-0 z-20 bg-black flex items-center justify-center pointer-events-none">
