@@ -118,6 +118,7 @@ function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
   const [player, setPlayer] = useState<any>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const isTouch = React.useMemo(() => window.matchMedia('(hover: none)').matches, []);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -142,10 +143,9 @@ function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
   const handleMouseEnter = () => { if (player) player.unMute(); };
   const handleMouseLeave = () => { if (player) player.mute(); };
   const handleClick = () => {
-    if (player) {
-      if (player.isMuted()) player.unMute();
-      else player.mute();
-    }
+    if (isTouch || !player) return;
+    if (player.isMuted()) player.unMute();
+    else player.mute();
   };
 
   return (
@@ -156,7 +156,7 @@ function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      <div className="absolute inset-0 z-10 cursor-pointer"></div>
+      {!isTouch && <div className="absolute inset-0 z-10 cursor-pointer"></div>}
       {isIntersecting && (
         <YouTube
           videoId={videoId}
@@ -168,18 +168,18 @@ function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
               mute: 1,
               loop: 1,
               playlist: videoId,
-              controls: 0,
+              controls: isTouch ? 1 : 0,
               modestbranding: 1,
               playsinline: 1,
               rel: 0,
               showinfo: 0,
               iv_load_policy: 3,
-              disablekb: 1
+              disablekb: isTouch ? 0 : 1,
             },
           }}
           onReady={handleReady}
           className="w-full h-full scale-[1.05] pointer-events-none"
-          iframeClassName="w-full h-full pointer-events-none"
+          iframeClassName={`w-full h-full ${isTouch ? '' : 'pointer-events-none'}`}
         />
       )}
     </div>
@@ -269,16 +269,14 @@ export default function Swiftrooms() {
       <div className="relative z-10 w-full md:pl-[280px]">
         {/* Hero Section */}
         <section className="relative w-full h-[45vh] md:h-[70vh] overflow-hidden bg-transparent">
-          <div className="absolute top-1/2 left-1/2 w-full min-w-[100vw] aspect-video -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.05]">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/V9vBGXX-GwA?autoplay=1&mute=1&loop=1&playlist=V9vBGXX-GwA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
-              title="Swiftrooms Hero Video"
-              style={{ border: 0 }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
+          <iframe
+            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[45vh] md:min-h-[70vh] min-w-[80vh] md:min-w-[124.44vh] -translate-x-1/2 -translate-y-1/2 scale-[1.05] pointer-events-none"
+            src="https://www.youtube.com/embed/V9vBGXX-GwA?autoplay=1&mute=1&loop=1&playlist=V9vBGXX-GwA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
+            title="Swiftrooms Hero Video"
+            style={{ border: 0 }}
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+          />
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0 z-10">
             <h1 className="text-[50px] md:text-[98px] leading-none font-['Barlow_Semi_Condensed',sans-serif] font-medium tracking-[0.08em] uppercase text-white drop-shadow-lg">

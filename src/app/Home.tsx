@@ -307,7 +307,8 @@ export default function Home() {
         <iframe
           src="https://www.youtube.com/embed/_4cuwDSUX4Y?autoplay=1&mute=1&loop=1&playlist=_4cuwDSUX4Y&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
           className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          allow="autoplay; encrypted-media"
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowFullScreen
           style={{ border: 0 }}
         />
         <div className="absolute inset-0 bg-black/70"></div>
