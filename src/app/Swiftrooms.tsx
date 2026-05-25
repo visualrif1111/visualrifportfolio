@@ -11,6 +11,7 @@ import { FadeIn } from './components/motion/FadeIn';
 
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
+import { ResponsiveYouTubeEmbed } from './components/ResponsiveYouTubeEmbed';
 
 import imgRectangle43 from "../imports/Visualrif-1/a645a819abc40e638a7992e97fea53af676407ec.png";
 import imgRectangle44 from "../imports/Visualrif-1/c9b2e3a432bca3cba9190717df00cde00ecf4202.png";
@@ -178,7 +179,7 @@ function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
             },
           }}
           onReady={handleReady}
-          className="w-full h-full scale-[1.05] pointer-events-none"
+          className={`w-full h-full scale-[1.05] ${isTouch ? '' : 'pointer-events-none'}`}
           iframeClassName={`w-full h-full ${isTouch ? '' : 'pointer-events-none'}`}
         />
       )}
@@ -186,39 +187,6 @@ function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
   );
 }
 
-function LazyIframe({ src, title, className }: { src: string, title: string, className?: string }) {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsIntersecting(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className={`w-full h-full ${className || ''}`}>
-      {isIntersecting && (
-        <iframe
-          className="w-full h-full"
-          src={src}
-          title={title}
-          style={{ border: 0 }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      )}
-    </div>
-  );
-}
 
 export default function Swiftrooms() {
   const navigate = useNavigate();
@@ -423,10 +391,7 @@ export default function Swiftrooms() {
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">old landing page (syspee)</p>
               </div>
               <div className="aspect-video w-full rounded-lg overflow-hidden drop-shadow-2xl bg-black pointer-events-none">
-                <LazyIframe
-                  src="https://www.youtube.com/embed/bxJykP0pURI?autoplay=1&mute=1&loop=1&playlist=bxJykP0pURI&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
-                  title="Old landing page"
-                />
+                <ResponsiveYouTubeEmbed videoId="bxJykP0pURI" title="Old landing page" />
               </div>
             </div>
             <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
@@ -434,10 +399,7 @@ export default function Swiftrooms() {
                 <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">new landing page (visualrif)</p>
               </div>
               <div className="aspect-video w-full rounded-lg overflow-hidden bg-black pointer-events-none">
-                <LazyIframe
-                  src="https://www.youtube.com/embed/jRnbOu5_xlo?autoplay=1&mute=1&loop=1&playlist=jRnbOu5_xlo&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
-                  title="New landing page"
-                />
+                <ResponsiveYouTubeEmbed videoId="jRnbOu5_xlo" title="New landing page" />
               </div>
             </div>
             <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
@@ -455,10 +417,7 @@ export default function Swiftrooms() {
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto">
           <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] min-h-[60vh] md:min-h-[1000px] bg-black">
             <div className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none">
-              <LazyIframe
-                src="https://www.youtube.com/embed/aP4L7jnKxYA?autoplay=1&mute=1&loop=1&playlist=aP4L7jnKxYA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
-                title="Design Element Video"
-              />
+              <ResponsiveYouTubeEmbed videoId="aP4L7jnKxYA" title="Design Element Video" />
             </div>
           </div>
         </section>
