@@ -350,7 +350,7 @@ export default function JMACustoms() {
                 Every asset designed with precision — from concept to in-game implementation across clothing, jewellery, environments, and identity.
               </p>
             </FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
               {assetCategories.map((cat, i) => (
                 <motion.div
                   key={cat.num}
