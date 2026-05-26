@@ -69,7 +69,7 @@ const assetCategories = [
 const discordChannels = ['# commissions', '# announcements', '# showcase', '# orders', '# support', '# community'];
 
 const identityPillars = [
-  { label: 'Visual Language', value: 'Cyber-luxury aesthetic — dark environments, teal accents, editorial typography, and immersive visual depth.' },
+  { label: 'Visual Language', value: 'Cyber-luxury aesthetic — dark environments, typography, and immersive visual depth.' },
   { label: 'Brand Tone', value: 'Premium. Exclusive. Community-rooted. The voice of a digital creative agency with real craft behind every delivery.' },
   { label: 'Digital Persona', value: 'A recognized creative identity within FiveM — associated with quality, precision, and cultural relevance across servers.' },
   { label: 'Creative Direction', value: 'Visual Rif — the same editorial approach that drives real-world brand identity applied to virtual creative production.' },
