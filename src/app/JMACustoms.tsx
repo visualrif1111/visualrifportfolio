@@ -517,20 +517,15 @@ export default function JMACustoms() {
             </FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               <FadeIn>
-                <div className="aspect-square bg-[#030d0d] border border-[#50C1BA]/18 rounded-lg flex flex-col items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#50C1BA]/7 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute inset-0 bg-gradient-to-tl from-[#50C1BA]/3 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, rgba(80,193,186,0.06) 0%, transparent 70%)' }} />
-                  <div className="text-center px-8 z-10">
-                    <p className="font-['Barlow_Semi_Condensed',sans-serif] font-medium text-[60px] md:text-[80px] tracking-[0.12em] uppercase text-white/8 leading-none">JMA</p>
-                    <div className="w-16 h-[1px] bg-[#50C1BA]/30 mx-auto my-4" />
-                    <p className="font-['Barlow_Semi_Condensed',sans-serif] font-medium text-[22px] md:text-[30px] tracking-[0.4em] uppercase text-[#50C1BA] leading-none">CUSTOMS</p>
-                    <div className="w-10 h-[1px] bg-[#50C1BA]/20 mx-auto mt-4" />
-                    <p className="font-['Rajdhani',sans-serif] text-[9px] tracking-[0.55em] uppercase text-gray-700 mt-3">Virtual Creative Agency</p>
-                  </div>
-                  <div className="absolute bottom-5 right-5">
-                    <p className="font-['Rajdhani',sans-serif] text-[9px] tracking-[0.35em] uppercase text-gray-800">Creative Direction — Visual Rif</p>
-                  </div>
+                <div className="aspect-video rounded-lg overflow-hidden border border-[#50C1BA]/18">
+                  <iframe
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/QGmVpdBSVAU?autoplay=1&mute=0&start=133&controls=1&rel=0&modestbranding=1&playsinline=1"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    style={{ border: 0 }}
+                    title="JMA Customs — Virtual Creative Agency"
+                  />
                 </div>
               </FadeIn>
               <div className="flex flex-col gap-7">
