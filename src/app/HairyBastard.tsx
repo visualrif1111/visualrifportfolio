@@ -19,7 +19,6 @@ import imgCardsStanding       from "../imports/HairyBastard/cards-standing.png";
 import imgProcessStrip        from "../imports/HairyBastard/process-strip.jpeg";
 import imgSpotUV6             from "../imports/HairyBastard/spot-uv-6.png";
 import imgBarbershopShoot     from "../imports/HairyBastard/barbershop-shoot.png";
-import imgLogoPortraitA       from "../imports/HairyBastard/logo-portrait-a.png";
 import imgLogoPortraitB       from "../imports/HairyBastard/logo-portrait-b.png";
 import imgLogoMarkDark        from "../imports/HairyBastard/logo-mark-dark.png";
 import imgCardFrontOrangeA    from "../imports/HairyBastard/card-front-orange-a.png";
@@ -41,17 +40,16 @@ const THB_GALLERY: GalleryImage[] = [
   { src: imgSpotUV6,             alt: 'Spot UV Card — Standing Mockup' },            // 5
   { src: imgBarbershopShoot,     alt: 'Barbershop — Photo Shoot' },                   // 6
   { src: imgLogoPortraitB,       alt: 'Logo Concept — Portrait B' },                  // 7
-  { src: imgLogoPortraitA,       alt: 'Logo Concept — Portrait A' },                  // 8
-  { src: imgLogoMarkDark,        alt: 'Logo Mark — Dark' },                           // 9
-  { src: imgCardFrontOrangeA,    alt: 'Card Design — Brick Lane Map' },               // 10
-  { src: imgDev1Maps,            alt: 'Development Stage 1 — Map Studies' },          // 11
-  { src: imgDev1CardB,           alt: 'Development Stage 1 — Card Iteration' },       // 12
-  { src: imgCardFinalOrange,     alt: 'Card Design — Final Orange' },                 // 13
-  { src: imgDev2Patterns,        alt: 'Development Stage 2 — Map Patterns' },         // 14
-  { src: imgSpotUVFront,         alt: 'Spot UV Card — Front' },                       // 15
-  { src: imgCollage,             alt: 'Project Collage — Process Overview' },         // 16
-  { src: imgCardFlat,            alt: 'Final Card — Front and Back' },                // 17
-  { src: imgSpotUVClose,         alt: 'Spot UV Card — Close-up' },                   // 18
+  { src: imgLogoMarkDark,        alt: 'Logo Mark — Dark' },                           // 8
+  { src: imgCardFrontOrangeA,    alt: 'Card Design — Brick Lane Map' },               // 9
+  { src: imgDev1Maps,            alt: 'Development Stage 1 — Map Studies' },          // 10
+  { src: imgDev1CardB,           alt: 'Development Stage 1 — Card Iteration' },       // 11
+  { src: imgCardFinalOrange,     alt: 'Card Design — Final Orange' },                 // 12
+  { src: imgDev2Patterns,        alt: 'Development Stage 2 — Map Patterns' },         // 13
+  { src: imgSpotUVFront,         alt: 'Spot UV Card — Front' },                       // 14
+  { src: imgCollage,             alt: 'Project Collage — Process Overview' },         // 15
+  { src: imgCardFlat,            alt: 'Final Card — Front and Back' },                // 16
+  { src: imgSpotUVClose,         alt: 'Spot UV Card — Close-up' },                   // 17
 ];
 
 function VisualRifLogo({ className = "" }: { className?: string }) {
@@ -350,21 +348,16 @@ export default function HairyBastard() {
             <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Initial Concept</h2>
           </RevealText>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 w-full" data-cursor="view">
-            {/* Left: logo portraits stacked */}
-            <div className="flex flex-col gap-4">
-              <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(7)}>
-                <motion.img src={imgLogoPortraitB} alt="Logo Concept — Portrait B" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-              </div>
-              <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(8)}>
-                <motion.img src={imgLogoPortraitA} alt="Logo Concept — Portrait A" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-              </div>
+            {/* Left: logo portrait */}
+            <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(7)}>
+              <motion.img src={imgLogoPortraitB} alt="Logo Concept — Portrait B" loading="lazy" className="w-full h-full object-cover" whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
             {/* Right: card design + logo mark stacked */}
             <div className="flex flex-col gap-4">
-              <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(10)}>
+              <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(9)}>
                 <motion.img src={imgCardFrontOrangeA} alt="Card Design — Brick Lane Map" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
-              <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(9)}>
+              <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(8)}>
                 <motion.img src={imgLogoMarkDark} alt="Logo Mark — Dark" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
             </div>
@@ -377,10 +370,10 @@ export default function HairyBastard() {
             <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Development — Stage 1</h2>
           </RevealText>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full" data-cursor="view">
-            <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(11)}>
+            <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(10)}>
               <motion.img src={imgDev1Maps} alt="Development Stage 1 — Map Studies" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
-            <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(12)}>
+            <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(11)}>
               <motion.img src={imgDev1CardB} alt="Development Stage 1 — Card Iteration" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
           </div>
@@ -390,7 +383,7 @@ export default function HairyBastard() {
               alt="Card Design — Final Orange"
               loading="lazy"
               className="w-full h-auto object-cover rounded-lg cursor-pointer"
-              onClick={() => openAt(13)}
+              onClick={() => openAt(12)}
               whileHover={{ scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 200, damping: 30 }}
             />
@@ -408,7 +401,7 @@ export default function HairyBastard() {
               alt="Development Stage 2 — Map Patterns"
               loading="lazy"
               className="w-full h-auto object-cover rounded-lg cursor-pointer"
-              onClick={() => openAt(14)}
+              onClick={() => openAt(13)}
               whileHover={{ scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 200, damping: 30 }}
             />
@@ -426,7 +419,7 @@ export default function HairyBastard() {
               alt="Spot UV Card — Front"
               loading="lazy"
               className="w-full h-auto object-cover rounded-lg cursor-pointer"
-              onClick={() => openAt(15)}
+              onClick={() => openAt(14)}
               whileHover={{ scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 200, damping: 30 }}
             />
@@ -441,7 +434,7 @@ export default function HairyBastard() {
               alt="Project Collage — Process Overview"
               loading="lazy"
               className="w-full h-auto object-cover rounded-lg cursor-pointer"
-              onClick={() => openAt(16)}
+              onClick={() => openAt(15)}
               whileHover={{ scale: 1.01 }}
               transition={{ type: 'spring', stiffness: 200, damping: 30 }}
             />
@@ -461,11 +454,11 @@ export default function HairyBastard() {
               <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(4)}>
                 <motion.img src={imgProcessStrip} alt="Project Process Overview" loading="lazy" className="w-full h-[180px] md:h-[220px] object-cover object-top" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
-              <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(18)}>
+              <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(17)}>
                 <motion.img src={imgSpotUVClose} alt="Spot UV Card — Close-up" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
             </div>
-            <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(17)}>
+            <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(16)}>
               <motion.img src={imgCardFlat} alt="Final Card — Front and Back" loading="lazy" className="w-full h-full min-h-[400px] object-cover" whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </div>
           </div>
