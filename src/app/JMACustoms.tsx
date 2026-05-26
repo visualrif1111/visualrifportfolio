@@ -64,8 +64,6 @@ const assetCategories = [
   { num: '02', title: 'Chains & Jewellery', desc: 'High-detail custom chain designs and jewellery assets worn across FiveM communities — crafted for maximum presence.' },
   { num: '03', title: 'Luxury Branding', desc: 'Cinematic visual identity design for in-game businesses and e-sports communities — combining logos, typography, colour systems, and immersive digital styling.' },
   { num: '04', title: '3D Adverts', desc: 'Immersive environmental graphics placed within the virtual city — from roadside billboards to storefront signage.' },
-  { num: '05', title: 'Virtual Storefronts', desc: 'Complete shop environments with branded interiors, product displays, and cohesive visual identity systems.' },
-  { num: '06', title: 'Environmental Graphics', desc: 'City-wide visual assets that deepen world immersion — murals, signage systems, and atmospheric branded elements.' },
 ];
 
 const discordChannels = ['# commissions', '# announcements', '# showcase', '# orders', '# support', '# community'];
