@@ -220,7 +220,7 @@ export default function JMACustoms() {
         <section className="border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-2 md:flex md:flex-wrap gap-6 md:gap-16 uppercase font-['Barlow',sans-serif] font-medium tracking-[0.25em] text-sm md:text-[20px]">
             {[
-              { label: 'YEAR',     value: '2023' },
+              { label: 'YEAR',     value: '2025' },
               { label: 'LOCATION', value: <span className="leading-snug">VIRTUAL<br />(GTA V / FIVEM)</span> },
               { label: 'ROLE',     value: <span className="leading-snug">CREATIVE DIRECTOR<br />BRAND IDENTITY<br />DIGITAL ASSET DESIGN</span> },
               { label: 'INDUSTRY', value: <span className="leading-snug">VIRTUAL GAMING<br />METAVERSE<br />DIGITAL CREATIVE</span> },
