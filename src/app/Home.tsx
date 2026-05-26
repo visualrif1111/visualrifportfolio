@@ -64,7 +64,7 @@ const projects = {
   branding: [
     { title: "DIVERSION AUDIO", img: imgRectangle16, type: "full", hover: "View Project", link: "/projects/diversion-audio" },
     { title: "TREND", img: imgRectangle19, type: "tall", hover: "Coming Soon" },
-    { title: "THE HAIRY BASTARD", img: imgRectangle17, type: "quarter", hover: "Coming Soon" },
+    { title: "THE HAIRY BASTARD", img: imgRectangle17, type: "quarter", hover: "View Project", link: "/projects/the-hairy-bastard" },
     { title: "DILCHAD", img: imgRectangle18, type: "quarter", hover: "Coming Soon" },
   ],
   design3d: [
