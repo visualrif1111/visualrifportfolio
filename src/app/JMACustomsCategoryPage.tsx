@@ -49,18 +49,62 @@ function SocialPhone({ className = "" }: { className?: string }) {
   );
 }
 
-const CATEGORIES: Record<string, { num: string; title: string; desc: string; detail: string }> = {
+const CLOTHING_IMAGES = [
+  '/jma-clothing/clothing-01.png',
+  '/jma-clothing/clothing-02.png',
+  '/jma-clothing/clothing-03.png',
+  '/jma-clothing/clothing-04.png',
+  '/jma-clothing/clothing-05.png',
+  '/jma-clothing/clothing-06.png',
+  '/jma-clothing/clothing-07.png',
+  '/jma-clothing/clothing-08.png',
+  '/jma-clothing/clothing-09.png',
+  '/jma-clothing/clothing-10.png',
+  '/jma-clothing/clothing-11.png',
+  '/jma-clothing/clothing-12.png',
+  '/jma-clothing/clothing-13.png',
+  '/jma-clothing/clothing-14.png',
+  '/jma-clothing/clothing-15.png',
+  '/jma-clothing/clothing-16.png',
+  '/jma-clothing/clothing-17.png',
+  '/jma-clothing/clothing-18.png',
+  '/jma-clothing/clothing-19.png',
+  '/jma-clothing/clothing-20.png',
+];
+
+const CATEGORIES: Record<string, { num: string; title: string; desc: string; detail: string; images?: string[] }> = {
   'custom-clothing': {
     num: '01',
     title: 'Custom Clothing',
     desc: 'Bespoke streetwear, luxury fits, and character-defining garments designed from concept to in-game implementation.',
     detail: 'Every clothing piece produced under JMA Customs was crafted with the same attention to detail as real-world fashion — from initial concept sketches through texture work, colour grading, and final in-game implementation across FiveM servers.',
+    images: CLOTHING_IMAGES,
   },
   'chains-jewellery': {
     num: '02',
     title: 'Chains & Jewellery',
     desc: 'High-detail custom chain designs and jewellery assets worn across FiveM communities — crafted for maximum presence.',
     detail: 'Custom chain and jewellery commissions became one of the most sought-after offerings at JMA Customs. Each piece was designed to read clearly in-game while carrying the visual weight of luxury — bold geometry, precise detail, and a distinct identity for every client.',
+    images: [
+      '/jma-chains/chain-01.png',
+      '/jma-chains/chain-02.png',
+      '/jma-chains/chain-03.png',
+      '/jma-chains/chain-04.png',
+      '/jma-chains/chain-05.png',
+      '/jma-chains/chain-06.png',
+      '/jma-chains/chain-07.png',
+      '/jma-chains/chain-08.png',
+      '/jma-chains/chain-09.png',
+      '/jma-chains/chain-10.png',
+      '/jma-chains/chain-11.png',
+      '/jma-chains/chain-12.png',
+      '/jma-chains/chain-13.png',
+      '/jma-chains/chain-14.png',
+      '/jma-chains/chain-15.png',
+      '/jma-chains/chain-16.png',
+      '/jma-chains/chain-17.png',
+      '/jma-chains/chain-18.png',
+    ],
   },
   'luxury-branding': {
     num: '03',
@@ -197,24 +241,46 @@ export default function JMACustomsCategoryPage() {
           </div>
         </section>
 
-        {/* Gallery placeholder */}
+        {/* Gallery */}
         <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32">
           <RevealText className="mb-16 text-center">
             <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Gallery</h2>
           </RevealText>
-          <FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div className="aspect-[4/3] bg-[#060f0f] border border-gray-800/60 rounded-lg flex items-center justify-center">
+          {data.images && data.images.length > 0 ? (
+            <div className="columns-2 md:columns-3 gap-3 md:gap-4 space-y-3 md:space-y-4">
+              {data.images.map((src, i) => (
+                <motion.div
+                  key={src}
+                  className="break-inside-avoid overflow-hidden rounded-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.5, delay: (i % 6) * 0.06 }}
+                >
+                  <img
+                    src={src}
+                    alt={`Custom clothing ${i + 1}`}
+                    loading="lazy"
+                    className="w-full h-auto block"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <FadeIn>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div className="aspect-[4/3] bg-[#060f0f] border border-gray-800/60 rounded-lg flex items-center justify-center">
+                  <p className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.35em] uppercase text-gray-800">Coming Soon</p>
+                </div>
+                <div className="aspect-[4/3] bg-[#060f0f] border border-gray-800/60 rounded-lg flex items-center justify-center">
+                  <p className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.35em] uppercase text-gray-800">Coming Soon</p>
+                </div>
+              </div>
+              <div className="aspect-[21/9] bg-[#060f0f] border border-gray-800/60 rounded-lg flex items-center justify-center">
                 <p className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.35em] uppercase text-gray-800">Coming Soon</p>
               </div>
-              <div className="aspect-[4/3] bg-[#060f0f] border border-gray-800/60 rounded-lg flex items-center justify-center">
-                <p className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.35em] uppercase text-gray-800">Coming Soon</p>
-              </div>
-            </div>
-            <div className="aspect-[21/9] bg-[#060f0f] border border-gray-800/60 rounded-lg flex items-center justify-center">
-              <p className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.35em] uppercase text-gray-800">Coming Soon</p>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          )}
         </section>
 
         {/* Back to JMA Customs banner */}
