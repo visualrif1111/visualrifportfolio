@@ -439,7 +439,7 @@ export default function JMACustoms() {
                           <div className="inline-block px-3 py-1.5 bg-[#50C1BA] rounded text-[9px] font-['Rajdhani',sans-serif] font-bold tracking-wider text-black uppercase">Create Ticket →</div>
                         </div>
                         <div className="flex flex-col gap-1.5 ml-10">
-                          {['🟢  Clothing commission — delivered', '🟡  Chain design — in progress', '🔵  Billboard concept — in review'].map(item => (
+                          {['🟢  Clothing commission — delivered', '🟡  Chain design — in progress', '🔵  3D Advert - In Review'].map(item => (
                             <div key={item} className="py-1 border-b border-gray-800/30 last:border-0">
                               <p className="font-['Lato',sans-serif] text-[10px] text-gray-600">{item}</p>
                             </div>
