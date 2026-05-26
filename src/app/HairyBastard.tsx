@@ -175,7 +175,7 @@ export default function HairyBastard() {
         <section className="border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-2 md:flex md:flex-wrap gap-6 md:gap-16 uppercase font-['Barlow',sans-serif] font-medium tracking-[0.25em] text-sm md:text-[20px]">
             {[
-              { label: 'YEAR',     value: '2016' },
+              { label: 'YEAR',     value: '2018' },
               { label: 'LOCATION', value: 'LONDON' },
               { label: 'ROLE',     value: <span className="leading-snug">BRAND IDENTITY<br />PRINT DESIGN</span> },
               { label: 'INDUSTRY', value: <span className="leading-snug">BARBERSHOP<br />GROOMING</span> },
