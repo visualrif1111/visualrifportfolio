@@ -60,10 +60,10 @@ const ecosystemSteps = [
 ];
 
 const assetCategories = [
-  { num: '01', title: 'Custom Clothing', desc: 'Bespoke streetwear, luxury fits, and character-defining garments designed from concept to in-game implementation.' },
-  { num: '02', title: 'Chains & Jewellery', desc: 'High-detail custom chain designs and jewellery assets worn across FiveM communities — crafted for maximum presence.' },
-  { num: '03', title: 'Luxury Branding', desc: 'Cinematic visual identity design for in-game businesses and e-sports communities — combining logos, typography, colour systems, and immersive digital styling.' },
-  { num: '04', title: '3D Adverts', desc: 'Immersive environmental graphics placed within the virtual city — from roadside billboards to storefront signage.' },
+  { num: '01', title: 'Custom Clothing', desc: 'Bespoke streetwear, luxury fits, and character-defining garments designed from concept to in-game implementation.', slug: 'custom-clothing' },
+  { num: '02', title: 'Chains & Jewellery', desc: 'High-detail custom chain designs and jewellery assets worn across FiveM communities — crafted for maximum presence.', slug: 'chains-jewellery' },
+  { num: '03', title: 'Luxury Branding', desc: 'Cinematic visual identity design for in-game businesses and e-sports communities — combining logos, typography, colour systems, and immersive digital styling.', slug: 'luxury-branding' },
+  { num: '04', title: '3D Adverts', desc: 'Immersive environmental graphics placed within the virtual city — from roadside billboards to storefront signage.', slug: '3d-adverts' },
 ];
 
 const discordChannels = ['# commissions', '# announcements', '# showcase', '# orders', '# support', '# community'];
@@ -400,18 +400,22 @@ export default function JMACustoms() {
               {assetCategories.map((cat, i) => (
                 <motion.div
                   key={cat.num}
-                  className="border border-gray-800 rounded-lg p-6 md:p-7 hover:border-[#50C1BA]/35 transition-all hover:bg-[#50C1BA]/[0.025] group"
+                  className="border border-gray-800 rounded-lg p-6 md:p-7 hover:border-[#50C1BA]/35 transition-all hover:bg-[#50C1BA]/[0.025] group cursor-pointer"
+                  onClick={() => navigate(`/projects/jma-customs/${cat.slug}`)}
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5, delay: i * 0.07 }}
                 >
-                  <div className="mb-5 aspect-video bg-[#060f0f] rounded overflow-hidden flex items-center justify-center border border-gray-800/40">
-                    <p className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.3em] uppercase text-gray-800">Gallery Coming Soon</p>
+                  <div className="mb-5 aspect-video bg-[#060f0f] rounded overflow-hidden flex items-center justify-center border border-gray-800/40 group-hover:border-[#50C1BA]/20 transition-colors">
+                    <p className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.3em] uppercase text-gray-700 group-hover:text-gray-600 transition-colors">Gallery Coming Soon</p>
                   </div>
                   <span className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.4em] uppercase text-[#50C1BA]/60 mb-2.5 block">{cat.num}</span>
                   <h3 className="font-['Barlow',sans-serif] font-medium text-[13px] md:text-[15px] tracking-[0.2em] uppercase text-white mb-2.5 group-hover:text-[#50C1BA] transition-colors">{cat.title}</h3>
-                  <p className="font-['Lato',sans-serif] font-light text-[13px] md:text-[14px] leading-[1.65] text-gray-500 tracking-[0.03em]">{cat.desc}</p>
+                  <p className="font-['Lato',sans-serif] font-light text-[13px] md:text-[14px] leading-[1.65] text-gray-500 tracking-[0.03em] mb-4">{cat.desc}</p>
+                  <span className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.35em] uppercase text-[#50C1BA]/50 group-hover:text-[#50C1BA] transition-colors flex items-center gap-2">
+                    View →
+                  </span>
                 </motion.div>
               ))}
             </div>
