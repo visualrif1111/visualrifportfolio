@@ -71,7 +71,7 @@ const discordChannels = ['# commissions', '# announcements', '# showcase', '# or
 const identityPillars = [
   { label: 'Visual Language', value: 'Cyber-luxury aesthetic — dark environments, typography, and immersive visual depth.' },
   { label: 'Brand Tone', value: 'Premium. Exclusive. Community-rooted. The voice of a digital creative agency with real craft behind every delivery.' },
-  { label: 'Digital Persona', value: 'A recognized creative identity within FiveM — associated with quality, precision, and cultural relevance across servers.' },
+  { label: 'Digital Persona', value: 'A recognised creative identity within FiveM — associated with quality, precision, and cultural relevance across servers.' },
   { label: 'Creative Direction', value: 'Visual Rif — the same editorial approach that drives real-world brand identity applied to virtual creative production.' },
 ];
 
@@ -194,7 +194,7 @@ export default function JMACustoms() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.75 }}
             >
-              A luxury virtual customization ecosystem built through immersive branding, digital identity, and creative entrepreneurship inside GTA V / FiveM.
+              A luxury virtual customisation ecosystem built through immersive branding, digital identity, and creative entrepreneurship inside GTA V / FiveM.
             </motion.p>
           </div>
 
@@ -304,7 +304,7 @@ export default function JMACustoms() {
             </RevealText>
             <FadeIn>
               <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-20 tracking-[0.04em]">
-                How JMA Customs evolved from a roleplay character into a recognized virtual creative business.
+                How JMA Customs evolved from a roleplay character into a recognised virtual creative business.
               </p>
             </FadeIn>
             <div className="flex flex-col items-center">
@@ -462,7 +462,7 @@ export default function JMACustoms() {
             </RevealText>
             <FadeIn>
               <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-16 tracking-[0.04em]">
-                JMA Customs wasn't just a service — it was a fully realized brand. Every visual touchpoint crafted to communicate luxury, exclusivity, and creative authority.
+                JMA Customs wasn't just a service — it was a fully realised brand. Every visual touchpoint crafted to communicate luxury, exclusivity, and creative authority.
               </p>
             </FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -510,7 +510,7 @@ export default function JMACustoms() {
             </RevealText>
             <FadeIn>
               <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-20 tracking-[0.04em]">
-                More than a brand — a recognized virtual creative ecosystem with a community of clients, collaborators, and followers who valued genuine craft.
+                More than a brand — a recognised virtual creative ecosystem with a community of clients, collaborators, and followers who valued genuine craft.
               </p>
             </FadeIn>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 mb-16">
