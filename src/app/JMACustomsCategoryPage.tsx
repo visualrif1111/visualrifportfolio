@@ -98,11 +98,6 @@ const CATEGORIES: Record<string, { num: string; title: string; desc: string; det
       '/jma-chains/chain-11.png',
       '/jma-chains/chain-12.png',
       '/jma-chains/chain-13.png',
-      '/jma-chains/chain-14.png',
-      '/jma-chains/chain-15.png',
-      '/jma-chains/chain-16.png',
-      '/jma-chains/chain-17.png',
-      '/jma-chains/chain-18.png',
     ],
   },
   'luxury-branding': {
