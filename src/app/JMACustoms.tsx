@@ -260,7 +260,7 @@ export default function JMACustoms() {
                 </RevealText>
                 <FadeIn>
                   <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                    <p>Metaverse culture, NFT digital ownership, and the growing legitimacy of virtual identity drove the vision behind JMA Customs. The project drew from luxury fashion aesthetics, cyber-culture design, and the entrepreneurial energy of creators building real businesses inside digital worlds.</p>
+                    <p>Metaverse culture, NFT digital ownership, and the growing legitimacy of virtual identity drove the vision behind JMA Customs. The project drew from luxury fashion aesthetics, cyber-culture design, and the entrepreneurial energy of creators.</p>
                     <p>The ambition was to prove that creative value isn't bound by physical reality — that a brand built inside a game can carry the same weight, craft, and cultural meaning as one built in the real world.</p>
                   </div>
                 </FadeIn>
