@@ -312,21 +312,15 @@ export default function JMACustoms() {
             </div>
             <div className="lg:col-span-7 flex flex-col gap-6">
               <FadeIn className="w-full">
-                <div className="w-full aspect-[4/3] bg-[#030d0d] border border-[#50C1BA]/20 rounded-lg flex flex-col items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#50C1BA]/6 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute inset-0 bg-gradient-to-tl from-[#50C1BA]/3 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute top-6 left-6">
-                    <p className="font-['Rajdhani',sans-serif] text-[10px] tracking-[0.45em] uppercase text-[#50C1BA]/50">The Ecosystem</p>
-                  </div>
-                  <div className="text-center px-8">
-                    <p className="font-['Barlow_Semi_Condensed',sans-serif] font-medium text-[40px] md:text-[56px] tracking-[0.1em] uppercase text-white/10 leading-none">GTA V</p>
-                    <p className="font-['Barlow_Semi_Condensed',sans-serif] font-medium text-[40px] md:text-[56px] tracking-[0.1em] uppercase text-white/10 leading-none">FiveM</p>
-                    <div className="w-12 h-[1px] bg-[#50C1BA]/30 mx-auto my-4" />
-                    <p className="font-['Barlow_Semi_Condensed',sans-serif] font-medium text-[28px] md:text-[40px] tracking-[0.15em] uppercase text-[#50C1BA] leading-none">JMA Customs</p>
-                  </div>
-                  <div className="absolute bottom-6 right-6">
-                    <p className="font-['Rajdhani',sans-serif] text-[9px] tracking-[0.4em] uppercase text-gray-700">Virtual Creative Agency</p>
-                  </div>
+                <div className="w-full aspect-video rounded-lg overflow-hidden border border-[#50C1BA]/20">
+                  <iframe
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/GoFV2QiPTxU?autoplay=1&mute=0&start=97&controls=1&rel=0&modestbranding=1&playsinline=1"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    style={{ border: 0 }}
+                    title="GTA V / FiveM — JMA Customs"
+                  />
                 </div>
               </FadeIn>
               <div className="grid grid-cols-3 gap-3">
