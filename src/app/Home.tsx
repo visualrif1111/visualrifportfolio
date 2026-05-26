@@ -493,7 +493,7 @@ export default function Home() {
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20">
           <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
-          <ProjectCategory title="GTA V / FIVEM" projects={projects.jma} className="mb-32 md:mb-48" theme="dark" />
+          <ProjectCategory title="IMMERSIVE BRAND & DIGITAL EXPERIENCE DESIGN" projects={projects.jma} className="mb-32 md:mb-48" theme="dark" />
           <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-32 md:mb-48" theme="dark" />
           <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-32 md:mb-48" theme="light" />
         </section>
