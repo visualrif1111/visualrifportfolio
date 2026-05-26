@@ -78,7 +78,7 @@ const identityPillars = [
 const communityHighlights = [
   { title: 'Repeat Clients', desc: 'The quality of work drove consistent repeat business — clients returning for new collections, updated branding, and evolving identities.' },
   { title: 'Creative Collaborations', desc: 'JMA Customs partnered with other in-game businesses and creators, building projects that grew reach and creative credibility.' },
-  { title: 'Cultural Recognition', desc: 'Recognized across multiple FiveM servers as a premium creative brand — a name synonymous with craft, quality, and virtual identity.' },
+  { title: 'Cultural Recognition', desc: 'Recognised across multiple FiveM communities as a premium creative brand associated with quality, craftsmanship, and immersive digital identity. The project also opened conversations with two Rockstar Games employees around potential future opportunities in character or environment design through further creative study and development.' },
 ];
 
 const stats = [
