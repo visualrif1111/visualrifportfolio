@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
@@ -88,8 +88,38 @@ const stats = [
   { value: '∞', label: 'Creative Reach' },
 ];
 
+const NAV_ITEMS = [
+  { id: 'jma-origin',    label: 'Overview' },
+  { id: 'jma-ecosystem', label: 'Ecosystem' },
+  { id: 'jma-assets',    label: 'Custom Assets' },
+  { id: 'jma-discord',   label: 'Discord CRM' },
+  { id: 'jma-identity',  label: 'Digital Identity' },
+  { id: 'jma-impact',    label: 'Community Impact' },
+];
+
 export default function JMACustoms() {
   const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+    NAV_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
@@ -101,15 +131,31 @@ export default function JMACustoms() {
             <VisualRifLogo className="w-[180px] h-[24px]" />
           </div>
           <div className="relative pl-6">
-            <div className="absolute left-[3px] top-2 bottom-[-400px] w-[1px] bg-white opacity-20" />
+            <div className="absolute left-[3px] top-2 bottom-0 w-[1px] bg-white opacity-20" />
             <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white" />
-            <ul className="flex flex-col gap-8 text-[18px] tracking-[0.25em] text-gray-300 font-['Rajdhani',sans-serif] font-medium uppercase relative z-10 whitespace-nowrap">
+            <ul className="flex flex-col gap-5 relative z-10 whitespace-nowrap">
               <li
-                className="hover:text-white transition-colors cursor-pointer"
+                className="text-[13px] tracking-[0.25em] text-gray-400 font-['Rajdhani',sans-serif] font-medium uppercase hover:text-white transition-colors cursor-pointer"
                 onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}
               >
-                <span className="flex items-center gap-2"><ArrowLeft size={16} /> BACK TO HOME</span>
+                <span className="flex items-center gap-2"><ArrowLeft size={13} /> Back to Home</span>
               </li>
+              <li className="pt-2 pb-1">
+                <span className="text-[9px] tracking-[0.45em] font-['Rajdhani',sans-serif] font-semibold uppercase opacity-30">JMA Customs</span>
+              </li>
+              {NAV_ITEMS.map(({ id, label }) => (
+                <li key={id}>
+                  <button
+                    className={`flex items-center gap-2.5 text-[13px] tracking-[0.22em] font-['Rajdhani',sans-serif] font-medium uppercase transition-all duration-200 cursor-pointer text-left ${
+                      activeSection === id ? 'text-white opacity-100' : 'text-gray-400 opacity-60 hover:opacity-90 hover:text-white'
+                    }`}
+                    onClick={() => scrollTo(id)}
+                  >
+                    <span className={`w-[4px] h-[4px] rounded-full shrink-0 transition-all duration-200 ${activeSection === id ? 'bg-white scale-125' : 'bg-white opacity-30'}`} />
+                    {label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -238,7 +284,7 @@ export default function JMACustoms() {
         </section>
 
         {/* ── 3. THE ORIGIN ── */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-16 md:pb-24">
+        <section id="jma-origin" className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             <div className="lg:col-span-5 flex flex-col gap-16">
               <div>
@@ -297,7 +343,7 @@ export default function JMACustoms() {
         </section>
 
         {/* ── 4. ROLEPLAY ECOSYSTEM FLOW ── */}
-        <section className="border-t border-gray-800 py-24 md:py-32">
+        <section id="jma-ecosystem" className="border-t border-gray-800 py-24 md:py-32">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <RevealText className="mb-4 text-center">
               <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Roleplay Business Ecosystem</h2>
@@ -340,7 +386,7 @@ export default function JMACustoms() {
         </section>
 
         {/* ── 5. CUSTOM ASSET DEVELOPMENT ── */}
-        <section className="border-t border-gray-800 py-24 md:py-32">
+        <section id="jma-assets" className="border-t border-gray-800 py-24 md:py-32">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <RevealText className="mb-4 text-center">
               <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Custom Asset Development</h2>
@@ -373,7 +419,7 @@ export default function JMACustoms() {
         </section>
 
         {/* ── 6. DISCORD CRM ── */}
-        <section className="border-t border-gray-800 py-24 md:py-32">
+        <section id="jma-discord" className="border-t border-gray-800 py-24 md:py-32">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
               <div className="lg:col-span-5">
@@ -455,7 +501,7 @@ export default function JMACustoms() {
         </section>
 
         {/* ── 7. DIGITAL IDENTITY ── */}
-        <section className="border-t border-gray-800 py-24 md:py-32">
+        <section id="jma-identity" className="border-t border-gray-800 py-24 md:py-32">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <RevealText className="mb-4 text-center">
               <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Digital Identity</h2>
@@ -503,7 +549,7 @@ export default function JMACustoms() {
         </section>
 
         {/* ── 8. COMMUNITY & CULTURAL IMPACT ── */}
-        <section className="border-t border-gray-800 py-24 md:py-32">
+        <section id="jma-impact" className="border-t border-gray-800 py-24 md:py-32">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <RevealText className="mb-4 text-center">
               <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Community Impact</h2>
