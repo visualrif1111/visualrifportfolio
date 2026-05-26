@@ -383,7 +383,7 @@ export default function JMACustoms() {
                 <FadeIn>
                   <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4 mb-10">
                     <p>Discord served as the operational backbone of JMA Customs — the place where the brand came alive beyond the game. Every commission, every client relationship, and every community interaction was managed through a structured Discord ecosystem built for scale.</p>
-                    <p>What began as a simple server evolved into a full CRM — with ticketing, order pipelines, community channels, and automated communication flows that created a professional service experience unlike anything else in the FiveM space.</p>
+                    <p>What began as a simple server evolved into a full CRM — with ticketing, order pipelines, and community channels that created a professional service experience unlike anything else in the FiveM space.</p>
                   </div>
                 </FadeIn>
                 <div className="flex flex-col">
