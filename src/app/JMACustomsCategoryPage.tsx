@@ -55,7 +55,6 @@ const CLOTHING_IMAGES = [
   '/jma-clothing/clothing-03.png',
   '/jma-clothing/clothing-04.png',
   '/jma-clothing/clothing-05.png',
-  '/jma-clothing/clothing-06.png',
   '/jma-clothing/clothing-07.png',
   '/jma-clothing/clothing-08.png',
   '/jma-clothing/clothing-09.png',
