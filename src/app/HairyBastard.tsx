@@ -326,7 +326,7 @@ export default function HairyBastard() {
         <section className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-3">
             <RevealText>
-              <h2 className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.45em] uppercase text-[#50C1BA]">Breakdown</h2>
+              <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Breakdown</h2>
             </RevealText>
           </div>
           <div className="lg:col-span-9">
@@ -347,7 +347,7 @@ export default function HairyBastard() {
         {/* Initial Concept */}
         <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 flex flex-col gap-12 items-center">
           <RevealText className="w-full text-center">
-            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.45em] uppercase text-[#50C1BA]">Initial Concept</h2>
+            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Initial Concept</h2>
           </RevealText>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 w-full" data-cursor="view">
             {/* Left: logo portraits stacked */}
@@ -374,7 +374,7 @@ export default function HairyBastard() {
         {/* Development — Stage 1 */}
         <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 flex flex-col gap-8 items-center">
           <RevealText className="w-full text-center">
-            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.45em] uppercase text-[#50C1BA]">Development — Stage 1</h2>
+            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Development — Stage 1</h2>
           </RevealText>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full" data-cursor="view">
             <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(11)}>
@@ -400,7 +400,7 @@ export default function HairyBastard() {
         {/* Development — Stage 2 */}
         <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 flex flex-col gap-12 items-center">
           <RevealText className="w-full text-center">
-            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.45em] uppercase text-[#50C1BA]">Development — Stage 2</h2>
+            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Development — Stage 2</h2>
           </RevealText>
           <FadeIn className="w-full max-w-2xl mx-auto" data-cursor="view">
             <motion.img
@@ -418,7 +418,7 @@ export default function HairyBastard() {
         {/* Spot UV */}
         <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 flex flex-col gap-12 items-center">
           <RevealText className="w-full text-center">
-            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.45em] uppercase text-[#50C1BA]">Spot UV</h2>
+            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Spot UV</h2>
           </RevealText>
           <FadeIn className="w-full max-w-3xl mx-auto" data-cursor="view">
             <motion.img
@@ -451,7 +451,7 @@ export default function HairyBastard() {
         {/* Final */}
         <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 flex flex-col gap-12 items-center">
           <RevealText className="w-full text-center">
-            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-[10px] tracking-[0.45em] uppercase text-[#50C1BA]">Final</h2>
+            <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Final</h2>
           </RevealText>
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 w-full" data-cursor="view">
             <div className="flex flex-col gap-4">
