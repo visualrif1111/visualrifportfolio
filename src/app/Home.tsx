@@ -68,7 +68,7 @@ const projects = {
     { title: "DILCHAD", img: imgRectangle18, type: "quarter", hover: "Coming Soon" },
   ],
   design3d: [
-    { title: "JMA CUSTOMS", img: imgRectangle21, type: "half", hover: "View Video", videoId: "rhynMLdthSs" },
+    { title: "JMA CUSTOMS", img: imgRectangle21, type: "half", hover: "View Project", link: "/projects/jma-customs" },
     { title: "T H E \u00A0 \u00A0 E P I P H A N I E S", img: imgRectangle22, type: "half", hover: "Coming Soon" },
   ]
 };

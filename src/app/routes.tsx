@@ -6,6 +6,7 @@ import Swiftrooms from "./Swiftrooms";
 import SunilGavaskar from "./SunilGavaskar";
 import DiversionAudio from "./DiversionAudio";
 import HairyBastard from "./HairyBastard";
+import JMACustoms from "./JMACustoms";
 
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/Terms";
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
       { path: "projects/sunil-gavaskar", Component: SunilGavaskar },
       { path: "projects/diversion-audio", Component: DiversionAudio },
       { path: "projects/the-hairy-bastard", Component: HairyBastard },
+      { path: "projects/jma-customs", Component: JMACustoms },
       { path: "privacy-policy", Component: PrivacyPolicy },
       { path: "terms-and-conditions", Component: TermsAndConditions },
       { path: "gdpr", Component: GDPR },
