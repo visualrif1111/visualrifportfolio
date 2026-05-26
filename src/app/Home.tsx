@@ -67,8 +67,10 @@ const projects = {
     { title: "THE HAIRY BASTARD", img: imgRectangle17, type: "quarter", hover: "View Project", link: "/projects/the-hairy-bastard" },
     { title: "DILCHAD", img: imgRectangle18, type: "quarter", hover: "Coming Soon" },
   ],
+  jma: [
+    { title: "JMA CUSTOMS", img: imgRectangle21, type: "full", hover: "View Project", link: "/projects/jma-customs" },
+  ],
   design3d: [
-    { title: "JMA CUSTOMS", img: imgRectangle21, type: "half", hover: "View Project", link: "/projects/jma-customs" },
     { title: "T H E \u00A0 \u00A0 E P I P H A N I E S", img: imgRectangle22, type: "half", hover: "Coming Soon" },
   ]
 };
@@ -491,6 +493,7 @@ export default function Home() {
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20">
           <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
+          <ProjectCategory title="GTA V / FIVEM" projects={projects.jma} className="mb-32 md:mb-48" theme="dark" />
           <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-32 md:mb-48" theme="dark" />
           <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-32 md:mb-48" theme="light" />
         </section>
