@@ -250,7 +250,7 @@ export default function JMACustoms() {
                 <FadeIn>
                   <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                     <p>JMA Customs began not in a studio or agency — but inside a virtual world. Operating within the FiveM roleplay ecosystem of GTA V, the brand emerged from a simple ambition: to bring real creative craft and professional design standards into a space where few had pushed those boundaries before.</p>
-                    <p>What started as in-character interactions evolved into a fully structured creative business. As reputation grew, so did demand — and JMA Customs expanded from custom clothing and jewellery into environmental branding, billboards, storefronts, and full identity systems for other in-game businesses.</p>
+                    <p>What started as in-character interactions evolved into a fully structured creative business. As reputation grew, so did demand — and JMA Customs expanded from custom 3D advertisments to clothing and jewellery into for other in-game businesses and e-sports groups.</p>
                   </div>
                 </FadeIn>
               </div>
