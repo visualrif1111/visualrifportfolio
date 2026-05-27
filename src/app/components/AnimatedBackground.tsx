@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import imgRectangle1 from "figma:asset/8e7771964c5c3a7ec1502b7371fd0054f51617eb.png";
 
 export const AnimatedBackground = React.memo(function AnimatedBackground() {
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(hover: hover) and (pointer: fine)').matches : false
+  );
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -17,6 +21,15 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
   const smoothPxY = useSpring(mousePxY, { damping: 40, stiffness: 60, mass: 0.5 });
 
   useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
     let rafId: number;
     let lastX = 0;
     let lastY = 0;
@@ -25,7 +38,6 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
       lastX = e.clientX;
       lastY = e.clientY;
 
-      // Use RAF to throttle updates to 60fps max
       if (!rafId) {
         rafId = requestAnimationFrame(() => {
           const { innerWidth, innerHeight } = window;
@@ -47,7 +59,7 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
       window.removeEventListener("mousemove", handleMouseMove);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [mouseX, mouseY, mousePxX, mousePxY]);
+  }, [isDesktop, mouseX, mouseY, mousePxX, mousePxY]);
 
   const x1 = useTransform(smoothX, [-1, 1], ["-3%", "3%"]);
   const y1 = useTransform(smoothY, [-1, 1], ["-3%", "3%"]);
@@ -61,55 +73,59 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
   return (
     <div className="fixed inset-0 z-[-1] bg-[#020404] overflow-hidden pointer-events-none">
 
-      {/* Layer 1: Base Teal Lines */}
-      <motion.div
-        className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-80 will-change-transform"
-        style={{ x: x1, y: y1 }}
-        animate={{ rotate: [-0.5, 0.5, -0.5], scale: [1.02, 1.05, 1.02] }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-      >
-        <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
-        <div className="absolute inset-0 w-full h-full bg-[#50C1BA] mix-blend-multiply pointer-events-none" />
-      </motion.div>
+      {isDesktop && (
+        <>
+          {/* Layer 1: Base Teal Lines */}
+          <motion.div
+            className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-80 will-change-transform"
+            style={{ x: x1, y: y1 }}
+            animate={{ rotate: [-0.5, 0.5, -0.5], scale: [1.02, 1.05, 1.02] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          >
+            <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
+            <div className="absolute inset-0 w-full h-full bg-[#50C1BA] mix-blend-multiply pointer-events-none" />
+          </motion.div>
 
-      {/* Layer 2: Deeper, counter-parallax layer for psychedelic depth */}
-      <motion.div
-        className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-40 will-change-transform"
-        style={{ x: x2, y: y2 }}
-        animate={{ rotate: [1, -1, 1], scale: [1.05, 1.1, 1.05] }}
-        transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-      >
-        <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
-        <div className="absolute inset-0 w-full h-full bg-[#2D8C87] mix-blend-multiply pointer-events-none" />
-      </motion.div>
+          {/* Layer 2: Deeper, counter-parallax layer for psychedelic depth */}
+          <motion.div
+            className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-40 will-change-transform"
+            style={{ x: x2, y: y2 }}
+            animate={{ rotate: [1, -1, 1], scale: [1.05, 1.1, 1.05] }}
+            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+          >
+            <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
+            <div className="absolute inset-0 w-full h-full bg-[#2D8C87] mix-blend-multiply pointer-events-none" />
+          </motion.div>
 
-      {/* Layer 3: High speed, low opacity wave */}
-      <motion.div
-        className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-20 will-change-transform"
-        style={{ x: x3, y: y3 }}
-        animate={{ rotate: [-1.5, 1.5, -1.5], scale: [1.1, 1.15, 1.1] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      >
-        <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
-        <div className="absolute inset-0 w-full h-full bg-[#7CF1EA] mix-blend-multiply pointer-events-none" />
-      </motion.div>
+          {/* Layer 3: High speed, low opacity wave */}
+          <motion.div
+            className="absolute w-[150vw] h-[150vh] -left-[25vw] -top-[25vh] bg-black isolate mix-blend-screen opacity-20 will-change-transform"
+            style={{ x: x3, y: y3 }}
+            animate={{ rotate: [-1.5, 1.5, -1.5], scale: [1.1, 1.15, 1.1] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          >
+            <img src={imgRectangle1} alt="" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.5]" loading="eager" />
+            <div className="absolute inset-0 w-full h-full bg-[#7CF1EA] mix-blend-multiply pointer-events-none" />
+          </motion.div>
 
-      {/* Interactive Mouse Spotlight - Subtly illuminates the lines underneath */}
-      <motion.div
-        className="absolute top-0 left-0 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full pointer-events-none mix-blend-screen will-change-transform"
-        style={{
-          x: smoothPxX,
-          y: smoothPxY,
-          translateX: "-50%",
-          translateY: "-50%",
-          background: "radial-gradient(circle, rgba(80,193,186,0.15) 0%, transparent 65%)"
-        }}
-      />
+          {/* Interactive Mouse Spotlight */}
+          <motion.div
+            className="absolute top-0 left-0 w-[40vw] h-[40vw] rounded-full pointer-events-none mix-blend-screen will-change-transform"
+            style={{
+              x: smoothPxX,
+              y: smoothPxY,
+              translateX: "-50%",
+              translateY: "-50%",
+              background: "radial-gradient(circle, rgba(80,193,186,0.15) 0%, transparent 65%)"
+            }}
+          />
+        </>
+      )}
 
-      {/* Vignette - softened to prevent black void edges */}
+      {/* Vignette */}
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_center,transparent_20%,black_150%)] opacity-70 pointer-events-none" />
 
-      {/* Film grain — static tactile depth */}
+      {/* Film grain */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.035] mix-blend-overlay"
         style={{
