@@ -315,7 +315,7 @@ export default function JMACustoms() {
                 <div className="w-full aspect-video rounded-lg overflow-hidden border border-[#50C1BA]/20">
                   <iframe
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/GoFV2QiPTxU?autoplay=1&mute=0&start=97&controls=1&rel=0&modestbranding=1&playsinline=1"
+                    src="https://www.youtube.com/embed/GoFV2QiPTxU?autoplay=0&mute=0&start=97&controls=1&rel=0&modestbranding=1&playsinline=1"
                     allow="autoplay; encrypted-media; picture-in-picture"
                     allowFullScreen
                     style={{ border: 0 }}
@@ -520,7 +520,7 @@ export default function JMACustoms() {
                 <div className="aspect-video rounded-lg overflow-hidden border border-[#50C1BA]/18">
                   <iframe
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/QGmVpdBSVAU?autoplay=1&mute=0&start=133&controls=1&rel=0&modestbranding=1&playsinline=1"
+                    src="https://www.youtube.com/embed/QGmVpdBSVAU?autoplay=0&mute=0&start=133&controls=1&rel=0&modestbranding=1&playsinline=1"
                     allow="autoplay; encrypted-media; picture-in-picture"
                     allowFullScreen
                     style={{ border: 0 }}
