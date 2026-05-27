@@ -235,7 +235,7 @@ export default function JMACustoms() {
               </span>
             </h1>
             <motion.p
-              className="font-['Lato',sans-serif] font-light text-[14px] md:text-[17px] leading-[1.75] text-gray-300 max-w-[600px] tracking-[0.04em]"
+              className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.75] text-gray-300 max-w-[600px] tracking-[0.04em]"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.75 }}
@@ -292,7 +292,7 @@ export default function JMACustoms() {
                   <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">The Origin</h2>
                 </RevealText>
                 <FadeIn>
-                  <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                  <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                     <p>JMA Customs began not in a studio or agency — but inside a virtual world. Operating within the FiveM roleplay ecosystem of GTA V, the brand emerged from a simple ambition: to bring real creative craft and professional design standards into a space where few had pushed those boundaries before.</p>
                     <p>What started as in-character interactions evolved into a fully structured creative business. As reputation grew, so did demand — and JMA Customs expanded from custom 3D advertisments to clothing and jewellery into for other in-game businesses and e-sports groups.</p>
                   </div>
@@ -303,7 +303,7 @@ export default function JMACustoms() {
                   <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">The Inspiration</h2>
                 </RevealText>
                 <FadeIn>
-                  <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                  <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                     <p>Metaverse culture and the growing legitimacy of virtual identity drove the vision behind JMA Customs. The project drew from luxury fashion aesthetics, cyber-culture design, and the entrepreneurial energy of creators.</p>
                     <p>The ambition was to prove that creative value isn't bound by physical reality — that a brand built inside a game can carry the same weight, craft, and cultural meaning as one built in the real world.</p>
                   </div>
@@ -343,7 +343,7 @@ export default function JMACustoms() {
               <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Roleplay Business Ecosystem</h2>
             </RevealText>
             <FadeIn>
-              <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-20 tracking-[0.04em]">
+              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-20 tracking-[0.04em]">
                 How JMA Customs evolved from a roleplay character into a recognised virtual creative business.
               </p>
             </FadeIn>
@@ -360,7 +360,7 @@ export default function JMACustoms() {
                     <span className="font-['Rajdhani',sans-serif] font-semibold text-[36px] md:text-[44px] text-[#50C1BA]/25 leading-none shrink-0 group-hover:text-[#50C1BA]/55 transition-colors w-14 text-right">{step.num}</span>
                     <div className="pt-1">
                       <h3 className="font-['Barlow',sans-serif] font-medium text-[13px] md:text-[15px] tracking-[0.28em] uppercase text-white mb-2.5">{step.title}</h3>
-                      <p className="font-['Lato',sans-serif] font-light text-[14px] md:text-[15px] leading-[1.65] text-gray-400 tracking-[0.03em]">{step.desc}</p>
+                      <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.65] text-gray-400 tracking-[0.03em]">{step.desc}</p>
                     </div>
                   </motion.div>
                   {i < ecosystemSteps.length - 1 && (
@@ -386,7 +386,7 @@ export default function JMACustoms() {
               <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Custom Asset Development</h2>
             </RevealText>
             <FadeIn>
-              <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-16 tracking-[0.04em]">
+              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-16 tracking-[0.04em]">
                 Every asset designed with precision — from concept to in-game implementation across clothing, jewellery, environments, and identity.
               </p>
             </FadeIn>
@@ -431,7 +431,7 @@ export default function JMACustoms() {
                   <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Discord CRM</h2>
                 </RevealText>
                 <FadeIn>
-                  <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4 mb-10">
+                  <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4 mb-10">
                     <p>Discord served as the operational backbone of JMA Customs — the place where the brand came alive beyond the game. Every commission, every client relationship, and every community interaction was managed through a structured Discord ecosystem built for scale.</p>
                     <p>What began as a simple server evolved into a full CRM — with ticketing, order pipelines, and community channels that created a professional service experience unlike anything else in the FiveM space.</p>
                   </div>
@@ -511,7 +511,7 @@ export default function JMACustoms() {
               <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Digital Identity</h2>
             </RevealText>
             <FadeIn>
-              <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-16 tracking-[0.04em]">
+              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-16 tracking-[0.04em]">
                 JMA Customs wasn't just a service — it was a fully realised brand. Every visual touchpoint crafted to communicate luxury, exclusivity, and creative authority.
               </p>
             </FadeIn>
@@ -539,7 +539,7 @@ export default function JMACustoms() {
                     transition={{ duration: 0.5, delay: i * 0.08 }}
                   >
                     <p className="font-['Barlow',sans-serif] font-medium text-[11px] md:text-[12px] tracking-[0.32em] uppercase text-[#50C1BA]/75 mb-2">{item.label}</p>
-                    <p className="font-['Lato',sans-serif] font-light text-[14px] md:text-[15px] leading-[1.6] text-gray-400 tracking-[0.03em]">{item.value}</p>
+                    <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.6] text-gray-400 tracking-[0.03em]">{item.value}</p>
                   </motion.div>
                 ))}
               </div>
@@ -554,7 +554,7 @@ export default function JMACustoms() {
               <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Community Impact</h2>
             </RevealText>
             <FadeIn>
-              <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-20 tracking-[0.04em]">
+              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.75] text-gray-400 text-center max-w-xl mx-auto mb-20 tracking-[0.04em]">
                 More than a brand — a recognised virtual creative ecosystem with a community of clients, collaborators, and followers who valued genuine craft.
               </p>
             </FadeIn>
@@ -584,7 +584,7 @@ export default function JMACustoms() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
                   <h3 className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[13px] tracking-[0.3em] uppercase text-white mb-3">{item.title}</h3>
-                  <p className="font-['Lato',sans-serif] font-light text-[14px] md:text-[15px] leading-[1.65] text-gray-500 tracking-[0.03em]">{item.desc}</p>
+                  <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.65] text-gray-500 tracking-[0.03em]">{item.desc}</p>
                 </motion.div>
               ))}
             </div>

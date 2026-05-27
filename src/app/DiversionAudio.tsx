@@ -234,7 +234,7 @@ export default function DiversionAudio() {
                 <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Overview</h2>
               </RevealText>
               <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>Diversion Audio is a London-based Drum &amp; Bass collective focused on underground electronic music and live events. I was tasked with creating the initial visual identity for the brand, developing the early logo direction and foundational branding across digital and promotional platforms.</p>
                   <p className="hidden md:block">This project marked my first introduction to working within the electronic music industry — a space I'm personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding, while the collective has continued to grow successfully within the UK music scene.</p>
                 </div>
@@ -266,7 +266,7 @@ export default function DiversionAudio() {
                   <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Challenge</h2>
                 </RevealText>
                 <FadeIn>
-                  <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                  <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                     <p>One of the main challenges with this project was defining the level of brand development required during the early stages of the collective. A strong focus was placed on creating a comprehensive visual identity system that extended beyond just logo design, ensuring the brand had a scalable foundation for long-term growth.</p>
                     <p className="hidden md:block">As a grassroots movement, the initial requirements were relatively minimal. However, a more strategic approach was introduced to help establish a stronger and more consistent identity that could evolve across future events, campaigns, and audience growth within the electronic music scene.</p>
                   </div>
@@ -277,7 +277,7 @@ export default function DiversionAudio() {
                   <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Solution</h2>
                 </RevealText>
                 <FadeIn>
-                  <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                  <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                     <p>The final solution came through an iterative design process that began with exploring more complex visual concepts before gradually refining the identity into a simpler and more effective outcome. Exploring complexity early on allowed stronger creative ideas and visual directions to emerge, which could then be stripped back to their most recognisable form.</p>
                     <p className="hidden md:block">Simplicity became a key part of the final logo design, resulting in a bold and adaptable identity that worked effectively across digital platforms, event branding, merchandise, and promotional material while remaining instantly recognisable within the electronic music scene.</p>
                   </div>

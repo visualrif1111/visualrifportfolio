@@ -226,10 +226,10 @@ export default function JMACustomsCategoryPage() {
           <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
               <FadeIn>
-                <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[17px] leading-[1.7] text-gray-300 tracking-[0.04em]">{data.desc}</p>
+                <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.7] text-gray-300 tracking-[0.04em]">{data.desc}</p>
               </FadeIn>
               <FadeIn>
-                <p className="font-['Lato',sans-serif] font-light text-[14px] md:text-[15.5px] leading-[1.7] text-gray-400 tracking-[0.04em]">{data.detail}</p>
+                <p className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.7] text-gray-400 tracking-[0.04em]">{data.detail}</p>
               </FadeIn>
             </div>
           </div>

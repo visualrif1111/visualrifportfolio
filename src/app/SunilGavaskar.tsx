@@ -216,7 +216,7 @@ export default function SunilGavaskar() {
                 <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Overview</h2>
               </RevealText>
               <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>As a Freelance Digital Designer at Velvet Badger, I worked on Always First – Sunil Gavaskar, a Web3 and NFT project created for legendary cricketer Sunil Gavaskar. This project marked a key moment in my career, shaping my interest in digital assets and immersive experiences.</p>
                   <p className="hidden md:block">The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar's achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
                 </div>
@@ -227,7 +227,7 @@ export default function SunilGavaskar() {
                 <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Challenge</h2>
               </RevealText>
               <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>One of the main challenges was translating a complex Web3 and NFT concept into a clear and engaging user experience within a short production timeframe.</p>
                   <p className="hidden md:block">The project included multiple moving parts — including website design, NFT storytelling, and social media assets — all of which needed to feel cohesive under one visual direction.</p>
                   <p className="hidden md:block">To approach this, I began with research and mind mapping to better understand the Web3 space, audience, and visual identity before moving into a rapid design sprint process.</p>
@@ -239,7 +239,7 @@ export default function SunilGavaskar() {
                 <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Solution</h2>
               </RevealText>
               <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[15px] md:text-[16.8px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
+                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>The final solution was a cohesive digital campaign that combined the website, NFT experience, and social media content into a unified platform. The website acted as a central hub for the project, while the social media campaign helped build awareness and engagement around the launch.</p>
                   <p className="hidden md:block">Using a clean visual hierarchy and contemporary Web3-inspired design, the final experience balanced innovation with accessibility, creating an engaging platform for both existing fans and audiences new to NFTs.</p>
                 </div>
