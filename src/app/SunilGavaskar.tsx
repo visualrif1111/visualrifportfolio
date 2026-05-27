@@ -422,7 +422,7 @@ export default function SunilGavaskar() {
         </section>
 
 
-        <NextProject title="Swiftrooms" to="/projects/swiftrooms" />
+        <NextProject title="JMA Customs" to="/projects/jma-customs" />
         <Footer className="md:pl-[280px]" />
       </div>
 
