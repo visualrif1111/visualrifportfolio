@@ -83,7 +83,7 @@ const communityHighlights = [
 
 const stats = [
   { value: '100+', label: 'Custom Assets' },
-  { value: '50+', label: 'Happy Clients' },
+  { value: '70+', label: 'Happy Clients' },
   { value: '2+', label: 'Years Active' },
   { value: '∞', label: 'Creative Reach' },
 ];
