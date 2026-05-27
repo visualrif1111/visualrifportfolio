@@ -274,7 +274,7 @@ export default function SunilGavaskar() {
         {/* Project Approach Text */}
         <section className="max-w-5xl mx-auto px-6 md:px-12 py-4 md:py-8 text-center">
           <FadeIn>
-            <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200 space-y-6">
+            <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.7] tracking-[0.05em] text-gray-200 space-y-6">
               <p className="md:hidden">A modern, accessible Web3 experience centred around immersive layouts, bold typography, and digital storytelling — balancing innovation with clarity for both existing fans and audiences new to NFTs.</p>
               <p className="hidden md:block">The project was approached with a strong focus on creating an accessible and engaging Web3 experience that reflected both the legacy of Sunil Gavaskar and the innovative direction of the Always First NFT campaign. Drawing from research into digital collectibles, audience behaviour, and the wider visual identity of the project, I developed a modern creative direction centred around immersive layouts, bold typography, and contemporary Web3-inspired visuals.</p>
               <p className="hidden md:block">The visual language was designed to balance innovation with accessibility, allowing users unfamiliar with NFTs to navigate the platform with clarity while still creating an engaging and premium digital experience. Alongside the website, supporting social media assets were designed to maintain a cohesive brand presence across all touchpoints and help drive awareness around the launch of the collection.</p>
