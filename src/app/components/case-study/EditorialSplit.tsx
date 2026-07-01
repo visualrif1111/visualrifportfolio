@@ -47,12 +47,16 @@ export function EditorialSplit({
   className = '',
 }: EditorialSplitProps) {
   const { text, media: mediaSpan } = RATIOS[ratio];
+  // `reverse` (media left at lg) takes precedence over `mobileMediaFirst`
+  // (media first on mobile only) so the two never emit conflicting order utilities.
+  const textOrder = reverse ? 'lg:order-2' : mobileMediaFirst ? 'order-2 lg:order-1' : '';
+  const mediaOrder = reverse ? 'lg:order-1' : mobileMediaFirst ? 'order-1 lg:order-2' : '';
   return (
     <div className={`grid grid-cols-1 lg:grid-cols-12 ${gap} ${ALIGN[align]} ${className}`}>
-      <div className={`${text} ${reverse ? 'lg:order-2' : ''} ${mobileMediaFirst ? 'order-2 lg:order-none' : ''}`}>
+      <div className={`${text} ${textOrder}`}>
         {children}
       </div>
-      <div className={`${mediaSpan} ${reverse ? 'lg:order-1' : ''} ${mobileMediaFirst ? 'order-1 lg:order-none' : ''}`}>
+      <div className={`${mediaSpan} ${mediaOrder}`}>
         {media}
       </div>
     </div>

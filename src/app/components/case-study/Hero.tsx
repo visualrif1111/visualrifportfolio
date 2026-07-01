@@ -63,7 +63,7 @@ export function Hero({
             {eyebrow}
           </motion.p>
         )}
-        <h1 className={`font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase text-white drop-shadow-lg ${titleClassName}`}>
+        <h1 className={`font-['Barlow_Semi_Condensed',sans-serif] font-medium leading-none uppercase text-white drop-shadow-lg ${titleClassName}`}>
           {titleLines.map((line, i) => (
             <span key={i} className="block overflow-hidden">
               <motion.span
