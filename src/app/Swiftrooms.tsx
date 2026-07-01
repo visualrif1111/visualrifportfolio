@@ -1,23 +1,28 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import { ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
-import { Footer } from './components/Footer';
+import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
 import { NextProject } from './components/NextProject';
 import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
-
-import svgPaths from "../imports/Frame24/svg-acruz23zjw";
-import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
 import { ResponsiveYouTubeEmbed } from './components/ResponsiveYouTubeEmbed';
+import {
+  CaseStudyShell,
+  Section,
+  SectionHeader,
+  Hero,
+  MetaBar,
+  EditorialSplit,
+  Figure,
+  DeliverablesList,
+} from './components/case-study';
 
-import imgRectangle43 from "../imports/Visualrif-1/a645a819abc40e638a7992e97fea53af676407ec.png";
-import imgRectangle44 from "../imports/Visualrif-1/c9b2e3a432bca3cba9190717df00cde00ecf4202.png";
-import imgRectangle45 from "../imports/Visualrif-1/931a3a5709ef6b5589579e9c993b87f8f719ba2b.png";
-import imgRectangle42 from "../imports/Visualrif-1/329bc9e9c97c6b2052a68dd3618cdc88c9e79166.png";
-import imgScreenshot20260513At1815031 from "../imports/Visualrif-1/e24734850d4a8a6b1718612d4e17bfa7c0ccbe3e.png";
+import imgImage3 from "../imports/Visualrif-1/32b71aec4774900729dbc80c4acd99f7a5314c6a.png";
+import imgImageLaptopMockup from "../imports/Visualrif-1/4e3ab4c3d653794d535a17543585de77fd8a6835.png";
+import imgImageMobileMockup from "../imports/Visualrif-1/2abb1b520770ba4aafb04a4995fc2119afda74d7.png";
+import importedImage3 from "../imports/image-3.png";
+import imgImageDesktopMockup from "../imports/Visualrif-1/aca2bf96a01d37bd2387add99b2478911f4430b4.png";
 import imgScene12 from "../imports/Visualrif-1/ee33e1fe62363e5a68f91107234df46315c7195a.png";
 import imgScene1A3 from "../imports/Visualrif-1/ee597eb4d2c8e12316bb5dffd631266394ad662e.png";
 import imgScene2A3 from "../imports/Visualrif-1/ac4d8e12cf7a3e2b33325b1abd6b17b73b26ee74.png";
@@ -37,14 +42,6 @@ import imgScene8B2 from "../imports/Visualrif-1/a4acd5c98a4de253463fe87bb0d5d161
 import imgScene92 from "../imports/Visualrif-1/0036c6bfe992c470be4babc22b86fa41312294fb.png";
 import imgScene9A2 from "../imports/Visualrif-1/34513c3c99489ceec50e81b88f4f4d7fb2baa481.png";
 import img202503191215262 from "../imports/Visualrif-1/a4ec3b89434cb26e83aba1aa5ac277424b4ace79.png";
-import img202503191215452 from "../imports/Visualrif-1/ee65806ac353dff4c1ea7b5dc2955f481a2218a6.png";
-import imgImage3 from "../imports/Visualrif-1/32b71aec4774900729dbc80c4acd99f7a5314c6a.png";
-import imgScreenshot20260513At1823491 from "../imports/Visualrif-1/caca11b23f57ea9f4602a75373f6caacc7d1ac00.png";
-import imgImageLaptopMockup from "../imports/Visualrif-1/4e3ab4c3d653794d535a17543585de77fd8a6835.png";
-import imgImageMobileMockup from "../imports/Visualrif-1/2abb1b520770ba4aafb04a4995fc2119afda74d7.png";
-import importedImage3 from "../imports/image-3.png";
-import imgImageDesktopMockup from "../imports/Visualrif-1/aca2bf96a01d37bd2387add99b2478911f4430b4.png";
-import imgImageDesignElement from "../imports/Visualrif-1/8d6b9f37409293f48dd5a87217cc54b21bc9c277.png";
 
 const SWIFTROOMS_GALLERY: GalleryImage[] = [
   { src: imgImageLaptopMockup, alt: 'Laptop Mockup' },
@@ -74,46 +71,22 @@ const SWIFTROOMS_GALLERY: GalleryImage[] = [
   { src: img202503191215262, alt: 'Storyboard Scene 20' },
 ];
 
-function VisualRifLogo({ className = "" }: { className?: string }) {
-  return (
-    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
-      <path d={svgPaths.p13c84500} fill="#50C1BA" />
-      <path d={svgPaths.p37476b00} fill="white" />
-      <path d={svgPaths.pa013800} fill="white" />
-      <path d={svgPaths.p630c200} fill="white" />
-      <path d={svgPaths.p349de6f0} fill="white" />
-      <path d={svgPaths.p39faef00} fill="white" />
-      <path d={svgPaths.p141d9280} fill="white" />
-      <path d={svgPaths.p4738e00} fill="white" />
-      <path d={svgPaths.pffcfbf0} fill="white" />
-      <path d={svgPaths.p2b767700} fill="white" />
-    </svg>
-  );
-}
+const STORYBOARD = [
+  imgScene12, imgScene1A3, imgScene2A3, imgScene3A2, imgScene32,
+  imgScene24, imgScene42, imgScene4A2, imgScene4B2, imgScene13,
+  imgScene1B2, imgScene1A4, imgScene25, imgScene25, imgScene2A4,
+  imgScene8A2, imgScene8B2, imgScene92, imgScene9A2, img202503191215262,
+];
 
-function SocialInstagram({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path d={svgPaths.p386b1640} fill="currentColor" />
-    </svg>
-  );
-}
+const BODY = "font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4";
+const CAPTION = "font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500";
 
-function SocialLinkedin({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path clipRule="evenodd" d={svgPaths.p1a85db80} fill="currentColor" fillRule="evenodd" />
-    </svg>
-  );
-}
-
-function SocialPhone({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 14.1371 14.1373">
-      <path d={svgPaths.p35dc3720} fill="currentColor" />
-    </svg>
-  );
-}
+const RESPONSIBILITIES = [
+  'Creative Direction', 'UX/UI Design', 'Landing Page Design', 'Conversion-Focused Design',
+  'Art Direction', 'AI-Assisted Design Workflows', 'Visual Research & Strategy', 'Responsive Web Design',
+  'Motion Graphics & Storyboarding', 'Interaction Design', 'Development Collaboration', 'Design-to-Development Translation',
+  'Digital Asset Creation', 'Cross-Platform Consistency', 'Lead Generation Optimisation', 'Google Ads Landing Page Support',
+];
 
 function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
   const [player, setPlayer] = useState<any>(null);
@@ -187,56 +160,16 @@ function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
   );
 }
 
-
 export default function Swiftrooms() {
-  const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const openAt = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
 
   return (
-    <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
-      {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
-        <div>
-          <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
-            <VisualRifLogo className="w-[180px] h-[24px]" />
-          </div>
-          <div className="relative pl-6">
-            <div className="absolute left-[3px] top-2 bottom-[-400px] w-[1px] bg-white opacity-20"></div>
-            <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white"></div>
-            <ul className="flex flex-col gap-8 text-[18px] tracking-[0.25em] text-gray-300 font-['Rajdhani',sans-serif] font-medium uppercase relative z-10 whitespace-nowrap">
-              <li className="hover:text-white transition-colors cursor-pointer" onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}>
-                <span className="flex items-center gap-2">
-                  <ArrowLeft size={16} /> BACK TO HOME
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-5 pl-4 relative">
-          <div className="absolute left-[0.5px] bottom-1/2 translate-y-1/2 w-[6px] h-[6px] rounded-full bg-white"></div>
-          <a href="https://www.instagram.com/visualrif/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialInstagram className="w-[15px] h-[15px]" /></a>
-          <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialLinkedin className="w-[15px] h-[15px]" /></a>
-          <a href="tel:07598078923" className="text-white hover:text-[#50C1BA] transition-colors"><SocialPhone className="w-[14px] h-[14px]" /></a>
-        </div>
-      </nav>
-
-      {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
-        <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}>
-          <ArrowLeft size={24} />
-        </button>
-        <div className="cursor-pointer" onClick={() => navigate('/')}>
-          <VisualRifLogo className="w-[140px] h-[18px]" />
-        </div>
-      </nav>
-
-      {/* Main Content */}
-      <div className="relative z-10 w-full md:pl-[280px]">
-        {/* Hero Section */}
-        <section className="relative w-full h-[45vh] md:h-[70vh] overflow-hidden bg-transparent">
+    <CaseStudyShell>
+      {/* ── Hero ── */}
+      <Hero
+        media={
           <iframe
             className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[45vh] md:min-h-[70vh] min-w-[80vh] md:min-w-[124.44vh] -translate-x-1/2 -translate-y-1/2 scale-[1.05] pointer-events-none"
             src="https://www.youtube.com/embed/V9vBGXX-GwA?autoplay=1&mute=1&loop=1&playlist=V9vBGXX-GwA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
@@ -245,289 +178,198 @@ export default function Swiftrooms() {
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
             allowFullScreen
           />
-          <div className="absolute inset-0 bg-black/50"></div>
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0 z-10">
-            <h1 className="text-[50px] md:text-[98px] leading-none font-['Barlow_Semi_Condensed',sans-serif] font-medium tracking-[0.08em] uppercase text-white drop-shadow-lg">
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={{ y: '110%' }}
-                  animate={{ y: '0%' }}
-                  transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  SWIFTROOMS
-                </motion.span>
-              </span>
-            </h1>
-          </div>
-        </section>
+        }
+        heightClassName="h-[45vh] md:h-[70vh]"
+        titleClassName="text-[50px] md:text-[98px] leading-none tracking-[0.08em]"
+        titleLines={['SWIFTROOMS']}
+      />
 
-        {/* Project Meta Info */}
-        <section className="border-b border-gray-800">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-2 md:flex md:flex-wrap gap-8 md:gap-24 uppercase font-['Barlow',sans-serif] font-medium tracking-[0.25em] text-sm md:text-[26px]">
-            {[
-              { label: 'YEAR', value: '2026' },
-              { label: 'LOCATION', value: 'BRIGHTON' },
-              { label: 'ROLE', value: 'UX / UI' },
-              { label: 'INDUSTRY', value: <span className="leading-snug">HOME IMPROVEMENTS &amp;<br/>RENOVATIONS</span> },
-            ].map(({ label, value }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <p className="text-gray-500 mb-2 text-xs md:text-sm tracking-[0.25em]">{label}</p>
-                <p>{value}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+      <MetaBar
+        items={[
+          { label: 'YEAR', value: '2026' },
+          { label: 'LOCATION', value: 'BRIGHTON' },
+          { label: 'ROLE', value: 'UX / UI' },
+          { label: 'INDUSTRY', value: <span className="leading-snug">HOME IMPROVEMENTS &amp;<br />RENOVATIONS</span> },
+        ]}
+      />
 
-        {/* Introduction / Overview, Challenge, Solution */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-4 flex flex-col gap-12 md:gap-16">
-            <div>
-              <RevealText className="mb-6">
-                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Overview</h2>
-              </RevealText>
-              <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                  <p>Design and deliver a high-converting landing page for <a href="https://swiftrooms.ae" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Swiftrooms.ae</a>, a Dubai-based home improvement and architectural glazing company. The project focused on improving the company's digital presence, supporting paid advertising campaigns, and increasing lead generation.</p>
-                  <p className="hidden md:block">The target audience primarily focused on B2C homeowners, while also allowing opportunities for B2B enquiries. The outcome was a professional, conversion-driven landing page that continues to support ongoing Google Ads campaigns and lead generation.</p>
-                </div>
-              </FadeIn>
-            </div>
-            <div>
-              <div className="flex justify-between items-start mb-6">
-                <RevealText>
-                  <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Challenge</h2>
-                </RevealText>
-                <div className="w-8 h-8 rotate-45 border border-[#50C1BA] flex items-center justify-center mt-2 flex-shrink-0">
-                  <div className="w-3 h-3 bg-[#50C1BA]"></div>
-                </div>
+      {/* ── 01 · Introduction ── */}
+      <Section pad="default">
+        <EditorialSplit
+          ratio="5/7"
+          media={
+            <div className="flex flex-col gap-6">
+              <Figure src={imgImageLaptopMockup} alt="Laptop Mockup" onClick={() => openAt(0)} rounded="lg" imgClassName="w-full h-auto object-cover min-h-[300px] md:min-h-[500px]" />
+              <div className="grid grid-cols-2 gap-6 w-full">
+                <Figure src={imgImageMobileMockup} alt="Mobile Mockup" onClick={() => openAt(1)} rounded="lg" imgClassName="w-full h-auto object-cover min-h-[200px] md:min-h-[400px]" />
+                <Figure src={imgImageDesktopMockup} alt="Desktop Mockup" onClick={() => openAt(2)} rounded="lg" imgClassName="w-full h-auto object-cover min-h-[200px] md:min-h-[400px]" />
               </div>
-              <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                  <p>The project required stepping into an active workflow midway through development and taking ownership of the landing page's design direction and delivery. Key issues quickly became apparent within Syspree design-to-development process, particularly around responsiveness, functionality, and overall execution.</p>
-                  <p className="hidden md:block">Despite months of development, the landing page remained incomplete, lacked mobile optimisation, and failed to provide a polished user experience suitable for paid advertising traffic. These issues risked reducing conversions, weakening brand credibility, and affecting lead generation performance.</p>
-                  <p className="hidden md:block">The challenge was to resolve these usability and delivery issues while aligning the landing page with business goals and audience expectations.</p>
-                </div>
-              </FadeIn>
+              <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA]">swiftroomslandingpagevisualrif.vercel.app</p>
             </div>
-            <div>
-              <RevealText className="mb-6">
-                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Solution</h2>
-              </RevealText>
-              <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                  <p className="hidden md:block">Following discussions with one of the directors, there was a request to explore how AI could support and improve the workflow.</p>
-                  <p className="hidden md:block">Combining traditional design methods with AI-assisted tools, I utilised <a href="https://www.figma.com/make" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Figma Make</a> to help resolve development inconsistencies and demonstrate a more accurate 1:1 translation from design to development.</p>
-                  <p>The AI prototype resulted in a fully functioning web page with usable code, providing a clear proof of concept for how the final project should be executed and delivered.</p>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-          <div className="lg:col-span-8 flex flex-col gap-6" data-cursor="view">
-            <div className="w-full relative overflow-hidden rounded-lg">
-              <motion.img src={imgImageLaptopMockup} alt="Laptop Mockup" loading="lazy" className="w-full h-auto object-cover min-h-[300px] md:min-h-[500px] cursor-pointer" onClick={() => openAt(0)} whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </div>
-            <div className="grid grid-cols-2 gap-6 w-full">
-              <div className="relative overflow-hidden rounded-lg">
-                <motion.img src={imgImageMobileMockup} alt="Mobile Mockup" loading="lazy" className="w-full h-auto object-cover min-h-[200px] md:min-h-[400px] cursor-pointer" onClick={() => openAt(1)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-              </div>
-              <div className="relative overflow-hidden rounded-lg">
-                <motion.img src={imgImageDesktopMockup} alt="Desktop Mockup" loading="lazy" className="w-full h-auto object-cover min-h-[200px] md:min-h-[400px] cursor-pointer" onClick={() => openAt(2)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-              </div>
-            </div>
-            <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mt-4 text-center lg:text-left">
-              swiftroomslandingpagevisualrif.vercel.app
-            </p>
-          </div>
-        </section>
-
-        {/* Project Approach Text & 3 Videos */}
-        <section className="w-full flex flex-col lg:flex-row relative bg-transparent">
-
-          {/* Left Column */}
-          <div className="w-full lg:w-[40%] flex flex-col z-0">
-            {/* White Box */}
-            <div className="bg-white text-black py-24 px-6 md:px-12 lg:pl-12 xl:pl-24 relative min-h-[600px] flex items-center lg:rounded-br-[76px] z-10">
-              <FadeIn className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[2.1] tracking-[0.05em] space-y-6 max-w-2xl lg:ml-auto pr-6">
-                <p className="md:hidden">AI-driven design workflows, cinematic visual storytelling, and conversion-focused UX — delivering a sleek, immersive landing page experience that elevated Swiftrooms' digital presence.</p>
-                <p className="hidden md:block">The Swiftrooms landing page was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected the brand's innovative and premium positioning. Using AI-driven workflows such as Figma Make, the project explored how intelligent design tools could accelerate ideation while maintaining a polished and intentional user experience.</p>
-                <p className="hidden md:block">Drawing from research into modern home improvement websites and contemporary digital experiences, the creative direction focused on delivering a sleek, immersive, and visually engaging interface. Clean typography, structured layouts, and cinematic visual storytelling created a balance between functionality and atmosphere, while motion-led interactions added depth and engagement throughout the experience.</p>
-                <p className="hidden md:block">A key aspect of the project involved experimenting with AI through Midjourney and motion graphics.</p>
-                <p className="hidden md:block">Using authentic photography captured by the Swiftrooms team, I transformed still imagery into storyboard-driven moving visuals that created an immersive brand journey. The final outcome elevated Swiftrooms' digital presence while delivering a modern and commercially refined landing page experience.</p>
-              </FadeIn>
-            </div>
-
-            {/* Mid Journey Showreel Text */}
-            <div className="bg-transparent py-24 px-6 md:px-12 lg:pl-12 xl:pl-24">
-              <div className="max-w-2xl lg:ml-auto pr-6">
-                <div className="flex justify-between items-start mb-8 gap-4">
-                  <RevealText>
-                    <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] max-w-sm">Mid Journey Showreel</h2>
-                  </RevealText>
-                  <div className="w-8 h-8 rotate-45 border border-[#50C1BA] flex items-center justify-center mt-2 flex-shrink-0">
-                    <div className="w-3 h-3 bg-[#50C1BA]"></div>
-                  </div>
-                </div>
-                <FadeIn>
-                  <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[2.1] tracking-[0.05em] text-gray-300 space-y-6">
-                    <p>Since I used AI tools such as Figma Make to create a functioning landing page, I wanted to further explore the use of AI through Midjourney. My goal was to visually break down the Swiftrooms journey using a series of photographic stills. These stills were then developed into a precise storyboard, transforming each image into moving visuals that emulate the feel of videography and motion graphics.</p>
-                    <p className="hidden md:block">The result was an immersive video experience that showcases the Swiftrooms journey to the user in a more engaging and dynamic way. All photographs used throughout the project are authentic images captured by the Swiftrooms team.</p>
-                  </div>
-                </FadeIn>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column - 3 Videos */}
-          <div className="w-full lg:w-[60%] flex flex-col gap-16 px-6 md:px-12 py-12 lg:py-0 lg:pt-24 lg:pl-16 xl:pl-32 z-20">
-            <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
-              <div className="w-full text-left">
-                <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">old landing page (syspee)</p>
-              </div>
-              <div className="aspect-video w-full rounded-lg overflow-hidden drop-shadow-2xl bg-black pointer-events-none">
-                <ResponsiveYouTubeEmbed videoId="bxJykP0pURI" title="Old landing page" />
-              </div>
-            </div>
-            <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
-              <div className="w-full text-left">
-                <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">new landing page (visualrif)</p>
-              </div>
-              <div className="aspect-video w-full rounded-lg overflow-hidden bg-black pointer-events-none">
-                <ResponsiveYouTubeEmbed videoId="jRnbOu5_xlo" title="New landing page" />
-              </div>
-            </div>
-            <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
-              <div className="w-full text-left">
-                <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">mobile responsive breakdown</p>
-              </div>
-              <div className="aspect-video w-full rounded-lg overflow-hidden bg-black group">
-                <InteractiveVideoPlayer videoId="N-pov1Csd7w" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Design Element */}
-        <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto">
-          <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] min-h-[60vh] md:min-h-[1000px] bg-black">
-            <div className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none">
-              <ResponsiveYouTubeEmbed videoId="aP4L7jnKxYA" title="Design Element Video" />
-            </div>
-          </div>
-        </section>
-
-        {/* Storyboard Section */}
-        <section className="w-full px-6 md:px-12 pb-24 pt-12 max-w-[1920px] mx-auto bg-white text-black text-center">
-          <RevealText className="mb-4">
-            <h3 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[45px] tracking-[0.25em] uppercase text-[#50C1BA]">Storyboard</h3>
-          </RevealText>
-          <FadeIn className="mb-12">
-            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-600 max-w-xl mx-auto">Authentic Swiftrooms photography sequenced frame-by-frame, then brought to life as motion.</p>
-          </FadeIn>
-          <div className="grid grid-cols-4 md:grid-cols-7 lg:grid-cols-10 gap-2" data-cursor="view">
-            {[
-              imgScene12, imgScene1A3, imgScene2A3, imgScene3A2, imgScene32,
-              imgScene24, imgScene42, imgScene4A2, imgScene4B2, imgScene13,
-              imgScene1B2, imgScene1A4, imgScene25, imgScene25, imgScene2A4,
-              imgScene8A2, imgScene8B2, imgScene92, imgScene9A2, img202503191215262
-            ].map((img, idx) => (
-              <div key={idx} className="relative aspect-square overflow-hidden">
-                <motion.img
-                  src={img}
-                  alt={`Storyboard Scene ${idx}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover cursor-pointer"
-                  onClick={() => openAt(5 + idx)}
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-                />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Further Developments */}
-        <section className="w-full py-16 bg-transparent flex flex-col items-center">
-          <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12 flex justify-between items-start mb-12">
-            <div className="text-left">
-              <RevealText>
-                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Further Developments</h2>
-              </RevealText>
-              <p className="font-['Barlow',sans-serif] font-medium text-[16px] md:text-[20px] tracking-[0.25em] uppercase text-[#50C1BA] mt-2">To be updated</p>
-            </div>
-            <div className="w-8 h-8 rotate-45 border border-[#50C1BA] flex items-center justify-center mt-2 flex-shrink-0">
-              <div className="w-3 h-3 bg-[#50C1BA]"></div>
-            </div>
-          </div>
-          <div className="relative w-full max-w-[1920px] mx-auto px-6 md:px-12 aspect-video">
-            <div className="relative w-full h-full rounded-lg overflow-hidden bg-black group">
-              <InteractiveVideoPlayer videoId="jOXGGC4co8s" />
-            </div>
-          </div>
-        </section>
-
-        {/* Wireframes & Content Request */}
-        <section className="w-full py-24 bg-transparent flex flex-col items-start border-t border-gray-800">
-          <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12 mb-12">
-            <RevealText>
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] max-w-2xl">SWIFTROOMS Wireframes &amp; Content Request</h2>
-            </RevealText>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-[1920px] mx-auto px-6 md:px-12 w-full">
-            <FadeIn className="relative w-full">
-              <img src={imgImage3} alt="Sitemap" loading="lazy" className="w-full h-auto object-contain bg-white rounded-lg p-4 min-h-[300px] md:min-h-[500px] cursor-pointer" onClick={() => openAt(3)} />
-              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Sitemap — mapping the page structure</p>
-            </FadeIn>
-            <FadeIn delay={0.1} className="relative w-full">
-              <img src={importedImage3} alt="Wireframes and Content Request" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px] cursor-pointer" onClick={() => openAt(4)} />
-              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Wireframes & content request</p>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* Responsibilities */}
-        <section className="border-t border-gray-800">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-4">
-              <RevealText className="mb-6">
-                <h2 className="font-['Lato',sans-serif] font-light text-[24px] md:text-[31px] tracking-[0.05em] text-white">Responsibilities</h2>
-              </RevealText>
-            </div>
-            <FadeIn className="lg:col-span-8">
-              <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[22px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-8">
-                <p className="hidden md:block">Throughout the project, I was responsible for leading both the strategic and creative execution of the Swiftrooms landing page experience. My role included taking ownership of the website's design direction, improving the UX/UI experience, and ensuring the final product aligned with the company's premium positioning and lead generation goals. I collaborated closely with developers and stakeholders to resolve functionality and responsiveness issues while exploring AI-assisted workflows to improve the overall design-to-development process and achieve a more accurate final build.</p>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-300">
-                  <li>Creative Direction</li>
-                  <li>UX/UI Design</li>
-                  <li>Landing Page Design</li>
-                  <li>Conversion-Focused Design</li>
-                  <li>Art Direction</li>
-                  <li>AI-Assisted Design Workflows</li>
-                  <li>Visual Research &amp; Strategy</li>
-                  <li>Responsive Web Design</li>
-                  <li>Motion Graphics &amp; Storyboarding</li>
-                  <li>Interaction Design</li>
-                  <li>Development Collaboration</li>
-                  <li>Design-to-Development Translation</li>
-                  <li>Digital Asset Creation</li>
-                  <li>Cross-Platform Consistency</li>
-                  <li>Lead Generation Optimisation</li>
-                  <li>Google Ads Landing Page Support</li>
-                </ul>
+          }
+        >
+          <div className="flex flex-col gap-6">
+            <SectionHeader eyebrow="01 — Introduction" title="Overview" />
+            <FadeIn>
+              <div className={BODY}>
+                <p>Design and deliver a high-converting landing page for <a href="https://swiftrooms.ae" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Swiftrooms.ae</a>, a Dubai-based home improvement and architectural glazing company. The project focused on improving the company's digital presence, supporting paid advertising campaigns, and increasing lead generation.</p>
+                <p>The target audience primarily focused on B2C homeowners, while also allowing opportunities for B2B enquiries. The outcome was a professional, conversion-driven landing page that continues to support ongoing Google Ads campaigns and lead generation.</p>
               </div>
             </FadeIn>
           </div>
-        </section>
+        </EditorialSplit>
+      </Section>
 
-        <NextProject title="Diversion Audio" to="/projects/diversion-audio" />
-        <Footer className="md:pl-[280px]" />
-      </div>
+      {/* ── 02 · Problem + Solution ── */}
+      <Section pad="default" border="top">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          <div className="flex flex-col gap-6">
+            <SectionHeader eyebrow="02 — The Problem" title="The Challenge" />
+            <FadeIn>
+              <div className={BODY}>
+                <p>The project required stepping into an active workflow midway through development and taking ownership of the landing page's design direction and delivery. Key issues quickly became apparent within Syspree's design-to-development process, particularly around responsiveness, functionality, and overall execution.</p>
+                <p>Despite months of development, the landing page remained incomplete, lacked mobile optimisation, and failed to provide a polished user experience suitable for paid advertising traffic — risking conversions, brand credibility, and lead generation performance.</p>
+              </div>
+            </FadeIn>
+          </div>
+          <div className="flex flex-col gap-6">
+            <SectionHeader eyebrow="03 — The Response" title="The Solution" />
+            <FadeIn>
+              <div className={BODY}>
+                <p>Following discussions with one of the directors, there was a request to explore how AI could support and improve the workflow. Combining traditional design methods with AI-assisted tools, I utilised <a href="https://www.figma.com/make" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Figma Make</a> to help resolve development inconsistencies and demonstrate a more accurate 1:1 translation from design to development.</p>
+                <p>The AI prototype resulted in a fully functioning web page with usable code, providing a clear proof of concept for how the final project should be executed and delivered.</p>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </Section>
+
+      {/* ── 04 · Creative process — approach + videos (bespoke) ── */}
+      <section className="w-full flex flex-col lg:flex-row relative bg-transparent">
+        <div className="w-full lg:w-[40%] flex flex-col z-0">
+          <div className="bg-white text-black py-24 px-6 md:px-12 lg:pl-12 xl:pl-24 relative min-h-[600px] flex items-center lg:rounded-br-[76px] z-10">
+            <FadeIn className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[2.1] tracking-[0.05em] space-y-6 max-w-2xl lg:ml-auto pr-6">
+              <p className="font-['Rajdhani',sans-serif] font-semibold text-[11px] md:text-[13px] tracking-[0.4em] uppercase text-[#50C1BA] not-italic">04 — Creative Process</p>
+              <p>The Swiftrooms landing page was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected the brand's innovative and premium positioning. Using AI-driven workflows such as Figma Make, the project explored how intelligent design tools could accelerate ideation while maintaining a polished and intentional user experience.</p>
+              <p>Drawing from research into modern home improvement websites and contemporary digital experiences, the creative direction focused on delivering a sleek, immersive, and visually engaging interface. Clean typography, structured layouts, and cinematic visual storytelling created a balance between functionality and atmosphere, while motion-led interactions added depth and engagement throughout.</p>
+              <p>Using authentic photography captured by the Swiftrooms team, I transformed still imagery into storyboard-driven moving visuals that created an immersive brand journey — elevating Swiftrooms' digital presence while delivering a modern, commercially refined landing page.</p>
+            </FadeIn>
+          </div>
+
+          <div className="bg-transparent py-24 px-6 md:px-12 lg:pl-12 xl:pl-24">
+            <div className="max-w-2xl lg:ml-auto pr-6">
+              <RevealText className="mb-8">
+                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA] max-w-sm">Mid Journey Showreel</h2>
+              </RevealText>
+              <FadeIn>
+                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[2.1] tracking-[0.05em] text-gray-300 space-y-6">
+                  <p>Since I used AI tools such as Figma Make to create a functioning landing page, I wanted to further explore the use of AI through Midjourney. My goal was to visually break down the Swiftrooms journey using a series of photographic stills. These stills were then developed into a precise storyboard, transforming each image into moving visuals that emulate the feel of videography and motion graphics.</p>
+                  <p>The result was an immersive video experience that showcases the Swiftrooms journey to the user in a more engaging and dynamic way. All photographs used throughout the project are authentic images captured by the Swiftrooms team.</p>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full lg:w-[60%] flex flex-col gap-16 px-6 md:px-12 py-12 lg:py-0 lg:pt-24 lg:pl-16 xl:pl-32 z-20">
+          <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
+            <div className="w-full text-left">
+              <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">old landing page (syspee)</p>
+            </div>
+            <div className="aspect-video w-full rounded-lg overflow-hidden drop-shadow-2xl bg-black pointer-events-none">
+              <ResponsiveYouTubeEmbed videoId="bxJykP0pURI" title="Old landing page" />
+            </div>
+          </div>
+          <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
+            <div className="w-full text-left">
+              <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">new landing page (visualrif)</p>
+            </div>
+            <div className="aspect-video w-full rounded-lg overflow-hidden bg-black pointer-events-none">
+              <ResponsiveYouTubeEmbed videoId="jRnbOu5_xlo" title="New landing page" />
+            </div>
+          </div>
+          <div className="relative w-full max-w-[702px] mx-auto lg:ml-auto flex flex-col items-start lg:items-end">
+            <div className="w-full text-left">
+              <p className="font-['Barlow',sans-serif] font-medium text-[12px] md:text-[16px] tracking-[0.25em] uppercase text-[#50C1BA] mb-4">mobile responsive breakdown</p>
+            </div>
+            <div className="aspect-video w-full rounded-lg overflow-hidden bg-black group">
+              <InteractiveVideoPlayer videoId="N-pov1Csd7w" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Immersive — design element video ── */}
+      <Section width="wide" pad="tight">
+        <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] min-h-[60vh] md:min-h-[1000px] bg-black">
+          <div className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none">
+            <ResponsiveYouTubeEmbed videoId="aP4L7jnKxYA" title="Design Element Video" />
+          </div>
+        </div>
+      </Section>
+
+      {/* ── Storyboard (bespoke white) ── */}
+      <section className="w-full px-6 md:px-12 pb-24 pt-12 max-w-[1920px] mx-auto bg-white text-black text-center">
+        <RevealText className="mb-4">
+          <h3 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[45px] tracking-[0.25em] uppercase text-[#50C1BA]">Storyboard</h3>
+        </RevealText>
+        <FadeIn className="mb-12">
+          <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-600 max-w-xl mx-auto">Authentic Swiftrooms photography sequenced frame-by-frame, then brought to life as motion.</p>
+        </FadeIn>
+        <div className="grid grid-cols-4 md:grid-cols-7 lg:grid-cols-10 gap-2" data-cursor="view">
+          {STORYBOARD.map((img, idx) => (
+            <div key={idx} className="relative aspect-square overflow-hidden">
+              <motion.img
+                src={img}
+                alt={`Storyboard Scene ${idx + 1}`}
+                loading="lazy"
+                className="w-full h-full object-cover cursor-pointer"
+                onClick={() => openAt(5 + idx)}
+                whileHover={{ scale: 1.08 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Further developments ── */}
+      <Section width="wide" pad="default">
+        <SectionHeader eyebrow="Further Developments" title="To Be Updated" className="mb-10 md:mb-12" />
+        <div className="relative w-full aspect-video">
+          <div className="relative w-full h-full rounded-lg overflow-hidden bg-black group">
+            <InteractiveVideoPlayer videoId="jOXGGC4co8s" />
+          </div>
+        </div>
+      </Section>
+
+      {/* ── 05 · Execution — wireframes & content ── */}
+      <Section width="wide" pad="default" border="top">
+        <SectionHeader eyebrow="05 — Execution" title="Wireframes & Content Request" className="mb-10 md:mb-14 max-w-2xl" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
+          <Figure src={imgImage3} alt="Sitemap" onClick={() => openAt(3)} rounded="lg" frameClassName="bg-white p-4" imgClassName="w-full h-auto object-contain min-h-[300px] md:min-h-[500px]" caption="Sitemap — mapping the page structure" />
+          <Figure src={importedImage3} alt="Wireframes and Content Request" onClick={() => openAt(4)} rounded="lg" imgClassName="w-full h-auto object-cover min-h-[300px] md:min-h-[500px]" caption="Wireframes & content request" />
+        </div>
+      </Section>
+
+      {/* ── 06 · Reflection ── */}
+      <Section pad="default" border="top">
+        <EditorialSplit
+          ratio="4/8"
+          media={<DeliverablesList columns={2} items={RESPONSIBILITIES} />}
+        >
+          <div className="flex flex-col gap-5">
+            <SectionHeader eyebrow="Reflection" title="Responsibilities" />
+            <FadeIn>
+              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400">
+                I led both the strategic and creative execution of the landing page — taking ownership of the design direction, improving the UX/UI, and aligning the build with the company's premium positioning and lead-generation goals, while exploring AI-assisted workflows to sharpen the design-to-development process.
+              </p>
+            </FadeIn>
+          </div>
+        </EditorialSplit>
+      </Section>
+
+      <NextProject title="Diversion Audio" to="/projects/diversion-audio" />
 
       <GalleryLightbox
         images={SWIFTROOMS_GALLERY}
@@ -535,6 +377,6 @@ export default function Swiftrooms() {
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
       />
-    </div>
+    </CaseStudyShell>
   );
 }

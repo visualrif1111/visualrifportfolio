@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
-import { Footer } from './components/Footer';
+import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
 import { NextProject } from './components/NextProject';
-import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
-
-import svgPaths from "../imports/Frame24/svg-acruz23zjw";
+import {
+  CaseStudyShell,
+  Section,
+  SectionHeader,
+  Hero,
+  MetaBar,
+  EditorialSplit,
+  Figure,
+  FeatureImage,
+  ImageGrid,
+  PullQuote,
+} from './components/case-study';
 
 import imgRectangle27 from "../imports/DiversionAudio-1/82019337c3dff09841830a3fa0ba6c5e55de196b.png";
 import imgRectangle57 from "../imports/DiversionAudio-1/3fe3922f60833b9ba1cf7cd8812a91efdf3d0bab.png";
@@ -51,8 +57,6 @@ import imgRectangle77 from "../imports/DiversionAudio-4/86f2cf48fb33633411a17f7d
 import imgRectangle78 from "../imports/DiversionAudio-4/0b18d56a64a0c0bbce5021e1d603399db10c5aaa.png";
 import imgRectangle80 from "../imports/DiversionAudio-4/2279679ffd7397c799a28fac535f100bec52299d.png";
 
-import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
-
 const DIVERSION_GALLERY: GalleryImage[] = [
   { src: imgRectangle51, alt: 'Event Context 1' },
   { src: imgRectangle76, alt: 'Event Context 2' },
@@ -77,441 +81,257 @@ const DIVERSION_GALLERY: GalleryImage[] = [
   { src: imgRectangle55, alt: 'Event Photo 4' },
 ];
 
-function VisualRifLogo({ className = "" }: { className?: string }) {
-  return (
-    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
-      <path d={svgPaths.p13c84500} fill="#50C1BA" />
-      <path d={svgPaths.p37476b00} fill="white" />
-      <path d={svgPaths.pa013800} fill="white" />
-      <path d={svgPaths.p630c200} fill="white" />
-      <path d={svgPaths.p349de6f0} fill="white" />
-      <path d={svgPaths.p39faef00} fill="white" />
-      <path d={svgPaths.p141d9280} fill="white" />
-      <path d={svgPaths.p4738e00} fill="white" />
-      <path d={svgPaths.pffcfbf0} fill="white" />
-      <path d={svgPaths.p2b767700} fill="white" />
-    </svg>
-  );
-}
+const INSPIRATION_LOGOS = [
+  imgQ9WBmv, imgWmSe6X, imgGLl5Y0, imgPAw4Ua,
+  imgShxZJi, img86AdbQ, imgKSp8PB, imgUnts7W,
+  imgQqBlvg, imgI8U1V0, imgJrYl5T, imgMRbMkF,
+  imgM0WPKe, imgU83Uhq, imgVf1Flk, imgMp0GAu,
+];
 
-function SocialInstagram({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path d={svgPaths.p386b1640} fill="currentColor" />
-    </svg>
-  );
-}
-
-function SocialLinkedin({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path clipRule="evenodd" d={svgPaths.p1a85db80} fill="currentColor" fillRule="evenodd" />
-    </svg>
-  );
-}
-
-function SocialPhone({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 14.1371 14.1373">
-      <path d={svgPaths.p35dc3720} fill="currentColor" />
-    </svg>
-  );
-}
+const BODY = "font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4";
+const CAPTION = "font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500";
 
 export default function DiversionAudio() {
-  const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const openAt = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
 
-  const inspirationLogos = [
-    imgQ9WBmv, imgWmSe6X, imgGLl5Y0, imgPAw4Ua,
-    imgShxZJi, img86AdbQ, imgKSp8PB, imgUnts7W,
-    imgQqBlvg, imgI8U1V0, imgJrYl5T, imgMRbMkF,
-    imgM0WPKe, imgU83Uhq, imgVf1Flk, imgMp0GAu
-  ];
-
   return (
-    <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
-      {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
-        <div>
-          <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
-            <VisualRifLogo className="w-[180px] h-[24px]" />
-          </div>
-          <div className="relative pl-6">
-            <div className="absolute left-[3px] top-2 bottom-[-400px] w-[1px] bg-white opacity-20"></div>
-            <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white"></div>
-            <ul className="flex flex-col gap-8 text-[18px] tracking-[0.25em] text-gray-300 font-['Rajdhani',sans-serif] font-medium uppercase relative z-10 whitespace-nowrap">
-              <li className="hover:text-white transition-colors cursor-pointer" onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}>
-                <span className="flex items-center gap-2">
-                  <ArrowLeft size={16} /> BACK TO HOME
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-5 pl-4 relative">
-          <div className="absolute left-[0.5px] bottom-1/2 translate-y-1/2 w-[6px] h-[6px] rounded-full bg-white"></div>
-          <a href="https://www.instagram.com/visualrif/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialInstagram className="w-[15px] h-[15px]" /></a>
-          <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialLinkedin className="w-[15px] h-[15px]" /></a>
-          <a href="tel:07598078923" className="text-white hover:text-[#50C1BA] transition-colors"><SocialPhone className="w-[14px] h-[14px]" /></a>
-        </div>
-      </nav>
-
-      {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
-        <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}>
-          <ArrowLeft size={24} />
-        </button>
-        <div className="cursor-pointer" onClick={() => navigate('/')}>
-          <VisualRifLogo className="w-[140px] h-[18px]" />
-        </div>
-      </nav>
-
-      {/* Main Content */}
-      <div className="relative z-10 w-full md:pl-[280px]">
-        {/* Hero Section */}
-        <section className="relative w-full h-[50vh] md:h-[70vh]">
-          <div className="absolute inset-0 md:-left-[280px] md:w-[calc(100%+280px)] w-full h-[50vh] md:h-[70vh] overflow-hidden pointer-events-none z-0">
+    <CaseStudyShell>
+      {/* ── Hero (full-bleed video behind sidebar) ── */}
+      <Hero
+        overflowVisible
+        overlayClassName=""
+        heightClassName="h-[50vh] md:h-[70vh]"
+        titleClassName="text-[40px] md:text-[80px] lg:text-[110px] leading-none tracking-[0.1em]"
+        titleLines={['Diversion Audio']}
+        media={
+          <div className="absolute inset-0 md:-left-[280px] md:w-[calc(100%+280px)] w-full h-full overflow-hidden pointer-events-none">
             <iframe
               src="https://www.youtube.com/embed/qOugLMycEe0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=qOugLMycEe0"
               allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
               style={{ border: 0 }}
               allowFullScreen
               className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[50vh] md:min-h-[70vh] min-w-[88.88vh] md:min-w-[124.44vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            ></iframe>
-            <div className="absolute inset-0 bg-black/40 z-10"></div>
+            />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
+        }
+      />
 
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0 z-20 pointer-events-none">
-            <h1 className="text-[40px] md:text-[80px] lg:text-[110px] leading-none font-['Barlow_Semi_Condensed',sans-serif] font-medium tracking-[0.1em] uppercase text-white drop-shadow-lg">
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={{ y: '110%' }}
-                  animate={{ y: '0%' }}
-                  transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  Diversion Audio
-                </motion.span>
-              </span>
-            </h1>
+      <MetaBar
+        items={[
+          { label: 'YEAR', value: '2024' },
+          { label: 'LOCATION', value: 'SHREWSBURY' },
+          { label: 'ROLE', value: <span className="leading-snug">EARLY BRAND<br />IDENTITY</span> },
+          { label: 'INDUSTRY', value: <span className="leading-snug">MUSIC &amp;<br />ENTERTAINMENT</span> },
+        ]}
+      />
+
+      {/* ── 01 · Introduction ── */}
+      <Section pad="default">
+        <EditorialSplit
+          ratio="5/7"
+          media={
+            <div className="flex flex-col gap-4">
+              <div className="grid grid-cols-2 gap-4" data-cursor="view">
+                <Figure src={imgRectangle51} alt="Event Context 1" onClick={() => openAt(0)} rounded="2xl" frameClassName="aspect-[4/5]" imgClassName="w-full h-full object-cover" />
+                <Figure src={imgRectangle76} alt="Event Context 2" onClick={() => openAt(1)} rounded="2xl" frameClassName="aspect-[4/5]" imgClassName="w-full h-full object-cover" />
+                <Figure src={imgRectangle77} alt="Logo Black Background" onClick={() => openAt(2)} rounded="2xl" frameClassName="aspect-[16/9]" imgClassName="w-full h-full object-cover" />
+                <Figure src={imgRectangle78} alt="Logo Yellow Background" onClick={() => openAt(3)} rounded="2xl" frameClassName="aspect-[16/9]" imgClassName="w-full h-full object-cover" />
+              </div>
+              <p className={CAPTION}>The identity in context — live events & logo lock-ups</p>
+            </div>
+          }
+        >
+          <div className="flex flex-col gap-6">
+            <SectionHeader eyebrow="01 — Introduction" title="Overview" />
+            <FadeIn>
+              <div className={BODY}>
+                <p>Diversion Audio is a London-based Drum &amp; Bass collective focused on underground electronic music and live events. I was tasked with creating the initial visual identity for the brand, developing the early logo direction and foundational branding across digital and promotional platforms.</p>
+                <p>This project marked my first introduction to working within the electronic music industry — a space I'm personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding.</p>
+              </div>
+            </FadeIn>
           </div>
-        </section>
+        </EditorialSplit>
+      </Section>
 
-        {/* Project Meta Info */}
-        <section className="border-b border-gray-800">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-2 md:flex md:flex-wrap gap-8 md:gap-24 uppercase font-['Barlow',sans-serif] font-medium tracking-[0.25em] text-sm md:text-[26px]">
-            {[
-              { label: 'YEAR', value: '2024' },
-              { label: 'LOCATION', value: 'SHREWSBURY' },
-              { label: 'ROLE', value: <span className="leading-snug">EARLY BRAND<br/>IDENTITY</span> },
-              { label: 'INDUSTRY', value: <span className="leading-snug">MUSIC &amp;<br/>ENTERTAINMENT</span> },
-            ].map(({ label, value }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <p className="text-gray-500 mb-2 text-xs md:text-sm tracking-[0.25em]">{label}</p>
-                <p>{value}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Introduction */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-12 md:pb-16 flex flex-col gap-24">
-
-          {/* Overview Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-5">
-              <RevealText className="mb-6">
-                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Overview</h2>
-              </RevealText>
+      {/* ── 02 · Problem + Solution ── */}
+      <Section pad="default" border="top">
+        <EditorialSplit
+          ratio="5/7"
+          align="stretch"
+          media={
+            <Figure src={imgRectangle80} alt="Man in Orange Shirt" onClick={() => openAt(4)} rounded="2xl" frameClassName="h-full" imgClassName="w-full h-full min-h-[400px] md:min-h-[520px] object-cover" />
+          }
+        >
+          <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-5">
+              <SectionHeader eyebrow="02 — The Problem" title="The Challenge" />
               <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                  <p>Diversion Audio is a London-based Drum &amp; Bass collective focused on underground electronic music and live events. I was tasked with creating the initial visual identity for the brand, developing the early logo direction and foundational branding across digital and promotional platforms.</p>
-                  <p className="hidden md:block">This project marked my first introduction to working within the electronic music industry — a space I'm personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding, while the collective has continued to grow successfully within the UK music scene.</p>
+                <div className={BODY}>
+                  <p>One of the main challenges was defining the level of brand development required during the early stages of the collective. A strong focus was placed on creating a comprehensive visual identity system that extended beyond just logo design, ensuring the brand had a scalable foundation for long-term growth.</p>
                 </div>
               </FadeIn>
             </div>
-            <div className="lg:col-span-7">
-              <div className="grid grid-cols-2 gap-4" data-cursor="view">
-                <div className="aspect-[4/5] drop-shadow-xl overflow-hidden rounded-[16px]">
-                  <motion.img src={imgRectangle51} alt="Event Context 1" loading="lazy" className="w-full h-full object-cover min-h-[300px] cursor-pointer" onClick={() => openAt(0)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+            <div className="flex flex-col gap-5">
+              <SectionHeader eyebrow="03 — The Response" title="The Solution" />
+              <FadeIn>
+                <div className={BODY}>
+                  <p>The final solution came through an iterative design process that began with exploring more complex visual concepts before gradually refining the identity into a simpler and more effective outcome. Simplicity became a key part of the final logo — a bold and adaptable identity that worked across digital platforms, event branding, merchandise, and promotional material while remaining instantly recognisable.</p>
                 </div>
-                <div className="aspect-[4/5] drop-shadow-xl overflow-hidden rounded-[16px]">
-                  <motion.img src={imgRectangle76} alt="Event Context 2" loading="lazy" className="w-full h-full object-cover min-h-[300px] cursor-pointer" onClick={() => openAt(1)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-                </div>
-                <div className="rounded-[16px] overflow-hidden drop-shadow-xl aspect-[16/9]">
-                  <motion.img src={imgRectangle77} alt="Logo Black Background" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(2)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-                </div>
-                <div className="rounded-[16px] overflow-hidden drop-shadow-xl aspect-[16/9]">
-                  <motion.img src={imgRectangle78} alt="Logo Yellow Background" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(3)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-                </div>
-              </div>
-              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">The identity in context — live events & logo lock-ups</p>
+              </FadeIn>
             </div>
           </div>
+        </EditorialSplit>
+      </Section>
 
-          {/* Challenge & Solution Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
-            <div className="lg:col-span-5 flex flex-col gap-16">
-              <div>
-                <RevealText className="mb-6">
-                  <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Challenge</h2>
-                </RevealText>
-                <FadeIn>
-                  <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                    <p>One of the main challenges with this project was defining the level of brand development required during the early stages of the collective. A strong focus was placed on creating a comprehensive visual identity system that extended beyond just logo design, ensuring the brand had a scalable foundation for long-term growth.</p>
-                    <p className="hidden md:block">As a grassroots movement, the initial requirements were relatively minimal. However, a more strategic approach was introduced to help establish a stronger and more consistent identity that could evolve across future events, campaigns, and audience growth within the electronic music scene.</p>
-                  </div>
-                </FadeIn>
-              </div>
-              <div>
-                <RevealText className="mb-6">
-                  <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Solution</h2>
-                </RevealText>
-                <FadeIn>
-                  <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                    <p>The final solution came through an iterative design process that began with exploring more complex visual concepts before gradually refining the identity into a simpler and more effective outcome. Exploring complexity early on allowed stronger creative ideas and visual directions to emerge, which could then be stripped back to their most recognisable form.</p>
-                    <p className="hidden md:block">Simplicity became a key part of the final logo design, resulting in a bold and adaptable identity that worked effectively across digital platforms, event branding, merchandise, and promotional material while remaining instantly recognisable within the electronic music scene.</p>
-                  </div>
-                </FadeIn>
-              </div>
-            </div>
-            <div className="lg:col-span-7 flex flex-col overflow-hidden rounded-[16px]" data-cursor="view">
-              <motion.img src={imgRectangle80} alt="Man in Orange Shirt" loading="lazy" className="w-full h-full min-h-[500px] object-cover drop-shadow-xl cursor-pointer" onClick={() => openAt(4)} whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </div>
-          </div>
-        </section>
+      {/* ── Approach pull quote ── */}
+      <Section width="narrow" pad="tight">
+        <PullQuote attribution="Diversion Audio">
+          Bold minimalism, strong typography, and a scalable visual system — built to work across events, merchandise, and digital platforms, positioning Diversion Audio for long-term growth within the UK music scene.
+        </PullQuote>
+      </Section>
 
-        {/* Project Approach Text */}
-        <section className="max-w-5xl mx-auto px-6 md:px-12 py-8 md:py-16 text-center">
-          <FadeIn>
-            <div className="font-['Lato',sans-serif] font-light text-[18px] md:text-[22.9px] leading-[1.6] tracking-[0.05em] text-gray-200 space-y-8">
-              <p className="md:hidden">Bold minimalism, strong typography, and a scalable visual system — built to work across events, merchandise, and digital platforms, positioning Diversion Audio for long-term growth within the UK music scene.</p>
-              <p className="hidden md:block">The project was approached with a strong focus on creating a scalable and recognisable visual identity that reflected the energy and culture of London's underground Drum &amp; Bass scene. Drawing from research into electronic music branding, live event culture, and audience behaviour, the creative direction centred around bold minimalism, strong typography, and a clean visual system designed to work across digital, social, and live event environments.</p>
-              <p className="hidden md:block">The visual language was developed through an iterative design process that initially explored more complex concepts before refining the identity into a simpler and more impactful solution. Simplicity became a key part of the final outcome, resulting in a logo that felt adaptable, memorable, and effective across event promotion, merchandise, and online platforms.</p>
-              <p className="hidden md:block">Throughout the project, scalability and long-term brand growth were important considerations despite the collective's grassroots beginnings. By establishing a stronger branding foundation beyond just the logo itself, the final outcome helped position Diversion Audio with a more cohesive and professional visual presence within the UK electronic music scene, supporting its continued growth across events and festival appearances including Boomtown Fair.</p>
-            </div>
-          </FadeIn>
-        </section>
+      {/* ── 04 · Thinking — research ── */}
+      <Section width="wide" pad="default" border="top">
+        <SectionHeader
+          eyebrow="04 — Thinking"
+          title="Research"
+          lead="Mapping the underground Drum & Bass scene — audience, culture, and visual language."
+          align="center"
+          className="mb-10 md:mb-14"
+        />
+        <FadeIn className="w-full max-w-7xl mx-auto overflow-hidden">
+          <img src={imgRectangle93} alt="Research Mindmap" loading="lazy" className="w-full h-auto object-contain invert mix-blend-screen opacity-90 min-h-[300px]" />
+        </FadeIn>
+      </Section>
 
-        {/* Research */}
-        <section className="w-full max-w-[1920px] mx-auto px-6 md:px-12 py-16 flex flex-col gap-12 items-center">
-          <RevealText className="w-full text-center">
-            <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] tracking-[0.25em] uppercase text-[#50C1BA]">Research</h2>
-          </RevealText>
-          <FadeIn className="w-full text-center">
-            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">Mapping the underground Drum &amp; Bass scene — audience, culture, and visual language.</p>
-          </FadeIn>
-          <FadeIn className="w-full max-w-7xl mx-auto overflow-hidden">
-            <img src={imgRectangle93} alt="Research Mindmap" loading="lazy" className="w-full h-auto object-contain invert mix-blend-screen opacity-90 min-h-[300px]" />
-          </FadeIn>
-        </section>
-
-        {/* Inspiration */}
-        <section className="w-full max-w-5xl mx-auto px-6 md:px-12 py-16 flex flex-col gap-16 items-center">
-          <RevealText className="w-full text-center">
-            <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] tracking-[0.25em] uppercase text-[#50C1BA]">Inspiration</h2>
-          </RevealText>
-          <FadeIn className="w-full text-center -mt-8">
-            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">Bold, minimal reference marks that shaped the direction of the identity.</p>
-          </FadeIn>
-
-          {/* Logos container */}
-          <FadeIn className="w-full bg-white rounded-[24px] p-8 md:p-16 shadow-2xl flex flex-col justify-center items-center gap-10 md:gap-16 max-w-4xl mx-auto">
-            <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-10 w-full px-2">
-              {inspirationLogos.slice(0, 5).map((logo, i) => (
-                <img key={i} src={logo} alt={`Inspiration logo ${i+1}`} loading="lazy" className="h-16 md:h-24 w-auto object-contain mix-blend-multiply" />
-              ))}
-            </div>
-            <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-8 w-full px-2">
-              {inspirationLogos.slice(5).map((logo, i) => (
-                <img key={i+5} src={logo} alt={`Inspiration logo ${i+6}`} loading="lazy" className="h-8 md:h-12 w-auto object-contain mix-blend-multiply" />
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* 3 big shapes */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto" data-cursor="view">
-            {[imgRectangle27, imgRectangle28, imgRectangle29].map((img, i) => (
-              <motion.div
-                key={i}
-                className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-              >
-                <motion.img src={img} alt={`Inspiration Shape ${i+1}`} loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(5 + i)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-              </motion.div>
+      {/* ── 05 · Creative process — inspiration ── */}
+      <Section width="narrow" pad="default">
+        <SectionHeader
+          eyebrow="05 — Creative Process"
+          title="Inspiration"
+          lead="Bold, minimal reference marks that shaped the direction of the identity."
+          align="center"
+          className="mb-10 md:mb-14"
+        />
+        <FadeIn className="w-full bg-white rounded-[24px] p-8 md:p-16 shadow-2xl flex flex-col justify-center items-center gap-10 md:gap-16 max-w-4xl mx-auto mb-12">
+          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-10 w-full px-2">
+            {INSPIRATION_LOGOS.slice(0, 5).map((logo, i) => (
+              <img key={i} src={logo} alt={`Inspiration logo ${i + 1}`} loading="lazy" className="h-16 md:h-24 w-auto object-contain mix-blend-multiply" />
             ))}
           </div>
-          <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 text-center">Mood & shape studies</p>
-        </section>
-
-        {/* Experimentation & Iteration */}
-        <section className="w-full max-w-5xl mx-auto px-6 md:px-12 py-16 flex flex-col gap-16 items-center">
-          <RevealText className="w-full text-center">
-            <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] tracking-[0.25em] uppercase text-[#50C1BA]">Experimentation &amp; Iteration</h2>
-          </RevealText>
-          <FadeIn className="w-full text-center -mt-8">
-            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">Exploring complexity first, then stripping the logo back to its most recognisable form.</p>
-          </FadeIn>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
-            <motion.div
-              className="rounded-[24px] overflow-hidden aspect-square flex items-center justify-center p-4 md:p-8"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0 }}
-            >
-              <img src={imgRectangle57} alt="Experimentation Path" loading="lazy" className="w-[90%] h-auto object-contain opacity-80 min-h-[200px] cursor-pointer" onClick={() => openAt(8)} />
-            </motion.div>
-            <motion.div
-              className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <motion.img src={imgRectangle58} alt="Experimentation Cross" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(9)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </motion.div>
-            <motion.div
-              className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <motion.img src={imgRectangle59} alt="Experimentation Complex" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(10)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </motion.div>
-            <motion.div
-              className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <motion.img src={imgRectangle60} alt="Experimentation Final White" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(11)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </motion.div>
-            <motion.div
-              className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <motion.img src={imgRectangle61} alt="Experimentation Final Yellow" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(12)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </motion.div>
-            <motion.div
-              className="rounded-[24px] overflow-hidden aspect-square shadow-xl"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <motion.img src={imgRectangle62} alt="Experimentation Small Black" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(13)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </motion.div>
+          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-8 w-full px-2">
+            {INSPIRATION_LOGOS.slice(5).map((logo, i) => (
+              <img key={i + 5} src={logo} alt={`Inspiration logo ${i + 6}`} loading="lazy" className="h-8 md:h-12 w-auto object-contain mix-blend-multiply" />
+            ))}
           </div>
-        </section>
+        </FadeIn>
+        <div className="max-w-4xl mx-auto">
+          <ImageGrid
+            cols={3}
+            rounded="2xl"
+            items={[imgRectangle27, imgRectangle28, imgRectangle29].map((src, i) => ({
+              src,
+              alt: `Inspiration shape ${i + 1}`,
+              onClick: () => openAt(5 + i),
+              frameClassName: 'aspect-square',
+              imgClassName: 'w-full h-full object-cover',
+            }))}
+          />
+          <p className={`${CAPTION} text-center mt-4`}>Mood & shape studies</p>
+        </div>
+      </Section>
 
-        {/* Final Outcome */}
-        <section className="w-full max-w-5xl mx-auto px-6 md:px-12 py-16 flex flex-col gap-16 items-center">
-          <RevealText className="w-full text-center">
-            <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] tracking-[0.25em] uppercase text-[#50C1BA]">Final Outcome</h2>
-          </RevealText>
+      {/* ── 06 · Iteration — experimentation ── */}
+      <Section width="narrow" pad="default" border="top">
+        <SectionHeader
+          eyebrow="06 — Iteration"
+          title="Experimentation"
+          lead="Exploring complexity first, then stripping the logo back to its most recognisable form."
+          align="center"
+          className="mb-10 md:mb-14"
+        />
+        <div className="max-w-4xl mx-auto">
+          <ImageGrid
+            cols={3}
+            rounded="2xl"
+            items={[imgRectangle57, imgRectangle58, imgRectangle59, imgRectangle60, imgRectangle61, imgRectangle62].map((src, i) => ({
+              src,
+              alt: `Experimentation ${i + 1}`,
+              onClick: () => openAt(8 + i),
+              frameClassName: 'aspect-square',
+              imgClassName: 'w-full h-full object-cover',
+            }))}
+          />
+        </div>
+      </Section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full max-w-4xl mx-auto">
-            <motion.div
-              className="rounded-[16px] overflow-hidden shadow-2xl"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0 }}
-            >
-              <motion.img src={imgRectangle67} alt="Final Yellow Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px] cursor-pointer" onClick={() => openAt(14)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </motion.div>
-            <motion.div
-              className="rounded-[16px] overflow-hidden shadow-2xl"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.12 }}
-            >
-              <motion.img src={imgRectangle66} alt="Final Black Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px] cursor-pointer" onClick={() => openAt(15)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </motion.div>
-          </div>
-          <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 text-center">Final logo — yellow & black variations</p>
-        </section>
+      {/* ── 07 · Final outcome ── */}
+      <Section width="narrow" pad="default" border="top">
+        <SectionHeader eyebrow="07 — Final Outcome" title="The Mark" align="center" className="mb-10 md:mb-14" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-4xl mx-auto">
+          <Figure src={imgRectangle67} alt="Final Yellow Logo" onClick={() => openAt(14)} rounded="2xl" imgClassName="w-full h-auto object-cover min-h-[300px]" />
+          <Figure src={imgRectangle66} alt="Final Black Logo" onClick={() => openAt(15)} rounded="2xl" imgClassName="w-full h-auto object-cover min-h-[300px]" />
+        </div>
+        <p className={`${CAPTION} text-center mt-6`}>Final logo — yellow & black variations</p>
+      </Section>
 
-        {/* Breakdown Section */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start border-t border-gray-800">
-          <div className="lg:col-span-4 lg:text-right pt-2 lg:pr-8 lg:border-r border-[#d2b063]">
-            <RevealText className="mb-6 lg:mb-0">
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[24px] tracking-[0.25em] uppercase text-white">
-                Breakdown
-              </h2>
-            </RevealText>
-            <div className="h-[2px] w-12 bg-[#d2b063] lg:hidden mb-6"></div>
-          </div>
-          <FadeIn className="lg:col-span-8">
-            <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[18px] leading-[1.8] tracking-[0.05em] text-gray-300 space-y-6">
-              <p>The concept behind the Diversion Audio logo was built around the idea of redirecting people back towards music, culture, and connection. This is reflected through the manipulated typography, where the chevron-inspired forms visually guide the eye back towards the word "Diversion", symbolising movement, energy, and redirection within the music scene.</p>
-              <p>The identity was designed to feel bold, immersive, and rooted within underground Drum &amp; Bass culture, while remaining simple and adaptable across event branding, merchandise, and digital platforms.</p>
-              <p className="hidden md:block">The logo later took on a deeper personal meaning during Boomtown Fair 2025. After being separated from a friend across different campsites for several days, a moment while walking through the festival unexpectedly brought the project back into focus. Seeing the Diversion placard in the distance became a reminder of the original purpose behind the logo — the idea of diverting back towards the music, the people, and the experiences that connect communities together.</p>
-            </div>
-          </FadeIn>
-        </section>
-
-        {/* Video Showcase */}
-        <section className="w-full max-w-5xl mx-auto px-6 md:px-12 py-8 md:py-16">
-          <div className="video-wrapper aspect-video drop-shadow-2xl bg-black/50 border border-gray-800">
-            <iframe
-              src="https://www.youtube.com/embed/qOugLMycEe0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=qOugLMycEe0"
-              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-              style={{ border: 0 }}
-              allowFullScreen
-            ></iframe>
-          </div>
-        </section>
-
-        {/* Gallery Grids */}
-        <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto flex flex-col gap-8 md:gap-16">
-          <div className="flex flex-col gap-3 max-w-2xl">
-            <RevealText>
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[26px] tracking-[0.25em] uppercase text-[#50C1BA]">In The Wild</h2>
-            </RevealText>
+      {/* ── 08 · Reflection ── */}
+      <Section pad="default" border="top">
+        <EditorialSplit
+          ratio="4/8"
+          media={
             <FadeIn>
-              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400">The identity live across events and venues — including Boomtown Fair and Volks Nightclub.</p>
+              <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[18px] leading-[1.8] tracking-[0.05em] text-gray-300 space-y-6">
+                <p>The concept behind the Diversion Audio logo was built around the idea of redirecting people back towards music, culture, and connection. This is reflected through the manipulated typography, where the chevron-inspired forms visually guide the eye back towards the word "Diversion", symbolising movement, energy, and redirection within the music scene.</p>
+                <p>The logo later took on a deeper personal meaning during Boomtown Fair 2025. After being separated from a friend across different campsites for several days, seeing the Diversion placard in the distance became a reminder of the original purpose behind the logo — the idea of diverting back towards the music, the people, and the experiences that connect communities together.</p>
+              </div>
             </FadeIn>
-          </div>
+          }
+        >
+          <SectionHeader eyebrow="08 — Reflection" title="Breakdown" />
+        </EditorialSplit>
+      </Section>
 
-          {/* Main Hero Shot */}
-          <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-            <motion.img
-              src={imgRectangle34}
-              alt="Event Hero 1"
-              loading="lazy"
-              className="w-full h-auto object-cover min-h-[400px] md:min-h-[600px] cursor-pointer"
-              onClick={() => openAt(16)}
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            />
-          </div>
+      {/* ── Immersive — video showcase ── */}
+      <Section width="narrow" pad="tight">
+        <div className="video-wrapper aspect-video drop-shadow-2xl bg-black/50 border border-gray-800">
+          <iframe
+            src="https://www.youtube.com/embed/qOugLMycEe0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=qOugLMycEe0"
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            style={{ border: 0 }}
+            allowFullScreen
+          ></iframe>
+        </div>
+      </Section>
 
-          {/* Grid of smaller photos */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[imgRectangle52, imgRectangle53, imgRectangle54, imgRectangle55].map((img, i) => (
-              <motion.div
-                key={i}
-                className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <motion.img
-                  src={img}
-                  loading="lazy"
-                  className="w-full aspect-square object-cover min-h-[150px] md:min-h-[250px] cursor-pointer"
-                  alt={`Grid item ${i+1}`}
-                  onClick={() => openAt(17 + i)}
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                />
-              </motion.div>
-            ))}
-          </div>
-        </section>
+      {/* ── In the wild — gallery ── */}
+      <Section width="wide" pad="default">
+        <SectionHeader
+          eyebrow="In The Wild"
+          title="Live"
+          lead="The identity live across events and venues — including Boomtown Fair and Volks Nightclub."
+          className="mb-10 md:mb-14 max-w-2xl"
+        />
+        <div className="flex flex-col gap-8 md:gap-16">
+          <FeatureImage src={imgRectangle34} alt="Event Hero" onClick={() => openAt(16)} rounded="3xl" imgClassName="w-full h-auto object-cover min-h-[400px] md:min-h-[600px]" />
+          <ImageGrid
+            cols={4}
+            rounded="2xl"
+            items={[imgRectangle52, imgRectangle53, imgRectangle54, imgRectangle55].map((src, i) => ({
+              src,
+              alt: `Event photo ${i + 1}`,
+              onClick: () => openAt(17 + i),
+              frameClassName: 'aspect-square',
+              imgClassName: 'w-full h-full object-cover',
+            }))}
+          />
+        </div>
+      </Section>
 
-        <NextProject title="Moncks of Dover Street" to="/projects/moncks-of-dover-street" />
-        <Footer className="md:pl-[280px]" />
-      </div>
+      <NextProject title="Moncks of Dover Street" to="/projects/moncks-of-dover-street" />
 
       <GalleryLightbox
         images={DIVERSION_GALLERY}
@@ -519,6 +339,6 @@ export default function DiversionAudio() {
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
       />
-    </div>
+    </CaseStudyShell>
   );
 }

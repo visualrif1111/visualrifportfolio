@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router';
 import '../styles/fonts.css';
-import { Footer } from './components/Footer';
+import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
 import { NextProject } from './components/NextProject';
-import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
-
-import svgPaths from "../imports/Frame24/svg-acruz23zjw";
+import {
+  CaseStudyShell,
+  Section,
+  SectionHeader,
+  Hero,
+  MetaBar,
+  EditorialSplit,
+  Figure,
+  FeatureImage,
+  ImageGrid,
+  PullQuote,
+} from './components/case-study';
 
 import imgRectangle43 from "../imports/SunilGavaskarProject/42100d4cb5e89bf24572cb5cf967dfb41d47179e.png";
 import imgRectangle46 from "../imports/SunilGavaskarProject/86b645be6df4a096d1fe8214d4297a3cac9ffae7.png";
@@ -37,8 +43,6 @@ import imgSunilGavaskarHallOfFame3 from "../imports/SunilGavaskarProject/24aca0c
 import imgSunilGavaskarTheHallOfFameV23 from "../imports/SunilGavaskarProject/130fafa6183f9cf9541eeb73e44ef4db8e3e037b.png";
 import imgEllipse5 from "../imports/SunilGavaskarProject/57e05b02450362c31cdcf56162a165d964882973.png";
 
-import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
-
 const SUNIL_GALLERY: GalleryImage[] = [
   { src: imgRectangle43, alt: 'Laptop Preview' },
   { src: imgRectangle46, alt: 'Desktop Preview' },
@@ -66,396 +70,206 @@ const SUNIL_GALLERY: GalleryImage[] = [
   { src: imgRectangle33, alt: 'NFT Collectible 4' },
 ];
 
-function VisualRifLogo({ className = "" }: { className?: string }) {
-  return (
-    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
-      <path d={svgPaths.p13c84500} fill="#50C1BA" />
-      <path d={svgPaths.p37476b00} fill="white" />
-      <path d={svgPaths.pa013800} fill="white" />
-      <path d={svgPaths.p630c200} fill="white" />
-      <path d={svgPaths.p349de6f0} fill="white" />
-      <path d={svgPaths.p39faef00} fill="white" />
-      <path d={svgPaths.p141d9280} fill="white" />
-      <path d={svgPaths.p4738e00} fill="white" />
-      <path d={svgPaths.pffcfbf0} fill="white" />
-      <path d={svgPaths.p2b767700} fill="white" />
-    </svg>
-  );
-}
-
-function SocialInstagram({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path d={svgPaths.p386b1640} fill="currentColor" />
-    </svg>
-  );
-}
-
-function SocialLinkedin({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path clipRule="evenodd" d={svgPaths.p1a85db80} fill="currentColor" fillRule="evenodd" />
-    </svg>
-  );
-}
-
-function SocialPhone({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 14.1371 14.1373">
-      <path d={svgPaths.p35dc3720} fill="currentColor" />
-    </svg>
-  );
-}
+const BODY = "font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4";
+const CAPTION = "font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500";
 
 export default function SunilGavaskar() {
-  const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const openAt = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
 
   return (
-    <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
-      {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
-        <div>
-          <div className="mb-12 cursor-pointer" onClick={() => navigate('/')}>
-            <VisualRifLogo className="w-[180px] h-[24px]" />
-          </div>
-          <div className="relative pl-6">
-            <div className="absolute left-[3px] top-2 bottom-[-400px] w-[1px] bg-white opacity-20"></div>
-            <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white"></div>
-            <ul className="flex flex-col gap-8 text-[18px] tracking-[0.25em] text-gray-300 font-['Rajdhani',sans-serif] font-medium uppercase relative z-10 whitespace-nowrap">
-              <li className="hover:text-white transition-colors cursor-pointer" onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}>
-                <span className="flex items-center gap-2">
-                  <ArrowLeft size={16} /> BACK TO HOME
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <CaseStudyShell>
+      {/* ── Hero ── */}
+      <Hero
+        media={<img src={imgRectangle51} alt="Always First — Sunil Gavaskar" className="w-full h-full object-cover object-center" />}
+        overlayClassName="bg-black/40"
+        heightClassName="h-[45vh] md:h-[70vh]"
+        titleClassName="text-[36px] md:text-[80px] lg:text-[98px] leading-none tracking-[0.08em]"
+        titleLines={[
+          'Always First',
+          <span key="sg" className="text-[18px] md:text-[32px] font-['Barlow',sans-serif] tracking-[0.25em]">Sunil Gavaskar</span>,
+        ]}
+      >
+        <div className="absolute inset-y-0 right-0 w-[25%] bg-gradient-to-l from-black to-transparent pointer-events-none z-10" />
+      </Hero>
 
-        <div className="flex flex-col gap-5 pl-4 relative">
-          <div className="absolute left-[0.5px] bottom-1/2 translate-y-1/2 w-[6px] h-[6px] rounded-full bg-white"></div>
-          <a href="https://www.instagram.com/visualrif/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialInstagram className="w-[15px] h-[15px]" /></a>
-          <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialLinkedin className="w-[15px] h-[15px]" /></a>
-          <a href="tel:07598078923" className="text-white hover:text-[#50C1BA] transition-colors"><SocialPhone className="w-[14px] h-[14px]" /></a>
-        </div>
-      </nav>
+      <MetaBar
+        items={[
+          { label: 'YEAR', value: '2022' },
+          { label: 'LOCATION', value: 'LONDON' },
+          { label: 'ROLE', value: <span className="leading-snug">UX / UI DESIGN<br />DIGITAL DESIGN</span> },
+          { label: 'INDUSTRY', value: <span className="leading-snug">WEB3 / NFT /<br />DIGITAL COLLECTIBLES</span> },
+        ]}
+      />
 
-      {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
-        <button className="text-white hover:text-[#50C1BA] transition-colors" onClick={() => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } })}>
-          <ArrowLeft size={24} />
-        </button>
-        <div className="cursor-pointer" onClick={() => navigate('/')}>
-          <VisualRifLogo className="w-[140px] h-[18px]" />
-        </div>
-      </nav>
-
-      {/* Main Content */}
-      <div className="relative z-10 w-full md:pl-[280px]">
-        {/* Hero Section */}
-        <section className="relative w-full h-[45vh] md:h-[70vh] overflow-hidden bg-black">
-          <img src={imgRectangle51} alt="Always First Sunil Gavaskar Hero" className="absolute inset-0 w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-black/40"></div>
-          <div className="absolute inset-y-0 right-0 w-[25%] bg-gradient-to-l from-black to-transparent pointer-events-none" />
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 mt-16 md:mt-0">
-            <h1 className="text-[36px] md:text-[80px] lg:text-[98px] leading-none font-['Barlow_Semi_Condensed',sans-serif] font-medium tracking-[0.08em] uppercase text-white drop-shadow-lg">
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={{ y: '110%' }}
-                  animate={{ y: '0%' }}
-                  transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  Always First
-                </motion.span>
-              </span>
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block text-[18px] md:text-[32px] font-['Barlow',sans-serif] tracking-[0.25em]"
-                  initial={{ y: '110%' }}
-                  animate={{ y: '0%' }}
-                  transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  Sunil Gavaskar
-                </motion.span>
-              </span>
-            </h1>
-          </div>
-        </section>
-
-        {/* Project Meta Info */}
-        <section className="border-b border-gray-800">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-2 md:flex md:flex-wrap gap-8 md:gap-24 uppercase font-['Barlow',sans-serif] font-medium tracking-[0.25em] text-sm md:text-[26px]">
-            {[
-              { label: 'YEAR', value: '2022' },
-              { label: 'LOCATION', value: 'LONDON' },
-              { label: 'ROLE', value: <span className="leading-snug">UX / UI DESIGN<br/>DIGITAL DESIGN</span> },
-              { label: 'INDUSTRY', value: <span className="leading-snug">WEB3 / NFT /<br/>DIGITAL COLLECTIBLES</span> },
-            ].map(({ label, value }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <p className="text-gray-500 mb-2 text-xs md:text-sm tracking-[0.25em]">{label}</p>
-                <p>{value}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Introduction */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-12 md:pb-16 grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-4 flex flex-col gap-12 md:gap-16">
-            <div>
-              <RevealText className="mb-6">
-                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Overview</h2>
-              </RevealText>
-              <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                  <p>As a Freelance Digital Designer at Velvet Badger, I worked on Always First – Sunil Gavaskar, a Web3 and NFT project created for legendary cricketer Sunil Gavaskar. This project marked a key moment in my career, shaping my interest in digital assets and immersive experiences.</p>
-                  <p className="hidden md:block">The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar's achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
-                </div>
-              </FadeIn>
-            </div>
-            <div>
-              <RevealText className="mb-6">
-                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Challenge</h2>
-              </RevealText>
-              <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                  <p>One of the main challenges was translating a complex Web3 and NFT concept into a clear and engaging user experience within a short production timeframe.</p>
-                  <p className="hidden md:block">The project included multiple moving parts — including website design, NFT storytelling, and social media assets — all of which needed to feel cohesive under one visual direction.</p>
-                  <p className="hidden md:block">To approach this, I began with research and mind mapping to better understand the Web3 space, audience, and visual identity before moving into a rapid design sprint process.</p>
-                </div>
-              </FadeIn>
-            </div>
-            <div>
-              <RevealText className="mb-6">
-                <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] md:text-[33px] tracking-[0.25em] uppercase text-[#50C1BA]">Solution</h2>
-              </RevealText>
-              <FadeIn>
-                <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
-                  <p>The final solution was a cohesive digital campaign that combined the website, NFT experience, and social media content into a unified platform. The website acted as a central hub for the project, while the social media campaign helped build awareness and engagement around the launch.</p>
-                  <p className="hidden md:block">Using a clean visual hierarchy and contemporary Web3-inspired design, the final experience balanced innovation with accessibility, creating an engaging platform for both existing fans and audiences new to NFTs.</p>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-
-          <div className="lg:col-span-8 flex flex-col gap-6" data-cursor="view">
-            <div className="w-full relative overflow-hidden rounded-lg">
-              <motion.img src={imgRectangle43} alt="Laptop Preview" loading="lazy" className="w-full h-auto object-cover cursor-pointer" onClick={() => openAt(0)} whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-              <div className="relative overflow-hidden rounded-lg">
-                <motion.img src={imgRectangle46} alt="Desktop Preview" loading="lazy" className="w-full h-auto object-cover cursor-pointer" onClick={() => openAt(1)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-              </div>
-              <div className="relative flex items-center justify-center bg-[#011615] rounded-lg p-6 overflow-hidden min-h-[300px]">
-                <div className="flex items-start justify-center gap-1.5 md:gap-2 h-[200px] md:h-[240px] relative z-10 w-full overflow-hidden">
-                  <img src={imgSg22HomepageV07202204134} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 1" onClick={() => openAt(2)} />
-                  <img src={img2SunilGavaskarTheEmblems3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 2" onClick={() => openAt(3)} />
-                  <img src={imgSunilGavaskarTheMoments3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 3" onClick={() => openAt(4)} />
-                  <img src={imgSunilGavaskarHallOfFame3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 4" onClick={() => openAt(5)} />
-                  <div className="h-full flex flex-col justify-start">
-                    <img src={imgSunilGavaskarTheHallOfFameV23} loading="lazy" className="h-[25%] w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 5" onClick={() => openAt(6)} />
+      {/* ── 01 · Introduction ── */}
+      <Section pad="default">
+        <EditorialSplit
+          ratio="5/7"
+          media={
+            <div className="flex flex-col gap-6">
+              <Figure src={imgRectangle43} alt="Laptop Preview" onClick={() => openAt(0)} rounded="lg" imgClassName="w-full h-auto object-cover" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                <Figure src={imgRectangle46} alt="Desktop Preview" onClick={() => openAt(1)} rounded="lg" imgClassName="w-full h-auto object-cover" />
+                <div className="relative flex items-center justify-center bg-[#011615] rounded-lg p-6 overflow-hidden min-h-[300px]">
+                  <div className="flex items-start justify-center gap-1.5 md:gap-2 h-[200px] md:h-[240px] relative z-10 w-full overflow-hidden">
+                    <img src={imgSg22HomepageV07202204134} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 1" onClick={() => openAt(2)} />
+                    <img src={img2SunilGavaskarTheEmblems3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 2" onClick={() => openAt(3)} />
+                    <img src={imgSunilGavaskarTheMoments3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 3" onClick={() => openAt(4)} />
+                    <img src={imgSunilGavaskarHallOfFame3} loading="lazy" className="h-full w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 4" onClick={() => openAt(5)} />
+                    <div className="h-full flex flex-col justify-start">
+                      <img src={imgSunilGavaskarTheHallOfFameV23} loading="lazy" className="h-[25%] w-auto object-cover rounded-[4px] shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer" alt="Slice 5" onClick={() => openAt(6)} />
+                    </div>
                   </div>
+                  <img src={imgEllipse5} loading="lazy" className="absolute bottom-4 right-4 w-20 md:w-24 h-auto drop-shadow-[0_10px_30px_rgba(210,176,99,0.3)] z-20" alt="Gold Seal" />
                 </div>
-                <img src={imgEllipse5} loading="lazy" className="absolute bottom-4 right-4 w-20 md:w-24 h-auto drop-shadow-[0_10px_30px_rgba(210,176,99,0.3)] z-20" alt="Gold Seal" />
               </div>
+              <p className={CAPTION}>The Always First platform — homepage, virtual gallery & collectibles</p>
             </div>
-            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-1">The Always First platform — homepage, virtual gallery & collectibles</p>
-          </div>
-        </section>
-
-        {/* Project Approach Text */}
-        <section className="max-w-5xl mx-auto px-6 md:px-12 py-4 md:py-8 text-center">
-          <FadeIn>
-            <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.7] tracking-[0.05em] text-gray-200 space-y-6">
-              <p className="md:hidden">A modern, accessible Web3 experience centred around immersive layouts, bold typography, and digital storytelling — balancing innovation with clarity for both existing fans and audiences new to NFTs.</p>
-              <p className="hidden md:block">The project was approached with a strong focus on creating an accessible and engaging Web3 experience that reflected both the legacy of Sunil Gavaskar and the innovative direction of the Always First NFT campaign. Drawing from research into digital collectibles, audience behaviour, and the wider visual identity of the project, I developed a modern creative direction centred around immersive layouts, bold typography, and contemporary Web3-inspired visuals.</p>
-              <p className="hidden md:block">The visual language was designed to balance innovation with accessibility, allowing users unfamiliar with NFTs to navigate the platform with clarity while still creating an engaging and premium digital experience. Alongside the website, supporting social media assets were designed to maintain a cohesive brand presence across all touchpoints and help drive awareness around the launch of the collection.</p>
-              <p className="hidden md:block">Throughout the project, consistency, scalability, and responsive design were key considerations, ensuring the experience translated effectively across desktop, mobile, and social platforms. By combining strategic UX/UI thinking with immersive digital storytelling, the final outcome strengthened the campaign's online presence and created a cohesive platform for fans to engage with the NFT collection and virtual gallery experience.</p>
-            </div>
-          </FadeIn>
-        </section>
-
-        {/* Elaborate Mindmap & Sketches Section */}
-        <section className="w-full max-w-[1920px] mx-auto px-6 md:px-12 pt-12 pb-24 flex flex-col gap-10 border-t border-gray-800 mt-8">
-          <div className="flex flex-col gap-3 max-w-2xl">
-            <RevealText>
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[26px] tracking-[0.25em] uppercase text-[#50C1BA]">Research & Wireframing</h2>
-            </RevealText>
+          }
+        >
+          <div className="flex flex-col gap-6">
+            <SectionHeader eyebrow="01 — Introduction" title="Overview" />
             <FadeIn>
-              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400">From mind mapping the Web3 space to early sketches and wireframes that shaped the user journey.</p>
+              <div className={BODY}>
+                <p>As a Freelance Digital Designer at Velvet Badger, I worked on Always First – Sunil Gavaskar, a Web3 and NFT project created for legendary cricketer Sunil Gavaskar. This project marked a key moment in my career, shaping my interest in digital assets and immersive experiences.</p>
+                <p>The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar's achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
+              </div>
             </FadeIn>
           </div>
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 w-full">
-            {/* Left tall panel: wireframe */}
-            <div className="w-full lg:w-1/4 hidden md:flex justify-center lg:justify-start items-start">
-              <img src={imgNftieSunilGavaskarMindmap2} alt="Wireframe" className="w-full max-w-[300px] h-auto object-contain rounded-2xl bg-[#0a0a0a] p-4 drop-shadow-2xl cursor-pointer" onClick={() => openAt(7)} />
-            </div>
+        </EditorialSplit>
+      </Section>
 
-            {/* Right block */}
-            <div className="w-full lg:w-3/4 flex flex-col gap-8">
-              {/* Top block */}
-              <div className="w-full bg-[#011615] rounded-[24px] py-16 px-8 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden shadow-2xl">
-                <div className="w-full md:w-[40%] flex justify-center gap-4 relative z-10 opacity-80 mix-blend-screen">
-                  <img src={imgImg01632} className="w-[45%] h-auto rounded cursor-pointer" alt="Sketch Process 1" onClick={() => openAt(8)} />
-                  <img src={imgImg01642} className="w-[45%] h-auto rounded mt-8 cursor-pointer" alt="Sketch Process 2" onClick={() => openAt(9)} />
-                </div>
-                <div className="w-full md:w-[60%] flex justify-center z-10">
-                  <img src={imgNftieSunilGavaskarMindmapV11} alt="Mindmap" className="w-full h-auto object-cover rounded-xl cursor-pointer" onClick={() => openAt(10)} />
-                </div>
-              </div>
-
-              {/* Bottom block: Sketch Squares */}
-              <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mt-4" data-cursor="view">
-                {[imgRectangle27, imgRectangle28, imgRectangle29].map((img, i) => (
-                  <motion.div
-                    key={i}
-                    className="overflow-hidden rounded-[24px] shadow-xl"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.12 }}
-                  >
-                    <motion.img
-                      src={img}
-                      className="w-full aspect-square object-cover cursor-pointer"
-                      alt={`Wireframe ${i + 1}`}
-                      onClick={() => openAt(11 + i)}
-                      whileHover={{ scale: 1.04 }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                    />
-                  </motion.div>
-                ))}
-              </div>
-              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500">Wireframes — defining structure before visual design</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Breakdown Section */}
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          <div className="lg:col-span-4 lg:text-right pt-2 lg:pr-8 lg:border-r border-[#d2b063]">
-            <RevealText className="mb-6 lg:mb-0">
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[24px] tracking-[0.25em] uppercase text-white">
-                Breakdown
-              </h2>
-            </RevealText>
-            <div className="h-[2px] w-12 bg-[#d2b063] lg:hidden mb-6"></div>
-          </div>
-          <FadeIn className="lg:col-span-8">
-            <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[18px] leading-[1.8] tracking-[0.05em] text-gray-300 space-y-6">
-              <p className="hidden md:block">Coming into the project with a fresh perspective on the Web3 and NFT space, I began by researching the industry and creating a structured mind map to break down the visual identity, audience, and wider campaign direction. This was followed by early wireframes and layout exploration to define the user journey and overall structure of the website experience.</p>
-              <p>Working within a tight two-week timeframe, I moved into a rapid design sprint focused on delivering a cohesive digital experience across the website and supporting social media campaign, successfully unifying multiple parts of the project under one creative direction.</p>
-            </div>
-          </FadeIn>
-        </section>
-
-        {/* Gallery Banners & Grids */}
-        <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto flex flex-col gap-8 md:gap-16">
-          <div className="flex flex-col gap-3 max-w-2xl">
-            <RevealText>
-              <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[26px] tracking-[0.25em] uppercase text-[#50C1BA]">Campaign & Collectibles</h2>
-            </RevealText>
+      {/* ── 02 · The Problem + Solution ── */}
+      <Section pad="default" border="top">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          <div className="flex flex-col gap-6">
+            <SectionHeader eyebrow="02 — The Problem" title="The Challenge" />
             <FadeIn>
-              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400">Key visuals and social assets that carried the launch, alongside the NFT collectibles themselves.</p>
+              <div className={BODY}>
+                <p>One of the main challenges was translating a complex Web3 and NFT concept into a clear and engaging user experience within a short production timeframe.</p>
+                <p>The project included multiple moving parts — website design, NFT storytelling, and social media assets — all of which needed to feel cohesive under one visual direction. I began with research and mind mapping to understand the Web3 space, audience, and visual identity before moving into a rapid design sprint.</p>
+              </div>
             </FadeIn>
           </div>
+          <div className="flex flex-col gap-6">
+            <SectionHeader eyebrow="03 — The Response" title="The Solution" />
+            <FadeIn>
+              <div className={BODY}>
+                <p>The final solution was a cohesive digital campaign that combined the website, NFT experience, and social media content into a unified platform. The website acted as a central hub for the project, while the social media campaign helped build awareness and engagement around the launch.</p>
+                <p>Using a clean visual hierarchy and contemporary Web3-inspired design, the final experience balanced innovation with accessibility — creating an engaging platform for both existing fans and audiences new to NFTs.</p>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </Section>
 
-          {/* Banner 1 */}
-          <div>
-            <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-              <motion.img
-                src={imgRectangle34}
-                alt="Banner 1"
-                className="w-full h-auto object-cover cursor-pointer"
-                onClick={() => openAt(14)}
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              />
+      {/* ── Approach pull quote ── */}
+      <Section width="narrow" pad="tight">
+        <PullQuote attribution="Always First — Sunil Gavaskar">
+          A modern, accessible Web3 experience centred around immersive layouts, bold typography, and digital storytelling — balancing innovation with clarity for both existing fans and audiences new to NFTs.
+        </PullQuote>
+      </Section>
+
+      {/* ── 04 · Thinking — research & wireframing ── */}
+      <Section width="wide" pad="default" border="top">
+        <SectionHeader
+          eyebrow="04 — Thinking"
+          title="Research & Wireframing"
+          lead="From mind mapping the Web3 space to early sketches and wireframes that shaped the user journey."
+          className="mb-10 md:mb-14 max-w-2xl"
+        />
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 w-full">
+          <div className="w-full lg:w-1/4 hidden md:flex justify-center lg:justify-start items-start">
+            <img src={imgNftieSunilGavaskarMindmap2} alt="Wireframe" className="w-full max-w-[300px] h-auto object-contain rounded-2xl bg-[#0a0a0a] p-4 drop-shadow-2xl cursor-pointer" data-cursor="view" onClick={() => openAt(7)} />
+          </div>
+          <div className="w-full lg:w-3/4 flex flex-col gap-8">
+            <div className="w-full bg-[#011615] rounded-[24px] py-16 px-8 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden shadow-2xl">
+              <div className="w-full md:w-[40%] flex justify-center gap-4 relative z-10 opacity-80 mix-blend-screen">
+                <img src={imgImg01632} className="w-[45%] h-auto rounded cursor-pointer" alt="Sketch Process 1" onClick={() => openAt(8)} />
+                <img src={imgImg01642} className="w-[45%] h-auto rounded mt-8 cursor-pointer" alt="Sketch Process 2" onClick={() => openAt(9)} />
+              </div>
+              <div className="w-full md:w-[60%] flex justify-center z-10">
+                <img src={imgNftieSunilGavaskarMindmapV11} alt="Mindmap" className="w-full h-auto object-cover rounded-xl cursor-pointer" data-cursor="view" onClick={() => openAt(10)} />
+              </div>
             </div>
-            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Campaign key visual</p>
+            <ImageGrid
+              cols={3}
+              rounded="2xl"
+              items={[imgRectangle27, imgRectangle28, imgRectangle29].map((src, i) => ({
+                src,
+                alt: `Wireframe ${i + 1}`,
+                onClick: () => openAt(11 + i),
+                imgClassName: 'w-full aspect-square object-cover',
+              }))}
+            />
+            <p className={CAPTION}>Wireframes — defining structure before visual design</p>
           </div>
+        </div>
+      </Section>
 
-          {/* Grid 1 — Social media */}
+      {/* ── 05 · Breakdown ── */}
+      <Section pad="default" border="top">
+        <EditorialSplit
+          ratio="4/8"
+          media={
+            <FadeIn>
+              <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[18px] leading-[1.8] tracking-[0.05em] text-gray-300 space-y-6 lg:pt-2">
+                <p>Coming into the project with a fresh perspective on the Web3 and NFT space, I began by researching the industry and creating a structured mind map to break down the visual identity, audience, and wider campaign direction. This was followed by early wireframes and layout exploration to define the user journey and overall structure of the website experience.</p>
+                <p>Working within a tight two-week timeframe, I moved into a rapid design sprint focused on delivering a cohesive digital experience across the website and supporting social media campaign, successfully unifying multiple parts of the project under one creative direction.</p>
+              </div>
+            </FadeIn>
+          }
+        >
+          <SectionHeader eyebrow="05 — Creative Process" title="Breakdown" />
+        </EditorialSplit>
+      </Section>
+
+      {/* ── 06 · Execution — campaign & collectibles ── */}
+      <Section width="wide" pad="default" border="top">
+        <SectionHeader
+          eyebrow="06 — Execution"
+          title="Campaign & Collectibles"
+          lead="Key visuals and social assets that carried the launch, alongside the NFT collectibles themselves."
+          className="mb-10 md:mb-14 max-w-2xl"
+        />
+        <div className="flex flex-col gap-8 md:gap-16">
+          <FeatureImage src={imgRectangle34} alt="Banner 1" onClick={() => openAt(14)} rounded="3xl" caption="Campaign key visual" />
           <div>
-          <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mb-4">Social media campaign</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[imgRectangle52, imgRectangle53, imgRectangle54, imgRectangle55].map((img, i) => (
-              <motion.div
-                key={i}
-                className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <motion.img
-                  src={img}
-                  className="w-full aspect-square object-cover cursor-pointer"
-                  alt={`Grid item ${i+1}`}
-                  onClick={() => openAt(15 + i)}
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                />
-              </motion.div>
-            ))}
+            <p className={`${CAPTION} mb-4`}>Social media campaign</p>
+            <ImageGrid
+              cols={4}
+              rounded="2xl"
+              items={[imgRectangle52, imgRectangle53, imgRectangle54, imgRectangle55].map((src, i) => ({
+                src,
+                alt: `Social media ${i + 1}`,
+                onClick: () => openAt(15 + i),
+                imgClassName: 'w-full aspect-square object-cover',
+              }))}
+            />
           </div>
-          </div>
+          <FeatureImage src={imgRectangle37} alt="Banner 2" onClick={() => openAt(19)} rounded="3xl" caption="Launch announcement" />
+        </div>
+      </Section>
 
-          {/* Banner 2 */}
-          <div>
-            <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-              <motion.img
-                src={imgRectangle37}
-                alt="Banner 2"
-                className="w-full h-auto object-cover cursor-pointer"
-                onClick={() => openAt(19)}
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              />
-            </div>
-            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Launch announcement</p>
-          </div>
+      {/* ── 07 · Final outcome — NFT collectibles ── */}
+      <Section width="wide" pad="tight">
+        <SectionHeader eyebrow="07 — Final Outcome" title="NFT Collectibles" className="mb-10 md:mb-14" />
+        <ImageGrid
+          cols={4}
+          rounded="2xl"
+          frameClassName="bg-[#111]"
+          items={[imgRectangle30, imgRectangle31, imgRectangle32, imgRectangle33].map((src, i) => ({
+            src,
+            alt: `NFT collectible ${i + 1}`,
+            onClick: () => openAt(20 + i),
+            imgClassName: 'w-full aspect-square object-contain',
+          }))}
+        />
+      </Section>
 
-          {/* Grid 2 — NFT collectibles */}
-          <div>
-          <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mb-4">NFT collectibles</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[imgRectangle30, imgRectangle31, imgRectangle32, imgRectangle33].map((img, i) => (
-              <motion.div
-                key={i}
-                className="w-full rounded-[12px] md:rounded-[24px] overflow-hidden drop-shadow-lg bg-[#111]"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <motion.img
-                  src={img}
-                  className="w-full aspect-square object-contain cursor-pointer"
-                  alt={`Grid 2 item ${i+1}`}
-                  onClick={() => openAt(20 + i)}
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                />
-              </motion.div>
-            ))}
-          </div>
-          </div>
-        </section>
-
-
-        <NextProject title="JMA Customs" to="/projects/jma-customs" />
-        <Footer className="md:pl-[280px]" />
-      </div>
+      <NextProject title="JMA Customs" to="/projects/jma-customs" />
 
       <GalleryLightbox
         images={SUNIL_GALLERY}
@@ -463,6 +277,6 @@ export default function SunilGavaskar() {
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
       />
-    </div>
+    </CaseStudyShell>
   );
 }
