@@ -122,7 +122,7 @@ export default function JMACustoms() {
     <CaseStudyShell sidebarNav={sidebarNav} onBack={goHome}>
       {/* ── Cinematic hero ── */}
       <Hero
-        heightClassName="h-screen"
+        heightClassName="h-[100svh]"
         align="bottom-left"
         overlayClassName="bg-black/65"
         eyebrow="GTA V / FiveM — Virtual Creative Ecosystem"

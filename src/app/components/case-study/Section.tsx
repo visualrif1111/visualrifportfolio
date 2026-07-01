@@ -11,9 +11,9 @@ const WIDTHS: Record<Width, string> = {
 };
 
 const PADS: Record<Pad, string> = {
-  default: 'py-20 md:py-28',
-  tight: 'py-12 md:py-16',
-  loose: 'py-28 md:py-40',
+  default: 'py-16 md:py-28',
+  tight: 'py-10 md:py-16',
+  loose: 'py-20 md:py-40',
   none: '',
 };
 
