@@ -322,6 +322,7 @@ export default function JMACustoms() {
                     title="GTA V / FiveM — JMA Customs"
                   />
                 </div>
+                <p className="font-['Rajdhani',sans-serif] font-semibold text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-gray-600 mt-3">Inside the FiveM world — JMA Customs in action</p>
               </FadeIn>
               <div className="grid grid-cols-3 gap-3">
                 {['Roleplay Culture', 'Metaverse Vision', 'Digital Ownership'].map((tag) => (
@@ -527,6 +528,7 @@ export default function JMACustoms() {
                     title="JMA Customs — Virtual Creative Agency"
                   />
                 </div>
+                <p className="font-['Rajdhani',sans-serif] font-semibold text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-gray-600 mt-3">The brand in motion — cyber-luxury identity walkthrough</p>
               </FadeIn>
               <div className="flex flex-col gap-7">
                 {identityPillars.map((item, i) => (

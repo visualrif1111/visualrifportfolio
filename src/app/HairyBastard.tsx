@@ -290,6 +290,7 @@ export default function HairyBastard() {
                   />
                 </div>
               </div>
+              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-1">The finished cards — spot UV lacquer on a matte charcoal base</p>
             </div>
           </div>
         </section>
@@ -306,6 +307,7 @@ export default function HairyBastard() {
               whileHover={{ scale: 1.01 }}
               transition={{ type: 'spring', stiffness: 200, damping: 30 }}
             />
+            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">The Hairy Bastard — 80 Brick Lane, London</p>
           </FadeIn>
         </section>
 
@@ -347,6 +349,9 @@ export default function HairyBastard() {
           <RevealText className="w-full text-center">
             <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Initial Concept</h2>
           </RevealText>
+          <FadeIn className="w-full text-center -mt-4">
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">The head silhouette and the Brick Lane street map, unified into a single mark.</p>
+          </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 w-full" data-cursor="view">
             {/* Left: logo portrait */}
             <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(7)}>
@@ -369,6 +374,9 @@ export default function HairyBastard() {
           <RevealText className="w-full text-center">
             <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Development — Stage 1</h2>
           </RevealText>
+          <FadeIn className="w-full text-center -mt-4">
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">Studying the map detail and testing it across early card iterations.</p>
+          </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full" data-cursor="view">
             <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(10)}>
               <motion.img src={imgDev1Maps} alt="Development Stage 1 — Map Studies" loading="lazy" className="w-full h-auto object-cover" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
@@ -395,6 +403,9 @@ export default function HairyBastard() {
           <RevealText className="w-full text-center">
             <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Development — Stage 2</h2>
           </RevealText>
+          <FadeIn className="w-full text-center -mt-4">
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">Refining the map into a repeatable pattern for the spot UV treatment.</p>
+          </FadeIn>
           <FadeIn className="w-full max-w-2xl mx-auto" data-cursor="view">
             <motion.img
               src={imgDev2Patterns}
@@ -413,6 +424,9 @@ export default function HairyBastard() {
           <RevealText className="w-full text-center">
             <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Spot UV</h2>
           </RevealText>
+          <FadeIn className="w-full text-center -mt-4">
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">A glossy UV lacquer lifts the map pattern off the matte base — quality you can feel.</p>
+          </FadeIn>
           <FadeIn className="w-full max-w-3xl mx-auto" data-cursor="view">
             <motion.img
               src={imgSpotUVFront}
@@ -446,6 +460,9 @@ export default function HairyBastard() {
           <RevealText className="w-full text-center">
             <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Final</h2>
           </RevealText>
+          <FadeIn className="w-full text-center -mt-4">
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">The finished business card — front and back, in the hand.</p>
+          </FadeIn>
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 w-full" data-cursor="view">
             <div className="flex flex-col gap-4">
               <div className="overflow-hidden rounded-lg cursor-pointer" onClick={() => openAt(3)}>

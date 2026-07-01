@@ -424,9 +424,12 @@ export default function Swiftrooms() {
 
         {/* Storyboard Section */}
         <section className="w-full px-6 md:px-12 pb-24 pt-12 max-w-[1920px] mx-auto bg-white text-black text-center">
-          <RevealText className="mb-12">
+          <RevealText className="mb-4">
             <h3 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[45px] tracking-[0.25em] uppercase text-[#50C1BA]">Storyboard</h3>
           </RevealText>
+          <FadeIn className="mb-12">
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-600 max-w-xl mx-auto">Authentic Swiftrooms photography sequenced frame-by-frame, then brought to life as motion.</p>
+          </FadeIn>
           <div className="grid grid-cols-4 md:grid-cols-7 lg:grid-cols-10 gap-2" data-cursor="view">
             {[
               imgScene12, imgScene1A3, imgScene2A3, imgScene3A2, imgScene32,
@@ -479,9 +482,11 @@ export default function Swiftrooms() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-[1920px] mx-auto px-6 md:px-12 w-full">
             <FadeIn className="relative w-full">
               <img src={imgImage3} alt="Sitemap" loading="lazy" className="w-full h-auto object-contain bg-white rounded-lg p-4 min-h-[300px] md:min-h-[500px] cursor-pointer" onClick={() => openAt(3)} />
+              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Sitemap — mapping the page structure</p>
             </FadeIn>
             <FadeIn delay={0.1} className="relative w-full">
               <img src={importedImage3} alt="Wireframes and Content Request" loading="lazy" className="w-full h-auto object-cover rounded-lg min-h-[300px] md:min-h-[500px] cursor-pointer" onClick={() => openAt(4)} />
+              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Wireframes & content request</p>
             </FadeIn>
           </div>
         </section>

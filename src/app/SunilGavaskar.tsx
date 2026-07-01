@@ -268,6 +268,7 @@ export default function SunilGavaskar() {
                 <img src={imgEllipse5} loading="lazy" className="absolute bottom-4 right-4 w-20 md:w-24 h-auto drop-shadow-[0_10px_30px_rgba(210,176,99,0.3)] z-20" alt="Gold Seal" />
               </div>
             </div>
+            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-1">The Always First platform — homepage, virtual gallery & collectibles</p>
           </div>
         </section>
 
@@ -285,6 +286,14 @@ export default function SunilGavaskar() {
 
         {/* Elaborate Mindmap & Sketches Section */}
         <section className="w-full max-w-[1920px] mx-auto px-6 md:px-12 pt-12 pb-24 flex flex-col gap-10 border-t border-gray-800 mt-8">
+          <div className="flex flex-col gap-3 max-w-2xl">
+            <RevealText>
+              <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[26px] tracking-[0.25em] uppercase text-[#50C1BA]">Research & Wireframing</h2>
+            </RevealText>
+            <FadeIn>
+              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400">From mind mapping the Web3 space to early sketches and wireframes that shaped the user journey.</p>
+            </FadeIn>
+          </div>
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 w-full">
             {/* Left tall panel: wireframe */}
             <div className="w-full lg:w-1/4 hidden md:flex justify-center lg:justify-start items-start">
@@ -326,6 +335,7 @@ export default function SunilGavaskar() {
                   </motion.div>
                 ))}
               </div>
+              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500">Wireframes — defining structure before visual design</p>
             </div>
           </div>
         </section>
@@ -350,19 +360,33 @@ export default function SunilGavaskar() {
 
         {/* Gallery Banners & Grids */}
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto flex flex-col gap-8 md:gap-16">
-          {/* Banner 1 */}
-          <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-            <motion.img
-              src={imgRectangle34}
-              alt="Banner 1"
-              className="w-full h-auto object-cover cursor-pointer"
-              onClick={() => openAt(14)}
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            />
+          <div className="flex flex-col gap-3 max-w-2xl">
+            <RevealText>
+              <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[26px] tracking-[0.25em] uppercase text-[#50C1BA]">Campaign & Collectibles</h2>
+            </RevealText>
+            <FadeIn>
+              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400">Key visuals and social assets that carried the launch, alongside the NFT collectibles themselves.</p>
+            </FadeIn>
           </div>
 
-          {/* Grid 1 */}
+          {/* Banner 1 */}
+          <div>
+            <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
+              <motion.img
+                src={imgRectangle34}
+                alt="Banner 1"
+                className="w-full h-auto object-cover cursor-pointer"
+                onClick={() => openAt(14)}
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              />
+            </div>
+            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Campaign key visual</p>
+          </div>
+
+          {/* Grid 1 — Social media */}
+          <div>
+          <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mb-4">Social media campaign</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[imgRectangle52, imgRectangle53, imgRectangle54, imgRectangle55].map((img, i) => (
               <motion.div
@@ -384,20 +408,26 @@ export default function SunilGavaskar() {
               </motion.div>
             ))}
           </div>
-
-          {/* Banner 2 */}
-          <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
-            <motion.img
-              src={imgRectangle37}
-              alt="Banner 2"
-              className="w-full h-auto object-cover cursor-pointer"
-              onClick={() => openAt(19)}
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            />
           </div>
 
-          {/* Grid 2 */}
+          {/* Banner 2 */}
+          <div>
+            <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
+              <motion.img
+                src={imgRectangle37}
+                alt="Banner 2"
+                className="w-full h-auto object-cover cursor-pointer"
+                onClick={() => openAt(19)}
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              />
+            </div>
+            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Launch announcement</p>
+          </div>
+
+          {/* Grid 2 — NFT collectibles */}
+          <div>
+          <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mb-4">NFT collectibles</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[imgRectangle30, imgRectangle31, imgRectangle32, imgRectangle33].map((img, i) => (
               <motion.div
@@ -418,6 +448,7 @@ export default function SunilGavaskar() {
                 />
               </motion.div>
             ))}
+          </div>
           </div>
         </section>
 

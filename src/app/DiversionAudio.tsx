@@ -255,6 +255,7 @@ export default function DiversionAudio() {
                   <motion.img src={imgRectangle78} alt="Logo Yellow Background" loading="lazy" className="w-full h-full object-cover min-h-[200px] cursor-pointer" onClick={() => openAt(3)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
                 </div>
               </div>
+              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">The identity in context — live events & logo lock-ups</p>
             </div>
           </div>
 
@@ -307,6 +308,9 @@ export default function DiversionAudio() {
           <RevealText className="w-full text-center">
             <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] tracking-[0.25em] uppercase text-[#50C1BA]">Research</h2>
           </RevealText>
+          <FadeIn className="w-full text-center">
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">Mapping the underground Drum &amp; Bass scene — audience, culture, and visual language.</p>
+          </FadeIn>
           <FadeIn className="w-full max-w-7xl mx-auto overflow-hidden">
             <img src={imgRectangle93} alt="Research Mindmap" loading="lazy" className="w-full h-auto object-contain invert mix-blend-screen opacity-90 min-h-[300px]" />
           </FadeIn>
@@ -317,6 +321,9 @@ export default function DiversionAudio() {
           <RevealText className="w-full text-center">
             <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] tracking-[0.25em] uppercase text-[#50C1BA]">Inspiration</h2>
           </RevealText>
+          <FadeIn className="w-full text-center -mt-8">
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">Bold, minimal reference marks that shaped the direction of the identity.</p>
+          </FadeIn>
 
           {/* Logos container */}
           <FadeIn className="w-full bg-white rounded-[24px] p-8 md:p-16 shadow-2xl flex flex-col justify-center items-center gap-10 md:gap-16 max-w-4xl mx-auto">
@@ -347,6 +354,7 @@ export default function DiversionAudio() {
               </motion.div>
             ))}
           </div>
+          <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 text-center">Mood & shape studies</p>
         </section>
 
         {/* Experimentation & Iteration */}
@@ -354,6 +362,9 @@ export default function DiversionAudio() {
           <RevealText className="w-full text-center">
             <h2 className="font-['Barlow',sans-serif] font-medium text-[24px] tracking-[0.25em] uppercase text-[#50C1BA]">Experimentation &amp; Iteration</h2>
           </RevealText>
+          <FadeIn className="w-full text-center -mt-8">
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400 max-w-xl mx-auto">Exploring complexity first, then stripping the logo back to its most recognisable form.</p>
+          </FadeIn>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
             <motion.div
@@ -415,6 +426,7 @@ export default function DiversionAudio() {
               <motion.img src={imgRectangle66} alt="Final Black Logo" loading="lazy" className="w-full h-auto object-cover min-h-[300px] cursor-pointer" onClick={() => openAt(15)} whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
             </motion.div>
           </div>
+          <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 text-center">Final logo — yellow & black variations</p>
         </section>
 
         {/* Breakdown Section */}
@@ -450,6 +462,15 @@ export default function DiversionAudio() {
 
         {/* Gallery Grids */}
         <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto flex flex-col gap-8 md:gap-16">
+          <div className="flex flex-col gap-3 max-w-2xl">
+            <RevealText>
+              <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[26px] tracking-[0.25em] uppercase text-[#50C1BA]">In The Wild</h2>
+            </RevealText>
+            <FadeIn>
+              <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400">The identity live across events and venues — including Boomtown Fair and Volks Nightclub.</p>
+            </FadeIn>
+          </div>
+
           {/* Main Hero Shot */}
           <div className="w-full rounded-[16px] md:rounded-[30px] overflow-hidden drop-shadow-2xl">
             <motion.img

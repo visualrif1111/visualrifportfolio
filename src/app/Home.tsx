@@ -492,10 +492,10 @@ export default function Home() {
       <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20">
-          <ProjectCategory title="UX / UI, WEB DESIGN" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
-          <ProjectCategory title="IMMERSIVE BRAND & DIGITAL EXPERIENCE DESIGN" projects={projects.jma} className="mb-32 md:mb-48" theme="dark" />
-          <ProjectCategory title="BRANDING & MARKETING" projects={projects.branding} className="mb-32 md:mb-48" theme="dark" />
-          <ProjectCategory title="3D DESIGN" projects={projects.design3d} className="mb-32 md:mb-48" theme="light" />
+          <ProjectCategory title="UX / UI, WEB DESIGN" blurb="Digital products & websites — from luxury hospitality to Web3" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
+          <ProjectCategory title="IMMERSIVE BRAND & DIGITAL EXPERIENCE DESIGN" blurb="A virtual creative ecosystem built inside GTA V / FiveM" projects={projects.jma} className="mb-32 md:mb-48" theme="dark" />
+          <ProjectCategory title="BRANDING & MARKETING" blurb="Identity systems for music, culture & independent business" projects={projects.branding} className="mb-32 md:mb-48" theme="dark" />
+          <ProjectCategory title="3D DESIGN" blurb="Experimental 3D & spatial visual work" projects={projects.design3d} className="mb-32 md:mb-48" theme="light" />
         </section>
 
         {/* Expanding Image Section */}
@@ -518,7 +518,7 @@ export default function Home() {
   );
 }
 
-function ProjectCategory({ title, projects, className = "", theme = "dark" }: { title: string, projects: any[], className?: string, theme?: "dark" | "light" }) {
+function ProjectCategory({ title, projects, className = "", theme = "dark", blurb = "" }: { title: string, projects: any[], className?: string, theme?: "dark" | "light", blurb?: string }) {
   const isBrandingLayout = projects.some(p => p.type === 'tall' || p.type === 'quarter');
   // Always use light text on our dark animated background
   const titleClass = theme === "light" ? "text-gray-300 opacity-40" : "text-gray-300 opacity-20";
@@ -527,10 +527,11 @@ function ProjectCategory({ title, projects, className = "", theme = "dark" }: { 
     const full = projects.find(p => p.type === 'full');
     const tall = projects.find(p => p.type === 'tall');
     const quarters = projects.filter(p => p.type === 'quarter');
-    
+
     return (
       <div className={className}>
-        <h2 className={`text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] mb-12 uppercase text-center ${titleClass}`}>{title}</h2>
+        <h2 className={`text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] ${blurb ? 'mb-4' : 'mb-12'} uppercase text-center ${titleClass}`}>{title}</h2>
+        {blurb && <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 text-center max-w-xl mx-auto mb-12">{blurb}</p>}
         <div className="flex flex-col gap-4">
           <ProjectCard project={full} className="w-full h-[400px] md:h-[600px]" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:h-[600px]">
@@ -548,8 +549,9 @@ function ProjectCategory({ title, projects, className = "", theme = "dark" }: { 
 
   return (
     <div className={className}>
-      <h2 className={`text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] mb-12 uppercase text-center ${titleClass}`}>{title}</h2>
-      
+      <h2 className={`text-3xl md:text-6xl font-medium font-['Barlow',sans-serif] tracking-[0.3em] ${blurb ? 'mb-4' : 'mb-12'} uppercase text-center ${titleClass}`}>{title}</h2>
+      {blurb && <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 text-center max-w-xl mx-auto mb-12">{blurb}</p>}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((p, i) => (
           <ProjectCard 

@@ -230,6 +230,7 @@ export default function MoncksOfDoverStreet() {
                 <motion.img src={imgRectangle25} alt="Desktop Mockup" loading="lazy" className="w-full h-auto min-h-[200px] md:min-h-[400px] object-cover" whileHover={{ scale: 1.04 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
               </div>
             </div>
+            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-1">Homepage design across desktop, tablet & mobile</p>
           </div>
         </section>
 
@@ -244,15 +245,22 @@ export default function MoncksOfDoverStreet() {
         </section>
 
         {/* Styling Sheet */}
-        <section className="w-full px-6 md:px-12 py-16 max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <FadeIn className="relative w-full">
-            <img src={imgMoncksStylingSheetDesktop11} alt="Styling Sheet" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover rounded-lg bg-white cursor-pointer" onClick={() => openAt(3)} />
-          </FadeIn>
-          <FadeIn delay={0.1} className="relative w-full flex justify-center">
-            <div className="relative w-full max-w-xl overflow-hidden rounded-lg cursor-pointer" data-cursor="view" onClick={() => openAt(4)}>
-              <motion.img src={imgRectangle40} alt="Typography &amp; Colors" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover" whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
-            </div>
-          </FadeIn>
+        <section className="w-full px-6 md:px-12 pt-16 pb-8 max-w-[1920px] mx-auto">
+          <RevealText className="mb-8">
+            <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[26px] tracking-[0.25em] uppercase text-[#50C1BA]">Visual Language</h2>
+          </RevealText>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <FadeIn className="relative w-full">
+              <img src={imgMoncksStylingSheetDesktop11} alt="Styling Sheet" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover rounded-lg bg-white cursor-pointer" onClick={() => openAt(3)} />
+              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Styling sheet — the components that define the interface</p>
+            </FadeIn>
+            <FadeIn delay={0.1} className="relative w-full flex flex-col items-center">
+              <div className="relative w-full max-w-xl overflow-hidden rounded-lg cursor-pointer" data-cursor="view" onClick={() => openAt(4)}>
+                <motion.img src={imgRectangle40} alt="Typography &amp; Colors" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover" whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }} />
+              </div>
+              <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3 w-full max-w-xl">Typography & a restrained colour palette</p>
+            </FadeIn>
+          </div>
         </section>
 
         {/* Big Rounded Image */}
@@ -260,10 +268,14 @@ export default function MoncksOfDoverStreet() {
           <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[76px] cursor-pointer" data-cursor="view" onClick={() => openAt(5)}>
             <motion.img src={imgRectangle27} alt="Design Element" loading="lazy" className="w-full h-auto min-h-[300px] md:min-h-[500px] object-cover" whileHover={{ scale: 1.02 }} transition={{ type: 'spring', stiffness: 200, damping: 30 }} />
           </div>
+          <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Editorial imagery carrying the atmosphere of the brasserie</p>
         </section>
 
         {/* 4 Image Grid */}
         <section className="w-full px-6 md:px-12 py-8 max-w-[1920px] mx-auto">
+          <RevealText className="mb-8">
+            <h2 className="font-['Barlow',sans-serif] font-medium text-[20px] md:text-[26px] tracking-[0.25em] uppercase text-[#50C1BA]">Interface Details</h2>
+          </RevealText>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6" data-cursor="view">
             {[imgRectangle30, imgRectangle31, imgRectangle32, imgRectangle33].map((img, i) => (
               <motion.div
@@ -292,9 +304,13 @@ export default function MoncksOfDoverStreet() {
         <section className="w-full py-16 flex flex-col gap-16 overflow-hidden">
           <FadeIn className="relative w-full px-6 md:px-12 max-w-[1920px] mx-auto">
             <img src={img49} alt="Sitemap" className="w-full h-auto object-cover rounded-lg bg-white cursor-pointer" onClick={() => openAt(10)} />
+            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3">Sitemap — structuring the 15-page journey</p>
           </FadeIn>
-          <div className="relative w-full max-w-[1920px] mx-auto cursor-pointer" onClick={() => openAt(11)}>
-            <img src={img59} alt="Mobile Screens" className="w-full h-auto object-cover" />
+          <div className="relative w-full max-w-[1920px] mx-auto">
+            <div className="cursor-pointer" onClick={() => openAt(11)}>
+              <img src={img59} alt="Mobile Screens" className="w-full h-auto object-cover" />
+            </div>
+            <p className="font-['Rajdhani',sans-serif] font-medium text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-gray-500 mt-3 px-6 md:px-12">Mobile screens — the experience carried across every breakpoint</p>
           </div>
         </section>
 

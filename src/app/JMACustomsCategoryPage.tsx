@@ -237,9 +237,16 @@ export default function JMACustomsCategoryPage() {
 
         {/* Gallery */}
         <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32">
-          <RevealText className="mb-16 text-center">
+          <RevealText className="mb-4 text-center">
             <h2 className="font-['Rajdhani',sans-serif] font-semibold text-4xl tracking-[0.15em] uppercase text-[#50C1BA]">Gallery</h2>
           </RevealText>
+          <FadeIn>
+            <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.7] text-gray-400 text-center max-w-xl mx-auto mb-16 tracking-[0.04em]">
+              {data.images && data.images.length > 0
+                ? `A selection of ${data.title.toLowerCase()} designed and implemented in-game.`
+                : 'Selected work from this category — coming soon.'}
+            </p>
+          </FadeIn>
           {data.images && data.images.length > 0 ? (
             <div className="columns-2 md:columns-3 gap-3 md:gap-4 space-y-3 md:space-y-4">
               {data.images.map((src, i) => (
@@ -253,7 +260,7 @@ export default function JMACustomsCategoryPage() {
                 >
                   <img
                     src={src}
-                    alt={`Custom clothing ${i + 1}`}
+                    alt={`${data.title} — design ${i + 1}`}
                     loading="lazy"
                     className="w-full h-auto block"
                   />
