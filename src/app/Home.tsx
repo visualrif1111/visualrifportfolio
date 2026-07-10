@@ -521,35 +521,40 @@ const aboutGallery = [
 
 const AboutGallery = React.memo(() => {
   const [index, setIndex] = React.useState(0);
-  const [paused, setPaused] = React.useState(false);
   const reduce = useReducedMotion();
   const count = aboutGallery.length;
   const go = React.useCallback((dir: number) => setIndex((i) => (i + dir + count) % count), [count]);
 
   React.useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % count), 6000);
+    const id = setInterval(() => setIndex((i) => (i + 1) % count), 5000);
     return () => clearInterval(id);
-  }, [paused, count]);
+  }, [count]);
 
   const active = aboutGallery[index];
 
   return (
-    <div
-      className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center group/gallery"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <div className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center group/gallery">
       <AnimatePresence initial={false}>
         <motion.img
           key={index}
           src={active.src}
           alt={active.alt}
           loading="lazy"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: reduce ? 0 : 0.8, ease: 'easeInOut' }}
+          initial={{ opacity: 0, scale: 1.25, filter: 'hue-rotate(220deg) saturate(4) blur(30px) contrast(1.5)' }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            filter: reduce
+              ? 'hue-rotate(0deg) saturate(1) blur(0px) contrast(1)'
+              : [
+                  'hue-rotate(220deg) saturate(4) blur(30px) contrast(1.5)',
+                  'hue-rotate(110deg) saturate(2.6) blur(10px) contrast(1.25)',
+                  'hue-rotate(0deg) saturate(1) blur(0px) contrast(1)',
+                ],
+          }}
+          exit={{ opacity: 0, scale: 0.82, filter: 'hue-rotate(-180deg) saturate(4) blur(30px) contrast(1.5)' }}
+          transition={{ duration: reduce ? 0 : 1.5, ease: [0.7, 0, 0.3, 1] }}
+          style={{ willChange: 'transform, filter, opacity' }}
           className={
             active.fit === 'contain'
               ? 'absolute top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-[1920px] h-[120%] object-contain object-center'
