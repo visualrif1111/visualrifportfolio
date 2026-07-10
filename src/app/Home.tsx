@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useReducedMotion } from 'motion/react';
 import { X } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import YouTube from 'react-youtube';
@@ -9,6 +9,8 @@ import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
+import imgAboutLandscape from "../imports/about-landscape.png";
+import imgAboutStudio from "../imports/about-studio.png";
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
 import imgRectangle16 from "figma:asset/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.png";
 import imgRectangle15 from "../imports/image-1.png";
@@ -395,14 +397,7 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center">
-        <img
-          src={imgRectangle38}
-          alt="Arif portrait"
-          loading="lazy"
-          className="w-full max-w-[1920px] h-[120%] object-contain object-center absolute top-[-10%]"
-        />
-      </div>
+      <AboutGallery />
 
       <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
         <div className="h-16 md:h-24"></div>
@@ -517,6 +512,80 @@ export default function Home() {
     </div>
   );
 }
+
+const aboutGallery = [
+  { src: imgRectangle38, alt: 'Arif portrait', fit: 'contain' as const },
+  { src: imgAboutLandscape, alt: 'Arif overlooking a valley at sunset', fit: 'cover' as const },
+  { src: imgAboutStudio, alt: 'Arif in the studio', fit: 'cover' as const },
+];
+
+const AboutGallery = React.memo(() => {
+  const [index, setIndex] = React.useState(0);
+  const [paused, setPaused] = React.useState(false);
+  const reduce = useReducedMotion();
+  const count = aboutGallery.length;
+  const go = React.useCallback((dir: number) => setIndex((i) => (i + dir + count) % count), [count]);
+
+  React.useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % count), 6000);
+    return () => clearInterval(id);
+  }, [paused, count]);
+
+  const active = aboutGallery[index];
+
+  return (
+    <div
+      className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center group/gallery"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <AnimatePresence initial={false}>
+        <motion.img
+          key={index}
+          src={active.src}
+          alt={active.alt}
+          loading="lazy"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: reduce ? 0 : 0.8, ease: 'easeInOut' }}
+          className={
+            active.fit === 'contain'
+              ? 'absolute top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-[1920px] h-[120%] object-contain object-center'
+              : 'absolute inset-0 w-full h-full object-cover object-center'
+          }
+        />
+      </AnimatePresence>
+
+      <button
+        aria-label="Previous image"
+        onClick={() => go(-1)}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 flex items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm opacity-60 hover:opacity-100 hover:bg-[#50C1BA] hover:text-black transition-all"
+      >
+        <ScrollTriangle className="w-4 h-4 -rotate-90" />
+      </button>
+      <button
+        aria-label="Next image"
+        onClick={() => go(1)}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 flex items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm opacity-60 hover:opacity-100 hover:bg-[#50C1BA] hover:text-black transition-all"
+      >
+        <ScrollTriangle className="w-4 h-4 rotate-90" />
+      </button>
+
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 px-4 py-2.5 rounded-full bg-black/30 backdrop-blur-sm">
+        {aboutGallery.map((img, i) => (
+          <button
+            key={i}
+            aria-label={`Go to ${img.alt}`}
+            onClick={() => setIndex(i)}
+            className={`h-[3px] rounded-full transition-all duration-300 ${i === index ? 'w-8 bg-[#50C1BA]' : 'w-4 bg-white/50 hover:bg-white/80'}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+});
 
 function ProjectCategory({ title, projects, className = "", theme = "dark", blurb = "" }: { title: string, projects: any[], className?: string, theme?: "dark" | "light", blurb?: string }) {
   const isBrandingLayout = projects.some(p => p.type === 'tall' || p.type === 'quarter');
