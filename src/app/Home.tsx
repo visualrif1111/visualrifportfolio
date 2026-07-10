@@ -11,6 +11,7 @@ import { FadeIn } from './components/motion/FadeIn';
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
 import imgAboutLandscape from "../imports/about-landscape.png";
 import imgAboutStudio from "../imports/about-studio.png";
+import imgAboutBeach from "../imports/about-portrait-beach.png";
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
 import imgRectangle16 from "figma:asset/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.png";
 import imgRectangle15 from "../imports/image-1.png";
@@ -517,6 +518,7 @@ const aboutGallery = [
   { src: imgRectangle38, alt: 'Arif portrait', fit: 'contain' as const },
   { src: imgAboutLandscape, alt: 'Arif overlooking a valley at sunset', fit: 'cover' as const },
   { src: imgAboutStudio, alt: 'Arif in the studio', fit: 'cover' as const },
+  { src: imgAboutBeach, alt: 'Arif on the beach', fit: 'cover' as const },
 ];
 
 const AboutGallery = React.memo(() => {
@@ -533,7 +535,7 @@ const AboutGallery = React.memo(() => {
   const active = aboutGallery[index];
 
   return (
-    <div className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center group/gallery">
+    <div className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-black md:bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center group/gallery">
       <AnimatePresence initial={false}>
         <motion.img
           key={index}
@@ -557,8 +559,8 @@ const AboutGallery = React.memo(() => {
           style={{ willChange: 'transform, filter, opacity' }}
           className={
             active.fit === 'contain'
-              ? 'absolute top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-[1920px] h-[120%] object-contain object-center'
-              : 'absolute inset-0 w-full h-full object-cover object-center'
+              ? 'absolute top-0 md:top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-[1920px] h-full md:h-[120%] object-contain object-center'
+              : 'absolute inset-0 w-full h-full object-contain md:object-cover object-center'
           }
         />
       </AnimatePresence>
