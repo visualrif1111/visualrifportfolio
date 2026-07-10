@@ -193,6 +193,13 @@ export default function Swiftrooms() {
         ]}
       />
 
+      {/* ── Feature video ── */}
+      <Section width="wide" pad="tight">
+        <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-black group">
+          <InteractiveVideoPlayer videoId="wZznfhVYa5c" />
+        </div>
+      </Section>
+
       {/* ── 01 · Introduction ── */}
       <Section pad="default">
         <EditorialSplit
