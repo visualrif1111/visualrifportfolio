@@ -10,7 +10,7 @@ import { FadeIn } from './components/motion/FadeIn';
 
 import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
 import imgAboutLandscape from "../imports/about-landscape.png";
-import imgAboutStudio from "../imports/about-studio.png";
+import imgAboutFestival from "../imports/about-portrait-festival.jpg";
 import imgAboutBeach from "../imports/about-portrait-beach.png";
 import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
 import imgRectangle16 from "figma:asset/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.png";
@@ -517,7 +517,7 @@ export default function Home() {
 const aboutGallery = [
   { src: imgRectangle38, alt: 'Arif portrait', fit: 'contain' as const },
   { src: imgAboutLandscape, alt: 'Arif overlooking a valley at sunset', fit: 'cover' as const },
-  { src: imgAboutStudio, alt: 'Arif in the studio', fit: 'cover' as const },
+  { src: imgAboutFestival, alt: 'Arif at a festival campsite', fit: 'cover' as const },
   { src: imgAboutBeach, alt: 'Arif on the beach', fit: 'cover' as const },
 ];
 
