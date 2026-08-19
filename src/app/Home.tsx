@@ -517,7 +517,7 @@ export default function Home() {
 const aboutGallery = [
   { src: imgRectangle38, alt: 'Arif portrait', fit: 'contain' as const },
   { src: imgAboutLandscape, alt: 'Arif overlooking a valley at sunset', fit: 'cover' as const },
-  { src: imgAboutFestival, alt: 'Arif at a festival campsite', fit: 'cover' as const },
+  { src: imgAboutFestival, alt: 'Arif at a festival campsite', fit: 'frame' as const },
   { src: imgAboutBeach, alt: 'Arif on the beach', fit: 'cover' as const },
 ];
 
@@ -536,6 +536,28 @@ const AboutGallery = React.memo(() => {
 
   return (
     <div className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-black md:bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center group/gallery">
+      <AnimatePresence initial={false}>
+        {active.fit === 'frame' && (
+          <motion.div
+            key={`backdrop-${index}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: reduce ? 0 : 1.5, ease: [0.7, 0, 0.3, 1] }}
+            className="absolute inset-0 overflow-hidden"
+          >
+            <img
+              src={active.src}
+              alt=""
+              aria-hidden
+              loading="lazy"
+              className="w-full h-full object-cover object-center scale-150 blur-3xl saturate-150 brightness-[0.55]"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <AnimatePresence initial={false}>
         <motion.img
           key={index}
@@ -560,7 +582,9 @@ const AboutGallery = React.memo(() => {
           className={
             active.fit === 'contain'
               ? 'absolute top-0 md:top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-[1920px] h-full md:h-[120%] object-contain object-center'
-              : 'absolute inset-0 w-full h-full object-contain md:object-cover object-center'
+              : active.fit === 'frame'
+                ? 'absolute inset-0 w-full h-full object-contain object-center p-6 md:p-12'
+                : 'absolute inset-0 w-full h-full object-contain md:object-cover object-center'
           }
         />
       </AnimatePresence>
