@@ -2,7 +2,22 @@
   "permissions": {
     "allow": [
       "Bash(pnpm build *)",
-      "WebFetch(domain:place-ebony-00043454.figma.site)"
+      "WebFetch(domain:place-ebony-00043454.figma.site)",
+      "Bash(awk '{print $5, $9}')",
+      "Read(//Users/ariftariq/Library/CloudStorage/Dropbox/1. VISUALRIF 2O26/Portfolio 2026/MASTER DOCUMENT/77. THE HAIRY BASTARD/3. 8 BREAKDOWN IMAGES/**)",
+      "Read(//Users/ariftariq/Library/CloudStorage/Dropbox/1. VISUALRIF 2O26/Portfolio 2026/MASTER DOCUMENT/77. THE HAIRY BASTARD/2. 3 OUTCOME IMAGES/**)",
+      "Read(//Users/ariftariq/Library/CloudStorage/Dropbox/1. VISUALRIF 2O26/Portfolio 2026/MASTER DOCUMENT/77. THE HAIRY BASTARD/4. 4 OUTCOME IMAGES/**)",
+      "Bash(xargs ls -lh)",
+      "Bash(cp /tmp/thb_images/image0_3456_694.png /Users/ariftariq/Desktop/visualrifportfolio/src/imports/HairyBastard/cards-standing.png)",
+      "Bash(cp /tmp/thb_images/image1_3456_694.jpeg /Users/ariftariq/Desktop/visualrifportfolio/src/imports/HairyBastard/process-strip.jpeg)",
+      "Bash(cp /tmp/thb_images/image2_3456_694.png /Users/ariftariq/Desktop/visualrifportfolio/src/imports/HairyBastard/barbershop-composite.png)",
+      "Bash(cp /tmp/thb_images/image3_3456_694.png /Users/ariftariq/Desktop/visualrifportfolio/src/imports/HairyBastard/collage.png)",
+      "Bash(cp /tmp/thb_images/image10_3456_694.png /Users/ariftariq/Desktop/visualrifportfolio/src/imports/HairyBastard/dev-1-maps.png)",
+      "Bash(cp '/Users/ariftariq/Library/CloudStorage/Dropbox/1. VISUALRIF 2O26/Portfolio 2026/MASTER DOCUMENT/88. GTA V : Five M/4. FINAL OUTCOMES/1.CLOTHES/image 25.png' /Users/ariftariq/Desktop/visualrifportfolio/public/jma-clothing/clothing-01.png)",
+      "Bash(cp '/Users/ariftariq/Library/CloudStorage/Dropbox/1. VISUALRIF 2O26/Portfolio 2026/MASTER DOCUMENT/88. GTA V : Five M/4. FINAL OUTCOMES/1.CLOTHES/image 24.png' /Users/ariftariq/Desktop/visualrifportfolio/public/jma-clothing/clothing-02.png)",
+      "Bash(cp '/Users/ariftariq/Library/CloudStorage/Dropbox/1. VISUALRIF 2O26/Portfolio 2026/MASTER DOCUMENT/88. GTA V : Five M/4. FINAL OUTCOMES/1.CLOTHES/image 26.png' /Users/ariftariq/Desktop/visualrifportfolio/public/jma-clothing/clothing-03.png)",
+      "Bash(cp '/Users/ariftariq/Library/CloudStorage/Dropbox/1. VISUALRIF 2O26/Portfolio 2026/MASTER DOCUMENT/88. GTA V : Five M/4. FINAL OUTCOMES/1.CLOTHES/image 27.png' /Users/ariftariq/Desktop/visualrifportfolio/public/jma-clothing/clothing-04.png)",
+      "Bash(cp '/Users/ariftariq/Library/CloudStorage/Dropbox/1. VISUALRIF 2O26/Portfolio 2026/MASTER DOCUMENT/88. GTA V : Five M/4. FINAL OUTCOMES/1.CLOTHES/image 31.png' /Users/ariftariq/Desktop/visualrifportfolio/public/jma-clothing/clothing-05.png)"
     ]
   }
 }
