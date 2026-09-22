@@ -416,9 +416,23 @@ export default function Swiftrooms() {
             allowFullScreen
           />
         }
-        heightClassName="h-[45vh] md:h-[70vh]"
+        heightClassName="h-[52vh] md:h-[70vh]"
         titleClassName="text-[50px] md:text-[98px] leading-none tracking-[0.08em]"
         titleLines={['SWIFTROOMS']}
+        subtitleClassName="mt-7 md:mt-9"
+        subtitle={
+          <a
+            href="https://swiftrooms.ae"
+            target="_blank"
+            rel="noreferrer"
+            className="pointer-events-auto group inline-flex items-center gap-3 border border-white/30 hover:border-[#50C1BA] hover:text-[#50C1BA] transition-colors px-7 md:px-9 py-3.5 font-['Rajdhani',sans-serif] font-semibold text-[11px] md:text-[12px] tracking-[0.4em] uppercase text-white"
+          >
+            Visit swiftrooms.ae
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        }
       />
 
       <MetaBar
