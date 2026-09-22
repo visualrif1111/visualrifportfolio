@@ -22,6 +22,7 @@ import imgRectangle19 from "figma:asset/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c
 import imgRectangle21 from "figma:asset/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.png";
 import imgRectangle22 from "figma:asset/61ed1cb628286e3a99aaaf636c61867b91992a4b.png";
 import imgContent61 from "figma:asset/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.png";
+import imgInvestInUK from "../imports/investinuk/home-hero.jpg";
 
 const timelineData = [
   {
@@ -60,6 +61,7 @@ const timelineData = [
 
 const projects = {
   uxui: [
+    { title: "INVESTINUK", img: imgInvestInUK, type: "full", hover: "View Project", link: "/projects/investinuk" },
     { title: "MONCKS OF DOVER STREET", img: imgRectangle10, type: "full", hover: "View Project", link: "/projects/moncks-of-dover-street" },
     { title: "SWIFTROOMS", img: imgRectangle15, type: "half", hover: "View Project", link: "/projects/swiftrooms" },
     { title: "THE SUNIL GAVASKAR PROJECT", img: imgRectangle14, type: "half", hover: "View Project", link: "/projects/sunil-gavaskar" },

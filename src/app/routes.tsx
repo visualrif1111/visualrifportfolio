@@ -8,6 +8,7 @@ import DiversionAudio from "./DiversionAudio";
 import HairyBastard from "./HairyBastard";
 import JMACustoms from "./JMACustoms";
 import JMACustomsCategoryPage from "./JMACustomsCategoryPage";
+import InvestInUK from "./InvestInUK";
 
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/Terms";
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
     Component: Root,
     children: [
       { index: true, Component: Home },
+      { path: "projects/investinuk", Component: InvestInUK },
       { path: "projects/moncks-of-dover-street", Component: MoncksOfDoverStreet },
       { path: "projects/swiftrooms", Component: Swiftrooms },
       { path: "projects/sunil-gavaskar", Component: SunilGavaskar },

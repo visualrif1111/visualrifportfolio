@@ -269,7 +269,7 @@ export default function SunilGavaskar() {
         />
       </Section>
 
-      <NextProject title="JMA Customs" to="/projects/jma-customs" />
+      <NextProject title="INVESTINUK" to="/projects/investinuk" />
 
       <GalleryLightbox
         images={SUNIL_GALLERY}
