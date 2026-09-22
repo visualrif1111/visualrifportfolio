@@ -480,7 +480,7 @@ export default function Swiftrooms() {
             <FadeIn>
               <div className={BODY}>
                 <p>Design and deliver a high-converting landing page for <a href="https://swiftrooms.ae" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Swiftrooms.ae</a>, a Dubai-based home improvement and architectural glazing company. The project focused on improving the company's digital presence, supporting paid advertising campaigns, and increasing lead generation.</p>
-                <p>The target audience primarily focused on B2C homeowners, while also allowing opportunities for B2B enquiries. The outcome was a professional, conversion-driven landing page that continues to support ongoing Google Ads campaigns and lead generation.</p>
+                <p className="hidden md:block">The target audience primarily focused on B2C homeowners, while also allowing opportunities for B2B enquiries. The outcome was a professional, conversion-driven landing page that continues to support ongoing Google Ads campaigns and lead generation.</p>
               </div>
             </FadeIn>
           </div>
@@ -495,7 +495,7 @@ export default function Swiftrooms() {
             <FadeIn>
               <div className={BODY}>
                 <p>The project required stepping into an active workflow midway through development and taking ownership of the landing page's design direction and delivery. Key issues quickly became apparent within Syspree's design-to-development process, particularly around responsiveness, functionality, and overall execution.</p>
-                <p>Despite months of development, the landing page remained incomplete, lacked mobile optimisation, and failed to provide a polished user experience suitable for paid advertising traffic — risking conversions, brand credibility, and lead generation performance.</p>
+                <p className="hidden md:block">Despite months of development, the landing page remained incomplete, lacked mobile optimisation, and failed to provide a polished user experience suitable for paid advertising traffic — risking conversions, brand credibility, and lead generation performance.</p>
               </div>
             </FadeIn>
           </div>
@@ -504,7 +504,7 @@ export default function Swiftrooms() {
             <FadeIn>
               <div className={BODY}>
                 <p>Following discussions with one of the directors, there was a request to explore how AI could support and improve the workflow. Combining traditional design methods with AI-assisted tools, I utilised <a href="https://www.figma.com/make" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Figma Make</a> to help resolve development inconsistencies and demonstrate a more accurate 1:1 translation from design to development.</p>
-                <p>The AI prototype resulted in a fully functioning web page with usable code, providing a clear proof of concept for how the final project should be executed and delivered.</p>
+                <p className="hidden md:block">The AI prototype resulted in a fully functioning web page with usable code, providing a clear proof of concept for how the final project should be executed and delivered.</p>
               </div>
             </FadeIn>
           </div>
@@ -531,7 +531,7 @@ export default function Swiftrooms() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[2.1] tracking-[0.05em] text-gray-300 space-y-6">
                   <p>Since I used AI tools such as Figma Make to create a functioning landing page, I wanted to further explore the use of AI through Midjourney. My goal was to visually break down the Swiftrooms journey using a series of photographic stills. These stills were then developed into a precise storyboard, transforming each image into moving visuals that emulate the feel of videography and motion graphics.</p>
-                  <p>The result was an immersive video experience that showcases the Swiftrooms journey to the user in a more engaging and dynamic way. All photographs used throughout the project are authentic images captured by the Swiftrooms team.</p>
+                  <p className="hidden md:block">The result was an immersive video experience that showcases the Swiftrooms journey to the user in a more engaging and dynamic way. All photographs used throughout the project are authentic images captured by the Swiftrooms team.</p>
                 </div>
               </FadeIn>
             </div>
@@ -638,7 +638,7 @@ export default function Swiftrooms() {
             <FadeIn>
               <div className={BODY}>
                 <p>Swiftrooms is a UAE specialist in premium aluminium windows, doors and architectural glazing systems, working across residential and commercial projects. Established in Dubai in 2011, the company supplies systems from manufacturers including Cortizo, Vetromax and Gulf Extrusions.</p>
-                <p>The project transformed its digital presence into a premium, scalable platform capable of communicating both the architectural quality of the work and the technical complexity behind the product range.</p>
+                <p className="hidden md:block">The project transformed its digital presence into a premium, scalable platform capable of communicating both the architectural quality of the work and the technical complexity behind the product range.</p>
               </div>
             </FadeIn>
             <Callout label="Positioning">
@@ -790,7 +790,7 @@ export default function Swiftrooms() {
             <FadeIn>
               <div className={BODY}>
                 <p>Not every customer arrives knowing which glazing system they need. A guided selector was therefore built into the catalogue.</p>
-                <p>Rather than requiring users to understand technical product terminology immediately, the journey begins with straightforward questions about their property and requirements — then progressively guides them towards suitable systems.</p>
+                <p className="hidden md:block">Rather than requiring users to understand technical product terminology immediately, the journey begins with straightforward questions about their property and requirements — then progressively guides them towards suitable systems.</p>
               </div>
             </FadeIn>
             <Callout label="Five Steps">
@@ -1059,7 +1059,7 @@ export default function Swiftrooms() {
             </h3>
             <div className={BODY_MUTED}>
               <p>Swiftrooms operates a physical showroom where customers can experience full-scale glazing systems. The platform connects digital product discovery to that room.</p>
-              <p>Visitors explore systems online, then are encouraged to visit — where working installations, hardware, finishes and glazing specifications can be experienced in person.</p>
+              <p className="hidden md:block">Visitors explore systems online, then are encouraged to visit — where working installations, hardware, finishes and glazing specifications can be experienced in person.</p>
             </div>
           </div>
         </EditorialSplit>

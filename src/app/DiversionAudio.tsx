@@ -149,7 +149,7 @@ export default function DiversionAudio() {
             <FadeIn>
               <div className={BODY}>
                 <p>Diversion Audio is a London-based Drum &amp; Bass collective focused on underground electronic music and live events. I was tasked with creating the initial visual identity for the brand, developing the early logo direction and foundational branding across digital and promotional platforms.</p>
-                <p>This project marked my first introduction to working within the electronic music industry — a space I'm personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding.</p>
+                <p className="hidden md:block">This project marked my first introduction to working within the electronic music industry — a space I'm personally passionate about as an avid Drum &amp; Bass listener. Seeing the identity later featured at events and venues including Boomtown Fair and Volks Nightclub made the project especially rewarding.</p>
               </div>
             </FadeIn>
           </div>
@@ -286,7 +286,7 @@ export default function DiversionAudio() {
             <FadeIn>
               <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[18px] leading-[1.8] tracking-[0.05em] text-gray-300 space-y-6">
                 <p>The concept behind the Diversion Audio logo was built around the idea of redirecting people back towards music, culture, and connection. This is reflected through the manipulated typography, where the chevron-inspired forms visually guide the eye back towards the word "Diversion", symbolising movement, energy, and redirection within the music scene.</p>
-                <p>The logo later took on a deeper personal meaning during Boomtown Fair 2025. After being separated from a friend across different campsites for several days, seeing the Diversion placard in the distance became a reminder of the original purpose behind the logo — the idea of diverting back towards the music, the people, and the experiences that connect communities together.</p>
+                <p className="hidden md:block">The logo later took on a deeper personal meaning during Boomtown Fair 2025. After being separated from a friend across different campsites for several days, seeing the Diversion placard in the distance became a reminder of the original purpose behind the logo — the idea of diverting back towards the music, the people, and the experiences that connect communities together.</p>
               </div>
             </FadeIn>
           }

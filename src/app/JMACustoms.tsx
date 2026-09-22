@@ -198,7 +198,7 @@ export default function JMACustoms() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>JMA Customs began not in a studio or agency — but inside a virtual world. Operating within the FiveM roleplay ecosystem of GTA V, the brand emerged from a simple ambition: to bring real creative craft and professional design standards into a space where few had pushed those boundaries before.</p>
-                  <p>What started as in-character interactions evolved into a fully structured creative business. As reputation grew, so did demand — and JMA Customs expanded from custom 3D advertisments to clothing and jewellery for other in-game businesses and e-sports groups.</p>
+                  <p className="hidden md:block">What started as in-character interactions evolved into a fully structured creative business. As reputation grew, so did demand — and JMA Customs expanded from custom 3D advertisments to clothing and jewellery for other in-game businesses and e-sports groups.</p>
                 </div>
               </FadeIn>
             </div>
@@ -207,7 +207,7 @@ export default function JMACustoms() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>Metaverse culture and the growing legitimacy of virtual identity drove the vision behind JMA Customs. The project drew from luxury fashion aesthetics, cyber-culture design, and the entrepreneurial energy of creators.</p>
-                  <p>The ambition was to prove that creative value isn't bound by physical reality — that a brand built inside a game can carry the same weight, craft, and cultural meaning as one built in the real world.</p>
+                  <p className="hidden md:block">The ambition was to prove that creative value isn't bound by physical reality — that a brand built inside a game can carry the same weight, craft, and cultural meaning as one built in the real world.</p>
                 </div>
               </FadeIn>
             </div>
@@ -346,7 +346,7 @@ export default function JMACustoms() {
             <FadeIn>
               <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                 <p>Discord served as the operational backbone of JMA Customs — the place where the brand came alive beyond the game. Every commission, client relationship, and community interaction was managed through a structured Discord ecosystem built for scale.</p>
-                <p>What began as a simple server evolved into a full CRM — with ticketing, order pipelines, and community channels that created a professional service experience unlike anything else in the FiveM space.</p>
+                <p className="hidden md:block">What began as a simple server evolved into a full CRM — with ticketing, order pipelines, and community channels that created a professional service experience unlike anything else in the FiveM space.</p>
               </div>
             </FadeIn>
             <div className="flex flex-col">

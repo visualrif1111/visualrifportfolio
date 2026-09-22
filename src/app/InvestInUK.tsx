@@ -326,7 +326,7 @@ export default function InvestInUK() {
                 <p>
                   VISUAL RIF designed and developed <a href={SITE} target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">investinuk.uk</a> — a digital experience that brings property opportunities, educational content, case studies and enquiry journeys together inside one coherent platform.
                 </p>
-                <p>
+                <p className="hidden md:block">
                   The work covered creative direction, information architecture, the visual system, interface design and front-end build.
                 </p>
               </div>
@@ -764,7 +764,7 @@ export default function InvestInUK() {
               <p>
                 The <span className="text-white">UAE Investor Guide</span> is the anchor — 26 pages, presented with its cover, its contents listed as chips, and its page count and file size stated before anyone commits to a download.
               </p>
-              <p>
+              <p className="hidden md:block">
                 Around it sit the deal pack, the HMO guide and the UK tax guide. Each is marked <span className="text-white">gated</span> or <span className="text-white">no details required</span> on the card itself, so the cost of a click is known in advance.
               </p>
             </div>
@@ -833,7 +833,7 @@ export default function InvestInUK() {
               <p>
                 Friction is not removed, it is <span className="text-white">relocated</span>. The investor chooses how much to give, and each path states its own time cost before it starts.
               </p>
-              <p>
+              <p className="hidden md:block">
                 Both routes reach the same team. Alongside them sit a discovery call, WhatsApp and a direct line — for an audience five time zones away, the channel matters as much as the form.
               </p>
             </div>

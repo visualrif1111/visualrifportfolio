@@ -107,7 +107,7 @@ export default function HairyBastard() {
             <FadeIn>
               <div className={BODY}>
                 <p>The Hairy Bastard is an independent barbershop located at 80 Brick Lane, London — one of East London's most culturally distinctive streets. This project involved developing a complete brand identity from the ground up, covering logo design, typography, colour systems, and print production for the business launch.</p>
-                <p>The brief called for an identity that felt genuinely rooted in its environment — bold enough to stand out in a competitive area, while being immediately legible at small sizes across business cards, signage, and digital platforms.</p>
+                <p className="hidden md:block">The brief called for an identity that felt genuinely rooted in its environment — bold enough to stand out in a competitive area, while being immediately legible at small sizes across business cards, signage, and digital platforms.</p>
               </div>
             </FadeIn>
           </div>
@@ -132,7 +132,7 @@ export default function HairyBastard() {
             <FadeIn>
               <div className={BODY}>
                 <p>The key challenge was creating a visual identity that felt genuinely tied to its location. Brick Lane carries a strong sense of place and character — any brand representing a business here needed to reflect that authenticity rather than produce something generic or interchangeable.</p>
-                <p>The identity also needed to work across a range of applications simultaneously, from the fine detail of a business card to the larger-scale presence of shop signage, while remaining consistent and recognisable throughout.</p>
+                <p className="hidden md:block">The identity also needed to work across a range of applications simultaneously, from the fine detail of a business card to the larger-scale presence of shop signage, while remaining consistent and recognisable throughout.</p>
               </div>
             </FadeIn>
           </div>
@@ -155,7 +155,7 @@ export default function HairyBastard() {
             <FadeIn>
               <div className={BODY}>
                 <p>The solution centred on combining two defining elements: a man's head silhouette, and the street layout of Brick Lane itself. By mapping the local streets directly into the head shape, the logo became a literal representation of both the craft and the location — a barber and his Brick Lane home, unified in a single mark.</p>
-                <p>This concept carried naturally into the business card, where the street map and silhouette formed a full-bleed graphic composition on the front face, finished with a spot UV lacquer to give the map pattern a premium, tactile quality.</p>
+                <p className="hidden md:block">This concept carried naturally into the business card, where the street map and silhouette formed a full-bleed graphic composition on the front face, finished with a spot UV lacquer to give the map pattern a premium, tactile quality.</p>
               </div>
             </FadeIn>
           </div>
@@ -202,7 +202,7 @@ export default function HairyBastard() {
               <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <p>The concept behind the business card was built around reinforcing the location and identity of the business through design — a custom illustrated map of Brick Lane, with the surrounding streets integrated directly into the layout to create a stronger connection between the brand and its environment.</p>
-                  <p>The card was designed to align with the interior aesthetic of the business, elevating the overall presence and atmosphere associated with the Brick Lane location.</p>
+                  <p className="hidden md:block">The card was designed to align with the interior aesthetic of the business, elevating the overall presence and atmosphere associated with the Brick Lane location.</p>
                 </div>
                 <div className="space-y-4">
                   <p>A strong emphasis was also placed on structure and composition, with the golden ratio influencing the layout system to create a balanced and visually distinctive design that stood apart from traditional business cards.</p>
