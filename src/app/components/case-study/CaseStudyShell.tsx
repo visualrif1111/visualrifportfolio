@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { Footer } from '../Footer';
 import { VisualRifLogo, SocialLinks } from './icons';
+import { MobileNav } from '../MobileNav';
 
 function defaultRestoreState() {
   return window.matchMedia('(max-width: 768px)').matches
@@ -62,8 +63,9 @@ export function CaseStudyShell({ children, sidebarNav, onBack, logoTo = '/', foo
           <ArrowLeft size={24} />
         </button>
         <div className="cursor-pointer" onClick={() => navigate(logoTo)}>
-          <VisualRifLogo className="w-[140px] h-[18px]" />
+          <VisualRifLogo className="w-[130px] h-[17px]" />
         </div>
+        <MobileNav />
       </nav>
 
       {/* Main content (offset for the fixed sidebar on desktop) */}

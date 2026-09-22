@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from 'react-router';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
+import { MobileNav } from './components/MobileNav';
 import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
 
@@ -297,7 +298,10 @@ export default function Home() {
         <div className="cursor-pointer" onClick={() => scrollTo('home')}>
           <VisualRifLogo className="w-[140px] h-[18px]" />
         </div>
-        <button className="text-[#50C1BA] font-['Rajdhani',sans-serif] font-medium text-sm tracking-widest uppercase" onClick={() => scrollTo('contact')}>CONTACT US</button>
+        <div className="flex items-center gap-5">
+          <button className="text-[#50C1BA] font-['Rajdhani',sans-serif] font-medium text-[13px] tracking-widest uppercase" onClick={() => scrollTo('contact')}>CONTACT</button>
+          <MobileNav />
+        </div>
       </nav>
 
       {/* Hero Background Video */}
