@@ -516,10 +516,10 @@ export default function Home() {
   );
 }
 
-const aboutGallery = [
+const aboutGallery: { src: string; alt: string; fit: 'contain' | 'cover'; pos?: string }[] = [
   { src: imgRectangle38, alt: 'Arif portrait', fit: 'contain' as const },
   { src: imgAboutLandscape, alt: 'Arif overlooking a valley at sunset', fit: 'cover' as const },
-  { src: imgAboutFestival, alt: 'Arif at a festival campsite', fit: 'cover' as const },
+  { src: imgAboutFestival, alt: 'Arif at a festival campsite', fit: 'cover' as const, pos: 'object-right' },
   { src: imgAboutBeach, alt: 'Arif on the beach', fit: 'cover' as const },
 ];
 
@@ -562,7 +562,7 @@ const AboutGallery = React.memo(() => {
           className={
             active.fit === 'contain'
               ? 'absolute top-0 md:top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-[1920px] h-full md:h-[120%] object-contain object-center'
-              : 'absolute inset-0 w-full h-full object-contain md:object-cover object-center'
+              : `absolute inset-0 w-full h-full object-contain md:object-cover ${active.pos ?? 'object-center'}`
           }
         />
       </AnimatePresence>
