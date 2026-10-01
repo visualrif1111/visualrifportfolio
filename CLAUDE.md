@@ -176,7 +176,6 @@ Names only — never put values, keys or tokens in this file or in git. Local va
 
 | Service | Variables |
 |---|---|
-| Vercel build | `ENABLE_EXPERIMENTAL_COREPACK=1` (project env; pins pnpm via Corepack) |
 | Site | `NEXT_PUBLIC_SITE_URL` (not yet used — canonical URL is hard-coded in `app/layout.tsx`) |
 | Sanity | `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `SANITY_API_READ_TOKEN`, `SANITY_REVALIDATE_SECRET` |
 | Attio | `ATTIO_API_KEY` (+ configurable object/list/stage identifiers) |
@@ -194,7 +193,7 @@ Today (`main`) no environment variables are required.
 
 - **`main` = live production.** Vercel deploys every push to `main` to visualrif.com. Never push to `main` without explicit approval.
 - The Vercel project still has Vite build overrides (`npm run build` → `dist`) for `main`. `next-migration`'s `vercel.json` overrides them per deployment (`framework: nextjs`, `pnpm build`, `.next`). Don't change project-level build settings until the merge.
-- Vercel installs with pnpm 9/10 unless the project has `ENABLE_EXPERIMENTAL_COREPACK=1`, which makes it honour `packageManager` (pnpm 11.1.3).
+- `packageManager` in `package.json` sets the pnpm version. Vercel's build honours it without extra configuration: the 2026-10-01 preview and production builds detected it and installed with pnpm 11.1.3. The Vercel project has no environment variables, including `ENABLE_EXPERIMENTAL_COREPACK`.
 - **`next-migration` = the Next.js + backend migration.** All migration work lands here. Pushing this branch creates a Vercel preview deployment — ask before pushing.
 - Merge `next-migration` into `main` only after verifying: production build, every route, homepage and project pages, desktop/tablet/mobile, animations, galleries, videos, cursor, scroll behaviour, SEO, forms, accessibility, performance and Vercel configuration.
 - Work phase by phase; stop for approval between phases.
