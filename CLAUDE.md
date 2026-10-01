@@ -2,7 +2,7 @@
 
 Portfolio and business platform for **visualrif.com** (Arif Tariq / VISUALRIF, multidisciplinary designer, Brighton & Hove).
 
-> **Migration in progress.** `main` is the live Vite SPA. The `next-migration` branch is moving the site to Next.js and adding the backend below. Each section marks what **exists today** vs what is the **target**. Do not document a service as live until it is implemented and merged.
+> **Migration in progress.** Since 2026-10-01 `main` (live) runs the Next.js foundation (commit `855b9a76`). The `next-migration` branch adds the backend below, phase by phase. Each section marks what **exists today** vs what is the **target**. Do not document a service as live until it is implemented and merged.
 
 ---
 
@@ -10,16 +10,16 @@ Portfolio and business platform for **visualrif.com** (Arif Tariq / VISUALRIF, m
 
 | Layer | Target | Status |
 |---|---|---|
-| Frontend | Next.js (App Router) + React + TypeScript + Tailwind CSS v4 | `next-migration`: Next.js 16.3.7, React 19.3, TypeScript strict, Tailwind 4 — done. `main`: still Vite 6 + React 18 + React Router 7 |
-| CMS | Sanity (content, case studies, SEO fields, Visual Editing) | Not started — content is hard-coded in TSX |
+| Frontend | Next.js (App Router) + React + TypeScript + Tailwind CSS v4 | Next.js 16.3.7, React 19.3, TypeScript strict, Tailwind 4 — live on `main` since 2026-10-01 |
+| CMS | Sanity (content, case studies, SEO fields, Visual Editing) | Phase 2A on `next-migration`: schemas, embedded Studio at `/studio`, client/fetch/image helpers, signed revalidation webhook. Only the homepage About gallery reads from Sanity (falls back to built-in slides); all other content is still hard-coded in TSX |
 | CRM | Attio (people, companies, leads, deals, pipeline) | Not started |
 | Email | Resend (transactional) | Not started |
 | Monitoring | Sentry | Not started |
 | Security | Cloudflare Turnstile, Redis (rate limiting), Zod (validation) | Not started |
-| SEO | Sanity SEO fields, Next.js Metadata API, JSON-LD, `app/sitemap.ts`, `app/robots.ts` | Static site-wide metadata in `app/layout.tsx` (same tags as the old `index.html`); no sitemap/robots/JSON-LD yet; `/og-image.png` does not exist |
+| SEO | Sanity SEO fields, Next.js Metadata API, JSON-LD, `app/sitemap.ts`, `app/robots.ts` | Reusable Sanity `seo` object exists (not yet rendered). Static site-wide metadata in `app/(site)/layout.tsx` (same tags as the old `index.html`); no sitemap/robots/JSON-LD yet; `/og-image.png` does not exist |
 | Search tooling | Google Search Console, Ahrefs Webmaster Tools (external) | Not verified |
-| Analytics | Vercel Web Analytics | `<Analytics />` in `app/layout.tsx` on `next-migration`; already enabled on the Vercel project |
-| Hosting | Vercel | Live (Vite preset, deploys `main`) |
+| Analytics | Vercel Web Analytics | `<Analytics />` in `app/(site)/layout.tsx`; enabled on the Vercel project |
+| Hosting | Vercel | Live, deploys `main` (Next.js via `vercel.json`; project-level settings still say Vite) |
 
 Update this table as each phase merges.
 
@@ -84,39 +84,19 @@ Form (client, Zod for UX)
 
 ## Directory structure
 
-### Today (`main`)
-```
-index.html               # entry — title and SEO meta tags
-vite.config.ts           # includes the figma:asset/ resolver → src/assets
-vercel.json              # SPA rewrite: all paths → /index.html
-src/
-  main.tsx
-  app/
-    App.tsx              # CustomCursor + RouterProvider
-    Root.tsx             # layout: ScrollToTop, ScrollProgress, AnimatedBackground, teal route wipe, page fade, CookieBanner
-    routes.tsx           # all routes
-    Home.tsx             # single-page home (hero, about, timeline, projects)
-    InvestInUK.tsx, Swiftrooms.tsx, MoncksOfDoverStreet.tsx, SunilGavaskar.tsx,
-    DiversionAudio.tsx, HairyBastard.tsx, JMACustoms.tsx, JMACustomsCategoryPage.tsx
-    data/projects.ts     # (migration branch) single project list: order, discipline, year, statement, image; drives Next Project loop + mobile menu
-    design/tokens.ts     # (migration branch) TYPE scale + EASE/DURATION motion tokens
-    components/
-      AnimatedBackground.tsx, CustomCursor.tsx, CookieBanner.tsx, Footer.tsx,
-      GalleryLightbox.tsx, MobileNav.tsx, NextProject.tsx, ScrollProgress.tsx,
-      ResponsiveYouTubeEmbed.tsx
-      case-study/        # shared case-study kit: CaseStudyShell, Hero, Section, SectionHeader, EditorialSplit, Figure, ImageGrid, …
-      motion/            # FadeIn, RevealText
-      ui/                # unused shadcn components (slated for removal)
-    pages/               # legal pages
-  imports/, assets/      # images (many unused duplicates — slated for cleanup)
-  styles/
-public/                  # jma-chains, jma-clothing, favicon
-```
+### Before 2026-10-01 (Vite)
+The Vite SPA (`index.html`, `vite.config.ts`, `src/main.tsx`, `src/app/App.tsx`, `src/app/routes.tsx`) was replaced by the Next.js foundation; see git history before `855b9a76`.
 
-### `next-migration` (Next.js, current)
+### Current (Next.js)
 ```
-app/                     # App Router: layout.tsx (metadata, fonts, CustomCursor, Root, Analytics), page.tsx per route,
-                         # not-found.tsx (404 status, then client redirect to /). Route files are thin server components.
+app/(site)/              # public site: layout.tsx (metadata, fonts, CustomCursor, Root, Analytics) + page.tsx per route.
+                         # Route files are thin server components; they may fetch from Sanity and pass props down.
+app/(studio)/            # separate root layout (no site shell) + studio/[[...tool]]/page.tsx — embedded Sanity Studio
+app/global-not-found.tsx # unmatched URLs: 404 status, then meta-refresh to / (experimental.globalNotFound, needed by two root layouts)
+app/api/revalidate/      # signed Sanity webhook → revalidateTag(type | type:slug, 'max')
+sanity/                  # env.ts, structure.ts, schemaTypes/ (documents, singletons, objects incl. case-study blocks, options.ts),
+                         # lib/ (client, fetch — returns null on any failure so callers keep built-in content —, image, queries, homepage)
+sanity.config.ts, sanity.cli.ts
 src/app/                 # existing page components ('use client' at each page entry) — imported by app/ via @/app/...
   Root.tsx               # client shell: ScrollToTop, route prefetch, teal wipe, AnimatePresence page fade, CookieBanner
   navigation.ts          # useNavigate() + per-history-entry state (replaces React Router navigate(to, { state }))
@@ -125,7 +105,6 @@ src/app/                 # existing page components ('use client' at each page e
 types/assets.d.ts        # *.png/*.jpg imports are URL strings
 next.config.ts           # Turbopack asset rule: image imports resolve to URL strings (as under Vite)
 ```
-Removed with Vite: `index.html`, `vite.config.ts`, `src/main.tsx`, `src/app/App.tsx`, `src/app/routes.tsx`. `figma:asset/…` imports became `@/assets/…`.
 
 ### Target (Next.js)
 ```
@@ -142,7 +121,7 @@ During migration, existing components may stay under `src/` and be imported by `
 
 ## Routes (must be preserved)
 
-`/`, `/projects/investinuk`, `/projects/moncks-of-dover-street`, `/projects/swiftrooms`, `/projects/sunil-gavaskar`, `/projects/diversion-audio`, `/projects/the-hairy-bastard`, `/projects/jma-customs`, `/projects/jma-customs/:category`, `/privacy-policy`, `/terms-and-conditions`, `/gdpr`, `/cookie-policy`.
+`/`, `/projects/investinuk`, `/projects/moncks-of-dover-street`, `/projects/swiftrooms`, `/projects/sunil-gavaskar`, `/projects/diversion-audio`, `/projects/the-hairy-bastard`, `/projects/jma-customs`, `/projects/jma-customs/:category`, `/privacy-policy`, `/terms-and-conditions`, `/gdpr`, `/cookie-policy`. Internal: `/studio` (Sanity Studio, noindex), `/api/revalidate` (webhook).
 
 Behaviour to preserve through the migration: teal route wipe + page fade, home scroll restoration when returning from a project (separate desktop/mobile keys in sessionStorage), `#hash` scrolling, Next Project loop, lightboxes (keyboard, swipe, focus), YouTube media, custom cursor (desktop only), sidebar `mix-blend-difference`, mobile project menu, reduced-motion handling.
 
@@ -167,6 +146,10 @@ A `test` script arrives with the first backend phase.
 - `Root.tsx` wraps `children` in `AnimatePresence mode="wait"` keyed by pathname (no `FrozenRouter`); the teal wipe hides the swap. Re-test page transitions after every Next.js upgrade.
 - Image imports are URL strings (not `StaticImageData`); `next/image` adoption is a performance-phase decision.
 - Fonts load from the Google Fonts stylesheet in `app/layout.tsx`; family names are used literally in class strings, so `next/font` would need a codebase-wide change.
+- Sanity content is fetched only in `app/(site)` server route files via `sanityFetch` (`sanity/lib/fetch.ts`) and passed as props to the existing client components, which keep their built-in content as the fallback. Pages stay statically generated; the webhook revalidates by tag.
+- Studio presentation options live in `sanity/schemaTypes/options.ts` and mirror component prop unions; code maps them to static Tailwind classes. Never add free-form CSS, class or code fields to schemas. Bespoke sections are placed by `customModuleBlock` keys registered in code.
+- Never store leads, enquiries or CRM data in Sanity (Attio owns them). Service, Testimonial and Journal schemas are not created until their frontend is designed.
+- When Visual Editing is added, run `stegaClean` on any string used for metadata, comparisons, `RevealText` splitting or letter-spaced titles.
 
 ---
 
@@ -185,14 +168,14 @@ Names only — never put values, keys or tokens in this file or in git. Local va
 | Sentry | `NEXT_PUBLIC_SENTRY_DSN`, `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` |
 | Search verification | `GOOGLE_SITE_VERIFICATION`, `AHREFS_SITE_VERIFICATION` (optional if verified via DNS) |
 
-Today (`main`) no environment variables are required.
+No environment variables are required to build or run the site: without the Sanity variables it renders its built-in content and `/studio` shows a configuration notice.
 
 ---
 
 ## Git & deployment workflow
 
 - **`main` = live production.** Vercel deploys every push to `main` to visualrif.com. Never push to `main` without explicit approval.
-- The Vercel project still has Vite build overrides (`npm run build` → `dist`) for `main`. `next-migration`'s `vercel.json` overrides them per deployment (`framework: nextjs`, `pnpm build`, `.next`). Don't change project-level build settings until the merge.
+- The Vercel project's own build settings still say Vite (`npm run build` → `dist`); `vercel.json` overrides them on every deployment (`framework: nextjs`, `pnpm build`, `.next`). Don't remove `vercel.json` until the project settings are updated.
 - `packageManager` in `package.json` sets the pnpm version. Vercel's build honours it without extra configuration: the 2026-10-01 preview and production builds detected it and installed with pnpm 11.1.3. The Vercel project has no environment variables, including `ENABLE_EXPERIMENTAL_COREPACK`.
 - **`next-migration` = the Next.js + backend migration.** All migration work lands here. Pushing this branch creates a Vercel preview deployment — ask before pushing.
 - Merge `next-migration` into `main` only after verifying: production build, every route, homepage and project pages, desktop/tablet/mobile, animations, galleries, videos, cursor, scroll behaviour, SEO, forms, accessibility, performance and Vercel configuration.
