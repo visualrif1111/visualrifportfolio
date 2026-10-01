@@ -233,7 +233,7 @@ export default function HairyBastard() {
         </div>
       </Section>
 
-      <NextProject title="Diversion Audio" to="/projects/diversion-audio" />
+      <NextProject />
 
       <GalleryLightbox
         images={THB_GALLERY}

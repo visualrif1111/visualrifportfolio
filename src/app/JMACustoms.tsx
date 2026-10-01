@@ -435,7 +435,7 @@ export default function JMACustoms() {
         </PullQuote>
       </Section>
 
-      <NextProject title="The Hairy Bastard" to="/projects/the-hairy-bastard" />
+      <NextProject />
     </CaseStudyShell>
   );
 }

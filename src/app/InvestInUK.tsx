@@ -1006,7 +1006,7 @@ export default function InvestInUK() {
         </EditorialSplit>
       </Section>
 
-      <NextProject title="JMA Customs" to="/projects/jma-customs" />
+      <NextProject />
 
       <GalleryLightbox
         images={GALLERY}

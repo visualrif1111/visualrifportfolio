@@ -4,42 +4,18 @@ import { AnimatePresence, motion } from 'motion/react';
 import { useLocation, useNavigate } from 'react-router';
 import { Menu, X } from 'lucide-react';
 import { VisualRifLogo, SocialInstagram, SocialLinkedin, SocialPhone } from './case-study/icons';
+import { PROJECTS, UPCOMING, CATEGORY_LABELS, type Category } from '../data/projects';
+import { EASE } from '../design/tokens';
 
 interface NavProject {
   title: string;
   to?: string;
 }
 
-const CATEGORIES: { label: string; items: NavProject[] }[] = [
-  {
-    label: 'UX / UI, Web Design',
-    items: [
-      { title: 'INVESTINUK', to: '/projects/investinuk' },
-      { title: 'Moncks of Dover Street', to: '/projects/moncks-of-dover-street' },
-      { title: 'Swiftrooms', to: '/projects/swiftrooms' },
-      { title: 'The Sunil Gavaskar Project', to: '/projects/sunil-gavaskar' },
-    ],
-  },
-  {
-    label: 'Immersive Brand & Digital Experience',
-    items: [{ title: 'JMA Customs', to: '/projects/jma-customs' }],
-  },
-  {
-    label: 'Branding & Marketing',
-    items: [
-      { title: 'Diversion Audio', to: '/projects/diversion-audio' },
-      { title: 'The Hairy Bastard', to: '/projects/the-hairy-bastard' },
-      { title: 'Trend' },
-      { title: 'Dilchad' },
-    ],
-  },
-  {
-    label: '3D Design',
-    items: [{ title: 'The Epiphanies' }],
-  },
-];
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+const CATEGORIES: { label: string; items: NavProject[] }[] = (Object.keys(CATEGORY_LABELS) as Category[]).map(c => ({
+  label: CATEGORY_LABELS[c],
+  items: [...PROJECTS, ...UPCOMING].filter(p => p.category === c),
+}));
 
 /**
  * Mobile-only project navigation. A trigger button sits inside the existing
@@ -144,7 +120,7 @@ export function MobileNav() {
                             key={item.title}
                             initial={{ opacity: 0, y: 14 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.45, delay: 0.06 + i * 0.035, ease: EASE }}
+                            transition={{ duration: 0.45, delay: 0.06 + i * 0.035, ease: EASE.out }}
                             className="border-b border-gray-800/70"
                           >
                             <button

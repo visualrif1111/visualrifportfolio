@@ -1152,7 +1152,7 @@ export default function Swiftrooms() {
         </EditorialSplit>
       </Section>
 
-      <NextProject title="Diversion Audio" to="/projects/diversion-audio" />
+      <NextProject />
 
       <GalleryLightbox
         images={SWIFTROOMS_GALLERY}

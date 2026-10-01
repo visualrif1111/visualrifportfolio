@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
+import { EASE } from '../../design/tokens';
 
 interface FadeInProps {
   children: React.ReactNode;
@@ -19,7 +20,7 @@ export function FadeIn({ children, className = "", delay = 0, duration = 0.6, y 
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: '-5%' }}
-      transition={{ duration, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration, delay, ease: EASE.soft }}
     >
       {children}
     </motion.div>

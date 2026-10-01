@@ -269,7 +269,7 @@ export default function SunilGavaskar() {
         />
       </Section>
 
-      <NextProject title="INVESTINUK" to="/projects/investinuk" />
+      <NextProject />
 
       <GalleryLightbox
         images={SUNIL_GALLERY}

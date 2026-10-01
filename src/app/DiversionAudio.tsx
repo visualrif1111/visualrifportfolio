@@ -331,7 +331,7 @@ export default function DiversionAudio() {
         </div>
       </Section>
 
-      <NextProject title="Moncks of Dover Street" to="/projects/moncks-of-dover-street" />
+      <NextProject />
 
       <GalleryLightbox
         images={DIVERSION_GALLERY}

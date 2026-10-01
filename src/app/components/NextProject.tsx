@@ -1,14 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'motion/react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
+import { nextProject } from '../data/projects';
 
-interface NextProjectProps {
-  title: string;
-  to: string;
-}
-
-export function NextProject({ title, to }: NextProjectProps) {
+export function NextProject() {
   const navigate = useNavigate();
+  const { title, to } = nextProject(useLocation().pathname);
   const sectionRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const magnetX = useMotionValue(0);

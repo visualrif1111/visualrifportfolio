@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { EASE } from '../../design/tokens';
 
 interface HeroProps {
   /** Background media rendered absolute inset-0 (image element, iframe, or video). */
@@ -19,8 +20,6 @@ interface HeroProps {
   /** Allow media to bleed past the section box (e.g. full-viewport video behind the sidebar). */
   overflowVisible?: boolean;
 }
-
-const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
  * Full-bleed case-study hero. Supports image or video media, an animated
@@ -70,7 +69,7 @@ export function Hero({
                 className="block"
                 initial={{ y: '110%' }}
                 animate={{ y: '0%' }}
-                transition={{ duration: 0.9, delay: 0.3 + i * 0.15, ease: EASE }}
+                transition={{ duration: 0.9, delay: 0.3 + i * 0.15, ease: EASE.out }}
               >
                 {line}
               </motion.span>

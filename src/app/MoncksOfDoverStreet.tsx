@@ -231,7 +231,7 @@ export default function MoncksOfDoverStreet() {
         </EditorialSplit>
       </Section>
 
-      <NextProject title="The Sunil Gavaskar Project" to="/projects/sunil-gavaskar" />
+      <NextProject />
 
       <GalleryLightbox
         images={MONCKS_GALLERY}
