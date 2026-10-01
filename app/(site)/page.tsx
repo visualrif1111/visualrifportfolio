@@ -1,5 +1,7 @@
 import Home from '@/app/Home';
+import { getAboutGallery } from '../../sanity/lib/homepage';
 
-export default function Page() {
-  return <Home />;
+export default async function Page() {
+  const aboutGallery = await getAboutGallery();
+  return <Home aboutGallery={aboutGallery ?? undefined} />;
 }

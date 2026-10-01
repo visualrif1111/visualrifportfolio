@@ -153,7 +153,7 @@ const SocialPhone = React.memo(function SocialPhone({ className = "" }: { classN
   );
 });
 
-export default function Home() {
+export default function Home({ aboutGallery = ABOUT_GALLERY }: { aboutGallery?: AboutSlide[] }) {
   const [activeSection, setActiveSection] = React.useState('home');
   const reduce = useReducedMotion();
 
@@ -409,7 +409,7 @@ export default function Home() {
         </section>
       </div>
 
-      <AboutGallery />
+      <AboutGallery slides={aboutGallery} />
 
       <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
         <div className="h-16 md:h-24"></div>
@@ -525,17 +525,33 @@ export default function Home() {
   );
 }
 
-const aboutGallery: { src: string; alt: string; fit: 'contain' | 'cover'; pos?: string }[] = [
-  { src: imgRectangle38, alt: 'Arif portrait', fit: 'contain' as const },
-  { src: imgAboutLandscape, alt: 'Arif overlooking a valley at sunset', fit: 'cover' as const },
-  { src: imgAboutFestival, alt: 'Arif at a festival campsite', fit: 'cover' as const, pos: 'object-right' },
-  { src: imgAboutBeach, alt: 'Arif on the beach', fit: 'cover' as const },
+export interface AboutSlide {
+  src: string;
+  alt: string;
+  fit: 'contain' | 'cover';
+  position: 'center' | 'top' | 'bottom' | 'left' | 'right';
+}
+
+const OBJECT_POSITION: Record<AboutSlide['position'], string> = {
+  center: 'object-center',
+  top: 'object-top',
+  bottom: 'object-bottom',
+  left: 'object-left',
+  right: 'object-right',
+};
+
+/** Built-in slides, used until the homepage gallery is published in Sanity. */
+const ABOUT_GALLERY: AboutSlide[] = [
+  { src: imgRectangle38, alt: 'Arif portrait', fit: 'contain', position: 'center' },
+  { src: imgAboutLandscape, alt: 'Arif overlooking a valley at sunset', fit: 'cover', position: 'center' },
+  { src: imgAboutFestival, alt: 'Arif at a festival campsite', fit: 'cover', position: 'right' },
+  { src: imgAboutBeach, alt: 'Arif on the beach', fit: 'cover', position: 'center' },
 ];
 
-const AboutGallery = React.memo(function AboutGallery() {
+const AboutGallery = React.memo(function AboutGallery({ slides }: { slides: AboutSlide[] }) {
   const [index, setIndex] = React.useState(0);
   const reduce = useReducedMotion();
-  const count = aboutGallery.length;
+  const count = slides.length;
   const go = React.useCallback((dir: number) => setIndex((i) => (i + dir + count) % count), [count]);
 
   React.useEffect(() => {
@@ -543,7 +559,7 @@ const AboutGallery = React.memo(function AboutGallery() {
     return () => clearInterval(id);
   }, [count]);
 
-  const active = aboutGallery[index];
+  const active = slides[index];
 
   return (
     <div className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-black md:bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center group/gallery">
@@ -571,7 +587,7 @@ const AboutGallery = React.memo(function AboutGallery() {
           className={
             active.fit === 'contain'
               ? 'absolute top-0 md:top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-[1920px] h-full md:h-[120%] object-contain object-center'
-              : `absolute inset-0 w-full h-full object-contain md:object-cover ${active.pos ?? 'object-center'}`
+              : `absolute inset-0 w-full h-full object-contain md:object-cover ${OBJECT_POSITION[active.position]}`
           }
         />
       </AnimatePresence>
@@ -592,7 +608,7 @@ const AboutGallery = React.memo(function AboutGallery() {
       </button>
 
       <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 px-4 py-2.5 rounded-full bg-black/30 backdrop-blur-sm">
-        {aboutGallery.map((img, i) => (
+        {slides.map((img, i) => (
           <button
             key={i}
             aria-label={`Go to ${img.alt}`}
