@@ -23,12 +23,15 @@ export function GalleryLightbox({ images, startIndex, isOpen, onClose }: Props) 
   const total = images.length;
 
   // Sync index when opening
-  useEffect(() => {
-    if (isOpen) {
-      setIndex(startIndex);
+  const openKey = isOpen ? startIndex : null;
+  const [prevOpenKey, setPrevOpenKey] = useState(openKey);
+  if (openKey !== prevOpenKey) {
+    setPrevOpenKey(openKey);
+    if (openKey !== null) {
+      setIndex(openKey);
       setDirection(0);
     }
-  }, [isOpen, startIndex]);
+  }
 
   const go = useCallback((delta: number) => {
     setDirection(delta);

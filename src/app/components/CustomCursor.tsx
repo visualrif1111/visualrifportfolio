@@ -1,22 +1,31 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useReducedMotion } from 'motion/react';
+'use client';
+
+import React, { useEffect, useRef, useSyncExternalStore } from 'react';
+import { useReducedMotion } from './motion/useReducedMotion';
 import svgPaths from "../../imports/Asset61-1/svg-b0s0st4ztg";
 
 // Default ring radius in SVG user units (1 unit = 1 CSS px, no viewBox).
 // Maximum radius = BASE_R × 2.5 (view scale) = 45 px, which fits the 90×90 SVG.
 const BASE_R = 18;
 
+const FINE_POINTER = '(hover: hover) and (pointer: fine)';
+
+function subscribeFinePointer(onChange: () => void) {
+  const mq = window.matchMedia(FINE_POINTER);
+  mq.addEventListener('change', onChange);
+  return () => mq.removeEventListener('change', onChange);
+}
+
 export function CustomCursor() {
   const dotRef    = useRef<HTMLDivElement>(null);
   const ringRef   = useRef<SVGSVGElement>(null);
   const circleRef = useRef<SVGCircleElement>(null);
   const viewRef   = useRef<HTMLDivElement>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const isTouchDevice = useSyncExternalStore(subscribeFinePointer, () => !window.matchMedia(FINE_POINTER).matches, () => false);
   const prefersReduced = useReducedMotion();
 
   useEffect(() => {
-    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (!hasHover) { setIsTouchDevice(true); return; }
+    if (!window.matchMedia(FINE_POINTER).matches) return;
 
     const style = document.createElement('style');
     style.innerHTML = '* { cursor: none !important; }';

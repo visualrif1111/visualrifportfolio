@@ -1,7 +1,9 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from './navigation';
 import '../styles/fonts.css';
 import { NextProject } from './components/NextProject';
 import { FadeIn } from './components/motion/FadeIn';
@@ -207,7 +209,7 @@ export default function JMACustoms() {
               <FadeIn>
                 <div className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-300 space-y-4">
                   <p>Metaverse culture and the growing legitimacy of virtual identity drove the vision behind JMA Customs. The project drew from luxury fashion aesthetics, cyber-culture design, and the entrepreneurial energy of creators.</p>
-                  <p className="hidden md:block">The ambition was to prove that creative value isn't bound by physical reality — that a brand built inside a game can carry the same weight, craft, and cultural meaning as one built in the real world.</p>
+                  <p className="hidden md:block">The ambition was to prove that creative value isn&apos;t bound by physical reality — that a brand built inside a game can carry the same weight, craft, and cultural meaning as one built in the real world.</p>
                 </div>
               </FadeIn>
             </div>
@@ -431,7 +433,7 @@ export default function JMACustoms() {
       <Section pad="loose" border="top">
         <SectionHeader eyebrow="08 — Reflection" title="The Full Vision" align="center" className="mb-14 md:mb-16" />
         <PullQuote variant="panel" attribution="Creative Direction — Visual Rif">
-          "JMA Customs transformed roleplay culture into a real creative business ecosystem through branding, identity, and immersive digital design."
+          &quot;JMA Customs transformed roleplay culture into a real creative business ecosystem through branding, identity, and immersive digital design.&quot;
         </PullQuote>
       </Section>
 

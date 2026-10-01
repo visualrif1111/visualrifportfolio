@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useReducedMotion } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
+import { useReducedMotion } from './components/motion/useReducedMotion';
 import { X } from 'lucide-react';
-import { Link, useNavigate, useLocation } from 'react-router';
+import { useNavigate, readNavState } from './navigation';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
@@ -9,20 +12,20 @@ import { MobileNav } from './components/MobileNav';
 import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
 
-import imgRectangle38 from "figma:asset/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
+import imgRectangle38 from "@/assets/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
 import imgAboutLandscape from "../imports/about-landscape.png";
 import imgAboutFestival from "../imports/about-festival.png";
 import imgAboutBeach from "../imports/about-portrait-beach.png";
-import imgRectangle10 from "figma:asset/d5ac170d299f945386206acf5b59d5034d41882d.png";
-import imgRectangle16 from "figma:asset/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.png";
+import imgRectangle10 from "@/assets/d5ac170d299f945386206acf5b59d5034d41882d.png";
+import imgRectangle16 from "@/assets/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.png";
 import imgRectangle15 from "../imports/image-1.png";
-import imgRectangle17 from "figma:asset/8a22210a8aa201f9f77f445f757aafe16d8c0beb.png";
+import imgRectangle17 from "@/assets/8a22210a8aa201f9f77f445f757aafe16d8c0beb.png";
 import imgRectangle14 from "../imports/image-2.png";
-import imgRectangle18 from "figma:asset/78c1f2dac665555e9b580bf39c80dfc07b09595f.png";
-import imgRectangle19 from "figma:asset/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c.png";
-import imgRectangle21 from "figma:asset/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.png";
-import imgRectangle22 from "figma:asset/61ed1cb628286e3a99aaaf636c61867b91992a4b.png";
-import imgContent61 from "figma:asset/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.png";
+import imgRectangle18 from "@/assets/78c1f2dac665555e9b580bf39c80dfc07b09595f.png";
+import imgRectangle19 from "@/assets/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c.png";
+import imgRectangle21 from "@/assets/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.png";
+import imgRectangle22 from "@/assets/61ed1cb628286e3a99aaaf636c61867b91992a4b.png";
+import imgContent61 from "@/assets/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.png";
 import imgInvestInUK from "../imports/investinuk/home-hero.jpg";
 
 const timelineData = [
@@ -84,7 +87,7 @@ const projects = {
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 import svgPathsFrame27 from "../imports/Frame27/svg-sniomcvdel";
 
-const VisualRifLogo = React.memo(({ className = "" }: { className?: string }) => {
+const VisualRifLogo = React.memo(function VisualRifLogo({ className = "" }: { className?: string }) {
   return (
     <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
       <path d={svgPaths.p13c84500} fill="#50C1BA" />
@@ -101,13 +104,15 @@ const VisualRifLogo = React.memo(({ className = "" }: { className?: string }) =>
   );
 });
 
-const Diamond = React.memo(({ className = "" }: { className?: string }) => (
-  <svg className={`w-3 h-3 ${className}`} viewBox="0 0 26.0181 26.018" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d={svgPathsFrame27.p16002240} fill="#50C1BA" />
-  </svg>
-));
+const Diamond = React.memo(function Diamond({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`w-3 h-3 ${className}`} viewBox="0 0 26.0181 26.018" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d={svgPathsFrame27.p16002240} fill="#50C1BA" />
+    </svg>
+  );
+});
 
-const ArifLogo = React.memo(({ className = "" }: { className?: string }) => {
+const ArifLogo = React.memo(function ArifLogo({ className = "" }: { className?: string }) {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 78.2791 78.279">
       <path d={svgPaths.p2e710980} fill="#50C1BA" />
@@ -116,7 +121,7 @@ const ArifLogo = React.memo(({ className = "" }: { className?: string }) => {
   );
 });
 
-const ScrollTriangle = React.memo(({ className = "" }: { className?: string }) => {
+const ScrollTriangle = React.memo(function ScrollTriangle({ className = "" }: { className?: string }) {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 22.8536 19.7918">
       <path d={svgPaths.p1ef2d800} fill="currentColor" />
@@ -124,7 +129,7 @@ const ScrollTriangle = React.memo(({ className = "" }: { className?: string }) =
   );
 });
 
-const SocialInstagram = React.memo(({ className = "" }: { className?: string }) => {
+const SocialInstagram = React.memo(function SocialInstagram({ className = "" }: { className?: string }) {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
       <path d={svgPaths.p386b1640} fill="currentColor" />
@@ -132,7 +137,7 @@ const SocialInstagram = React.memo(({ className = "" }: { className?: string }) 
   );
 });
 
-const SocialLinkedin = React.memo(({ className = "" }: { className?: string }) => {
+const SocialLinkedin = React.memo(function SocialLinkedin({ className = "" }: { className?: string }) {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
       <path clipRule="evenodd" d={svgPaths.p1a85db80} fill="currentColor" fillRule="evenodd" />
@@ -140,7 +145,7 @@ const SocialLinkedin = React.memo(({ className = "" }: { className?: string }) =
   );
 });
 
-const SocialPhone = React.memo(({ className = "" }: { className?: string }) => {
+const SocialPhone = React.memo(function SocialPhone({ className = "" }: { className?: string }) {
   return (
     <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 14.1371 14.1373">
       <path d={svgPaths.p35dc3720} fill="currentColor" />
@@ -151,7 +156,6 @@ const SocialPhone = React.memo(({ className = "" }: { className?: string }) => {
 export default function Home() {
   const [activeSection, setActiveSection] = React.useState('home');
   const reduce = useReducedMotion();
-  const location = useLocation();
 
   const heroMouseX = useMotionValue(0.5);
   const heroMouseY = useMotionValue(0.5);
@@ -211,8 +215,9 @@ export default function Home() {
   }, []);
 
   React.useEffect(() => {
-    const restoreMobile = location.state?.restoreMobileHomeScroll;
-    const restoreDesktop = location.state?.restoreHomeScroll;
+    const state = readNavState();
+    const restoreMobile = state?.restoreMobileHomeScroll;
+    const restoreDesktop = state?.restoreHomeScroll;
 
     if (!restoreMobile && !restoreDesktop) {
       sessionStorage.removeItem('homeScrollY');
@@ -527,7 +532,7 @@ const aboutGallery: { src: string; alt: string; fit: 'contain' | 'cover'; pos?: 
   { src: imgAboutBeach, alt: 'Arif on the beach', fit: 'cover' as const },
 ];
 
-const AboutGallery = React.memo(() => {
+const AboutGallery = React.memo(function AboutGallery() {
   const [index, setIndex] = React.useState(0);
   const reduce = useReducedMotion();
   const count = aboutGallery.length;
@@ -647,7 +652,7 @@ function ProjectCategory({ title, projects, className = "", theme = "dark", blur
   );
 }
 
-const ProjectCard = React.memo(({ project: p, className = "" }: { project: any, className?: string }) => {
+const ProjectCard = React.memo(function ProjectCard({ project: p, className = "" }: { project: any, className?: string }) {
   const [isVideoOpen, setIsVideoOpen] = React.useState(false);
   const navigate = useNavigate();
   const reduce = useReducedMotion();

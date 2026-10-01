@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import '../styles/fonts.css';
 import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
@@ -106,7 +108,7 @@ export default function HairyBastard() {
             <SectionHeader eyebrow="01 — Introduction" title="Overview" />
             <FadeIn>
               <div className={BODY}>
-                <p>The Hairy Bastard is an independent barbershop located at 80 Brick Lane, London — one of East London's most culturally distinctive streets. This project involved developing a complete brand identity from the ground up, covering logo design, typography, colour systems, and print production for the business launch.</p>
+                <p>The Hairy Bastard is an independent barbershop located at 80 Brick Lane, London — one of East London&apos;s most culturally distinctive streets. This project involved developing a complete brand identity from the ground up, covering logo design, typography, colour systems, and print production for the business launch.</p>
                 <p className="hidden md:block">The brief called for an identity that felt genuinely rooted in its environment — bold enough to stand out in a competitive area, while being immediately legible at small sizes across business cards, signage, and digital platforms.</p>
               </div>
             </FadeIn>
@@ -154,7 +156,7 @@ export default function HairyBastard() {
             <SectionHeader eyebrow="03 — The Thinking" title="The Solution" />
             <FadeIn>
               <div className={BODY}>
-                <p>The solution centred on combining two defining elements: a man's head silhouette, and the street layout of Brick Lane itself. By mapping the local streets directly into the head shape, the logo became a literal representation of both the craft and the location — a barber and his Brick Lane home, unified in a single mark.</p>
+                <p>The solution centred on combining two defining elements: a man&apos;s head silhouette, and the street layout of Brick Lane itself. By mapping the local streets directly into the head shape, the logo became a literal representation of both the craft and the location — a barber and his Brick Lane home, unified in a single mark.</p>
                 <p className="hidden md:block">This concept carried naturally into the business card, where the street map and silhouette formed a full-bleed graphic composition on the front face, finished with a spot UV lacquer to give the map pattern a premium, tactile quality.</p>
               </div>
             </FadeIn>
@@ -165,7 +167,7 @@ export default function HairyBastard() {
       {/* ── Approach pull quote ── */}
       <Section width="narrow" pad="tight">
         <PullQuote attribution="The Hairy Bastard">
-          A barbershop identity rooted in place — combining a man's silhouette with the Brick Lane street map to create a logo that is both a portrait and a postcode, finished with spot UV print for a premium tactile result.
+          A barbershop identity rooted in place — combining a man&apos;s silhouette with the Brick Lane street map to create a logo that is both a portrait and a postcode, finished with spot UV print for a premium tactile result.
         </PullQuote>
       </Section>
 

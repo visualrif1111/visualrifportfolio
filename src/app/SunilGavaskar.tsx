@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import '../styles/fonts.css';
 import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
@@ -134,7 +136,7 @@ export default function SunilGavaskar() {
             <FadeIn>
               <div className={BODY}>
                 <p>As a Freelance Digital Designer at Velvet Badger, I worked on Always First – Sunil Gavaskar, a Web3 and NFT project created for legendary cricketer Sunil Gavaskar. This project marked a key moment in my career, shaping my interest in digital assets and immersive experiences.</p>
-                <p className="hidden md:block">The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar's achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
+                <p className="hidden md:block">The objective was to design a website that brought together the wider Always First campaign, alongside a supporting social media campaign to promote the NFT launch and virtual gallery experience. The platform allowed fans to explore Sunil Gavaskar&apos;s achievements and engage with the NFT collection through a modern and accessible digital experience.</p>
               </div>
             </FadeIn>
           </div>

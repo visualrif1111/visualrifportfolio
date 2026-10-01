@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import YouTube from 'react-youtube';
@@ -324,11 +326,17 @@ function Swatch({ hex, name, role, i }: { hex: string; name: string; role: strin
   );
 }
 
+function subscribeHoverNone(onChange: () => void) {
+  const mq = window.matchMedia('(hover: none)');
+  mq.addEventListener('change', onChange);
+  return () => mq.removeEventListener('change', onChange);
+}
+
 function InteractiveVideoPlayer({ videoId }: { videoId: string }) {
   const [player, setPlayer] = useState<any>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const isTouch = React.useMemo(() => window.matchMedia('(hover: none)').matches, []);
+  const isTouch = React.useSyncExternalStore(subscribeHoverNone, () => window.matchMedia('(hover: none)').matches, () => false);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -479,7 +487,7 @@ export default function Swiftrooms() {
             <SectionHeader eyebrow="01 — Introduction" title="Overview" />
             <FadeIn>
               <div className={BODY}>
-                <p>Design and deliver a high-converting landing page for <a href="https://swiftrooms.ae" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Swiftrooms.ae</a>, a Dubai-based home improvement and architectural glazing company. The project focused on improving the company's digital presence, supporting paid advertising campaigns, and increasing lead generation.</p>
+                <p>Design and deliver a high-converting landing page for <a href="https://swiftrooms.ae" target="_blank" rel="noreferrer" className="underline text-white hover:text-[#50C1BA] transition-colors">Swiftrooms.ae</a>, a Dubai-based home improvement and architectural glazing company. The project focused on improving the company&apos;s digital presence, supporting paid advertising campaigns, and increasing lead generation.</p>
                 <p className="hidden md:block">The target audience primarily focused on B2C homeowners, while also allowing opportunities for B2B enquiries. The outcome was a professional, conversion-driven landing page that continues to support ongoing Google Ads campaigns and lead generation.</p>
               </div>
             </FadeIn>
@@ -494,7 +502,7 @@ export default function Swiftrooms() {
             <SectionHeader eyebrow="02 — The Problem" title="The Challenge" />
             <FadeIn>
               <div className={BODY}>
-                <p>The project required stepping into an active workflow midway through development and taking ownership of the landing page's design direction and delivery. Key issues quickly became apparent within Syspree's design-to-development process, particularly around responsiveness, functionality, and overall execution.</p>
+                <p>The project required stepping into an active workflow midway through development and taking ownership of the landing page&apos;s design direction and delivery. Key issues quickly became apparent within Syspree&apos;s design-to-development process, particularly around responsiveness, functionality, and overall execution.</p>
                 <p className="hidden md:block">Despite months of development, the landing page remained incomplete, lacked mobile optimisation, and failed to provide a polished user experience suitable for paid advertising traffic — risking conversions, brand credibility, and lead generation performance.</p>
               </div>
             </FadeIn>
@@ -517,9 +525,9 @@ export default function Swiftrooms() {
           <div className="bg-white text-black py-24 px-6 md:px-12 lg:pl-12 xl:pl-24 relative min-h-[600px] flex items-center lg:rounded-br-[76px] z-10">
             <FadeIn className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[2.1] tracking-[0.05em] space-y-6 max-w-2xl lg:ml-auto pr-6">
               <p className="font-['Rajdhani',sans-serif] font-semibold text-[11px] md:text-[13px] tracking-[0.4em] uppercase text-[#50C1BA] not-italic">04 — Creative Process</p>
-              <p>The Swiftrooms landing page was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected the brand's innovative and premium positioning. Using AI-driven workflows such as Figma Make, the project explored how intelligent design tools could accelerate ideation while maintaining a polished and intentional user experience.</p>
+              <p>The Swiftrooms landing page was approached with a strong emphasis on strategic thinking, ensuring the digital experience reflected the brand&apos;s innovative and premium positioning. Using AI-driven workflows such as Figma Make, the project explored how intelligent design tools could accelerate ideation while maintaining a polished and intentional user experience.</p>
               <p>Drawing from research into modern home improvement websites and contemporary digital experiences, the creative direction focused on delivering a sleek, immersive, and visually engaging interface. Clean typography, structured layouts, and cinematic visual storytelling created a balance between functionality and atmosphere, while motion-led interactions added depth and engagement throughout.</p>
-              <p>Using authentic photography captured by the Swiftrooms team, I transformed still imagery into storyboard-driven moving visuals that created an immersive brand journey — elevating Swiftrooms' digital presence while delivering a modern, commercially refined landing page.</p>
+              <p>Using authentic photography captured by the Swiftrooms team, I transformed still imagery into storyboard-driven moving visuals that created an immersive brand journey — elevating Swiftrooms&apos; digital presence while delivering a modern, commercially refined landing page.</p>
             </FadeIn>
           </div>
 
@@ -1145,7 +1153,7 @@ export default function Swiftrooms() {
             <SectionHeader eyebrow="Reflection" title="Project Services" />
             <FadeIn>
               <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400">
-                Across both engagements I led the strategic and creative execution — first taking ownership of the landing page's design direction, then rebuilding the wider digital presence as a scalable platform spanning information architecture, product experience, technical content, conversion and CMS structure.
+                Across both engagements I led the strategic and creative execution — first taking ownership of the landing page&apos;s design direction, then rebuilding the wider digital presence as a scalable platform spanning information architecture, product experience, technical content, conversion and CMS structure.
               </p>
             </FadeIn>
           </div>

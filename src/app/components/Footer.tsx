@@ -1,5 +1,5 @@
 import { Phone, Instagram, Linkedin } from "lucide-react";
-import { Link } from "react-router";
+import Link from 'next/link';
 
 interface FooterProps {
   className?: string;
@@ -46,10 +46,10 @@ export function Footer({ className = "" }: FooterProps) {
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-['Inter',sans-serif]">
         <p>© 2026 VISUALRIF. All rights reserved.</p>
         <div className="flex flex-wrap justify-center gap-6">
-          <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <Link to="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
-          <Link to="/gdpr" className="hover:text-white transition-colors">GDPR & Data Usage</Link>
-          <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
+          <Link scroll={false} href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+          <Link scroll={false} href="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
+          <Link scroll={false} href="/gdpr" className="hover:text-white transition-colors">GDPR & Data Usage</Link>
+          <Link scroll={false} href="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
         </div>
       </div>
     </footer>

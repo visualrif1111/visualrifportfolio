@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useSyncExternalStore } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import imgRectangle1 from "figma:asset/8e7771964c5c3a7ec1502b7371fd0054f51617eb.png";
+import imgRectangle1 from "@/assets/8e7771964c5c3a7ec1502b7371fd0054f51617eb.png";
+
+const FINE_POINTER = '(hover: hover) and (pointer: fine)';
+
+function subscribeFinePointer(onChange: () => void) {
+  const mq = window.matchMedia(FINE_POINTER);
+  mq.addEventListener('change', onChange);
+  return () => mq.removeEventListener('change', onChange);
+}
 
 export const AnimatedBackground = React.memo(function AnimatedBackground() {
-  const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(hover: hover) and (pointer: fine)').matches : false
-  );
+  const isDesktop = useSyncExternalStore(subscribeFinePointer, () => window.matchMedia(FINE_POINTER).matches, () => false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -19,13 +25,6 @@ export const AnimatedBackground = React.memo(function AnimatedBackground() {
 
   const smoothPxX = useSpring(mousePxX, { damping: 40, stiffness: 60, mass: 0.5 });
   const smoothPxY = useSpring(mousePxY, { damping: 40, stiffness: 60, mass: 0.5 });
-
-  useEffect(() => {
-    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
 
   useEffect(() => {
     if (!isDesktop) return;

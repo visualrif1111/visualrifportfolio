@@ -10,15 +10,15 @@ Portfolio and business platform for **visualrif.com** (Arif Tariq / VISUALRIF, m
 
 | Layer | Target | Status |
 |---|---|---|
-| Frontend | Next.js (App Router) + React + TypeScript + Tailwind CSS v4 | Vite 6 + React 18 + React Router 7 on `main`; migrating |
+| Frontend | Next.js (App Router) + React + TypeScript + Tailwind CSS v4 | `next-migration`: Next.js 16.3.7, React 19.3, TypeScript strict, Tailwind 4 — done. `main`: still Vite 6 + React 18 + React Router 7 |
 | CMS | Sanity (content, case studies, SEO fields, Visual Editing) | Not started — content is hard-coded in TSX |
 | CRM | Attio (people, companies, leads, deals, pipeline) | Not started |
 | Email | Resend (transactional) | Not started |
 | Monitoring | Sentry | Not started |
 | Security | Cloudflare Turnstile, Redis (rate limiting), Zod (validation) | Not started |
-| SEO | Sanity SEO fields, Next.js Metadata API, JSON-LD, `app/sitemap.ts`, `app/robots.ts` | Static tags in `index.html` only; no sitemap/robots |
+| SEO | Sanity SEO fields, Next.js Metadata API, JSON-LD, `app/sitemap.ts`, `app/robots.ts` | Static site-wide metadata in `app/layout.tsx` (same tags as the old `index.html`); no sitemap/robots/JSON-LD yet; `/og-image.png` does not exist |
 | Search tooling | Google Search Console, Ahrefs Webmaster Tools (external) | Not verified |
-| Analytics | Vercel Web Analytics | Not installed |
+| Analytics | Vercel Web Analytics | `<Analytics />` in `app/layout.tsx` on `next-migration`; already enabled on the Vercel project |
 | Hosting | Vercel | Live (Vite preset, deploys `main`) |
 
 Update this table as each phase merges.
@@ -113,6 +113,20 @@ src/
 public/                  # jma-chains, jma-clothing, favicon
 ```
 
+### `next-migration` (Next.js, current)
+```
+app/                     # App Router: layout.tsx (metadata, fonts, CustomCursor, Root, Analytics), page.tsx per route,
+                         # not-found.tsx (404 status, then client redirect to /). Route files are thin server components.
+src/app/                 # existing page components ('use client' at each page entry) — imported by app/ via @/app/...
+  Root.tsx               # client shell: ScrollToTop, route prefetch, teal wipe, AnimatePresence page fade, CookieBanner
+  navigation.ts          # useNavigate() + per-history-entry state (replaces React Router navigate(to, { state }))
+  data/projects.ts       # project list; data/jmaCategories.ts drives /projects/jma-customs/[category] static params
+  components/motion/useReducedMotion.ts  # hydration-safe replacement for motion's hook — always use this one
+types/assets.d.ts        # *.png/*.jpg imports are URL strings
+next.config.ts           # Turbopack asset rule: image imports resolve to URL strings (as under Vite)
+```
+Removed with Vite: `index.html`, `vite.config.ts`, `src/main.tsx`, `src/app/App.tsx`, `src/app/routes.tsx`. `figma:asset/…` imports became `@/assets/…`.
+
 ### Target (Next.js)
 ```
 app/                     # App Router routes, layouts, route handlers (api/), sitemap.ts, robots.ts
@@ -137,11 +151,22 @@ Behaviour to preserve through the migration: teal route wipe + page fade, home s
 ## Commands
 
 ```
-pnpm install    # uses the committed pnpm-lock.yaml
-pnpm dev        # dev server
-pnpm build      # production build — must pass before reporting any task done
+pnpm install --frozen-lockfile   # pnpm 11.1.3 (pinned via packageManager), Node 24.x
+pnpm dev                         # next dev
+pnpm build                       # next build — must pass before reporting any task done
+pnpm start                       # serve the production build
+pnpm lint                        # ESLint (eslint-config-next); 0 errors required
+pnpm typecheck                   # tsc --noEmit, strict
 ```
-Next.js phases will add `typecheck`, `lint` and `test` scripts — run them when present.
+A `test` script arrives with the first backend phase.
+
+### Next.js rules for this codebase
+- Never read `window`, `document`, `localStorage` or `matchMedia` during render — server HTML must match the first client render. Use `useSyncExternalStore` (see `AnimatedBackground`, `CustomCursor`) or effects.
+- Use `useReducedMotion` from `src/app/components/motion/useReducedMotion.ts`, never the one from `motion/react`.
+- Navigate with `useNavigate()` from `src/app/navigation.ts` (it disables Next's scroll handling; `Root` owns scroll). Use `next/link` with `scroll={false}`.
+- `Root.tsx` wraps `children` in `AnimatePresence mode="wait"` keyed by pathname (no `FrozenRouter`); the teal wipe hides the swap. Re-test page transitions after every Next.js upgrade.
+- Image imports are URL strings (not `StaticImageData`); `next/image` adoption is a performance-phase decision.
+- Fonts load from the Google Fonts stylesheet in `app/layout.tsx`; family names are used literally in class strings, so `next/font` would need a codebase-wide change.
 
 ---
 
@@ -151,7 +176,8 @@ Names only — never put values, keys or tokens in this file or in git. Local va
 
 | Service | Variables |
 |---|---|
-| Site | `NEXT_PUBLIC_SITE_URL` |
+| Vercel build | `ENABLE_EXPERIMENTAL_COREPACK=1` (project env; pins pnpm via Corepack) |
+| Site | `NEXT_PUBLIC_SITE_URL` (not yet used — canonical URL is hard-coded in `app/layout.tsx`) |
 | Sanity | `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `SANITY_API_READ_TOKEN`, `SANITY_REVALIDATE_SECRET` |
 | Attio | `ATTIO_API_KEY` (+ configurable object/list/stage identifiers) |
 | Resend | `RESEND_API_KEY`, `ENQUIRY_TO_EMAIL`, `ENQUIRY_FROM_EMAIL` |
@@ -167,6 +193,8 @@ Today (`main`) no environment variables are required.
 ## Git & deployment workflow
 
 - **`main` = live production.** Vercel deploys every push to `main` to visualrif.com. Never push to `main` without explicit approval.
+- The Vercel project still has Vite build overrides (`npm run build` → `dist`) for `main`. `next-migration`'s `vercel.json` overrides them per deployment (`framework: nextjs`, `pnpm build`, `.next`). Don't change project-level build settings until the merge.
+- Vercel installs with pnpm 9/10 unless the project has `ENABLE_EXPERIMENTAL_COREPACK=1`, which makes it honour `packageManager` (pnpm 11.1.3).
 - **`next-migration` = the Next.js + backend migration.** All migration work lands here. Pushing this branch creates a Vercel preview deployment — ask before pushing.
 - Merge `next-migration` into `main` only after verifying: production build, every route, homepage and project pages, desktop/tablet/mobile, animations, galleries, videos, cursor, scroll behaviour, SEO, forms, accessibility, performance and Vercel configuration.
 - Work phase by phase; stop for approval between phases.
@@ -222,3 +250,13 @@ Use the `TYPE` and `EASE`/`DURATION` tokens in `src/app/design/tokens.ts` for ne
 - `mix-blend-difference` is used on the sidebar nav — text colour changes invert against content. Test before changing.
 - Any new public UI (e.g. the enquiry form) must match the existing design and be designed intentionally for desktop, tablet and mobile.
 - Legal pages (Privacy, Cookies, GDPR) must describe only technologies actually deployed.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

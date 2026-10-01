@@ -1,12 +1,20 @@
-import { Outlet, useLocation } from "react-router";
+"use client";
+
+import { usePathname, useRouter } from "next/navigation";
 import { AnimatedBackground } from "./components/AnimatedBackground";
 import { CookieBanner } from "./components/CookieBanner";
 import { ScrollProgress } from "./components/ScrollProgress";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import { commitNavState, readNavState } from './navigation';
+import { PROJECTS } from './data/projects';
 import { AnimatePresence, motion, useAnimate } from 'motion/react';
 
 function ScrollToTop() {
-  const { pathname, hash, state } = useLocation();
+  const pathname = usePathname();
+
+  useLayoutEffect(() => {
+    commitNavState();
+  }, [pathname]);
 
   useEffect(() => {
     // pageshow fires for both normal loads (persisted=false) and BFCache
@@ -17,7 +25,7 @@ function ScrollToTop() {
     const handlePageShow = (e: PageTransitionEvent) => {
       // If the URL has a hash the hash-scroll timer owns the final position.
       if (window.location.hash) return;
-      const usr = (window.history.state as any)?.usr;
+      const usr = readNavState();
       if (usr?.restoreHomeScroll || usr?.restoreMobileHomeScroll) return;
       window.scrollTo(0, 0);
     };
@@ -26,10 +34,12 @@ function ScrollToTop() {
   }, []);
 
   useEffect(() => {
-    if ((state as any)?.restoreHomeScroll || (state as any)?.restoreMobileHomeScroll) return;
+    const state = readNavState();
+    if (state?.restoreHomeScroll || state?.restoreMobileHomeScroll) return;
 
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
+    const hash = window.location.hash;
     if (!hash) return;
 
     const id = hash.slice(1);
@@ -37,13 +47,33 @@ function ScrollToTop() {
       document.getElementById(id)?.scrollIntoView({ behavior: 'instant' });
     }, 1150);
     return () => clearTimeout(timer);
-  }, [pathname, hash, state]);
+  }, [pathname]);
 
   return null;
 }
 
-export function Root() {
-  const location = useLocation();
+/**
+ * Project cards, Back and Next Project navigate programmatically, so Next.js
+ * never prefetches them. Warm every route once idle so the new page is mounted
+ * before the teal wipe reveals it.
+ */
+function PrefetchRoutes() {
+  const router = useRouter();
+  useEffect(() => {
+    const prefetch = () => ['/', ...PROJECTS.map(p => p.to)].forEach(to => router.prefetch(to));
+    // Safari has no requestIdleCallback.
+    if (typeof window.requestIdleCallback !== 'function') {
+      const id = setTimeout(prefetch, 1000);
+      return () => clearTimeout(id);
+    }
+    const id = requestIdleCallback(prefetch);
+    return () => cancelIdleCallback(id);
+  }, [router]);
+  return null;
+}
+
+export function Root({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const [wipeScope, animateWipe] = useAnimate();
   const isFirstNav = useRef(true);
 
@@ -57,11 +87,12 @@ export function Root() {
       times: [0, 0.4, 0.6, 1],
       ease: [[0.76, 0, 0.24, 1], 'linear', [0.76, 0, 0.24, 1]],
     });
-  }, [location.pathname]);
+  }, [pathname, animateWipe, wipeScope]);
 
   return (
     <>
       <ScrollToTop />
+      <PrefetchRoutes />
       <ScrollProgress />
       <AnimatedBackground />
 
@@ -74,7 +105,7 @@ export function Root() {
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
-          key={location.pathname}
+          key={pathname}
           variants={{
             initial: { opacity: 0 },
             animate: { opacity: 1, transition: { duration: 0.4, delay: 0 } },
@@ -84,7 +115,7 @@ export function Root() {
           animate="animate"
           exit="exit"
         >
-          <Outlet />
+          {children}
         </motion.div>
       </AnimatePresence>
       <CookieBanner />

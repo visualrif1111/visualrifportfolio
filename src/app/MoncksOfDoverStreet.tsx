@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import '../styles/fonts.css';
 import { GalleryLightbox, type GalleryImage } from './components/GalleryLightbox';
@@ -111,7 +113,7 @@ export default function MoncksOfDoverStreet() {
             <FadeIn>
               <div className={BODY}>
                 <p>As a Digital Designer at Verb Brands, I was tasked with designing a luxury hospitality website for Moncks Of Dover Street, a premium brasserie located in Mayfair, London. This project marked a pivotal moment in my career, allowing me to establish myself within the luxury digital design space.</p>
-                <p className="hidden md:block">The objective was to create a refined 15-page brochure website that reflected the restaurant's premium identity, heritage, and interior experience, while also functioning seamlessly for a B2C audience through features such as reservation integrations. The project was delivered within a one-month timeframe with a £12,000 production budget.</p>
+                <p className="hidden md:block">The objective was to create a refined 15-page brochure website that reflected the restaurant&apos;s premium identity, heritage, and interior experience, while also functioning seamlessly for a B2C audience through features such as reservation integrations. The project was delivered within a one-month timeframe with a £12,000 production budget.</p>
               </div>
             </FadeIn>
           </div>
@@ -132,8 +134,8 @@ export default function MoncksOfDoverStreet() {
             <SectionHeader eyebrow="02 — The Problem" title="The Challenge" />
             <FadeIn>
               <div className={BODY}>
-                <p>Before beginning the design phase, I conducted extensive research using the sitemap, functional specifications, brand guidelines, and interior design references provided. This allowed me to build a strategic understanding of the brand's visual language, cultural influences, and audience expectations.</p>
-                <p className="hidden md:block">One of the main challenges was creating a digital identity for a relatively new brand with a strong and recognisable name. I explored influences tied to both Christopher Monck and Dover Street's association with luxury fashion, art, and culture in London, using these references to shape the overall creative direction.</p>
+                <p>Before beginning the design phase, I conducted extensive research using the sitemap, functional specifications, brand guidelines, and interior design references provided. This allowed me to build a strategic understanding of the brand&apos;s visual language, cultural influences, and audience expectations.</p>
+                <p className="hidden md:block">One of the main challenges was creating a digital identity for a relatively new brand with a strong and recognisable name. I explored influences tied to both Christopher Monck and Dover Street&apos;s association with luxury fashion, art, and culture in London, using these references to shape the overall creative direction.</p>
               </div>
             </FadeIn>
           </div>
@@ -211,7 +213,7 @@ export default function MoncksOfDoverStreet() {
       {/* ── 07 · Reflection ── */}
       <Section width="narrow" pad="default">
         <PullQuote attribution="Moncks of Dover Street">
-          A premium digital experience built around elegant typography, editorial layouts, and a restrained colour palette — translating the atmosphere of Moncks Of Dover Street into a refined online presence that elevated the brand within London's luxury hospitality market.
+          A premium digital experience built around elegant typography, editorial layouts, and a restrained colour palette — translating the atmosphere of Moncks Of Dover Street into a refined online presence that elevated the brand within London&apos;s luxury hospitality market.
         </PullQuote>
       </Section>
 
@@ -224,7 +226,7 @@ export default function MoncksOfDoverStreet() {
             <SectionHeader eyebrow="Reflection" title="Responsibilities" tone="white" />
             <FadeIn>
               <p className="font-['Lato',sans-serif] font-light text-[16px] md:text-[17px] leading-[1.6] tracking-[0.05em] text-gray-400">
-                Throughout the project I supported both the strategic and creative execution of the digital experience — from creative direction and the UX/UI design system through to translating the brand's luxury positioning into a refined, immersive online experience, working closely with senior creatives and developers.
+                Throughout the project I supported both the strategic and creative execution of the digital experience — from creative direction and the UX/UI design system through to translating the brand&apos;s luxury positioning into a refined, immersive online experience, working closely with senior creatives and developers.
               </p>
             </FadeIn>
           </div>

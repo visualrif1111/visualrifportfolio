@@ -1,5 +1,6 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
+import { useReducedMotion } from './useReducedMotion';
 import { EASE } from '../../design/tokens';
 
 interface FadeInProps {

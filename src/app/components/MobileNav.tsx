@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { useLocation, useNavigate } from 'react-router';
+import { usePathname } from 'next/navigation';
+import { useNavigate } from '../navigation';
 import { Menu, X } from 'lucide-react';
 import { VisualRifLogo, SocialInstagram, SocialLinkedin, SocialPhone } from './case-study/icons';
 import { PROJECTS, UPCOMING, CATEGORY_LABELS, type Category } from '../data/projects';
@@ -17,6 +18,8 @@ const CATEGORIES: { label: string; items: NavProject[] }[] = (Object.keys(CATEGO
   items: [...PROJECTS, ...UPCOMING].filter(p => p.category === c),
 }));
 
+const subscribeNoop = () => () => {};
+
 /**
  * Mobile-only project navigation. A trigger button sits inside the existing
  * top bar; the panel is portalled to <body> so it escapes the bar's
@@ -25,10 +28,15 @@ const CATEGORIES: { label: string; items: NavProject[] }[] = (Object.keys(CATEGO
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const pathname = usePathname();
+  const isClient = useSyncExternalStore(subscribeNoop, () => true, () => false);
 
   // Close on route change
-  useEffect(() => { setOpen(false); }, [pathname]);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setOpen(false);
+  }
 
   // Escape to close + body scroll lock
   useEffect(() => {
@@ -69,7 +77,7 @@ export function MobileNav() {
         <Menu size={24} />
       </button>
 
-      {createPortal(
+      {isClient && createPortal(
         <AnimatePresence>
           {open && (
             <motion.div

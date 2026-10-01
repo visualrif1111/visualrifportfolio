@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from '../../navigation';
 import { Footer } from '../Footer';
 import { VisualRifLogo, SocialLinks } from './icons';
 import { MobileNav } from '../MobileNav';

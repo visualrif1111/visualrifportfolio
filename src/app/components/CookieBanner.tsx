@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
-import { Link, useLocation } from 'react-router';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     // Check if user has already made a choice
@@ -27,7 +28,7 @@ export function CookieBanner() {
     setIsVisible(false);
   };
 
-  const isLegalPage = ['/privacy-policy', '/terms-and-conditions', '/gdpr', '/cookie-policy'].includes(location.pathname);
+  const isLegalPage = ['/privacy-policy', '/terms-and-conditions', '/gdpr', '/cookie-policy'].includes(pathname);
   const paddingClass = !isLegalPage ? 'md:pl-[280px]' : '';
 
   return (
@@ -43,7 +44,7 @@ export function CookieBanner() {
             <div className="flex-1 pr-8 relative">
               <h3 className="text-white font-medium mb-2 uppercase tracking-wider text-sm">Cookie Consent</h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                We use cookies to improve your experience, analyze site traffic, and support our marketing efforts. By clicking "Accept All", you consent to our use of cookies. Read our <Link to="/cookie-policy" className="text-[#50C1BA] hover:underline">Cookie Policy</Link> for more information.
+                This website doesn&apos;t set cookies of its own and uses cookieless analytics. Embedded YouTube videos may set third-party cookies. Read our <Link href="/cookie-policy" scroll={false} className="text-[#50C1BA] hover:underline">Cookie Policy</Link> for more information.
               </p>
               <button 
                 onClick={declineCookies}

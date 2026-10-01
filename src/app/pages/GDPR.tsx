@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 import { Footer } from '../components/Footer';
 
 export default function GDPR() {
@@ -8,12 +8,12 @@ export default function GDPR() {
     <div className="min-h-screen text-white font-['Barlow',sans-serif] bg-transparent">
       <div className="w-full flex flex-col relative pt-12 md:pt-24 z-10 min-h-screen">
         <div className="max-w-4xl mx-auto px-6 md:px-12 w-full flex-grow mb-32">
-          <Link to="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 uppercase tracking-widest text-sm font-medium">
+          <Link scroll={false} href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 uppercase tracking-widest text-sm font-medium">
             <ArrowLeft size={16} /> Back to Home
           </Link>
           
           <h1 className="text-4xl md:text-5xl font-bold mb-8 tracking-wider uppercase text-[#50C1BA]">GDPR Compliance & Data Usage</h1>
-          <p className="text-gray-400 mb-8">Last Updated: May 18, 2026</p>
+          <p className="text-gray-400 mb-8">Last Updated: October 1, 2026</p>
           
           <div className="space-y-8 text-gray-300 text-lg leading-relaxed">
             <section>
@@ -34,10 +34,11 @@ export default function GDPR() {
               <h2 className="text-2xl font-semibold mb-4 text-white">2. Third-Party Services and Data Sharing</h2>
               <p>We use the following third-party services which may collect or process your data:</p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li><strong>Google Analytics:</strong> We use Google Analytics to understand how visitors engage with our website. This service may collect your IP address, browser type, and interaction data.</li>
+                <li><strong>Vercel Web Analytics:</strong> We use Vercel Web Analytics to understand aggregate traffic to our website. It does not use cookies and reports anonymous information such as pages viewed, referrer, country, browser and device type.</li>
                 <li><strong>YouTube Embeds:</strong> Videos on our site are embedded from YouTube. Viewing these videos may result in YouTube placing cookies on your device and tracking your viewing behavior.</li>
-                <li><strong>Cloud Hosting & CDNs:</strong> Our website is hosted on secure cloud infrastructure and uses Content Delivery Networks to deliver content quickly. These services log IP addresses for security and performance monitoring.</li>
-                <li><strong>Contact Forms:</strong> Information submitted through contact forms is sent directly to us and is not shared with third parties except as required for email delivery.</li>
+                <li><strong>Hosting (Vercel):</strong> Our website is hosted by Vercel, which delivers content through its global network and logs IP addresses for security and performance monitoring.</li>
+                <li><strong>Google Fonts:</strong> Our fonts are loaded from Google&apos;s servers, which receive your IP address when the fonts are requested.</li>
+                <li><strong>Email and Telephone:</strong> If you contact us by email or phone, we use the details you provide only to respond to you. They are not shared with third parties except as required for email delivery.</li>
               </ul>
             </section>
 

@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useReducedMotion } from 'motion/react';
-import { useLocation, useNavigate } from 'react-router';
+import { motion, useMotionValue, useSpring } from 'motion/react';
+import { useReducedMotion } from './motion/useReducedMotion';
+import { usePathname } from 'next/navigation';
+import { useNavigate } from '../navigation';
 import { nextProject } from '../data/projects';
 
 export function NextProject() {
   const navigate = useNavigate();
-  const { title, to } = nextProject(useLocation().pathname);
+  const { title, to } = nextProject(usePathname());
   const sectionRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const magnetX = useMotionValue(0);
