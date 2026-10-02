@@ -18,8 +18,8 @@ export async function getAboutGallery(): Promise<AboutSlide[] | null> {
   const usable = slides?.filter(s => s.alt);
   if (!usable?.length) return null;
   return usable.map(s => ({
-    // The frame is at most 1920px wide; never upscale smaller originals.
-    src: urlFor(s.image).width(Math.min(s.width ?? 1920, 1920)).fit('max').url(),
+    // The frame is at most 1920 CSS px wide, so 3840px stays sharp on 2x screens; never upscale smaller originals.
+    src: urlFor(s.image).width(Math.min(s.width ?? 3840, 3840)).fit('max').url(),
     alt: s.alt!,
     fit: s.fit ?? 'cover',
     position: s.position ?? 'center',
