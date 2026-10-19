@@ -5,11 +5,12 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { useReducedMotion } from './components/motion/useReducedMotion';
 import { X } from 'lucide-react';
 import Link from 'next/link';
-import { useNavigate, readNavState } from './navigation';
+import { readNavState } from './navigation';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
-import { MobileNav } from './components/MobileNav';
+import { MenuButton } from './components/menu/SiteMenu';
+import { usePageTransition } from './components/transition/PageTransition';
 import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
 
@@ -261,7 +262,7 @@ export default function Home() {
   return (
     <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar transition-opacity duration-300 in-data-[menu=open]:opacity-0 in-data-[menu=open]:pointer-events-none">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => scrollTo('home')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -291,6 +292,7 @@ export default function Home() {
                 <Link scroll={false} href="/cv" className="text-gray-400 hover:text-white transition-colors">CV</Link>
               </li>
             </ul>
+            <MenuButton className="mt-12" />
           </div>
         </div>
 
@@ -303,13 +305,13 @@ export default function Home() {
       </nav>
 
       {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
+      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90 transition-opacity duration-300 in-data-[menu=open]:opacity-0 in-data-[menu=open]:pointer-events-none">
         <div className="cursor-pointer" onClick={() => scrollTo('home')}>
           <VisualRifLogo className="w-[140px] h-[18px]" />
         </div>
         <div className="flex items-center gap-5">
           <button className="text-[#50C1BA] font-['Rajdhani',sans-serif] font-medium text-[13px] tracking-widest uppercase" onClick={() => scrollTo('contact')}>CONTACT</button>
-          <MobileNav />
+          <MenuButton compact />
         </div>
       </nav>
 
@@ -658,7 +660,7 @@ function ProjectCategory({ title, projects, className = "", theme = "dark", blur
 
 const ProjectCard = React.memo(function ProjectCard({ project: p, className = "" }: { project: any, className?: string }) {
   const [isVideoOpen, setIsVideoOpen] = React.useState(false);
-  const navigate = useNavigate();
+  const go = usePageTransition();
   const reduce = useReducedMotion();
   const rotX = useMotionValue(0);
   const rotY = useMotionValue(0);
@@ -699,6 +701,7 @@ const ProjectCard = React.memo(function ProjectCard({ project: p, className = ""
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
       style={{ perspective: '1200px' }}
+      data-project-card={p.link}
       className={`relative ${className}`}
     >
     <motion.div
@@ -706,13 +709,13 @@ const ProjectCard = React.memo(function ProjectCard({ project: p, className = ""
       className={`group relative overflow-hidden bg-gray-900 w-full h-full ${!isVideoOpen && (p.videoId || p.link) ? 'cursor-pointer' : ''}`}
       onMouseMove={handleTiltMove}
       onMouseLeave={handleTiltLeave}
-      onClick={() => {
+      onClick={(e) => {
         if (p.link) {
           sessionStorage.setItem('homeScrollY', String(window.scrollY));
           if (window.matchMedia('(max-width: 768px)').matches) {
             sessionStorage.setItem('visualrif:lastMobileHomeScrollY', String(window.scrollY));
           }
-          navigate(p.link);
+          go(p.link, { kind: 'expand', img: p.img, from: e.currentTarget.getBoundingClientRect() });
         } else if (p.videoId && !isVideoOpen) {
           setIsVideoOpen(true);
         }

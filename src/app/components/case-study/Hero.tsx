@@ -46,7 +46,7 @@ export function Hero({
       : 'items-start text-left justify-end pb-20 md:pb-28 px-8 md:px-16';
 
   return (
-    <section className={`relative w-full ${heightClassName} ${overflowVisible ? '' : 'overflow-hidden'} bg-black`}>
+    <section data-transition-hero className={`relative w-full ${heightClassName} ${overflowVisible ? '' : 'overflow-hidden'} bg-black`}>
       <div className="absolute inset-0">{media}</div>
       {overlayClassName && <div className={`absolute inset-0 ${overlayClassName}`} />}
       {children}

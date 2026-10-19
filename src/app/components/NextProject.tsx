@@ -2,12 +2,12 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import { useReducedMotion } from './motion/useReducedMotion';
 import { usePathname } from 'next/navigation';
-import { useNavigate } from '../navigation';
+import { usePageTransition } from './transition/PageTransition';
 import { nextProject } from '../data/projects';
 
 export function NextProject() {
-  const navigate = useNavigate();
-  const { title, to } = nextProject(usePathname());
+  const go = usePageTransition();
+  const { title, to, img, accent } = nextProject(usePathname());
   const sectionRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const magnetX = useMotionValue(0);
@@ -51,7 +51,7 @@ export function NextProject() {
     <motion.section
       ref={sectionRef}
       className="relative w-full border-t border-gray-800 px-6 md:px-12 py-24 md:py-40 cursor-pointer overflow-hidden"
-      onClick={() => navigate(to)}
+      onClick={() => go(to, { kind: 'next', img, title, accent })}
       initial="rest"
       whileHover="hover"
       animate="rest"
