@@ -114,7 +114,7 @@ export default function DiversionAudio() {
               allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
               style={{ border: 0 }}
               allowFullScreen
-              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[50vh] md:min-h-[70vh] min-w-[88.88vh] md:min-w-[124.44vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[50vh] md:min-h-[70vh] min-w-[88.88vh] md:min-w-[124.44vh] -translate-x-1/2 -translate-y-1/2 scale-[1.2] pointer-events-none"
             />
             <div className="absolute inset-0 bg-black/40" />
           </div>
