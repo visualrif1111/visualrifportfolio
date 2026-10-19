@@ -177,6 +177,36 @@ export default function CV() {
               {education.quals.map((q) => <li key={q}>{q}</li>)}
             </ul>
           </Section>
+
+          <Section n="05" title="Download">
+            <div id="download" className="grid gap-10 bg-[#171717] p-8 md:p-12 text-[#F7F7F5] lg:grid-cols-[1fr_auto] lg:items-end">
+              <div>
+                <p className={twMerge(TYPE.label, 'text-[#50C1BA]')}>{profile.name} — CV 2026</p>
+                <h3 className="mt-5 font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase text-[40px] md:text-[60px] leading-[0.95] tracking-[0.02em]">
+                  Download the CV<span className="text-[#50C1BA]">.</span>
+                </h3>
+                <p className="mt-5 max-w-md font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.6] text-gray-300">
+                  The same CV as a two-page A4 PDF, with links to each case study.
+                </p>
+                <p className={twMerge(TYPE.meta, 'mt-6 text-gray-400')}>PDF · A4 · 2 pages</p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                <a
+                  href="/arif-tariq-cv-2026.pdf"
+                  download
+                  className={`${TYPE.cta} bg-[#50C1BA] px-8 py-4 text-center whitespace-nowrap text-[#020404] hover:bg-[#F7F7F5] transition-colors`}
+                >
+                  Download PDF ↓
+                </a>
+                <a
+                  href="/cv/print"
+                  className={`${TYPE.cta} border border-[#F7F7F5]/30 px-8 py-4 text-center whitespace-nowrap hover:border-[#50C1BA] hover:text-[#50C1BA] transition-colors`}
+                >
+                  Print view
+                </a>
+              </div>
+            </div>
+          </Section>
         </div>
         <Footer />
       </div>
