@@ -26,6 +26,8 @@ export interface Project {
   year: string;
   statement: string;
   img: string;
+  /** Drawn from the project's imagery; tints the menu and the project-to-project transition. */
+  accent: string;
 }
 
 export interface UpcomingProject {
@@ -44,6 +46,7 @@ export const PROJECTS: Project[] = [
     year: '2026',
     statement: 'A complex property-investment proposition turned into a structured, premium digital experience.',
     img: imgInvestInUK,
+    accent: '#2E4A7A',
   },
   {
     title: 'JMA Customs',
@@ -53,6 +56,7 @@ export const PROJECTS: Project[] = [
     year: '2025',
     statement: 'A luxury creative business built inside GTA V — brand, assets and a community around them.',
     img: imgJMACustoms,
+    accent: '#2FB8D6',
   },
   {
     title: 'Swiftrooms',
@@ -62,6 +66,7 @@ export const PROJECTS: Project[] = [
     year: '2026',
     statement: 'From a lead-generation landing page to a full architectural glazing platform for Dubai.',
     img: imgSwiftrooms,
+    accent: '#3E7D6E',
   },
   {
     title: 'Diversion Audio',
@@ -71,6 +76,7 @@ export const PROJECTS: Project[] = [
     year: '2024',
     statement: 'The first visual identity for a Drum & Bass collective — later seen at Boomtown.',
     img: imgDiversionAudio,
+    accent: '#E8B10C',
   },
   {
     title: 'Moncks of Dover Street',
@@ -80,6 +86,7 @@ export const PROJECTS: Project[] = [
     year: '2019',
     statement: 'A luxury brasserie website for Mayfair, designed and delivered in one month.',
     img: imgMoncks,
+    accent: '#8E2F3C',
   },
   {
     title: 'The Hairy Bastard',
@@ -89,6 +96,7 @@ export const PROJECTS: Project[] = [
     year: '2018',
     statement: 'A Brick Lane barbershop identity, finished in spot UV on matte charcoal.',
     img: imgHairyBastard,
+    accent: '#D9822B',
   },
   {
     title: 'The Sunil Gavaskar Project',
@@ -98,6 +106,7 @@ export const PROJECTS: Project[] = [
     year: '2022',
     statement: 'A Web3 campaign and NFT gallery celebrating a cricket legend.',
     img: imgSunilGavaskar,
+    accent: '#C9A24A',
   },
 ];
 

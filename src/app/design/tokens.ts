@@ -35,3 +35,9 @@ export const DURATION = {
   reveal: 0.9,
   wipe: 1.1,
 } as const;
+
+/** Seconds between items in a staggered reveal. */
+export const STAGGER = {
+  tight: 0.035,
+  base: 0.06,
+} as const;
