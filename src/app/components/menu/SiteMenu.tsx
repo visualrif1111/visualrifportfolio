@@ -160,7 +160,6 @@ const PAGES = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/#about' },
   { label: 'Projects', to: '/#projects' },
-  { label: 'CV', to: '/cv' },
   { label: 'Contact', to: '/#contact' },
 ];
 
@@ -187,12 +186,14 @@ function MenuPanel() {
   const current = PROJECTS.findIndex(p => pathname.startsWith(p.to));
   const [active, setActive] = useState<number | null>(null);
   const [shown, setShown] = useState(current >= 0 ? current : 0);
+  const [onCv, setOnCv] = useState(false);
 
   const px = useSpring(useMotionValue(0), { stiffness: 110, damping: 20 });
   const py = useSpring(useMotionValue(0), { stiffness: 110, damping: 20 });
 
   const highlight = (i: number | null) => {
     setActive(i);
+    setOnCv(false);
     if (i !== null) setShown(i);
   };
 
@@ -300,8 +301,8 @@ function MenuPanel() {
       </div>
 
       {/* Desktop */}
-      <div className="relative hidden md:grid flex-1 min-h-0 grid-cols-12 gap-8 px-12 items-center">
-        <nav aria-label="Projects" className="col-span-7">
+      <div className="relative hidden md:grid flex-1 min-h-0 grid-cols-12 grid-rows-[minmax(0,1fr)] gap-8 px-12 items-center">
+        <nav aria-label="Projects" className="col-span-7 max-h-full overflow-y-auto overscroll-contain [scrollbar-width:none]">
           <ul onMouseLeave={() => highlight(null)}>
             {PROJECTS.map((p, i) => (
               <li key={p.to}>
@@ -320,9 +321,9 @@ function MenuPanel() {
                   </span>
                   <span className="block overflow-hidden py-[0.4vh] pr-8">
                     <motion.span
-                      className="block font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase leading-[1] tracking-[0.02em] text-[clamp(2.25rem,7vh,5.5rem)] group-focus-visible:underline decoration-1 underline-offset-8"
+                      className="block font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase leading-[1] tracking-[0.02em] text-[clamp(1.75rem,5.2vh,5.5rem)] group-focus-visible:underline decoration-1 underline-offset-8"
                       {...reveal}
-                      animate={{ y: '0%', x: active === i && !reduce ? 18 : 0, opacity: active === null || active === i ? 1 : 0.28 }}
+                      animate={{ y: '0%', x: active === i && !reduce ? 18 : 0, opacity: (active === null && !onCv) || active === i ? 1 : 0.28 }}
                       transition={{ y: { duration: 0.8, ease: EASE.out, delay: revealDelay(i) }, x: { duration: 0.5, ease: EASE.out }, opacity: { duration: 0.35 } }}
                     >
                       {p.title}
@@ -332,12 +333,37 @@ function MenuPanel() {
                 </Link>
               </li>
             ))}
+            <li className="mt-[1.5vh] pt-[1.5vh] border-t border-white/10">
+              <Link
+                href="/cv"
+                scroll={false}
+                data-menu-item
+                aria-current={pathname === '/cv' ? 'page' : undefined}
+                onClick={e => follow(e, '/cv', 'CV')}
+                onMouseEnter={() => { setActive(null); setOnCv(true); }}
+                onFocus={() => { setActive(null); setOnCv(true); }}
+                className="group flex items-baseline gap-6 outline-none"
+              >
+                <span className={`w-8 shrink-0 text-[#50C1BA] ${NUMBER}`}>CV</span>
+                <span className="block overflow-hidden py-[0.4vh] pr-8">
+                  <motion.span
+                    className="block font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase leading-[1] tracking-[0.02em] text-[clamp(1.75rem,5.2vh,5.5rem)] text-[#50C1BA] group-focus-visible:underline decoration-1 underline-offset-8"
+                    {...reveal}
+                    animate={{ y: '0%', x: onCv && !reduce ? 18 : 0, opacity: active === null ? 1 : 0.28 }}
+                    transition={{ y: { duration: 0.8, ease: EASE.out, delay: revealDelay(PROJECTS.length) }, x: { duration: 0.5, ease: EASE.out }, opacity: { duration: 0.35 } }}
+                  >
+                    Curriculum Vitae
+                    {pathname === '/cv' && <span className="ml-4 align-middle text-[12px] tracking-[0.3em] font-['Rajdhani',sans-serif] font-semibold">● Viewing</span>}
+                  </motion.span>
+                </span>
+              </Link>
+            </li>
           </ul>
         </nav>
 
         <div className="col-span-5 flex flex-col justify-center">
           <motion.div
-            className="relative w-full max-w-[420px] aspect-[4/5] overflow-hidden bg-white/[0.03]"
+            className="relative h-[min(44vh,525px)] aspect-[4/5] overflow-hidden bg-white/[0.03]"
             style={reduce ? undefined : { x: px, y: py }}
             initial={reduce ? false : { opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -428,6 +454,28 @@ function MenuPanel() {
               </Link>
             </li>
           ))}
+          <li className="border-b border-white/10">
+            <Link
+              href="/cv"
+              scroll={false}
+              data-menu-item
+              aria-current={pathname === '/cv' ? 'page' : undefined}
+              onClick={e => follow(e, '/cv', 'CV')}
+              className="flex items-center gap-4 py-4 outline-none focus-visible:bg-white/5 active:opacity-70"
+            >
+              <span className={`w-6 shrink-0 text-[#50C1BA] ${NUMBER}`}>CV</span>
+              <span className="flex-1 overflow-hidden">
+                <motion.span
+                  className="block font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase leading-[1] tracking-[0.02em] text-[clamp(1.9rem,9vw,3rem)] text-[#50C1BA]"
+                  {...reveal}
+                  animate={{ y: '0%' }}
+                  transition={{ duration: 0.7, ease: EASE.out, delay: revealDelay(PROJECTS.length) }}
+                >
+                  Curriculum Vitae
+                </motion.span>
+              </span>
+            </Link>
+          </li>
           {UPCOMING.map(p => (
             <li key={p.title} className="flex items-center justify-between gap-4 py-4 border-b border-white/10">
               <span className="font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase text-[clamp(1.4rem,6vw,2rem)] leading-[1] text-gray-600">{p.title}</span>
