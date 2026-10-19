@@ -105,7 +105,8 @@ export function SiteHeader() {
   const reduce = useReducedMotion();
   const project = PROJECTS.find(p => pathname.startsWith(p.to));
   const inJmaCategory = pathname.startsWith('/projects/jma-customs/');
-  // On light pages the difference blend would turn the logo's teal diamond red, so draw in ink instead.
+  // On light pages the difference blend would turn the logo's teal diamond red, so draw in ink on
+  // the page colour instead (ink with no blend would collide with the text scrolling under it).
   const light = LIGHT_PAGES.includes(pathname);
 
   const back = () => {
@@ -122,7 +123,7 @@ export function SiteHeader() {
   };
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 pointer-events-none ${light ? 'text-[#171717]' : 'mix-blend-difference text-white'}`}>
+    <header className={`fixed top-0 inset-x-0 z-50 pointer-events-none ${light ? 'bg-[#F7F7F5] text-[#171717]' : 'mix-blend-difference text-white'}`}>
       <div className="flex items-center justify-between gap-6 px-6 py-5 md:px-12 md:py-7">
         <Link href="/" scroll={false} onClick={home} aria-label="VISUALRIF — Home" className="pointer-events-auto">
           <VisualRifLogo className={`w-[130px] h-[17px] md:w-[180px] md:h-[24px] ${light ? '[&_path[fill=white]]:fill-[#171717]' : ''}`} />
