@@ -175,6 +175,13 @@ export function MobileNav() {
                   >
                     Back to Home
                   </button>
+                  <button
+                    onClick={() => go('/cv')}
+                    aria-current={pathname === '/cv' ? 'page' : undefined}
+                    className="w-full border border-white/25 active:border-[#50C1BA] transition-colors py-4 font-['Rajdhani',sans-serif] font-semibold text-[11px] tracking-[0.4em] uppercase text-white"
+                  >
+                    CV
+                  </button>
                   <a
                     href="mailto:hello@visualrif.com"
                     className="w-full text-center border border-[#50C1BA]/40 active:border-[#50C1BA] transition-colors py-4 font-['Rajdhani',sans-serif] font-semibold text-[11px] tracking-[0.4em] uppercase text-[#50C1BA]"

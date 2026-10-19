@@ -4,6 +4,7 @@ import React from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { useReducedMotion } from './components/motion/useReducedMotion';
 import { X } from 'lucide-react';
+import Link from 'next/link';
 import { useNavigate, readNavState } from './navigation';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
@@ -286,6 +287,9 @@ export default function Home({ aboutGallery = ABOUT_GALLERY }: { aboutGallery?: 
                   <span className={activeSection === id ? 'text-white' : 'text-gray-400'}>{label}</span>
                 </li>
               ))}
+              <li>
+                <Link scroll={false} href="/cv" className="text-gray-400 hover:text-white transition-colors">CV</Link>
+              </li>
             </ul>
           </div>
         </div>
