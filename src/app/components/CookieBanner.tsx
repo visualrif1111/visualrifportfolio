@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     // Check if user has already made a choice
@@ -28,8 +26,6 @@ export function CookieBanner() {
     setIsVisible(false);
   };
 
-  const isLegalPage = ['/privacy-policy', '/terms-and-conditions', '/gdpr', '/cookie-policy'].includes(pathname);
-  const paddingClass = !isLegalPage ? 'md:pl-[280px]' : '';
 
   return (
     <AnimatePresence>
@@ -38,7 +34,7 @@ export function CookieBanner() {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className={`fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 ${paddingClass}`}
+          className={`fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6`}
         >
           <div className="max-w-4xl mx-auto bg-[#1c1c1e] border border-gray-800 p-6 rounded-2xl shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex-1 pr-8 relative">

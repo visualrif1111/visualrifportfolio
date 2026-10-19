@@ -216,7 +216,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
                 <img ref={image} src={variant.img} alt="" className="w-full h-full object-cover will-change-transform" />
                 <div className="absolute inset-0 bg-black/45" />
               </div>
-              <div className="absolute inset-x-0 bottom-[12vh] px-6 md:px-12 md:pl-[328px] overflow-hidden">
+              <div className="absolute inset-x-0 bottom-[12vh] px-6 md:px-12 overflow-hidden">
                 <p className="font-['Rajdhani',sans-serif] font-semibold text-[11px] md:text-[13px] tracking-[0.4em] uppercase text-white/70 mb-4">Next Project</p>
                 <div className="overflow-hidden">
                   <div ref={label} className="font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase text-white text-[11vw] md:text-[7vw] leading-[0.95] tracking-[0.02em]" style={{ transform: 'translateY(120%)' }}>

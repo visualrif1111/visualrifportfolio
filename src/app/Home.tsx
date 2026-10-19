@@ -4,12 +4,10 @@ import React from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { useReducedMotion } from './components/motion/useReducedMotion';
 import { X } from 'lucide-react';
-import Link from 'next/link';
 import { readNavState } from './navigation';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
-import { MobileNav } from './components/MobileNav';
 import { usePageTransition } from './components/transition/PageTransition';
 import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
@@ -89,22 +87,6 @@ const projects = {
 import svgPaths from "../imports/Frame24/svg-acruz23zjw";
 import svgPathsFrame27 from "../imports/Frame27/svg-sniomcvdel";
 
-const VisualRifLogo = React.memo(function VisualRifLogo({ className = "" }: { className?: string }) {
-  return (
-    <svg className={`block ${className}`} fill="none" preserveAspectRatio="none" viewBox="0 0 235.669 30.159">
-      <path d={svgPaths.p13c84500} fill="#50C1BA" />
-      <path d={svgPaths.p37476b00} fill="white" />
-      <path d={svgPaths.pa013800} fill="white" />
-      <path d={svgPaths.p630c200} fill="white" />
-      <path d={svgPaths.p349de6f0} fill="white" />
-      <path d={svgPaths.p39faef00} fill="white" />
-      <path d={svgPaths.p141d9280} fill="white" />
-      <path d={svgPaths.p4738e00} fill="white" />
-      <path d={svgPaths.pffcfbf0} fill="white" />
-      <path d={svgPaths.p2b767700} fill="white" />
-    </svg>
-  );
-});
 
 const Diamond = React.memo(function Diamond({ className = "" }: { className?: string }) {
   return (
@@ -131,32 +113,10 @@ const ScrollTriangle = React.memo(function ScrollTriangle({ className = "" }: { 
   );
 });
 
-const SocialInstagram = React.memo(function SocialInstagram({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path d={svgPaths.p386b1640} fill="currentColor" />
-    </svg>
-  );
-});
 
-const SocialLinkedin = React.memo(function SocialLinkedin({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 15.0795 15.0795">
-      <path clipRule="evenodd" d={svgPaths.p1a85db80} fill="currentColor" fillRule="evenodd" />
-    </svg>
-  );
-});
 
-const SocialPhone = React.memo(function SocialPhone({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" preserveAspectRatio="none" viewBox="0 0 14.1371 14.1373">
-      <path d={svgPaths.p35dc3720} fill="currentColor" />
-    </svg>
-  );
-});
 
 export default function Home() {
-  const [activeSection, setActiveSection] = React.useState('home');
   const reduce = useReducedMotion();
 
   const heroMouseX = useMotionValue(0.5);
@@ -196,25 +156,6 @@ export default function Home() {
     timelineRef.current.scrollLeft = timelineScrollLeft - walk;
   };
 
-  React.useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, { rootMargin: '-50% 0px -50% 0px' });
-
-    const sections = ['home', 'about', 'projects', 'contact'];
-    sections.forEach(section => {
-      const element = document.getElementById(section);
-      if (element) observer.observe(element);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   React.useEffect(() => {
     const state = readNavState();
@@ -261,59 +202,6 @@ export default function Home() {
 
   return (
     <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
-      {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
-        <div>
-          <div className="mb-12 cursor-pointer" onClick={() => scrollTo('home')}>
-            <VisualRifLogo className="w-[180px] h-[24px]" />
-          </div>
-          <div className="relative pl-6">
-            <div className="absolute left-[3px] top-2 bottom-[-400px] w-[1px] bg-white opacity-20"></div>
-            <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white"></div>
-            <ul className="flex flex-col gap-8 text-[18px] tracking-[0.25em] text-gray-300 font-['Rajdhani',sans-serif] font-medium uppercase relative z-10 whitespace-nowrap">
-              {([
-                { id: 'home', label: 'HOME' },
-                { id: 'about', label: 'ABOUT ME' },
-                { id: 'projects', label: 'ALL PROJECTS' },
-                { id: 'contact', label: 'CONTACT US' },
-              ] as const).map(({ id, label }) => (
-                <li key={id} className="relative cursor-pointer hover:text-white transition-colors" onClick={() => scrollTo(id)}>
-                  {activeSection === id && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute -left-6 top-1/2 -translate-y-1/2 w-3 h-[1px] bg-[#50C1BA]"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className={activeSection === id ? 'text-white' : 'text-gray-400'}>{label}</span>
-                </li>
-              ))}
-              <li>
-                <Link scroll={false} href="/cv" className="text-gray-400 hover:text-white transition-colors">CV</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-5 pl-4 relative">
-          <div className="absolute left-[0.5px] bottom-1/2 translate-y-1/2 w-[6px] h-[6px] rounded-full bg-white"></div>
-          <a href="https://www.instagram.com/visualrif/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialInstagram className="w-[15px] h-[15px]" /></a>
-          <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="text-white hover:text-[#50C1BA] transition-colors"><SocialLinkedin className="w-[15px] h-[15px]" /></a>
-          <a href="tel:07598078923" className="text-white hover:text-[#50C1BA] transition-colors"><SocialPhone className="w-[14px] h-[14px]" /></a>
-        </div>
-      </nav>
-
-      {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
-        <div className="cursor-pointer" onClick={() => scrollTo('home')}>
-          <VisualRifLogo className="w-[140px] h-[18px]" />
-        </div>
-        <div className="flex items-center gap-5">
-          <button className="text-[#50C1BA] font-['Rajdhani',sans-serif] font-medium text-[13px] tracking-widest uppercase" onClick={() => scrollTo('contact')}>CONTACT</button>
-          <MobileNav />
-        </div>
-      </nav>
-
       {/* Hero Background Video */}
       <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
         <iframe
@@ -332,7 +220,7 @@ export default function Home() {
         <div className="absolute inset-0 z-[1] pointer-events-auto" />
       </div>
 
-      <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
+      <div className="relative z-10 w-full px-6 pt-24 md:pt-0 md:px-12 max-w-7xl mx-auto overflow-x-clip">
         {/* Hero Section */}
         <section id="home" className="min-h-[calc(100vh-6rem)] md:min-h-screen flex flex-col items-center justify-between relative w-full pt-16 md:pt-32 pb-8 md:pb-12">
           {/* Centered Content */}
@@ -416,7 +304,7 @@ export default function Home() {
 
       <AboutGallery />
 
-      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
+      <div className="relative z-10 w-full px-6 md:px-12 max-w-7xl mx-auto overflow-x-clip">
         <div className="h-16 md:h-24"></div>
 
         {/* Marquee */}
@@ -501,7 +389,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="relative z-10 w-full px-6 md:pl-[280px] md:pr-12 max-w-7xl mx-auto overflow-x-clip">
+      <div className="relative z-10 w-full px-6 md:px-12 max-w-7xl mx-auto overflow-x-clip">
         {/* Projects */}
         <section id="projects" className="flex flex-col pb-10 md:pb-20">
           <ProjectCategory title="UX / UI, WEB DESIGN" blurb="Digital products & websites — from luxury hospitality to Web3" projects={projects.uxui} className="mb-32 md:mb-48" theme="light" />
@@ -525,7 +413,7 @@ export default function Home() {
 
       </div>
 
-      <Footer className="md:pl-[280px]" />
+      <Footer />
     </div>
   );
 }

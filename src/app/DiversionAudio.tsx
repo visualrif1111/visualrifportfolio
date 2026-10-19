@@ -100,7 +100,7 @@ export default function DiversionAudio() {
 
   return (
     <CaseStudyShell>
-      {/* ── Hero (full-bleed video behind sidebar) ── */}
+      {/* ── Hero (full-bleed video) ── */}
       <Hero
         overflowVisible
         overlayClassName=""
@@ -108,7 +108,7 @@ export default function DiversionAudio() {
         titleClassName="text-[40px] md:text-[80px] lg:text-[110px] leading-none tracking-[0.1em]"
         titleLines={['Diversion Audio']}
         media={
-          <div className="absolute inset-0 md:-left-[280px] md:w-[calc(100%+280px)] w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
             <iframe
               src="https://www.youtube.com/embed/qOugLMycEe0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=qOugLMycEe0"
               allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
