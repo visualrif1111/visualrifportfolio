@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from './navigation';
 import '../styles/fonts.css';
 import { NextProject } from './components/NextProject';
@@ -57,71 +56,11 @@ const stats = [
   { value: '∞', label: 'Creative Reach' },
 ];
 
-const NAV_ITEMS = [
-  { id: 'jma-origin', label: 'Overview' },
-  { id: 'jma-ecosystem', label: 'Ecosystem' },
-  { id: 'jma-assets', label: 'Custom Assets' },
-  { id: 'jma-discord', label: 'Discord CRM' },
-  { id: 'jma-identity', label: 'Digital Identity' },
-  { id: 'jma-impact', label: 'Community Impact' },
-];
-
 export default function JMACustoms() {
   const navigate = useNavigate();
-  const [activeSection, setActiveSection] = useState('');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px' }
-    );
-    NAV_ITEMS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  const goHome = () => navigate('/', { state: window.matchMedia('(max-width: 768px)').matches ? { restoreMobileHomeScroll: true } : { restoreHomeScroll: true } });
-
-  const sidebarNav = (
-    <div className="relative pl-6">
-      <div className="absolute left-[3px] top-2 bottom-0 w-[1px] bg-white opacity-20" />
-      <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white" />
-      <ul className="flex flex-col gap-5 relative z-10 whitespace-nowrap">
-        <li className="text-[13px] tracking-[0.25em] text-gray-400 font-['Rajdhani',sans-serif] font-medium uppercase hover:text-white transition-colors cursor-pointer" onClick={goHome}>
-          <span className="flex items-center gap-2"><ArrowLeft size={13} /> Back to Home</span>
-        </li>
-        <li className="pt-2 pb-1">
-          <span className="text-[9px] tracking-[0.45em] font-['Rajdhani',sans-serif] font-semibold uppercase opacity-30">JMA Customs</span>
-        </li>
-        {NAV_ITEMS.map(({ id, label }) => (
-          <li key={id}>
-            <button
-              className={`flex items-center gap-2.5 text-[13px] tracking-[0.22em] font-['Rajdhani',sans-serif] font-medium uppercase transition-all duration-200 cursor-pointer text-left ${
-                activeSection === id ? 'text-white opacity-100' : 'text-gray-400 opacity-60 hover:opacity-90 hover:text-white'
-              }`}
-              onClick={() => scrollTo(id)}
-            >
-              <span className={`w-[4px] h-[4px] rounded-full shrink-0 transition-all duration-200 ${activeSection === id ? 'bg-white scale-125' : 'bg-white opacity-30'}`} />
-              {label}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
 
   return (
-    <CaseStudyShell sidebarNav={sidebarNav} onBack={goHome}>
+    <CaseStudyShell>
       {/* ── Cinematic hero ── */}
       <Hero
         heightClassName="h-[100svh]"

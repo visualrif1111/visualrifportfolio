@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowLeft } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { useNavigate } from './navigation';
 import '../styles/fonts.css';
@@ -29,39 +28,8 @@ export default function JMACustomsCategoryPage() {
     );
   }
 
-  const sidebarNav = (
-    <div className="relative pl-6">
-      <div className="absolute left-[3px] top-2 bottom-0 w-[1px] bg-white opacity-20" />
-      <div className="absolute left-[0.5px] top-2 w-[6px] h-[6px] rounded-full bg-white" />
-      <ul className="flex flex-col gap-5 relative z-10 whitespace-nowrap">
-        <li
-          className="text-[13px] tracking-[0.25em] text-gray-400 font-['Rajdhani',sans-serif] font-medium uppercase hover:text-white transition-colors cursor-pointer"
-          onClick={() => navigate('/projects/jma-customs')}
-        >
-          <span className="flex items-center gap-2"><ArrowLeft size={13} /> JMA Customs</span>
-        </li>
-        <li className="pt-2">
-          <span className="text-[9px] tracking-[0.45em] font-['Rajdhani',sans-serif] font-semibold uppercase opacity-30">Custom Assets</span>
-        </li>
-        {Object.entries(CATEGORIES).map(([slug, cat]) => (
-          <li key={slug}>
-            <button
-              className={`flex items-center gap-2.5 text-[13px] tracking-[0.22em] font-['Rajdhani',sans-serif] font-medium uppercase transition-all duration-200 cursor-pointer text-left ${
-                slug === category ? 'text-white opacity-100' : 'text-gray-400 opacity-60 hover:opacity-90 hover:text-white'
-              }`}
-              onClick={() => navigate(`/projects/jma-customs/${slug}`)}
-            >
-              <span className={`w-[4px] h-[4px] rounded-full shrink-0 transition-all duration-200 ${slug === category ? 'bg-white scale-125' : 'bg-white opacity-30'}`} />
-              {cat.title}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-
   return (
-    <CaseStudyShell sidebarNav={sidebarNav} onBack={() => navigate('/projects/jma-customs')}>
+    <CaseStudyShell>
       {/* ── Hero ── */}
       <Hero
         heightClassName="h-[55vh] md:h-[65vh]"

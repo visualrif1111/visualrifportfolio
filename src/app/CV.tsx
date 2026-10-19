@@ -50,7 +50,7 @@ export default function CV() {
 
   return (
     <div className="min-h-screen text-white bg-transparent">
-      <div className="w-full flex flex-col relative pt-12 md:pt-24 z-10 min-h-screen">
+      <div className="w-full flex flex-col relative pt-28 md:pt-36 z-10 min-h-screen">
         <div className="max-w-6xl mx-auto px-6 md:px-12 w-full flex-grow mb-32">
           <div className="flex flex-wrap items-center justify-between gap-6 mb-16 md:mb-24">
             <Link scroll={false} href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors uppercase tracking-widest text-sm font-medium font-['Barlow',sans-serif]">
