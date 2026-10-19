@@ -9,7 +9,6 @@ import { commitNavState, readNavState } from './navigation';
 import { PROJECTS } from './data/projects';
 import { AnimatePresence, motion, useAnimate } from 'motion/react';
 import { PageTransitionProvider, isTransitionActive } from './components/transition/PageTransition';
-import { MenuProvider, MenuStage, SiteMenu } from './components/menu/SiteMenu';
 
 function ScrollToTop() {
   const pathname = usePathname();
@@ -94,39 +93,34 @@ export function Root({ children }: { children: React.ReactNode }) {
 
   return (
     <PageTransitionProvider>
-      <MenuProvider>
-        <ScrollToTop />
-        <PrefetchRoutes />
-        <ScrollProgress />
-        <AnimatedBackground />
+      <ScrollToTop />
+      <PrefetchRoutes />
+      <ScrollProgress />
+      <AnimatedBackground />
 
-        {/* Cinematic teal wipe panel — slides up on route change */}
-        <div
-          ref={wipeScope}
-          className="fixed inset-0 z-[500] bg-[#50C1BA] pointer-events-none"
-          style={{ transform: 'translateY(101%)' }}
-        />
+      {/* Cinematic teal wipe panel — slides up on route change */}
+      <div
+        ref={wipeScope}
+        className="fixed inset-0 z-[500] bg-[#50C1BA] pointer-events-none"
+        style={{ transform: 'translateY(101%)' }}
+      />
 
-        <MenuStage>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={pathname}
-              variants={{
-                initial: { opacity: 0 },
-                animate: { opacity: 1, transition: { duration: 0.4, delay: 0 } },
-                exit: { opacity: 0, transition: { duration: 0.18 } },
-              }}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
-        </MenuStage>
-        <SiteMenu />
-        <CookieBanner />
-      </MenuProvider>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={pathname}
+          variants={{
+            initial: { opacity: 0 },
+            animate: { opacity: 1, transition: { duration: 0.4, delay: 0 } },
+            exit: { opacity: 0, transition: { duration: 0.18 } },
+          }}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
+      <CookieBanner />
     </PageTransitionProvider>
   );
 }
