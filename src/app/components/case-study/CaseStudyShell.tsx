@@ -4,7 +4,7 @@ import { useNavigate } from '../../navigation';
 import { Footer } from '../Footer';
 import { VisualRifLogo, SocialLinks } from './icons';
 import { usePathname } from 'next/navigation';
-import { MenuButton } from '../menu/SiteMenu';
+import { MobileNav } from '../MobileNav';
 import { usePageTransition } from '../transition/PageTransition';
 import { PROJECTS } from '../../data/projects';
 
@@ -57,26 +57,25 @@ export function CaseStudyShell({ children, sidebarNav, onBack, logoTo = '/', foo
   return (
     <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
       {/* Desktop sidebar nav */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar transition-opacity duration-300 in-data-[menu=open]:opacity-0 in-data-[menu=open]:pointer-events-none">
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => navigate(logoTo)}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
           </div>
           {sidebarNav ?? defaultNav}
-          <MenuButton className="mt-12 pl-6" />
         </div>
         <SocialLinks />
       </nav>
 
       {/* Mobile top bar */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90 transition-opacity duration-300 in-data-[menu=open]:opacity-0 in-data-[menu=open]:pointer-events-none">
+      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
         <button aria-label="Back" className="text-white hover:text-[#50C1BA] transition-colors" onClick={handleBack}>
           <ArrowLeft size={24} />
         </button>
         <div className="cursor-pointer" onClick={() => navigate(logoTo)}>
           <VisualRifLogo className="w-[130px] h-[17px]" />
         </div>
-        <MenuButton compact />
+        <MobileNav />
       </nav>
 
       {/* Main content (offset for the fixed sidebar on desktop) */}

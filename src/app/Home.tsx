@@ -9,7 +9,7 @@ import { readNavState } from './navigation';
 import YouTube from 'react-youtube';
 import '../styles/fonts.css';
 import { Footer } from './components/Footer';
-import { MenuButton } from './components/menu/SiteMenu';
+import { MobileNav } from './components/MobileNav';
 import { usePageTransition } from './components/transition/PageTransition';
 import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
@@ -262,7 +262,7 @@ export default function Home({ aboutGallery = ABOUT_GALLERY }: { aboutGallery?: 
   return (
     <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
       {/* Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar transition-opacity duration-300 in-data-[menu=open]:opacity-0 in-data-[menu=open]:pointer-events-none">
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[280px] py-14 px-10 flex-col z-50 mix-blend-difference justify-between sidebar">
         <div>
           <div className="mb-12 cursor-pointer" onClick={() => scrollTo('home')}>
             <VisualRifLogo className="w-[180px] h-[24px]" />
@@ -292,7 +292,6 @@ export default function Home({ aboutGallery = ABOUT_GALLERY }: { aboutGallery?: 
                 <Link scroll={false} href="/cv" className="text-gray-400 hover:text-white transition-colors">CV</Link>
               </li>
             </ul>
-            <MenuButton className="mt-12" />
           </div>
         </div>
 
@@ -305,13 +304,13 @@ export default function Home({ aboutGallery = ABOUT_GALLERY }: { aboutGallery?: 
       </nav>
 
       {/* Mobile Nav */}
-      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90 transition-opacity duration-300 in-data-[menu=open]:opacity-0 in-data-[menu=open]:pointer-events-none">
+      <nav className="md:hidden fixed top-0 left-0 w-full p-6 z-50 mix-blend-difference flex justify-between items-center bg-black/90">
         <div className="cursor-pointer" onClick={() => scrollTo('home')}>
           <VisualRifLogo className="w-[140px] h-[18px]" />
         </div>
         <div className="flex items-center gap-5">
           <button className="text-[#50C1BA] font-['Rajdhani',sans-serif] font-medium text-[13px] tracking-widest uppercase" onClick={() => scrollTo('contact')}>CONTACT</button>
-          <MenuButton compact />
+          <MobileNav />
         </div>
       </nav>
 
