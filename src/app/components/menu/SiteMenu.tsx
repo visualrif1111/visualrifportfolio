@@ -11,6 +11,7 @@ import { usePageTransition } from '../transition/PageTransition';
 import { AudioWave } from './AudioWave';
 import { VisualRifLogo, SocialInstagram, SocialLinkedin, SocialPhone } from '../case-study/icons';
 import { PROJECTS, UPCOMING } from '../../data/projects';
+import { portfolioPdf } from '../../data/cv';
 import { EASE, STAGGER } from '../../design/tokens';
 
 interface MenuContextValue {
@@ -192,6 +193,7 @@ function MenuPanel() {
   const [active, setActive] = useState<number | null>(null);
   const [shown, setShown] = useState(current >= 0 ? current : 0);
   const [onCv, setOnCv] = useState(false);
+  const [onPdf, setOnPdf] = useState(false);
 
   const px = useSpring(useMotionValue(0), { stiffness: 110, damping: 20 });
   const py = useSpring(useMotionValue(0), { stiffness: 110, damping: 20 });
@@ -199,6 +201,7 @@ function MenuPanel() {
   const highlight = (i: number | null) => {
     setActive(i);
     setOnCv(false);
+    setOnPdf(false);
     if (i !== null) setShown(i);
   };
 
@@ -328,7 +331,7 @@ function MenuPanel() {
                     <motion.span
                       className="block font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase leading-[1] tracking-[0.02em] text-[clamp(1.75rem,5.2vh,5.5rem)] group-focus-visible:underline decoration-1 underline-offset-8"
                       {...reveal}
-                      animate={{ y: '0%', x: active === i && !reduce ? 18 : 0, opacity: (active === null && !onCv) || active === i ? 1 : 0.28 }}
+                      animate={{ y: '0%', x: active === i && !reduce ? 18 : 0, opacity: (active === null && !onCv && !onPdf) || active === i ? 1 : 0.28 }}
                       transition={{ y: { duration: 0.8, ease: EASE.out, delay: revealDelay(i) }, x: { duration: 0.5, ease: EASE.out }, opacity: { duration: 0.35 } }}
                     >
                       {p.title}
@@ -345,8 +348,8 @@ function MenuPanel() {
                 data-menu-item
                 aria-current={pathname === '/cv' ? 'page' : undefined}
                 onClick={e => follow(e, '/cv', 'CV')}
-                onMouseEnter={() => { setActive(null); setOnCv(true); }}
-                onFocus={() => { setActive(null); setOnCv(true); }}
+                onMouseEnter={() => { setActive(null); setOnPdf(false); setOnCv(true); }}
+                onFocus={() => { setActive(null); setOnPdf(false); setOnCv(true); }}
                 className="group flex items-baseline gap-6 outline-none"
               >
                 <span className={`w-8 shrink-0 text-[#50C1BA] ${NUMBER}`}>CV</span>
@@ -354,7 +357,7 @@ function MenuPanel() {
                   <motion.span
                     className="block font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase leading-[1] tracking-[0.02em] text-[clamp(1.75rem,5.2vh,5.5rem)] text-[#50C1BA] group-focus-visible:underline decoration-1 underline-offset-8"
                     {...reveal}
-                    animate={{ y: '0%', x: onCv && !reduce ? 18 : 0, opacity: active === null ? 1 : 0.28 }}
+                    animate={{ y: '0%', x: onCv && !reduce ? 18 : 0, opacity: active === null && !onPdf ? 1 : 0.28 }}
                     transition={{ y: { duration: 0.8, ease: EASE.out, delay: revealDelay(PROJECTS.length) }, x: { duration: 0.5, ease: EASE.out }, opacity: { duration: 0.35 } }}
                   >
                     Curriculum Vitae
@@ -362,6 +365,29 @@ function MenuPanel() {
                   </motion.span>
                 </span>
               </Link>
+            </li>
+            <li>
+              <a
+                href={portfolioPdf.href}
+                download
+                data-menu-item
+                onMouseEnter={() => { setActive(null); setOnCv(false); setOnPdf(true); }}
+                onFocus={() => { setActive(null); setOnCv(false); setOnPdf(true); }}
+                className="group flex items-baseline gap-6 outline-none"
+              >
+                <span className={`w-8 shrink-0 text-[#50C1BA] ${NUMBER}`}>PDF</span>
+                <span className="block overflow-hidden py-[0.4vh] pr-8">
+                  <motion.span
+                    className="block font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase leading-[1] tracking-[0.02em] text-[clamp(1.75rem,5.2vh,5.5rem)] text-[#50C1BA] group-focus-visible:underline decoration-1 underline-offset-8"
+                    {...reveal}
+                    animate={{ y: '0%', x: onPdf && !reduce ? 18 : 0, opacity: active === null && !onCv ? 1 : 0.28 }}
+                    transition={{ y: { duration: 0.8, ease: EASE.out, delay: revealDelay(PROJECTS.length + 1) }, x: { duration: 0.5, ease: EASE.out }, opacity: { duration: 0.35 } }}
+                  >
+                    Portfolio
+                    <span className="ml-4 align-middle text-[12px] tracking-[0.3em] font-['Rajdhani',sans-serif] font-semibold">PDF ↓ {portfolioPdf.size}</span>
+                  </motion.span>
+                </span>
+              </a>
             </li>
           </ul>
         </nav>
@@ -480,6 +506,27 @@ function MenuPanel() {
                 </motion.span>
               </span>
             </Link>
+          </li>
+          <li className="border-b border-white/10">
+            <a
+              href={portfolioPdf.href}
+              download
+              data-menu-item
+              className="flex items-center gap-4 py-4 outline-none focus-visible:bg-white/5 active:opacity-70"
+            >
+              <span className={`w-6 shrink-0 text-[#50C1BA] ${NUMBER}`}>PDF</span>
+              <span className="flex-1 overflow-hidden">
+                <motion.span
+                  className="block font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase leading-[1] tracking-[0.02em] text-[clamp(1.9rem,9vw,3rem)] text-[#50C1BA]"
+                  {...reveal}
+                  animate={{ y: '0%' }}
+                  transition={{ duration: 0.7, ease: EASE.out, delay: revealDelay(PROJECTS.length + 1) }}
+                >
+                  Portfolio
+                </motion.span>
+              </span>
+              <span className={`shrink-0 text-gray-400 ${META} text-[10px]`}>PDF ↓ {portfolioPdf.size}</span>
+            </a>
           </li>
           {UPCOMING.map(p => (
             <li key={p.title} className="flex items-center justify-between gap-4 py-4 border-b border-white/10">

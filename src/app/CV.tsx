@@ -8,7 +8,7 @@ import { FadeIn } from './components/motion/FadeIn';
 import { RevealText } from './components/motion/RevealText';
 import { twMerge } from 'tailwind-merge';
 import { TYPE } from './design/tokens';
-import { education, experience, profile, skills, standalone } from './data/cv';
+import { education, experience, portfolioPdf, profile, skills, standalone } from './data/cv';
 
 // The CV is a light page. #50C1BA stays for decorative marks; text-sized teal uses a deeper
 // shade that keeps AA contrast on the warm white.
@@ -205,6 +205,25 @@ export default function CV() {
                   Print view
                 </a>
               </div>
+            </div>
+            <div id="portfolio" className="mt-px grid gap-10 bg-[#020404] p-8 md:p-12 text-[#F7F7F5] lg:grid-cols-[1fr_auto] lg:items-end">
+              <div>
+                <p className={twMerge(TYPE.label, 'text-[#50C1BA]')}>VISUALRIF — Selected Work 2026</p>
+                <h3 className="mt-5 font-['Barlow_Semi_Condensed',sans-serif] font-medium uppercase text-[40px] md:text-[60px] leading-[0.95] tracking-[0.02em]">
+                  Download the portfolio<span className="text-[#50C1BA]">.</span>
+                </h3>
+                <p className="mt-5 max-w-md font-['Lato',sans-serif] font-light text-[15px] md:text-[16px] leading-[1.6] text-gray-300">
+                  Selected case studies in one document — brand, UX/UI, web, print and 3D — with links to each project.
+                </p>
+                <p className={twMerge(TYPE.meta, 'mt-6 text-gray-400')}>PDF · A4 landscape · {portfolioPdf.pages} pages · {portfolioPdf.size}</p>
+              </div>
+              <a
+                href={portfolioPdf.href}
+                download
+                className={`${TYPE.cta} bg-[#50C1BA] px-8 py-4 text-center whitespace-nowrap text-[#020404] hover:bg-[#F7F7F5] transition-colors`}
+              >
+                Download PDF ↓
+              </a>
             </div>
           </Section>
         </div>
