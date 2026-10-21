@@ -37,6 +37,12 @@ export const profile = {
     "Independent multidisciplinary designer working across brand identity, UX/UI, web, print and 3D. I take projects from research and concept through to design and front-end build — managing clients directly, balancing commercial goals with craft, and delivering human-led work that is considered, usable and built to last.",
 };
 
+export const portfolioPdf = {
+  href: "/visualrif-portfolio-2026.pdf",
+  pages: 23,
+  size: "12 MB",
+};
+
 export const experience: Experience[] = [
   {
     id: "uniestate",
