@@ -12,21 +12,22 @@ import { usePageTransition } from './components/transition/PageTransition';
 import { RevealText } from './components/motion/RevealText';
 import { FadeIn } from './components/motion/FadeIn';
 
-import imgRectangle38 from "@/assets/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.png";
-import imgAboutLandscape from "../imports/about-landscape.png";
-import imgAboutFestival from "../imports/about-festival.png";
-import imgAboutBeach from "../imports/about-portrait-beach.png";
-import imgRectangle10 from "@/assets/d5ac170d299f945386206acf5b59d5034d41882d.png";
-import imgRectangle16 from "@/assets/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.png";
+import imgRectangle38 from "@/assets/b8c8dbffb5b4ba3cd7cb9b2c07d4487ef732895c.webp";
+import imgAboutLandscape from "../imports/about-landscape.webp";
+import imgAboutFestival from "../imports/about-festival.webp";
+import imgAboutBeach from "../imports/about-portrait-beach.webp";
+import imgRectangle10 from "@/assets/d5ac170d299f945386206acf5b59d5034d41882d.webp";
+import imgRectangle16 from "@/assets/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.webp";
 import imgRectangle15 from "../imports/image-1.png";
-import imgRectangle17 from "@/assets/8a22210a8aa201f9f77f445f757aafe16d8c0beb.png";
+import imgRectangle17 from "@/assets/8a22210a8aa201f9f77f445f757aafe16d8c0beb.webp";
 import imgRectangle14 from "../imports/image-2.png";
-import imgRectangle18 from "@/assets/78c1f2dac665555e9b580bf39c80dfc07b09595f.png";
-import imgRectangle19 from "@/assets/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c.png";
-import imgRectangle21 from "@/assets/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.png";
-import imgRectangle22 from "@/assets/61ed1cb628286e3a99aaaf636c61867b91992a4b.png";
-import imgContent61 from "@/assets/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.png";
-import imgInvestInUK from "../imports/investinuk/home-hero.jpg";
+import imgRectangle18 from "@/assets/78c1f2dac665555e9b580bf39c80dfc07b09595f.webp";
+import imgRectangle19 from "@/assets/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c.webp";
+import imgRectangle21 from "@/assets/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.webp";
+import imgRectangle22 from "@/assets/61ed1cb628286e3a99aaaf636c61867b91992a4b.webp";
+import imgContent61 from "@/assets/563d3cd2577a5f7a975edccd0c6dce8c0c66c880.webp";
+import imgInvestInUK from "../imports/investinuk/home-hero.webp";
+import imgUniestateUK from "../imports/uniestate-uk/playa-viva-hero.jpg";
 
 const timelineData = [
   {
@@ -55,7 +56,7 @@ const timelineData = [
   },
   {
     year: "2026",
-    location: "BRIGHTON & HOVE",
+    location: "SHREWSBURY, SHROPSHIRE — UK & REMOTE",
     title: "INDEPENDENT DESIGN PRACTICE",
     subtitle: "Continuing to work independently with businesses and clients across branding, digital design, and creative problem-solving.",
     focus: "• Branding\n• UX/UI\n• Creative strategy\n• Client collaboration",
@@ -66,6 +67,7 @@ const timelineData = [
 const projects = {
   uxui: [
     { title: "INVESTINUK", img: imgInvestInUK, type: "full", hover: "View Project", link: "/projects/investinuk" },
+    { title: "UNIESTATE UK", img: imgUniestateUK, type: "full", hover: "View Project", link: "/projects/uniestate-uk" },
     { title: "MONCKS OF DOVER STREET", img: imgRectangle10, type: "full", hover: "View Project", link: "/projects/moncks-of-dover-street" },
     { title: "SWIFTROOMS", img: imgRectangle15, type: "half", hover: "View Project", link: "/projects/swiftrooms" },
     { title: "THE SUNIL GAVASKAR PROJECT", img: imgRectangle14, type: "half", hover: "View Project", link: "/projects/sunil-gavaskar" },
@@ -116,7 +118,7 @@ const ScrollTriangle = React.memo(function ScrollTriangle({ className = "" }: { 
 
 
 
-export default function Home() {
+export default function Home({ aboutGallery = ABOUT_GALLERY }: { aboutGallery?: AboutSlide[] }) {
   const reduce = useReducedMotion();
 
   const heroMouseX = useMotionValue(0.5);
@@ -127,6 +129,23 @@ export default function Home() {
   const h1Y = useTransform(springHeroY, [0, 1], [-3, 3]);
   const subtitleX = useTransform(springHeroX, [0, 1], [5, -5]);
   const subtitleY = useTransform(springHeroY, [0, 1], [2, -2]);
+
+  // The background showreel is ~1 MB of third-party player code; start it once the page itself has loaded.
+  const [heroVideo, setHeroVideo] = React.useState(false);
+  React.useEffect(() => {
+    let idle = 0;
+    const start = () => {
+      if (typeof window.requestIdleCallback === 'function') idle = requestIdleCallback(() => setHeroVideo(true), { timeout: 1500 });
+      else idle = window.setTimeout(() => setHeroVideo(true), 300);
+    };
+    if (document.readyState === 'complete') start();
+    else window.addEventListener('load', start, { once: true });
+    return () => {
+      window.removeEventListener('load', start);
+      if (typeof window.cancelIdleCallback === 'function') cancelIdleCallback(idle);
+      clearTimeout(idle);
+    };
+  }, []);
 
   const timelineRef = React.useRef<HTMLDivElement>(null);
   const [isDraggingTimeline, setIsDraggingTimeline] = React.useState(false);
@@ -204,12 +223,15 @@ export default function Home() {
     <div className="relative bg-transparent text-white min-h-screen selection:bg-[#50C1BA] selection:text-black">
       {/* Hero Background Video */}
       <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none">
-        <iframe
+        {heroVideo && <iframe
           src="https://www.youtube.com/embed/_4cuwDSUX4Y?autoplay=1&mute=1&loop=1&playlist=_4cuwDSUX4Y&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1&fs=0&cc_load_policy=0"
           className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           allow="autoplay; encrypted-media"
+          title="VISUALRIF showreel (background video)"
+          aria-hidden="true"
+          tabIndex={-1}
           style={{ border: 0 }}
-        />
+        />}
         <div className="absolute inset-0 bg-black/70" />
         {/* Touch shield — iOS Safari ignores pointer-events:none on iframes, so
             any tap on the hero area could surface YouTube's player UI. A child
@@ -227,59 +249,35 @@ export default function Home() {
           <div className="flex-1 flex flex-col items-center justify-center text-center max-w-4xl w-full px-4 sm:px-4 mt-8 md:mt-0">
             <motion.h1 style={reduce ? {} : { x: h1X, y: h1Y }} className="text-[10vw] sm:text-[48px] md:text-[65.28px] leading-[1.1] md:leading-tight font-medium tracking-[0.4vw] sm:tracking-[2.5px] md:tracking-[5.22px] font-['Barlow_Semi_Condensed',sans-serif] uppercase text-white mb-6 md:mb-12 w-full flex flex-col items-center justify-center text-center">
               <div className="overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={{ y: '110%', opacity: 0 }}
-                  animate={{ y: '0%', opacity: 1 }}
-                  transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                >
+                <span className="block animate-in fade-in slide-in-from-bottom-[110%] duration-900 delay-200 ease-[cubic-bezier(0.16,1,0.3,1)] fill-mode-both motion-reduce:animate-none">
                   Multidisciplinary
-                </motion.span>
+                </span>
               </div>
               <div className="overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={{ y: '110%', opacity: 0 }}
-                  animate={{ y: '0%', opacity: 1 }}
-                  transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                >
+                <span className="block animate-in fade-in slide-in-from-bottom-[110%] duration-900 delay-450 ease-[cubic-bezier(0.16,1,0.3,1)] fill-mode-both motion-reduce:animate-none">
                   Designer
-                </motion.span>
+                </span>
               </div>
             </motion.h1>
             <motion.div style={reduce ? {} : { x: subtitleX, y: subtitleY }} className="font-['Rajdhani',sans-serif] font-semibold text-[3.5vw] sm:text-sm md:text-[21.66px] tracking-[0.5vw] sm:tracking-[2px] md:tracking-[5.41px] text-white uppercase leading-relaxed md:leading-normal text-center w-full px-2">
-              <motion.p
-                className="mb-1 md:mb-0"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.75, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
+              <p className="mb-1 md:mb-0 animate-in fade-in slide-in-from-bottom-[12px] duration-600 delay-750 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] fill-mode-both motion-reduce:animate-none">
                 experience specialising in end-to-end design solutions
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
+              </p>
+              <p className="animate-in fade-in slide-in-from-bottom-[12px] duration-600 delay-900 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] fill-mode-both motion-reduce:animate-none">
                 across UX/UI and 3D design
-              </motion.p>
+              </p>
             </motion.div>
           </div>
 
           {/* Bottom Scroll Down */}
-          <motion.div
-            className="flex justify-center w-full"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
+          <div className="flex justify-center w-full animate-in fade-in slide-in-from-bottom-[10px] duration-600 delay-1200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] fill-mode-both motion-reduce:animate-none">
             <button onClick={() => scrollTo('about')} className="group flex flex-col items-center gap-6 cursor-pointer">
               <span className="font-['Rajdhani',sans-serif] font-semibold text-[16px] md:text-[21.66px] tracking-[5.41px] uppercase text-white transition-opacity hover:opacity-80">SCROLL DOWN</span>
               <div className="w-[26px] h-[26px] flex items-center justify-center rotate-180 group-hover:-translate-y-2 transition-transform duration-300">
                 <ScrollTriangle className="w-[22.85px] h-[19.79px]" />
               </div>
             </button>
-          </motion.div>
+          </div>
         </section>
 
         <section id="about" className="text-center pt-24 md:pt-32 pb-16 flex flex-col items-center px-4 md:px-0">
@@ -293,7 +291,7 @@ export default function Home() {
                 <p className="mb-4 md:mb-0">I’ve worked freelance and in agencies across digital, 3D, and branding.</p>
               </FadeIn>
               <FadeIn delay={0.2}>
-                <p>I started at Verb Brands in London, later expanding into game design within the GTA community, currently now based in Brighton.</p>
+                <p>I started at Verb Brands in London, later expanding into game design within the GTA community. I’m now based in Shrewsbury, working with clients across the UK.</p>
               </FadeIn>
             </div>
             <FadeIn delay={0.1} className="mt-8 mb-8 flex justify-center">
@@ -302,7 +300,7 @@ export default function Home() {
         </section>
       </div>
 
-      <AboutGallery />
+      <AboutGallery slides={aboutGallery} />
 
       <div className="relative z-10 w-full px-6 md:px-12 max-w-7xl mx-auto overflow-x-clip">
         <div className="h-16 md:h-24"></div>
@@ -310,7 +308,7 @@ export default function Home() {
         {/* Marquee */}
         <div className="py-12 border-t border-b border-gray-800 flex items-center overflow-hidden whitespace-nowrap mb-32">
           <motion.div
-            animate={{ x: ["0%", "-50%"] }}
+            animate={reduce ? undefined : { x: ["0%", "-50%"] }}
             transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
             className="flex items-center gap-8 font-['Barlow_Semi_Condensed',sans-serif] font-medium text-2xl tracking-widest text-gray-500 uppercase will-change-transform"
           >
@@ -418,17 +416,33 @@ export default function Home() {
   );
 }
 
-const aboutGallery: { src: string; alt: string; fit: 'contain' | 'cover'; pos?: string }[] = [
-  { src: imgRectangle38, alt: 'Arif portrait', fit: 'contain' as const },
-  { src: imgAboutLandscape, alt: 'Arif overlooking a valley at sunset', fit: 'cover' as const },
-  { src: imgAboutFestival, alt: 'Arif at a festival campsite', fit: 'cover' as const, pos: 'object-right' },
-  { src: imgAboutBeach, alt: 'Arif on the beach', fit: 'cover' as const },
+export interface AboutSlide {
+  src: string;
+  alt: string;
+  fit: 'contain' | 'cover';
+  position: 'center' | 'top' | 'bottom' | 'left' | 'right';
+}
+
+const OBJECT_POSITION: Record<AboutSlide['position'], string> = {
+  center: 'object-center',
+  top: 'object-top',
+  bottom: 'object-bottom',
+  left: 'object-left',
+  right: 'object-right',
+};
+
+/** Built-in slides, used until the homepage gallery is published in Sanity. */
+const ABOUT_GALLERY: AboutSlide[] = [
+  { src: imgRectangle38, alt: 'Arif portrait', fit: 'contain', position: 'center' },
+  { src: imgAboutLandscape, alt: 'Arif overlooking a valley at sunset', fit: 'cover', position: 'center' },
+  { src: imgAboutFestival, alt: 'Arif at a festival campsite', fit: 'cover', position: 'right' },
+  { src: imgAboutBeach, alt: 'Arif on the beach', fit: 'cover', position: 'center' },
 ];
 
-const AboutGallery = React.memo(function AboutGallery() {
+const AboutGallery = React.memo(function AboutGallery({ slides }: { slides: AboutSlide[] }) {
   const [index, setIndex] = React.useState(0);
   const reduce = useReducedMotion();
-  const count = aboutGallery.length;
+  const count = slides.length;
   const go = React.useCallback((dir: number) => setIndex((i) => (i + dir + count) % count), [count]);
 
   React.useEffect(() => {
@@ -436,7 +450,7 @@ const AboutGallery = React.memo(function AboutGallery() {
     return () => clearInterval(id);
   }, [count]);
 
-  const active = aboutGallery[index];
+  const active = slides[index];
 
   return (
     <div className="w-full h-[60vh] md:h-[927px] relative overflow-hidden bg-black md:bg-[linear-gradient(to_bottom,black_50%,white_50%)] flex justify-center group/gallery">
@@ -464,7 +478,7 @@ const AboutGallery = React.memo(function AboutGallery() {
           className={
             active.fit === 'contain'
               ? 'absolute top-0 md:top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-[1920px] h-full md:h-[120%] object-contain object-center'
-              : `absolute inset-0 w-full h-full object-contain md:object-cover ${active.pos ?? 'object-center'}`
+              : `absolute inset-0 w-full h-full object-contain md:object-cover ${OBJECT_POSITION[active.position]}`
           }
         />
       </AnimatePresence>
@@ -485,7 +499,7 @@ const AboutGallery = React.memo(function AboutGallery() {
       </button>
 
       <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 px-4 py-2.5 rounded-full bg-black/30 backdrop-blur-sm">
-        {aboutGallery.map((img, i) => (
+        {slides.map((img, i) => (
           <button
             key={i}
             aria-label={`Go to ${img.alt}`}

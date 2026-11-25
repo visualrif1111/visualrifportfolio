@@ -27,29 +27,29 @@ import {
 } from './components/case-study';
 
 import imgImage3 from "../imports/Visualrif-1/32b71aec4774900729dbc80c4acd99f7a5314c6a.png";
-import imgImageLaptopMockup from "../imports/Visualrif-1/4e3ab4c3d653794d535a17543585de77fd8a6835.png";
-import imgImageMobileMockup from "../imports/Visualrif-1/2abb1b520770ba4aafb04a4995fc2119afda74d7.png";
+import imgImageLaptopMockup from "../imports/Visualrif-1/4e3ab4c3d653794d535a17543585de77fd8a6835.webp";
+import imgImageMobileMockup from "../imports/Visualrif-1/2abb1b520770ba4aafb04a4995fc2119afda74d7.webp";
 import importedImage3 from "../imports/image-3.png";
-import imgImageDesktopMockup from "../imports/Visualrif-1/aca2bf96a01d37bd2387add99b2478911f4430b4.png";
-import imgScene12 from "../imports/Visualrif-1/ee33e1fe62363e5a68f91107234df46315c7195a.png";
-import imgScene1A3 from "../imports/Visualrif-1/ee597eb4d2c8e12316bb5dffd631266394ad662e.png";
-import imgScene2A3 from "../imports/Visualrif-1/ac4d8e12cf7a3e2b33325b1abd6b17b73b26ee74.png";
-import imgScene3A2 from "../imports/Visualrif-1/3fc5f6e80775cd5cd09138e04bdbe6e6075c9611.png";
-import imgScene32 from "../imports/Visualrif-1/12031fcfc958d0a4135cf9b6b8744b9139d70554.png";
-import imgScene24 from "../imports/Visualrif-1/b91f574ac557632b74f1dd78267c2dd6fb7a4dc0.png";
-import imgScene42 from "../imports/Visualrif-1/ded2b63c031bb4c99e443fb67432189d667255f5.png";
-import imgScene4A2 from "../imports/Visualrif-1/14937e1b9ff940e370ab9ca05f3230b63729d1d7.png";
-import imgScene4B2 from "../imports/Visualrif-1/abcff01d42f157d304ca928b6be75177b14a61c9.png";
-import imgScene13 from "../imports/Visualrif-1/d97ef631768ef7e7dd24a23a73ba46a8ca295239.png";
-import imgScene1B2 from "../imports/Visualrif-1/cde67092c15c4ac87d33525845df421edb876ce0.png";
-import imgScene1A4 from "../imports/Visualrif-1/a03c86a07d0a0e4bfce1a53922d0a53ae5918f54.png";
-import imgScene25 from "../imports/Visualrif-1/fd9bf323ab3cc34807f033611afbf4eed1c0a34d.png";
-import imgScene2A4 from "../imports/Visualrif-1/f3ef4de29e15f03b98a1e193cf9f0ce9fc8f0f9e.png";
-import imgScene8A2 from "../imports/Visualrif-1/79108231a1332970999d747842e2a89a7759b4e0.png";
-import imgScene8B2 from "../imports/Visualrif-1/a4acd5c98a4de253463fe87bb0d5d16146d371b7.png";
-import imgScene92 from "../imports/Visualrif-1/0036c6bfe992c470be4babc22b86fa41312294fb.png";
-import imgScene9A2 from "../imports/Visualrif-1/34513c3c99489ceec50e81b88f4f4d7fb2baa481.png";
-import img202503191215262 from "../imports/Visualrif-1/a4ec3b89434cb26e83aba1aa5ac277424b4ace79.png";
+import imgImageDesktopMockup from "../imports/Visualrif-1/aca2bf96a01d37bd2387add99b2478911f4430b4.webp";
+import imgScene12 from "../imports/Visualrif-1/ee33e1fe62363e5a68f91107234df46315c7195a.webp";
+import imgScene1A3 from "../imports/Visualrif-1/ee597eb4d2c8e12316bb5dffd631266394ad662e.webp";
+import imgScene2A3 from "../imports/Visualrif-1/ac4d8e12cf7a3e2b33325b1abd6b17b73b26ee74.webp";
+import imgScene3A2 from "../imports/Visualrif-1/3fc5f6e80775cd5cd09138e04bdbe6e6075c9611.webp";
+import imgScene32 from "../imports/Visualrif-1/12031fcfc958d0a4135cf9b6b8744b9139d70554.webp";
+import imgScene24 from "../imports/Visualrif-1/b91f574ac557632b74f1dd78267c2dd6fb7a4dc0.webp";
+import imgScene42 from "../imports/Visualrif-1/ded2b63c031bb4c99e443fb67432189d667255f5.webp";
+import imgScene4A2 from "../imports/Visualrif-1/14937e1b9ff940e370ab9ca05f3230b63729d1d7.webp";
+import imgScene4B2 from "../imports/Visualrif-1/abcff01d42f157d304ca928b6be75177b14a61c9.webp";
+import imgScene13 from "../imports/Visualrif-1/d97ef631768ef7e7dd24a23a73ba46a8ca295239.webp";
+import imgScene1B2 from "../imports/Visualrif-1/cde67092c15c4ac87d33525845df421edb876ce0.webp";
+import imgScene1A4 from "../imports/Visualrif-1/a03c86a07d0a0e4bfce1a53922d0a53ae5918f54.webp";
+import imgScene25 from "../imports/Visualrif-1/fd9bf323ab3cc34807f033611afbf4eed1c0a34d.webp";
+import imgScene2A4 from "../imports/Visualrif-1/f3ef4de29e15f03b98a1e193cf9f0ce9fc8f0f9e.webp";
+import imgScene8A2 from "../imports/Visualrif-1/79108231a1332970999d747842e2a89a7759b4e0.webp";
+import imgScene8B2 from "../imports/Visualrif-1/a4acd5c98a4de253463fe87bb0d5d16146d371b7.webp";
+import imgScene92 from "../imports/Visualrif-1/0036c6bfe992c470be4babc22b86fa41312294fb.webp";
+import imgScene9A2 from "../imports/Visualrif-1/34513c3c99489ceec50e81b88f4f4d7fb2baa481.webp";
+import img202503191215262 from "../imports/Visualrif-1/a4ec3b89434cb26e83aba1aa5ac277424b4ace79.webp";
 
 import pfHero from '../imports/swiftrooms-platform/home-hero.jpg';
 import pfNav from '../imports/swiftrooms-platform/nav-detail.jpg';
@@ -67,7 +67,7 @@ import pfSelector from '../imports/swiftrooms-platform/guided-selector.jpg';
 import pfBrands from '../imports/swiftrooms-platform/brands.jpg';
 import pfCatalogueBrands from '../imports/swiftrooms-platform/catalogue-brands.jpg';
 import pfPortfolio from '../imports/swiftrooms-platform/portfolio.jpg';
-import pfPortfolioDetail from '../imports/swiftrooms-platform/portfolio-detail.jpg';
+import pfPortfolioDetail from '../imports/swiftrooms-platform/portfolio-detail.webp';
 import pfTechnical from '../imports/swiftrooms-platform/technical.jpg';
 import pfTechnicalResources from '../imports/swiftrooms-platform/technical-resources.jpg';
 import pfTechnicalProcess from '../imports/swiftrooms-platform/technical-process.jpg';
@@ -421,7 +421,6 @@ export default function Swiftrooms() {
             title="Swiftrooms Hero Video"
             style={{ border: 0 }}
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-            allowFullScreen
           />
         }
         heightClassName="h-[52vh] md:h-[70vh]"

@@ -21,9 +21,9 @@ import {
 import imgRectangle27 from "../imports/DiversionAudio-1/82019337c3dff09841830a3fa0ba6c5e55de196b.png";
 import imgRectangle57 from "../imports/DiversionAudio-1/3fe3922f60833b9ba1cf7cd8812a91efdf3d0bab.png";
 import imgRectangle60 from "../imports/DiversionAudio-1/ac603d58efb239aae098a5476e35281703f15329.png";
-import imgRectangle52 from "../imports/DiversionAudio-1/546fb9410db4c7084440748ba320462c76e6a1cb.png";
-import imgRectangle53 from "../imports/DiversionAudio-1/25baab767008e412ec6080c8489a5ead9a84c86a.png";
-import imgRectangle54 from "../imports/DiversionAudio-1/333e331023b62674cf332c805e83fca54fef8c45.png";
+import imgRectangle52 from "../imports/DiversionAudio-1/546fb9410db4c7084440748ba320462c76e6a1cb.webp";
+import imgRectangle53 from "../imports/DiversionAudio-1/25baab767008e412ec6080c8489a5ead9a84c86a.webp";
+import imgRectangle54 from "../imports/DiversionAudio-1/333e331023b62674cf332c805e83fca54fef8c45.webp";
 import imgRectangle55 from "../imports/DiversionAudio-1/f369d6138af05cf72401ad4fd9befc17fb9ea79a.png";
 import imgRectangle28 from "../imports/DiversionAudio-1/4d3fe7c2d7009b5057a44c289f035da551702aae.png";
 import imgRectangle58 from "../imports/DiversionAudio-1/46e040575cfd8d0ce4379b32f2e256e4514bc1e2.png";
@@ -31,7 +31,7 @@ import imgRectangle61 from "../imports/DiversionAudio-1/55a6d92750fa4e9c539aef86
 import imgRectangle29 from "../imports/DiversionAudio-1/a2760cfb08269773ee991b494375d77bcbdf5e1a.png";
 import imgRectangle59 from "../imports/DiversionAudio-1/43ab9786cf9454826b7e3c085d132a1b42c50b82.png";
 import imgRectangle62 from "../imports/DiversionAudio-1/603813e41eb2b7ed705e78ff58a74464b9e4bd06.png";
-import imgRectangle34 from "../imports/DiversionAudio-4/19c5a640c9e29697cb9cbc71687502f5fbe08a50.png";
+import imgRectangle34 from "../imports/DiversionAudio-4/19c5a640c9e29697cb9cbc71687502f5fbe08a50.webp";
 import imgRectangle51 from "../imports/DiversionAudio-4/5076c920b44bfc19718193c5c9d3d5986930647f.png";
 
 import imgQ9WBmv from "../imports/DiversionAudio-4/f3a0fe9c1de391e3ad7feedb5490440e6061d97a.png";
@@ -53,11 +53,11 @@ import imgMp0GAu from "../imports/DiversionAudio-1/1914a30628f0e8b72870573608b27
 
 import imgRectangle67 from "../imports/DiversionAudio-4/b644000f2c0e2f62512d6ab1e5da6317c1d8989b.png";
 import imgRectangle66 from "../imports/DiversionAudio-4/0fce0998bd24d76aed2a1c9c28ec19328d3fec71.png";
-import imgRectangle93 from "../imports/DiversionAudio-4/67f857fea22822175792c89c05139fca2fc958d0.png";
+import imgRectangle93 from "../imports/DiversionAudio-4/67f857fea22822175792c89c05139fca2fc958d0.webp";
 import imgRectangle76 from "../imports/DiversionAudio-4/af601e4409469c0bbed2c6dedc02618c64526c06.png";
 import imgRectangle77 from "../imports/DiversionAudio-4/86f2cf48fb33633411a17f7dcc39d77b1b3dbe21.png";
 import imgRectangle78 from "../imports/DiversionAudio-4/0b18d56a64a0c0bbce5021e1d603399db10c5aaa.png";
-import imgRectangle80 from "../imports/DiversionAudio-4/2279679ffd7397c799a28fac535f100bec52299d.png";
+import imgRectangle80 from "../imports/DiversionAudio-4/2279679ffd7397c799a28fac535f100bec52299d.webp";
 
 const DIVERSION_GALLERY: GalleryImage[] = [
   { src: imgRectangle51, alt: 'Event Context 1' },
@@ -112,8 +112,10 @@ export default function DiversionAudio() {
             <iframe
               src="https://www.youtube.com/embed/qOugLMycEe0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=qOugLMycEe0"
               allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              title="Diversion Audio background video"
+              aria-hidden="true"
+              tabIndex={-1}
               style={{ border: 0 }}
-              allowFullScreen
               className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[50vh] md:min-h-[70vh] min-w-[88.88vh] md:min-w-[124.44vh] -translate-x-1/2 -translate-y-1/2 scale-[1.2] pointer-events-none"
             />
             <div className="absolute inset-0 bg-black/40" />
@@ -303,8 +305,8 @@ export default function DiversionAudio() {
           <iframe
             src="https://www.youtube.com/embed/qOugLMycEe0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=qOugLMycEe0"
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            title="Diversion Audio — identity in motion"
             style={{ border: 0 }}
-            allowFullScreen
           ></iframe>
         </div>
       </Section>

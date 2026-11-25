@@ -37,7 +37,6 @@ export default function GDPR() {
                 <li><strong>Vercel Web Analytics:</strong> We use Vercel Web Analytics to understand aggregate traffic to our website. It does not use cookies and reports anonymous information such as pages viewed, referrer, country, browser and device type.</li>
                 <li><strong>YouTube Embeds:</strong> Videos on our site are embedded from YouTube. Viewing these videos may result in YouTube placing cookies on your device and tracking your viewing behavior.</li>
                 <li><strong>Hosting (Vercel):</strong> Our website is hosted by Vercel, which delivers content through its global network and logs IP addresses for security and performance monitoring.</li>
-                <li><strong>Google Fonts:</strong> Our fonts are loaded from Google&apos;s servers, which receive your IP address when the fonts are requested.</li>
                 <li><strong>Email and Telephone:</strong> If you contact us by email or phone, we use the details you provide only to respond to you. They are not shared with third parties except as required for email delivery.</li>
               </ul>
             </section>

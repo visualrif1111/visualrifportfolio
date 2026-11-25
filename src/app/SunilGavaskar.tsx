@@ -18,31 +18,31 @@ import {
   PullQuote,
 } from './components/case-study';
 
-import imgRectangle43 from "../imports/SunilGavaskarProject/42100d4cb5e89bf24572cb5cf967dfb41d47179e.png";
-import imgRectangle46 from "../imports/SunilGavaskarProject/86b645be6df4a096d1fe8214d4297a3cac9ffae7.png";
-import imgNftieSunilGavaskarMindmapV11 from "../imports/SunilGavaskarProject/c82f1dd454250318816f6accc5b010028783c282.png";
+import imgRectangle43 from "../imports/SunilGavaskarProject/42100d4cb5e89bf24572cb5cf967dfb41d47179e.webp";
+import imgRectangle46 from "../imports/SunilGavaskarProject/86b645be6df4a096d1fe8214d4297a3cac9ffae7.webp";
+import imgNftieSunilGavaskarMindmapV11 from "../imports/SunilGavaskarProject/c82f1dd454250318816f6accc5b010028783c282.webp";
 import imgRectangle27 from "../imports/SunilGavaskarProject/b80d3d48655e8a31f8dbbf5ceb809238e00735b9.png";
-import imgRectangle30 from "../imports/SunilGavaskarProject/e89c19cd30f2494e425d0a60af9e595a295b92ae.png";
+import imgRectangle30 from "../imports/SunilGavaskarProject/e89c19cd30f2494e425d0a60af9e595a295b92ae.webp";
 import imgRectangle52 from "../imports/SunilGavaskarProject/f5e6fee41b84ea7aaf4adce4f403d10941fe67c7.png";
-import imgRectangle31 from "../imports/SunilGavaskarProject/5bfe834acae00c4ef91c4b70f76e719bad028f87.png";
+import imgRectangle31 from "../imports/SunilGavaskarProject/5bfe834acae00c4ef91c4b70f76e719bad028f87.webp";
 import imgRectangle53 from "../imports/SunilGavaskarProject/dd47c94b8d7d73141f1f2137f5dd0156ca86a9d3.png";
-import imgRectangle32 from "../imports/SunilGavaskarProject/e23d827b709b967baa93fedbdb0f27d379eaf8aa.png";
-import imgRectangle54 from "../imports/SunilGavaskarProject/cd695552f7c737c5bed3f8e66fce757b272d09f8.png";
-import imgRectangle33 from "../imports/SunilGavaskarProject/a62fc97326e047703ed86cfa20f0d4c9b5d95b3d.png";
+import imgRectangle32 from "../imports/SunilGavaskarProject/e23d827b709b967baa93fedbdb0f27d379eaf8aa.webp";
+import imgRectangle54 from "../imports/SunilGavaskarProject/cd695552f7c737c5bed3f8e66fce757b272d09f8.webp";
+import imgRectangle33 from "../imports/SunilGavaskarProject/a62fc97326e047703ed86cfa20f0d4c9b5d95b3d.webp";
 import imgRectangle55 from "../imports/SunilGavaskarProject/72abd18e4e3edba31b10c2160f8b8c601d4503e8.png";
 import imgRectangle28 from "../imports/SunilGavaskarProject/1034bd354437a880afec3d0c1da77c04706b8d13.png";
 import imgRectangle29 from "../imports/SunilGavaskarProject/20d0406d44179ab36af7966d2b9bdec282ee9437.png";
-import imgRectangle34 from "../imports/SunilGavaskarProject/86dbe258e95ec0068d975db9bb72abb48a59d3e8.png";
-import imgRectangle37 from "../imports/SunilGavaskarProject/89e893b7f970f98aac87684633f015dfd0e7628d.png";
-import imgRectangle51 from "../imports/SunilGavaskarProject/d4f7e5a4528724ff4db2037ab375356efa732c07.png";
-import imgImg01632 from "../imports/SunilGavaskarProject/64562e22fd549861351b28aadd9a6454b2cc55e9.png";
-import imgImg01642 from "../imports/SunilGavaskarProject/b4e9d1362190c004d0a5eadf9236c61881b2bb95.png";
-import imgNftieSunilGavaskarMindmap2 from "../imports/SunilGavaskarProject/9f847f2c74c776c680bb990082dd98688f494e30.png";
-import imgSg22HomepageV07202204134 from "../imports/SunilGavaskarProject/9048072e8ecc4333edc3d61bb42786c58c07b4a0.png";
-import img2SunilGavaskarTheEmblems3 from "../imports/SunilGavaskarProject/d7c9bf7260782b0fa96292eb81ea654f840b990f.png";
-import imgSunilGavaskarTheMoments3 from "../imports/SunilGavaskarProject/adde1db957982f5160da06f59e6f2565423909da.png";
-import imgSunilGavaskarHallOfFame3 from "../imports/SunilGavaskarProject/24aca0cf507397aef5fa516ca8741c97da3eaf46.png";
-import imgSunilGavaskarTheHallOfFameV23 from "../imports/SunilGavaskarProject/130fafa6183f9cf9541eeb73e44ef4db8e3e037b.png";
+import imgRectangle34 from "../imports/SunilGavaskarProject/86dbe258e95ec0068d975db9bb72abb48a59d3e8.webp";
+import imgRectangle37 from "../imports/SunilGavaskarProject/89e893b7f970f98aac87684633f015dfd0e7628d.webp";
+import imgRectangle51 from "../imports/SunilGavaskarProject/d4f7e5a4528724ff4db2037ab375356efa732c07.webp";
+import imgImg01632 from "../imports/SunilGavaskarProject/64562e22fd549861351b28aadd9a6454b2cc55e9.webp";
+import imgImg01642 from "../imports/SunilGavaskarProject/b4e9d1362190c004d0a5eadf9236c61881b2bb95.webp";
+import imgNftieSunilGavaskarMindmap2 from "../imports/SunilGavaskarProject/9f847f2c74c776c680bb990082dd98688f494e30.webp";
+import imgSg22HomepageV07202204134 from "../imports/SunilGavaskarProject/9048072e8ecc4333edc3d61bb42786c58c07b4a0.webp";
+import img2SunilGavaskarTheEmblems3 from "../imports/SunilGavaskarProject/d7c9bf7260782b0fa96292eb81ea654f840b990f.webp";
+import imgSunilGavaskarTheMoments3 from "../imports/SunilGavaskarProject/adde1db957982f5160da06f59e6f2565423909da.webp";
+import imgSunilGavaskarHallOfFame3 from "../imports/SunilGavaskarProject/24aca0cf507397aef5fa516ca8741c97da3eaf46.webp";
+import imgSunilGavaskarTheHallOfFameV23 from "../imports/SunilGavaskarProject/130fafa6183f9cf9541eeb73e44ef4db8e3e037b.webp";
 import imgEllipse5 from "../imports/SunilGavaskarProject/57e05b02450362c31cdcf56162a165d964882973.png";
 
 const SUNIL_GALLERY: GalleryImage[] = [
@@ -84,7 +84,7 @@ export default function SunilGavaskar() {
     <CaseStudyShell>
       {/* ── Hero ── */}
       <Hero
-        media={<img src={imgRectangle51} alt="Always First — Sunil Gavaskar" className="w-full h-full object-cover object-center" />}
+        media={<img src={imgRectangle51} alt="Always First — Sunil Gavaskar" fetchPriority="high" className="w-full h-full object-cover object-center" />}
         overlayClassName="bg-black/40"
         heightClassName="h-[45vh] md:h-[70vh]"
         titleClassName="text-[36px] md:text-[80px] lg:text-[98px] leading-none tracking-[0.08em]"

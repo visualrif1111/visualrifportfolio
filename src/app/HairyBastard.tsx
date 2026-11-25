@@ -17,14 +17,14 @@ import {
   PullQuote,
 } from './components/case-study';
 
-import imgHero                from "../imports/HairyBastard/hero.jpg";
-import imgHeroBarbershop      from "../imports/HairyBastard/hero-barbershop.png";
+import imgHero                from "../imports/HairyBastard/hero.webp";
+import imgHeroBarbershop      from "../imports/HairyBastard/hero-barbershop.webp";
 import imgBarbershopComposite from "../imports/HairyBastard/barbershop-composite.png";
 import imgCardsStacked        from "../imports/HairyBastard/cards-stacked.png";
-import imgCardsStanding       from "../imports/HairyBastard/cards-standing.png";
+import imgCardsStanding       from "../imports/HairyBastard/cards-standing.webp";
 import imgProcessStrip        from "../imports/HairyBastard/process-strip.jpeg";
 import imgSpotUV6             from "../imports/HairyBastard/spot-uv-6.png";
-import imgBarbershopShoot     from "../imports/HairyBastard/barbershop-shoot.png";
+import imgBarbershopShoot     from "../imports/HairyBastard/barbershop-shoot.webp";
 import imgLogoPortraitB       from "../imports/HairyBastard/logo-portrait-b.png";
 import imgLogoMarkDark        from "../imports/HairyBastard/logo-mark-dark.png";
 import imgCardFrontOrangeA    from "../imports/HairyBastard/card-front-orange-a.png";
@@ -33,7 +33,7 @@ import imgDev1CardB           from "../imports/HairyBastard/dev-1-card-b.png";
 import imgCardFinalOrange     from "../imports/HairyBastard/card-final-orange.png";
 import imgDev2Patterns        from "../imports/HairyBastard/dev-2-patterns.png";
 import imgSpotUVFront         from "../imports/HairyBastard/spot-uv-front.jpg";
-import imgCollage             from "../imports/HairyBastard/collage.png";
+import imgCollage             from "../imports/HairyBastard/collage.webp";
 import imgCardFlat            from "../imports/HairyBastard/card-flat.png";
 import imgSpotUVClose         from "../imports/HairyBastard/spot-uv-close.jpg";
 
@@ -69,7 +69,7 @@ export default function HairyBastard() {
     <CaseStudyShell>
       {/* ── Hero ── */}
       <Hero
-        media={<img src={imgHeroBarbershop} alt="The Hairy Bastard Barbershop — Brick Lane London" className="w-full h-full object-cover object-[55%_center]" />}
+        media={<img src={imgHeroBarbershop} alt="The Hairy Bastard Barbershop — Brick Lane London" fetchPriority="high" className="w-full h-full object-cover object-[55%_center]" />}
         overlayClassName="bg-black/60"
         heightClassName="h-[50vh] md:h-[70vh]"
         titleClassName="text-[40px] md:text-[80px] lg:text-[110px] leading-none tracking-[0.1em]"

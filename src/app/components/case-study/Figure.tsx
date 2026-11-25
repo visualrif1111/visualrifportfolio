@@ -75,6 +75,7 @@ export function Figure({
             src={src}
             alt={alt}
             loading={priority ? undefined : 'lazy'}
+            fetchPriority={priority ? 'high' : undefined}
             className={imgClassName || 'w-full h-auto object-cover'}
             whileHover={hover ? { scale: 1.04 } : undefined}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}

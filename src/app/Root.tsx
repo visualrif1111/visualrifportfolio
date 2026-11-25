@@ -10,6 +10,7 @@ import { PROJECTS } from './data/projects';
 import { AnimatePresence, motion, useAnimate } from 'motion/react';
 import { PageTransitionProvider, isTransitionActive } from './components/transition/PageTransition';
 import { MenuProvider, MenuStage, SiteHeader, SiteMenu } from './components/menu/SiteMenu';
+import { useReducedMotion } from './components/motion/useReducedMotion';
 
 function ScrollToTop() {
   const pathname = usePathname();
@@ -78,13 +79,17 @@ export function Root({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [wipeScope, animateWipe] = useAnimate();
   const isFirstNav = useRef(true);
+  const reduce = useReducedMotion();
+  const reduceRef = useRef(reduce);
+
+  useEffect(() => { reduceRef.current = reduce; }, [reduce]);
 
   useEffect(() => {
     if (isFirstNav.current) {
       isFirstNav.current = false;
       return;
     }
-    if (isTransitionActive()) return;
+    if (isTransitionActive() || reduceRef.current) return;
     animateWipe(wipeScope.current, { y: ['101%', '0%', '0%', '-101%'] }, {
       duration: 1.1,
       times: [0, 0.4, 0.6, 1],

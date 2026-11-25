@@ -46,7 +46,6 @@ export default function PrivacyPolicy() {
               <p>This website relies on the following third parties, which may process your data:</p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li><strong>Vercel:</strong> hosts the website and provides Vercel Web Analytics. Vercel processes IP addresses and request data to serve and protect the site.</li>
-                <li><strong>Google Fonts:</strong> the website&apos;s fonts are loaded from Google&apos;s servers, which receive your IP address when the fonts are requested.</li>
                 <li><strong>YouTube:</strong> videos are embedded from YouTube. When a page containing a video loads, YouTube may set cookies and collect data in line with Google&apos;s privacy policy.</li>
               </ul>
             </section>

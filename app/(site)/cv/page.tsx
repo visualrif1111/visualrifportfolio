@@ -1,17 +1,12 @@
-import type { Metadata } from 'next';
 import CV from '@/app/CV';
+import { pageMetadata } from '@/app/seo';
 
-export const metadata: Metadata = {
-  title: 'Arif Tariq — Multidisciplinary Designer | CV 2026',
-  description: 'Interactive CV of Arif Tariq: UX/UI, brand identity, web development and 3D. Shrewsbury / Remote.',
-  openGraph: {
-    title: 'Arif Tariq — Multidisciplinary Designer',
-    description: 'Interactive CV: UX/UI, brand identity, web development and 3D.',
-    type: 'profile',
-    url: 'https://visualrif.com/cv',
-  },
-  twitter: { card: 'summary_large_image' },
-};
+export const metadata = pageMetadata({
+  title: 'Arif Tariq — Digital & UX/UI Designer, Shrewsbury | CV 2026',
+  description: 'CV of Arif Tariq: UX/UI, digital design, brand identity, web development and 3D. Based in Shrewsbury, Shropshire, open to freelance, permanent and remote roles across the UK.',
+  path: '/cv',
+  type: 'profile',
+});
 
 export default function Page() {
   return <CV />;
