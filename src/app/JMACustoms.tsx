@@ -28,8 +28,8 @@ const ecosystemSteps = [
 ];
 
 const assetCategories = [
-  { num: '01', title: 'Custom Clothing', desc: 'Bespoke streetwear, luxury fits, and character-defining garments designed from concept to in-game implementation.', slug: 'custom-clothing', cover: '/jma-clothing/clothing-01.png' },
-  { num: '02', title: 'Chains & Jewellery', desc: 'High-detail custom chain designs and jewellery assets worn across FiveM communities — crafted for maximum presence.', slug: 'chains-jewellery', cover: '/jma-chains/chain-01.png' },
+  { num: '01', title: 'Custom Clothing', desc: 'Bespoke streetwear, luxury fits, and character-defining garments designed from concept to in-game implementation.', slug: 'custom-clothing', cover: '/jma-clothing/clothing-01.webp' },
+  { num: '02', title: 'Chains & Jewellery', desc: 'High-detail custom chain designs and jewellery assets worn across FiveM communities — crafted for maximum presence.', slug: 'chains-jewellery', cover: '/jma-chains/chain-01.webp' },
   { num: '03', title: 'Luxury Branding', desc: 'Cinematic visual identity design for in-game businesses and e-sports communities — combining logos, typography, colour systems, and immersive digital styling.', slug: 'luxury-branding' },
   { num: '04', title: '3D Adverts', desc: 'Immersive environmental graphics placed within the virtual city — from roadside billboards to storefront signage.', slug: '3d-adverts' },
 ];
@@ -79,7 +79,7 @@ export default function JMACustoms() {
             <iframe
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full"
               src="https://www.youtube.com/embed/rhynMLdthSs?autoplay=1&mute=1&loop=1&playlist=rhynMLdthSs&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
-              allow="autoplay; encrypted-media; picture-in-picture"
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
               style={{ border: 0 }}
               title="JMA Customs Showreel"
             />
@@ -113,8 +113,7 @@ export default function JMACustoms() {
                   <iframe
                     className="w-full h-full"
                     src="https://www.youtube.com/embed/GoFV2QiPTxU?autoplay=0&mute=0&start=97&controls=1&rel=0&modestbranding=1&playsinline=1"
-                    allow="autoplay; encrypted-media; picture-in-picture"
-                    allowFullScreen
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                     style={{ border: 0 }}
                     title="GTA V / FiveM — JMA Customs"
                   />
@@ -329,8 +328,7 @@ export default function JMACustoms() {
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/QGmVpdBSVAU?autoplay=0&mute=0&start=133&controls=1&rel=0&modestbranding=1&playsinline=1"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
+                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                 style={{ border: 0 }}
                 title="JMA Customs — Virtual Creative Agency"
               />

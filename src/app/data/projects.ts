@@ -1,13 +1,14 @@
-import imgInvestInUK from '../../imports/investinuk/home-hero.jpg';
-import imgJMACustoms from '@/assets/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.png';
+import imgInvestInUK from '../../imports/investinuk/home-hero.webp';
+import imgUniestateUK from '../../imports/uniestate-uk/playa-viva-hero.jpg';
+import imgJMACustoms from '@/assets/ca63ed581481fb71ce8ea5aa4a172c9308bf5287.webp';
 import imgSwiftrooms from '../../imports/image-1.png';
-import imgDiversionAudio from '@/assets/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.png';
-import imgMoncks from '@/assets/d5ac170d299f945386206acf5b59d5034d41882d.png';
-import imgHairyBastard from '@/assets/8a22210a8aa201f9f77f445f757aafe16d8c0beb.png';
+import imgDiversionAudio from '@/assets/7318cbcbc665ca9297d05fb200d7af16fdef3bf0.webp';
+import imgMoncks from '@/assets/d5ac170d299f945386206acf5b59d5034d41882d.webp';
+import imgHairyBastard from '@/assets/8a22210a8aa201f9f77f445f757aafe16d8c0beb.webp';
 import imgSunilGavaskar from '../../imports/image-2.png';
-import imgTrend from '@/assets/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c.png';
-import imgDilchad from '@/assets/78c1f2dac665555e9b580bf39c80dfc07b09595f.png';
-import imgEpiphanies from '@/assets/61ed1cb628286e3a99aaaf636c61867b91992a4b.png';
+import imgTrend from '@/assets/07fbe3dd7476f28eb4d5db9c9c73edf85ff9c04c.webp';
+import imgDilchad from '@/assets/78c1f2dac665555e9b580bf39c80dfc07b09595f.webp';
+import imgEpiphanies from '@/assets/61ed1cb628286e3a99aaaf636c61867b91992a4b.webp';
 
 export type Category = 'digital' | 'immersive' | 'branding' | '3d';
 
@@ -47,6 +48,16 @@ export const PROJECTS: Project[] = [
     statement: 'A complex property-investment proposition turned into a structured, premium digital experience.',
     img: imgInvestInUK,
     accent: '#2E4A7A',
+  },
+  {
+    title: 'UNIESTATE UK',
+    to: '/projects/uniestate-uk',
+    category: 'digital',
+    discipline: 'Web Design · UX / UI · Development · CRM Integration',
+    year: '2026',
+    statement: 'An editorial property website for Playa Viva on Al Marjan Island, designed to help UK buyers explore the development and take the next step with the sales team.',
+    img: imgUniestateUK,
+    accent: '#47736A',
   },
   {
     title: 'JMA Customs',

@@ -3,21 +3,29 @@ import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import { CustomCursor } from '@/app/components/CustomCursor';
 import { Root } from '@/app/Root';
+import { OG_IMAGE, SITE_NAME, SITE_URL } from '@/app/seo';
 import '@/styles/index.css';
 
-const TITLE = 'VISUALRIF — Multidisciplinary Designer';
+const TITLE = 'VISUALRIF — Arif Tariq, Digital & UX/UI Designer in Shrewsbury';
+const DESCRIPTION = 'Portfolio of Arif Tariq (VISUALRIF), a multidisciplinary Digital & UX/UI Designer based in Shrewsbury, Shropshire. Freelance, permanent and remote work across the UK.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://visualrif.com'),
+  metadataBase: new URL(SITE_URL),
   title: TITLE,
-  description: 'VISUALRIF — Portfolio of Arif Tariq, a multidisciplinary designer specialising in UX/UI, branding, and 3D design. Based in Brighton & Hove.',
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: 'Arif Tariq', url: SITE_URL }],
+  creator: 'Arif Tariq',
   openGraph: {
     title: TITLE,
-    description: 'Portfolio of Arif Tariq, a multidisciplinary designer specialising in UX/UI, branding, and 3D design.',
+    description: DESCRIPTION,
     type: 'website',
-    url: 'https://visualrif.com',
-    images: ['https://visualrif.com/og-image.png'],
+    url: '/',
+    siteName: SITE_NAME,
+    locale: 'en_GB',
+    images: [OG_IMAGE],
   },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: [OG_IMAGE] },
   icons: { icon: { url: '/favicon.svg', type: 'image/svg+xml' } },
 };
 
@@ -27,16 +35,19 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-GB" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font -- kept verbatim from the Vite build; font family names are referenced literally across the codebase, which next/font's generated names would break */}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,400;0,500;0,600;0,700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700&family=Inter:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Rajdhani:wght@400;500;600;700&display=swap" />
+        {/* Fonts are self-hosted (src/styles/fonts.css); preload the faces most first screens paint with. */}
+        <link rel="preload" href="/fonts/barlow-semi-condensed-500-latin.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/rajdhani-600-latin.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/lato-300-latin.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/barlow-500-latin.woff2" as="font" type="font/woff2" crossOrigin="" />
       </head>
       <body>
         {/* Must run before hydration so the browser never applies its own saved scroll position. */}
         <Script id="scroll-restoration" strategy="beforeInteractive">{"history.scrollRestoration = 'manual';"}</Script>
+        {/* Hides the server-rendered cookie banner before first paint once a choice has been stored. */}
+        <script dangerouslySetInnerHTML={{ __html: "try{var c=localStorage.getItem('cookieConsent');if(c)document.documentElement.dataset.consent=c}catch(e){}" }} />
         <CustomCursor />
         <Root>{children}</Root>
         <Analytics />

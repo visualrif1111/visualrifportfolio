@@ -44,7 +44,6 @@ export const ResponsiveYouTubeEmbed = React.memo(function ResponsiveYouTubeEmbed
           src={`https://www.youtube.com/embed/${videoId}?${BASE_PARAMS}&playlist=${videoId}`}
           title={title ?? 'Video'}
           allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-          allowFullScreen
           style={{ border: 0 }}
         />
       )}

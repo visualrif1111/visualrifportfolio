@@ -124,7 +124,7 @@ export function GalleryLightbox({ images, startIndex, isOpen, onClose }: Props) 
                 ref={closeRef}
                 onClick={onClose}
                 aria-label="Close gallery"
-                className="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-white transition-colors focus:outline-none"
+                className="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-white transition-colors outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-[#50C1BA] focus-visible:rounded-full"
               >
                 <X size={20} />
               </button>
@@ -155,14 +155,14 @@ export function GalleryLightbox({ images, startIndex, isOpen, onClose }: Props) 
                 <button
                   onClick={(e) => { e.stopPropagation(); go(-1); }}
                   aria-label="Previous image"
-                  className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center text-gray-500 hover:text-[#50C1BA] transition-colors focus:outline-none z-20"
+                  className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center text-gray-500 hover:text-[#50C1BA] transition-colors outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-[#50C1BA] focus-visible:rounded-full z-20"
                 >
                   <ChevronLeft size={26} />
                 </button>
                 <button
                   onClick={(e) => { e.stopPropagation(); go(1); }}
                   aria-label="Next image"
-                  className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center text-gray-500 hover:text-[#50C1BA] transition-colors focus:outline-none z-20"
+                  className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center text-gray-500 hover:text-[#50C1BA] transition-colors outline-none focus-visible:text-white focus-visible:ring-2 focus-visible:ring-[#50C1BA] focus-visible:rounded-full z-20"
                 >
                   <ChevronRight size={26} />
                 </button>

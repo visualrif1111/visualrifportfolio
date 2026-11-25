@@ -26,15 +26,15 @@ export const profile = {
   name: "Arif Tariq",
   firstName: "Arif",
   lastName: "Tariq",
-  title: "Multidisciplinary Designer",
-  location: "Shrewsbury / Remote",
+  title: "Multidisciplinary Digital & UX/UI Designer",
+  location: "Shrewsbury, Shropshire, United Kingdom",
   phone: "07598 078 923",
   phoneHref: "tel:+447598078923",
   email: "hello@visualrif.com",
   website: "https://visualrif.com/",
   websiteLabel: "visualrif.com",
   statement:
-    "Independent multidisciplinary designer working across brand identity, UX/UI, web, print and 3D. I take projects from research and concept through to design and front-end build — managing clients directly, balancing commercial goals with craft, and delivering human-led work that is considered, usable and built to last.",
+    "Independent multidisciplinary designer working across brand identity, UX/UI, web, print and 3D. I take projects from research and concept through to design and front-end build — managing clients directly, balancing commercial goals with craft, and delivering human-led work that is considered, usable and built to last. Based in Shrewsbury and available for freelance, permanent and remote opportunities across the UK.",
 };
 
 export const portfolioPdf = {
@@ -50,8 +50,8 @@ export const experience: Experience[] = [
     name: "Uniestate UK",
     role: "UX/UI Designer & Web Developer",
     dates: "2026 – Present",
-    url: "https://uniestate-uk.vercel.app/",
-    urlLabel: "uniestate-uk.vercel.app",
+    url: "https://visualrif.com/projects/uniestate-uk",
+    urlLabel: "visualrif.com/projects/uniestate-uk",
     description:
       "Ongoing design and development of Uniestate's UK-facing property platform, presenting Playa Viva on Al Marjan Island, Ras Al Khaimah.",
     highlights: [

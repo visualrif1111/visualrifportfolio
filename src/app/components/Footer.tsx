@@ -11,7 +11,7 @@ export function Footer({ className = "" }: FooterProps) {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
         <div>
           <h3 className="font-['Rajdhani',sans-serif] font-bold text-xl tracking-widest text-[#50C1BA] mb-2 uppercase">VISUALRIF</h3>
-          <p className="font-['Rajdhani',sans-serif] font-semibold text-sm tracking-widest uppercase text-gray-400 mb-6">Multidisciplinary Designer</p>
+          <p className="font-['Rajdhani',sans-serif] font-semibold text-sm tracking-widest uppercase text-gray-400 mb-6">Multidisciplinary Digital &amp; UX/UI Designer</p>
 
           <div className="flex flex-col gap-3 text-sm tracking-wider text-gray-300 font-['Rajdhani',sans-serif] font-medium">
             <a href="tel:07598078923" className="flex items-center gap-3 hover:text-[#50C1BA] transition-colors">
@@ -28,22 +28,22 @@ export function Footer({ className = "" }: FooterProps) {
               <div className="w-8 h-8 rounded bg-[#50C1BA]/10 flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#50C1BA]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
-              Brighton & Hove
+              Shrewsbury, Shropshire, UK
             </div>
           </div>
         </div>
         
         <div className="flex gap-4">
-          <a href="https://www.instagram.com/visualrif" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+          <a href="https://www.instagram.com/visualrif" target="_blank" rel="noreferrer" aria-label="VISUALRIF on Instagram" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
             <Instagram size={20} />
           </a>
-          <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+          <a href="https://www.linkedin.com/in/ariftariq/" target="_blank" rel="noreferrer" aria-label="Arif Tariq on LinkedIn" className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
             <Linkedin size={20} />
           </a>
         </div>
       </div>
       
-      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-['Inter',sans-serif]">
+      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 font-['Inter',sans-serif]">
         <p>© 2026 VISUALRIF. All rights reserved.</p>
         <div className="flex flex-wrap justify-center gap-6">
           <Link scroll={false} href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

@@ -1,6 +1,6 @@
 # VISUALRIF — Claude Code Guide
 
-Portfolio and business platform for **visualrif.com** (Arif Tariq / VISUALRIF, multidisciplinary designer, Brighton & Hove).
+Portfolio and business platform for **visualrif.com** (Arif Tariq / VISUALRIF, multidisciplinary Digital & UX/UI designer, Shrewsbury, Shropshire).
 
 > **Migration in progress.** Since 2026-10-01 `main` (live) runs the Next.js foundation (commit `855b9a76`). The `next-migration` branch adds the backend below, phase by phase. Each section marks what **exists today** vs what is the **target**. Do not document a service as live until it is implemented and merged.
 
@@ -16,7 +16,7 @@ Portfolio and business platform for **visualrif.com** (Arif Tariq / VISUALRIF, m
 | Email | Resend (transactional) | Not started |
 | Monitoring | Sentry | Not started |
 | Security | Cloudflare Turnstile, Redis (rate limiting), Zod (validation) | Not started |
-| SEO | Sanity SEO fields, Next.js Metadata API, JSON-LD, `app/sitemap.ts`, `app/robots.ts` | Reusable Sanity `seo` object exists (not yet rendered). Static site-wide metadata in `app/(site)/layout.tsx` (same tags as the old `index.html`); no sitemap/robots/JSON-LD yet; `/og-image.png` does not exist |
+| SEO | Sanity SEO fields, Next.js Metadata API, JSON-LD, `app/sitemap.ts`, `app/robots.ts` | Reusable Sanity `seo` object exists (not yet rendered). Per-route titles, descriptions, canonicals and Open Graph via `src/app/seo.ts` (`pageMetadata`, `projectMetadata` built from `data/projects.ts`); JSON-LD Person + WebSite on `/`, CreativeWork + BreadcrumbList on project pages; `app/sitemap.ts`, `app/robots.ts`; default share image `public/og-image.png` (1200×630) |
 | Search tooling | Google Search Console, Ahrefs Webmaster Tools (external) | Not verified |
 | Analytics | Vercel Web Analytics | `<Analytics />` in `app/(site)/layout.tsx`; enabled on the Vercel project |
 | Hosting | Vercel | Live, deploys `main` (Next.js via `vercel.json`; project-level settings still say Vite) |
@@ -121,7 +121,7 @@ During migration, existing components may stay under `src/` and be imported by `
 
 ## Routes (must be preserved)
 
-`/`, `/projects/investinuk`, `/projects/moncks-of-dover-street`, `/projects/swiftrooms`, `/projects/sunil-gavaskar`, `/projects/diversion-audio`, `/projects/the-hairy-bastard`, `/projects/jma-customs`, `/projects/jma-customs/:category`, `/privacy-policy`, `/terms-and-conditions`, `/gdpr`, `/cookie-policy`. Internal: `/studio` (Sanity Studio, noindex), `/api/revalidate` (webhook).
+`/`, `/projects/investinuk`, `/projects/uniestate-uk`, `/projects/moncks-of-dover-street`, `/projects/swiftrooms`, `/projects/sunil-gavaskar`, `/projects/diversion-audio`, `/projects/the-hairy-bastard`, `/projects/jma-customs`, `/projects/jma-customs/:category`, `/privacy-policy`, `/terms-and-conditions`, `/gdpr`, `/cookie-policy`. Internal: `/studio` (Sanity Studio, noindex), `/api/revalidate` (webhook).
 
 Behaviour to preserve through the migration: teal route wipe + page fade, home scroll restoration when returning from a project (separate desktop/mobile keys in sessionStorage), `#hash` scrolling, Next Project loop, lightboxes (keyboard, swipe, focus), YouTube media, custom cursor (desktop only), sidebar `mix-blend-difference`, mobile project menu, reduced-motion handling.
 
@@ -144,8 +144,9 @@ A `test` script arrives with the first backend phase.
 - Use `useReducedMotion` from `src/app/components/motion/useReducedMotion.ts`, never the one from `motion/react`.
 - Navigate with `useNavigate()` from `src/app/navigation.ts` (it disables Next's scroll handling; `Root` owns scroll). Use `next/link` with `scroll={false}`.
 - `Root.tsx` wraps `children` in `AnimatePresence mode="wait"` keyed by pathname (no `FrozenRouter`); the teal wipe hides the swap. Re-test page transitions after every Next.js upgrade.
-- Image imports are URL strings (not `StaticImageData`); `next/image` adoption is a performance-phase decision.
-- Fonts load from the Google Fonts stylesheet in `app/layout.tsx`; family names are used literally in class strings, so `next/font` would need a codebase-wide change.
+- Image imports are URL strings (not `StaticImageData`); `next/image` adoption is a performance-phase decision. Until then, every image over ~400 KB is served as a resized WebP sibling (max 2560×4096, q82, alpha kept) — import the `.webp`, keep the original next to it as the source. New large images should get the same treatment (`magick in -resize '2560x4096>' tmp.png && cwebp -q 82 -alpha_q 90 tmp.png -o out.webp`).
+- Fonts are self-hosted: `public/fonts/*.woff2` (latin + latin-ext) declared in `src/styles/fonts.css` under the original family names, so literal class strings like `font-['Rajdhani',sans-serif]` keep working. The four first-screen faces are preloaded in `app/(site)/layout.tsx`. `next/font` would still need a codebase-wide change.
+- Tailwind scans only `src/app/**` and `app/**` (`src/styles/tailwind.css`). `src/imports/` holds Figma exports whose components are not rendered (only their SVG path files and images are imported) — don't add it back as a source.
 - Sanity content is fetched only in `app/(site)` server route files via `sanityFetch` (`sanity/lib/fetch.ts`) and passed as props to the existing client components, which keep their built-in content as the fallback. Pages stay statically generated; the webhook revalidates by tag.
 - Studio presentation options live in `sanity/schemaTypes/options.ts` and mirror component prop unions; code maps them to static Tailwind classes. Never add free-form CSS, class or code fields to schemas. Bespoke sections are placed by `customModuleBlock` keys registered in code.
 - Never store leads, enquiries or CRM data in Sanity (Attio owns them). Service, Testimonial and Journal schemas are not created until their frontend is designed.

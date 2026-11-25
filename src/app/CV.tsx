@@ -65,7 +65,7 @@ export default function CV() {
     <div className="min-h-screen bg-[#F7F7F5] text-[#171717] selection:bg-[#50C1BA] selection:text-black">
       <div className="w-full flex flex-col relative pt-28 md:pt-36 z-10 min-h-screen">
         <div className="max-w-6xl mx-auto px-6 md:px-12 w-full flex-grow mb-32">
-          <div className="flex flex-wrap items-center justify-between gap-6 mb-16 md:mb-24">
+          <div className="flex flex-col items-start gap-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between mb-16 md:mb-24">
             <Link scroll={false} href="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-[#171717] transition-colors uppercase tracking-widest text-sm font-medium font-['Barlow',sans-serif]">
               <ArrowLeft size={16} /> Back to Home
             </Link>

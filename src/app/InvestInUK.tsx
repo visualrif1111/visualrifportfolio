@@ -23,7 +23,7 @@ import {
   DeliverablesList,
 } from './components/case-study';
 
-import imgHero from '../imports/investinuk/home-hero.jpg';
+import imgHero from '../imports/investinuk/home-hero.webp';
 import imgNavDetail from '../imports/investinuk/nav-detail.jpg';
 import imgTypeDisplay from '../imports/investinuk/type-display.jpg';
 import imgUiButtons from '../imports/investinuk/ui-buttons.jpg';
@@ -32,12 +32,12 @@ import imgWhyUk from '../imports/investinuk/why-uk.jpg';
 import imgWhyHmo from '../imports/investinuk/why-hmo.jpg';
 import imgHowItWorks from '../imports/investinuk/how-it-works.jpg';
 import imgPageHowItWorks from '../imports/investinuk/page-how-it-works.jpg';
-import imgCaseStudyFeatured from '../imports/investinuk/case-study-featured.jpg';
-import imgProjectIndex from '../imports/investinuk/project-index.jpg';
-import imgPropertyCards from '../imports/investinuk/detail-property-cards.jpg';
-import imgFigures from '../imports/investinuk/detail-figures.jpg';
-import imgCaseDetail from '../imports/investinuk/page-case-detail.jpg';
-import imgResources from '../imports/investinuk/resources.jpg';
+import imgCaseStudyFeatured from '../imports/investinuk/case-study-featured.webp';
+import imgProjectIndex from '../imports/investinuk/project-index.webp';
+import imgPropertyCards from '../imports/investinuk/detail-property-cards.webp';
+import imgFigures from '../imports/investinuk/detail-figures.webp';
+import imgCaseDetail from '../imports/investinuk/page-case-detail.webp';
+import imgResources from '../imports/investinuk/resources.webp';
 import imgResourceGate from '../imports/investinuk/detail-resource-gate.jpg';
 import imgPageResources from '../imports/investinuk/page-resources.jpg';
 import imgEnquiryChoice from '../imports/investinuk/detail-enquiry-choice.jpg';
@@ -45,7 +45,7 @@ import imgEnquiryForm from '../imports/investinuk/detail-enquiry-form.jpg';
 import imgPageOpportunities from '../imports/investinuk/page-opportunities.jpg';
 import imgPageCaseStudies from '../imports/investinuk/page-case-studies.jpg';
 import imgPageContact from '../imports/investinuk/page-contact.jpg';
-import imgTabletHome from '../imports/investinuk/tablet-home.jpg';
+import imgTabletHome from '../imports/investinuk/tablet-home.webp';
 import imgTabletOpportunities from '../imports/investinuk/tablet-opportunities.jpg';
 import imgTabletCaseStudies from '../imports/investinuk/tablet-case-studies.jpg';
 import imgMobileHome from '../imports/investinuk/mobile-home.jpg';

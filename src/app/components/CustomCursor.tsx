@@ -44,23 +44,29 @@ export function CustomCursor() {
     let variant: 'default' | 'hover' | 'view' = 'default';
     let dotScale = 1, dotOpacity = 0, ringScale = 1, ringOpacity = 0;
     let rafId = 0;
+    let last = 0;
 
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-    const tick = () => {
+    const tick = (now: number) => {
+      // Frame-rate independent easing: the same feel at 60 Hz and 120 Hz.
+      const dt = last ? Math.min(now - last, 64) : 16.7;
+      last = now;
+      const k = 1 - Math.pow(1 - 0.3, dt / 16.7);
+
       // Ring centre lerps toward mouse for a subtle premium trail
-      ringX = lerp(ringX, mouseX, 0.22);
-      ringY = lerp(ringY, mouseY, 0.22);
+      ringX = lerp(ringX, mouseX, k);
+      ringY = lerp(ringY, mouseY, k);
 
       const targetDotScale   = variant !== 'default' ? 0 : 1;
       const targetRingScale  = variant === 'view' ? 2.5 : variant === 'hover' ? 1.8 : 1;
       const targetDotOpacity  = isVisible && variant === 'default' ? 1 : 0;
       const targetRingOpacity = isVisible ? (variant === 'default' ? 0.25 : 0.9) : 0;
 
-      dotScale    = lerp(dotScale,    targetDotScale,    0.22);
-      ringScale   = lerp(ringScale,   targetRingScale,   0.22);
-      dotOpacity  = lerp(dotOpacity,  targetDotOpacity,  0.22);
-      ringOpacity = lerp(ringOpacity, targetRingOpacity, 0.22);
+      dotScale    = lerp(dotScale,    targetDotScale,    k);
+      ringScale   = lerp(ringScale,   targetRingScale,   k);
+      dotOpacity  = lerp(dotOpacity,  targetDotOpacity,  k);
+      ringOpacity = lerp(ringOpacity, targetRingOpacity, k);
 
       const dot = dotRef.current;
       if (dot) {
@@ -89,7 +95,16 @@ export function CustomCursor() {
         view.style.opacity   = (isVisible && variant === 'view') ? '1' : '0';
       }
 
-      rafId = requestAnimationFrame(tick);
+      const settled =
+        Math.abs(ringX - mouseX) < 0.1 && Math.abs(ringY - mouseY) < 0.1 &&
+        Math.abs(dotScale - targetDotScale) < 0.001 && Math.abs(ringScale - targetRingScale) < 0.001 &&
+        Math.abs(dotOpacity - targetDotOpacity) < 0.001 && Math.abs(ringOpacity - targetRingOpacity) < 0.001;
+      // Sleep when idle instead of repainting every frame; wake() restarts the loop.
+      rafId = settled ? 0 : requestAnimationFrame(tick);
+    };
+
+    const wake = () => {
+      if (!rafId) { last = 0; rafId = requestAnimationFrame(tick); }
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -103,13 +118,15 @@ export function CustomCursor() {
       }
 
       if (!hasShown) { hasShown = true; isVisible = true; }
+      wake();
     };
 
-    const handleMouseLeave = () => { isVisible = false; };
-    const handleMouseEnter = () => { if (hasShown) isVisible = true; };
+    const handleMouseLeave = () => { isVisible = false; wake(); };
+    const handleMouseEnter = () => { if (hasShown) isVisible = true; wake(); };
 
     const handleMouseOver = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
+      wake();
       if (t.closest('[data-cursor="view"]'))                                                         { variant = 'view';    return; }
       if (t.closest('a') || t.closest('button') || t.closest('[role="button"]') || t.classList.contains('cursor-pointer')) { variant = 'hover';   return; }
       variant = 'default';
