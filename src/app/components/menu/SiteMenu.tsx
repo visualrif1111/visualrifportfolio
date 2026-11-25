@@ -300,10 +300,12 @@ function MenuPanel() {
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className={`flex items-center gap-3 min-h-11 text-white hover:text-[#50C1BA] transition-colors ${META}`}
+          className={`group flex items-center gap-4 text-white/70 hover:text-white transition-colors outline-none ${META}`}
         >
           <span className="hidden md:inline">Close</span>
-          <X size={24} strokeWidth={1.5} aria-hidden />
+          <span className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white transition-[background-color,color,border-color,transform] duration-300 group-hover:bg-white group-hover:text-black group-hover:border-white group-active:scale-95 group-focus-visible:ring-2 group-focus-visible:ring-[#50C1BA] group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-black">
+            <X size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:rotate-90" aria-hidden />
+          </span>
           <span className="sr-only md:hidden">Close menu</span>
         </button>
       </div>

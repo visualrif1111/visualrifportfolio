@@ -79,3 +79,13 @@ test('icon-only links and buttons have accessible names', () => {
   assert.match(footer, /aria-label="Arif Tariq on LinkedIn"/);
   assert.match(fs.readFileSync(path.join(ROOT, 'src/app/components/CookieBanner.tsx'), 'utf8'), /aria-label="Dismiss cookie notice"/);
 });
+
+test('gallery lightbox renders above the site header', () => {
+  // Inside the page tree the fixed header (and the page's stacking contexts) covered the close button,
+  // so tapping the cross on mobile opened the menu instead.
+  const src = fs.readFileSync(path.join(ROOT, 'src/app/components/GalleryLightbox.tsx'), 'utf8');
+  assert.match(src, /createPortal\(/);
+  assert.match(src, /document\.body/);
+  const z = Number(src.match(/fixed inset-0 z-\[(\d+)\]/)?.[1]);
+  assert.ok(z > 200 && z < 400, `lightbox z-index ${z} must sit above the header/scroll bar and below the menu`);
+});
