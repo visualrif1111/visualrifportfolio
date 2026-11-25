@@ -40,6 +40,9 @@ test('Shrewsbury appears in the footer, CV data and site metadata', () => {
 
 test('every imported raster image exists and is web-sized', () => {
   const LIMIT = 1_000_000;
+  // The animated background texture needs its alpha channel (it is run through contrast() before blending,
+  // so flattening it onto black crushed the pattern to near-black). Alpha costs bytes; allow it a little more.
+  const ALLOW = { 'src/assets/8e7771964c5c3a7ec1502b7371fd0054f51617eb.webp': 1_200_000 };
   const problems = [];
   for (const f of SOURCE) {
     const src = fs.readFileSync(f, 'utf8');
@@ -47,7 +50,7 @@ test('every imported raster image exists and is web-sized', () => {
       const spec = m[1];
       const file = spec.startsWith('@/') ? path.join(ROOT, 'src', spec.slice(2)) : path.resolve(path.dirname(f), spec);
       if (!fs.existsSync(file)) problems.push(`missing ${spec} in ${rel(f)}`);
-      else if (fs.statSync(file).size > LIMIT) problems.push(`${rel(file)} is ${(fs.statSync(file).size / 1e6).toFixed(1)} MB`);
+      else if (fs.statSync(file).size > (ALLOW[rel(file)] ?? LIMIT)) problems.push(`${rel(file)} is ${(fs.statSync(file).size / 1e6).toFixed(1)} MB`);
     }
     for (const m of src.matchAll(/['"](\/jma-[a-z]+\/[^'"]+)['"]/g)) {
       const file = path.join(ROOT, 'public', m[1]);
@@ -88,4 +91,11 @@ test('gallery lightbox renders above the site header', () => {
   assert.match(src, /document\.body/);
   const z = Number(src.match(/fixed inset-0 z-\[(\d+)\]/)?.[1]);
   assert.ok(z > 200 && z < 400, `lightbox z-index ${z} must sit above the header/scroll bar and below the menu`);
+});
+
+test('animated background texture keeps its alpha channel', () => {
+  // A VP8X WebP header with the alpha flag (0x10) set; a flattened image loses the psychedelic pattern.
+  const buf = fs.readFileSync(path.join(ROOT, 'src/assets/8e7771964c5c3a7ec1502b7371fd0054f51617eb.webp'));
+  assert.equal(buf.toString('ascii', 12, 16), 'VP8X');
+  assert.ok(buf[20] & 0x10, 'background WebP has no alpha channel');
 });
